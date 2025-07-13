@@ -64,7 +64,7 @@ plugins:
 theme: anzhiyu
 deploy:
   type: git
-  repo: git@github.com:lifelinest/lifelinest.github.io.git
+  repo: https://github.com/lifelinest/lifelinest.github.io.git
   branch: main
   message: 'Site updated: {{ now("YYYY-MM-DD HH:mm:ss") }}'
 symbols_count_time:
