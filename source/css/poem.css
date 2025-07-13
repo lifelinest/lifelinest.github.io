@@ -1,0 +1,564 @@
+/* ====== 每日诗词组件样式 ====== */
+
+/* 基础变量定义 */
+:root {
+  --poem-primary: #8a63d2;
+  --poem-secondary: #5e8af7;
+  --poem-accent: #ff7eb3;
+  --poem-text-primary: #2c3e50;
+  --poem-text-secondary: #6a7ba2;
+  --poem-bg-primary: rgba(255, 255, 255, 0.95);
+  --poem-bg-secondary: rgba(138, 99, 210, 0.1);
+  --poem-border: rgba(138, 99, 210, 0.2);
+  --poem-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  --poem-shadow-hover: 0 12px 40px rgba(31, 38, 135, 0.25);
+  --poem-radius: 16px;
+  --poem-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] {
+  --poem-primary: #a78bfa;
+  --poem-secondary: #7c9eff;
+  --poem-accent: #ff9ecd;
+  --poem-text-primary: #f7f7fa;
+  --poem-text-secondary: #a1a2b8;
+  --poem-bg-primary: rgba(29, 30, 34, 0.95);
+  --poem-bg-secondary: rgba(167, 139, 250, 0.15);
+  --poem-border: rgba(167, 139, 250, 0.3);
+}
+
+/* 深色模式下的主容器样式 */
+[data-theme="dark"] #card-poem.card-widget {
+  background: linear-gradient(135deg, rgba(29, 30, 34, 0.65) 60%, rgba(167, 139, 250, 0.13) 100%);
+  border: 1.5px solid rgba(167, 139, 250, 0.25);
+}
+
+[data-theme="dark"] #card-poem.card-widget::before {
+  background: linear-gradient(120deg, rgba(167, 139, 250, 0.15) 0%, rgba(167, 139, 250, 0.03) 100%);
+}
+
+[data-theme="dark"] #card-poem.card-widget:hover::before {
+  background: linear-gradient(120deg, rgba(167, 139, 250, 0.25) 0%, rgba(167, 139, 250, 0.05) 100%);
+}
+
+[data-theme="dark"] #poem_sentence {
+  background: rgba(29, 30, 34, 0.4);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+/* 主容器样式 - 高级拟态毛玻璃效果 */
+#card-poem.card-widget {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 60%, rgba(138, 99, 210, 0.13) 100%);
+  border-radius: 28px;
+  box-shadow:
+    0 8px 32px 0 rgba(31, 38, 135, 0.18),
+    0 1.5px 4px 0 rgba(138, 99, 210, 0.10),
+    0 0.5px 0.5px 0 rgba(255, 255, 255, 0.25) inset;
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  border: 1.5px solid rgba(138, 99, 210, 0.18);
+  padding: 2.2rem 1.4rem 1.4rem 1.4rem;
+  margin-bottom: 1.5rem;
+  transition: box-shadow 0.3s, transform 0.3s;
+  overflow: hidden;
+}
+
+/* 悬停效果 - 高级拟态动效 */
+#card-poem.card-widget:hover {
+  transform: translateY(-6px) scale(1.025);
+  box-shadow:
+    0 16px 48px 0 rgba(31, 38, 135, 0.22),
+    0 3px 12px 0 rgba(138, 99, 210, 0.13);
+  border-color: var(--poem-primary);
+}
+
+/* 装饰性背景 - 高级高光效果 */
+#card-poem.card-widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 28px;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+  z-index: 1;
+}
+
+#card-poem.card-widget:hover::before {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 100%);
+  transition: background 0.3s ease;
+}
+
+/* 移除旧的shimmer动画，使用更简洁的高光效果 */
+
+/* 诗词句子样式 - 统一纯色通透圆角背景，所有端一致 */
+#poem_sentence {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'SimSun', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--poem-text-primary);
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 0.8rem;
+  background: rgba(138, 99, 210, 0.13) !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  border: none !important;
+  min-height: 80px;
+  display: block !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] #poem_sentence {
+  background: rgba(167, 139, 250, 0.13) !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 移除诗名背景，仅保留文字 */
+.poem-title-scroll {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0.1em 0.5em;
+  border-radius: 0;
+}
+
+#poem_author {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 移除所有端对诗句背景的特殊处理，保证一致 */
+
+/* 诗词句子装饰 - 彻底移除引号 */
+#poem_sentence::before,
+#poem_sentence::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* 诗词句子每句一行 - 强制独占一行 */
+.poem-line {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  word-break: break-all !important;
+  white-space: pre-line !important;
+  margin: 0.1em 0 !important;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+/* 诗词信息容器 */
+#poem_info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid rgba(138, 99, 210, 0.15);
+}
+
+/* 诗词信息容器上下分行 */
+#poem_info {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  padding: 0.8rem 0 0.2rem 0;
+}
+
+#poem_dynasty {
+  min-width: 4em;
+  min-height: 1.5em;
+  background: linear-gradient(135deg, var(--poem-primary), var(--poem-secondary));
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(138, 99, 210, 0.3);
+  transition: var(--poem-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+#poem_dynasty:empty {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.poem-title-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--poem-primary) var(--poem-bg-secondary);
+  text-align: center;
+  padding: 0.1em 0.5em;
+  border-radius: 12px;
+  background: transparent;
+  backdrop-filter: blur(4px) saturate(1.5);
+  -webkit-backdrop-filter: blur(4px) saturate(1.5);
+  box-shadow: 0 2px 8px rgba(138, 99, 210, 0.08);
+}
+
+.poem-title-scroll:empty {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  min-height: 1.5em;
+}
+
+#poem_dynasty::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+#poem_dynasty:hover::before {
+  left: 100%;
+}
+
+#poem_dynasty:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(138, 99, 210, 0.4);
+}
+
+/* 作者和诗名 */
+#poem_author {
+  color: var(--poem-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: right;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: var(--poem-transition);
+}
+
+#poem_author:hover {
+  color: var(--poem-primary);
+  transform: translateX(-2px);
+}
+
+/* 响应式设计 - 平板 */
+@media (max-width: 768px) {
+  #card-poem.card-widget {
+    padding: 1.6rem 1.2rem 1.2rem 1.2rem;
+    min-height: 140px;
+    border-radius: 24px;
+  }
+
+  #poem_sentence {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0.8rem 0.4rem;
+    min-height: 70px;
+    /* 移动端也强制block布局 */
+    display: block !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+  }
+
+  #poem_info {
+    gap: 0.6rem;
+    padding: 0.6rem 0;
+  }
+
+  #poem_dynasty {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  #poem_author {
+    font-size: 0.85rem;
+  }
+}
+
+/* 响应式设计 - 手机 */
+@media (max-width: 480px) {
+  #card-poem.card-widget {
+    padding: 1.4rem 1rem 1rem 1rem;
+    min-height: 120px;
+    margin: 0.5rem 0;
+    border-radius: 20px;
+  }
+
+  #poem_sentence {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0.6rem 0.3rem;
+    min-height: 60px;
+    margin-bottom: 1rem;
+    /* 手机端也强制block布局 */
+    display: block !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+  }
+
+  #poem_info {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.5rem 0 0.1rem 0;
+  }
+
+  #poem_dynasty {
+    margin-bottom: 0.1em;
+  }
+
+  .poem-title-scroll {
+    max-width: 100vw;
+  }
+
+  #poem_author {
+    font-size: 0.8rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* 手机端悬停效果减弱 */
+  #card-poem.card-widget:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 360px) {
+  #card-poem.card-widget {
+    padding: 1.2rem 0.8rem 0.8rem 0.8rem;
+    min-height: 110px;
+    border-radius: 18px;
+  }
+
+  #poem_sentence {
+    font-size: 0.9rem;
+    min-height: 55px;
+    margin-bottom: 0.8rem;
+    /* 超小屏幕也强制block布局 */
+    display: block !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+  }
+
+  #poem_dynasty {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.65rem;
+  }
+
+  #poem_author {
+    font-size: 0.75rem;
+  }
+}
+
+/* 加载动画 */
+#card-poem.card-widget.loading {
+  opacity: 0.7;
+}
+
+#card-poem.card-widget.loading #poem_sentence::after {
+  content: '...';
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+
+  0%,
+  20% {
+    content: '.';
+  }
+
+  40% {
+    content: '..';
+  }
+
+  60%,
+  100% {
+    content: '...';
+  }
+}
+
+/* 强制覆盖主题默认样式 */
+#card-poem.card-widget {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 60%, rgba(138, 99, 210, 0.13) 100%) !important;
+  border: 1.5px solid rgba(138, 99, 210, 0.18) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 1.5px 4px 0 rgba(138, 99, 210, 0.10), 0 0.5px 0.5px 0 rgba(255, 255, 255, 0.25) inset !important;
+  backdrop-filter: blur(24px) saturate(1.8) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.8) !important;
+}
+
+#poem_sentence {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: var(--poem-text-primary) !important;
+  border-left: none !important;
+  box-shadow: 0 2px 12px 0 rgba(138, 99, 210, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(4px) saturate(1.1) !important;
+  -webkit-backdrop-filter: blur(4px) saturate(1.1) !important;
+  /* 强制block布局覆盖所有主题样式 */
+  display: block !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+}
+
+#poem_dynasty {
+  background: linear-gradient(135deg, var(--poem-primary), var(--poem-secondary)) !important;
+  color: white !important;
+}
+
+#poem_author {
+  color: var(--poem-text-secondary) !important;
+}
+
+/* 确保在侧边栏中正确显示 */
+#aside-content #card-poem.card-widget {
+  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* PC端优化 */
+@media (min-width: 769px) {
+  #poem_sentence {
+    border-left: none !important;
+    background: var(--poem-bg-secondary) !important;
+    box-shadow: none !important;
+    padding: 1.2rem 0.8rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    /* PC端强制block布局 */
+    display: block !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+    border-radius: 12px;
+  }
+
+  .poem-line {
+    display: block !important;
+    text-align: center !important;
+    word-break: break-all !important;
+    white-space: pre-line !important;
+    overflow-x: unset;
+    margin: 0.1em 0 !important;
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  #poem_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.5rem 0 0.1rem 0;
+    width: 100%;
+  }
+
+  #poem_dynasty {
+    display: inline-block;
+    margin: 0 auto 0.2em auto;
+    min-width: 4em;
+    min-height: 1.5em;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(138, 99, 210, 0.18);
+  }
+
+  .poem-title-scroll {
+    display: block;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    padding: 0 0.2em;
+  }
+
+  #poem_author {
+    display: inline-block;
+    min-width: 0;
+    max-width: unset;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: nowrap;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--poem-text-secondary) !important;
+    font-family: inherit;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 768px) {
+  .poem-line {
+    white-space: pre-line !important;
+    word-break: break-all !important;
+    overflow-x: unset;
+    /* 移动端也强制独占一行 */
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* 保证移动端不受影响 */
+#poem_sentence,
+.poem-line {
+  font-family: 'FZKai-Z03', 'FZShuSong-Z01', 'STKaiti', 'STXingkai', 'Hiragino Sans GB', '华文行楷', '华文楷体', '方正楷体', '方正行楷', '楷体', '行楷', 'SimKai', 'KaiTi', 'Microsoft YaHei', 'PingFang SC', '宋体', 'SimSun', serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+/* 可选：让诗句略有书法感 */
+.poem-line {
+  font-size: 1.25rem;
+  line-height: 2.1;
+  text-shadow: 0 2px 8px rgba(138, 99, 210, 0.08);
+}
+
+html body #card-poem.card-widget #poem_sentence,
+html body #aside-content #card-poem.card-widget #poem_sentence {
+  background: rgba(94, 138, 247, 0.13) !important;
+  /* 浅蓝色 */
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+[data-theme="dark"] html body #card-poem.card-widget #poem_sentence,
+[data-theme="dark"] html body #aside-content #card-poem.card-widget #poem_sentence {
+  background: rgba(94, 138, 247, 0.18) !important;
+  /* 深色模式下略深 */
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  border: none !important;
+}

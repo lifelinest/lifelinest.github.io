@@ -1,0 +1,51 @@
+- class_name: 框架
+  flink_style: flexcard
+  hundredSuffix: ""
+  link_list:
+    - name: Hexo
+      link: https://hexo.io/zh-tw/
+      avatar: 
+      descr: 快速、简单且强大的网站框架
+    - name: anzhiyu主题
+      link: https://blog.anheyu.com/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 生活明朗，万物可爱
+      siteshot: 
+
+- class_name: 推荐博客
+  flink_style: telescopic
+  hundredSuffix: ""
+  link_list:
+    - name: 安知鱼
+      link: https://blog.anheyu.com/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 生活明朗，万物可爱
+      siteshot: https://npm.elemecdn.com/anzhiyu-theme-static@1.1.6/img/blog.anheyu.com.jpg
+      color: vip
+      tag: 技术
+
+- class_name: 小伙伴
+  class_desc: 那些人，那些事
+  flink_style: anzhiyu
+  hundredSuffix: ""
+  link_list:
+    - name: 安知鱼
+      link: https://blog.anheyu.com/
+      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 生活明朗，万物可爱
+      recommend: true
+    - name: 张洪Heo
+      link: https://blog.zhheo.com/
+      avatar: https://s21.ax1x.com/2025/03/31/pEsvaIU.png
+      descr: 分享设计与科技生活
+      recommend: true
+    - name: HiPeach
+      link: https://blog.opeach.cn
+      avatar: https://npm.elemecdn.com/opicture@1.0.0/main/avatar.webp
+      descr: 妙不可言
+      siteshot: https://npm.webcache.cn/opicture@1.1.2/blog/siteshot/siteshot.webp
+    - name: chenlei
+      link: https://blog.opeach.cn
+      avatar: https://img.hellolei.xin/preview.jpg
+      descr: Live Long and Prosper!
+      siteshot: https://img.hellolei.xin/preview.jpg

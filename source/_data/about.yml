@@ -1,0 +1,150 @@
+- class_name: 关于页
+  subtitle: 若世有神明，亦会胜它半子。
+  avatarImg: http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130
+  avatarSkills:
+    left:
+      - 🤖️ 数码科技爱好者
+      - 🔍 分享与热心帮助
+      - 🏠 智能家居小能手
+      - 🔨 设计开发一条龙
+    right:
+      - 专修交互与设计 🤝
+      - 脚踏实地行动派 🏃
+      - 团队小组发动机 🧱
+      - 壮汉人狠话不多 💢
+  name: 孟凡宇
+  description: 是一名 前端开发者、学生、摄影爱好者
+  aboutsiteTips:
+    tips: 追求
+    title1: 源于
+    title2: 热爱而去 感受
+    word:
+      - 学习
+      - 生活
+      - 程序
+      - 体验
+  helloAbout: Hello World!
+  skillsTips:
+    tips: 技能
+    title: 开启创造力
+  creativity_list:
+    - name: Java
+      color: "#fff"
+      icon: https://bu.dusays.com/2023/04/09/643293b1184e9.jpg
+    - name: Docker
+      color: "#57b6e6"
+      icon: https://bu.dusays.com/2023/04/09/643293b0f0abe.png
+    - name: Photoshop
+      color: "#4082c3"
+      icon: https://bu.dusays.com/2022/12/15/639aa3a5c240e.png
+    - name: Node
+      color: "#333"
+      icon: https://npm.elemecdn.com/anzhiyu-blog@2.1.1/img/svg/node-logo.svg
+    - name: Webpack
+      color: "#2e3a41"
+      icon: https://bu.dusays.com/2023/04/09/643293b68026c.png
+    - name: Pinia
+      color: "#fff"
+      icon: https://npm.elemecdn.com/anzhiyu-blog@2.0.8/img/svg/pinia-logo.svg
+    - name: Python
+      color: "#fff"
+      icon: https://bu.dusays.com/2023/04/09/643293b1230f7.png
+    - name: Vite
+      color: "#937df7"
+      icon: https://npm.elemecdn.com/anzhiyu-blog@2.0.8/img/svg/vite-logo.svg
+    - name: Flutter
+      color: "#4499e4"
+      icon: https://bu.dusays.com/2023/04/09/643293b1055c2.png
+    - name: Vue
+      color: "#b8f0ae"
+      icon: https://bu.dusays.com/2023/04/09/643293b6788bd.png
+    - name: React
+      color: "#222"
+      icon: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K
+    - name: CSS3
+      color: "#2c51db"
+      icon: https://bu.dusays.com/2022/12/15/639aa3a5c251e.png
+    - name: JS
+      color: "#f7cb4f"
+      icon: https://bu.dusays.com/2023/04/09/643293b121f02.png
+    - name: HTML
+      color: "#e9572b"
+      icon: https://bu.dusays.com/2022/12/15/639aa3a5c241c.png
+    - name: Git
+      color: "#df5b40"
+      icon: https://bu.dusays.com/2023/04/09/643293b10ccdd.webp
+    - name: Apifox
+      color: "#e65164"
+      icon: https://bu.dusays.com/2022/11/19/6378d6458c6b6.png
+  careers:
+    tips: 生涯
+    title: 真正的大师永远怀着一颗学徒的心
+    list:
+      - desc: EDU,大数据专业
+        color: "#357ef5"
+    img: https://img0.baidu.com/it/u=3623976101,2901550310&fm=253&fmt=auto&app=138&f=JPG?w=760&h=500
+  statistic:
+    link: /archives
+    text: 文章隧道
+    cover: https://bu.dusays.com/2023/05/01/644f4b037b930.jpg
+  map:
+    title: 我现在住在
+    StrengthenTitle: 中国，新乡市
+    background: https://p4.itc.cn/images01/20200920/55aa6db3f8d346e19716326a9350529a.jpeg
+    backgroundDark: https://p4.itc.cn/images01/20200920/55aa6db3f8d346e19716326a9350529a.jpeg
+  selfInfo:
+    selfInfoTips1: 生于
+    selfInfoContentYear: 2002
+    selfInfoTips2: 新乡职业技术学院
+    selfInfoContent2: 大数据技术
+    selfInfoTips3: 现在职业
+    selfInfoContent3: 大三学生👨‍🎓
+  personalities:
+    author_name: 建筑师
+    personality_type: INTJ-A型
+    photo_url: https://p5.itc.cn/q_70/images03/20220120/90ced7dba4b7405f862b555a566d5a96.png
+    personality_img: https://www.16personalities.com/static/images/personality-types/famous/analysts_INTJ_jay_gatsby.svg?v=6
+    name_url: https://www.16personalities.com/ch/esfj-%E4%BA%BA%E6%A0%BC
+  maxim:
+    maxim_tips: 座右铭
+    maxim_top: 若世有神明，
+    maxim_bottom: 亦会胜它半子。
+  buff:
+    buff_tips: 特长
+    buff_top: 喜欢记录生活的 小刺团
+    buff_bottom: 今日心情指数 MAX
+  game:
+    game_tips: 爱好游戏
+    game_title: 都市天际线2
+    game_uid: "《都市：天际线2》是由Colossal Order开发，Paradox Interactive发行的城市模拟建造游戏."
+    game_bg: https://img2.baidu.com/it/u=3463971238,3523946167&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500
+  comic:
+    comic_tips: 爱好番剧
+    comic_title: 追番
+    comic_list:
+      - name: 你的名字
+        href: https://www.ikanbot.com/play/384246
+        cover: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F815a030d-9634-4d22-a4dc-1c8129baf7fc%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1701756579&t=8467dfc600b990366415e35a5eb294fe
+      - name: 声之形
+        href: https://www.ikanbot.com/play/396011
+        cover: https://img2.baidu.com/it/u=3211045469,2924306231&fm=253&fmt=auto&app=138&f=JPEG?w=948&h=500
+      - name: 昨日青空
+        href: https://www.ikanbot.com/play/587904
+        cover: https://img2.baidu.com/it/u=2452371598,1535539893&fm=253&fmt=auto&app=138&f=JPEG?w=1073&h=500
+      - name: 大鱼海棠
+        href: https://www.ikanbot.com/play/378784
+        cover: https://img0.baidu.com/it/u=3208284426,4247796056&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=708
+      - name: 铃芽之旅
+        href: https://www.ikanbot.com/play/783539
+        cover: https://img1.baidu.com/it/u=2538527633,2725943768&fm=253&fmt=auto&app=138&f=JPEG?w=950&h=398
+  like:
+    like_tips: 关注偏好
+    like_title: 数码科技
+    like_bg: https://bu.dusays.com/2022/12/06/638f5f05ce1f7.jpg
+    like_bottom: 手机、电脑软硬件
+  music:
+    music_tips: 音乐偏好
+    music_title: 艾兰·沃克、电子音乐、世界流行
+    music_bg: https://img1.baidu.com/it/u=3388783179,3062193415&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500
+    music_link: /music
+  

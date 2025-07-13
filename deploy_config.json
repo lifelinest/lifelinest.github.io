@@ -1,0 +1,7 @@
+{
+  "repository": "lifelinest/lifelinest.github.io",
+  "branch": "main",
+  "message": "Site updated: {{ now(\"YYYY-MM-DD HH:mm:ss\") }}",
+  "token": "",
+  "lastDeployTime": "2025-07-06T09:23:55.542Z"
+}

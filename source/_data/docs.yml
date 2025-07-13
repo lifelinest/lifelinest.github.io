@@ -1,0 +1,42 @@
+title: 文档中心
+description: 全面的安装、配置和使用指南，助您轻松搭建专业博客
+modules:
+  - 
+    title: 快速入门
+    subtitle: 三分钟搭建你的博客
+    icon: rocket
+    features:
+      - 环境配置要求
+      - 资源管理
+      - 安装步骤详解
+      - 初始化设置技巧
+    button:
+      text: 查看指南
+      icon: arrow-right
+      link: https://docs.anheyu.com/initall.html
+  - 
+    title: API 集成
+    subtitle: 第三方服务接入方案
+    icon: plug
+    features:
+      - 社交媒体API对接
+      - 支付系统集成方案
+      - 自动化工作流配置
+      - 数据加密方案
+    button:
+      text: 探索文档
+      icon: arrow-right
+      link: https://api.nsmao.net/
+  - 
+    title: 问答社区
+    subtitle: 与其他开发者交流经验
+    icon: comments
+    features:
+      - 每日活跃用户 1200+
+      - 已解决问题 8500+
+      - 文档编辑指南
+      - 内容审核流程
+    button:
+      text: 加入讨论
+      icon: external-link-alt
+      link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu

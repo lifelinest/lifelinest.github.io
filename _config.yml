@@ -1,0 +1,241 @@
+title: Lifeline
+subtitle: 经世致用 自强不息
+description: 日落终归山海，你我终会相遇。
+keywords: null
+author: Lifeline
+language: zh-CN
+timezone: Asia/Shanghai
+url: http://example.com
+permalink: posts/:abbrlink/
+permalink_defaults: null
+pretty_urls:
+  trailing_index: true
+  trailing_html: true
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: ':lang'
+skip_render: null
+new_post_name: ':title.md'
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: '-date'
+default_category: uncategorized
+category_map: null
+tag_map: null
+meta_generator: true
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: mtime
+per_page: 10
+pagination_dir: page
+include: null
+exclude: null
+ignore: null
+plugins:
+  - hexo-plugin-postchat
+  - hexo-algoliasearch
+theme: anzhiyu
+deploy:
+  type: git
+  repo: https://github.com/lifelinest/lifelinest.github.io.git
+  branch: main
+  message: 'Site updated: {{ now("YYYY-MM-DD HH:mm:ss") }}'
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
+  separated_meta: true
+  item_text_post: true
+  item_text_total: false
+  awl: 4
+  wpm: 275
+  suffix: mins.
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-haruto
+  display:
+    position: left
+    width: 150
+    height: 300
+  mobile:
+    show: true
+bangumi:
+  enable: true
+  source: bili
+  bgmInfoSource: bgmv0
+  path: null
+  vmid: null
+  title: 追番列表
+  quote: 生命不息，追番不止！
+  show: 1
+  lazyload: true
+  srcValue: __image__
+  lazyloadAttrName: data-src=__image__
+  loading: null
+  showMyComment: false
+  pagination: false
+  metaColor: null
+  color: null
+  webp: null
+  progress: null
+  progressBar: null
+  extraOrder: null
+  order: latest
+  proxy:
+    host: 代理host
+    port: 代理端口
+  extra_options:
+    key: value
+  coverMirror: null
+cinema:
+  enable: true
+  path: null
+  vmid: null
+  title: 追剧列表
+  quote: 生命不息，追剧不止！
+  show: 1
+  lazyload: true
+  srcValue: __image__
+  lazyloadAttrName: data-src=__image__
+  loading: null
+  metaColor: null
+  color: null
+  webp: null
+  progress: null
+  progressBar: null
+  extraOrder: null
+  order: null
+  extra_options:
+    key: value
+  coverMirror: null
+game:
+  enable: true
+  path: null
+  source: bgmv0
+  vmid: null
+  title: 游戏列表
+  quote: 生命不息，游戏不止！
+  show: 1
+  lazyload: true
+  srcValue: __image__
+  lazyloadAttrName: data-src=__image__
+  loading: null
+  metaColor: null
+  color: null
+  webp: null
+  progress: null
+  progressBar: null
+  extraOrder: null
+  order: null
+  extra_options:
+    key: value
+  coverMirror: null
+hexo_pro:
+  username: admin
+  password: Mfy20020801
+  avatar: https:image for your own avata
+  secret: super // jwt secret key
+postchat:
+  account:
+    key: S-H9ELQNJWQ168OMRJ
+  summary:
+    enableSummary: true
+    postSelector: '#postchat_postcontent'
+    title: 文章摘要
+    summaryStyle: https://ai.tianli0.top/static/public/postChatUser_summary.min.css
+    postURL: /^https?://[^/]+/posts/[a-f0-9]{8}/
+    blacklist: ''
+    wordLimit: '1000'
+    typingAnimate: true
+  chat:
+    enableAI: false
+    backgroundColor: '#3e86f6'
+    fill: '#FFFFFF'
+    bottom: 36px
+    left: 1530px
+    width: 44px
+    frameWidth: 375px
+    frameHeight: 600px
+    defaultInput: true
+    upLoadWeb: true
+    showInviteLink: true
+    userTitle: PostChat
+    userDesc: 如果你对网站的内容有任何疑问，可以来问我哦～
+    addButton: true
+algolia:
+  appId: Z7A3XW4R2I
+  apiKey: 12db1ad54372045549ef465881c17e743
+  adminApiKey: 40321c7c207e7f73b63a19aa24c4761b
+  chunkSize: 5000
+  indexName: my-hexo-blog
+  fields:
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - gallery
+    - permalink
+    - photos
+    - slug
+    - tags
+    - title
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+post:
+  comments:  # 开启评论
+    enable: true
+    type: giscus # 选择评论插件类型
+
+# abbrlink config
+abbrlink:
+  alg: crc32      # Algorithm used to calc abbrlink. Support crc16(default) and crc32
+  rep: hex        # Representation of abbrlink in URLs. Support dec(default) and hex
+
+# 启用数据文件处理
+theme_config:
+  data_source: source/_data
+
+# 文档中心配置
+docs:
+  enable: true
+  path: /docs
+  title: 安知鱼文档中心
+  description: 全面的安装、配置和使用指南，助您轻松搭建专业博客
+

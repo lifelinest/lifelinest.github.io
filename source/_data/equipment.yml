@@ -1,0 +1,44 @@
+- class_name: 好物
+  description: 实物装备推荐
+  tip: 跟 Lifeline 一起享受科技带来的乐趣
+  top_background: https://s21.ax1x.com/2025/04/01/pEyUdKS.jpg
+  good_things:
+    - title: 生产力
+      description: 提升自己生产效率的硬件设备
+      equipment_list:
+        - name: RedmiBook Pro 15
+          specification: 11th Gen Intel(R)Core(TM)i5-11300H 3.10GHz 3.11 GHz
+          description: 萌萌哒小本本，超能干，等你抱！🤗
+          image: https://img0.baidu.com/it/u=3228030281,2632551677&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=550
+          link: https://www.mi.com/redmibook/pro15
+        - name: 小米14
+          specification: 岩石青 / 1TB
+          description: 永远相信美好的事情即将发生🌸✨
+          image: https://img1.baidu.com/it/u=1758602235,2875105019&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=800
+          link: https://www.mi.com/xiaomi-14
+    - title: 设备
+      description: 记录美好生活
+      equipment_list:
+        - name: 大疆mini2
+          specification: 黑色
+          description: 萌萌的小飞机，飞得高看得远，快来一起探索世界吧！🎈Rotor
+          image: https://img2.baidu.com/it/u=990483950,2935623894&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=640
+          link: https://store.dji.com/cn/product/mini-2?from=buying-guides
+        - name: 艾石头FE87/FE104
+          specification: 104黑色 RGB-红轴
+          description: 键盘小能手，敲击超带感，等你来撩哦！⌨️💖
+          image: https://t15.baidu.com/it/u=1396341548,1360450263&fm=224&app=112&f=JPEG?w=500&h=500
+          link: https://www.irok.cn/item/338
+    - title: 娱乐
+      description: 用来出行的实物及设备
+      equipment_list:
+        - name: 哈趣Q1
+          specification: 1080P高清画质、自动对焦、自动梯形校正、开机无广告、支持语音控制
+          description: 萌宝投影仪，超会玩，快来抱！🤗✨
+          image: https://img2.baidu.com/it/u=2974091033,4248514816&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500
+          link: https://m.haqu.com/
+        - name: 乐高-布加迪
+          specification: 高度14cm、长度56cm、宽度25cm
+          description: 乐高布加迪，超跑拼装梦！🚗✨
+          image: https://img2.baidu.com/it/u=735427261,3860008506&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=500
+          link: https://www.bilibili.com/video/BV1Vr4y1h7YU/
