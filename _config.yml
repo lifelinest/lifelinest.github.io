@@ -112,7 +112,7 @@ bangumi:
   pagination: false
   metaColor: null
   color: null
-  webp: null
+  webp: true
   progress: null
   progressBar: null
   extraOrder: null
@@ -122,7 +122,7 @@ bangumi:
     port: 代理端口
   extra_options:
     key: value
-  coverMirror: null
+  coverMirror: https://i0.hdslb.com/bfs/bangumi/
 cinema:
   enable: true
   path: null
