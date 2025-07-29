@@ -1,0 +1,633 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>基于大数据技术的bilibili网站数据分析的设计与实现 | Lifeline</title><meta name="keywords" content="毕业设计"><meta name="author" content="Lifeline"><meta name="copyright" content="Lifeline"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="基于大数据技术的bilibili网站数据分析的设计与实现"><meta name="application-name" content="基于大数据技术的bilibili网站数据分析的设计与实现"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="基于大数据技术的bilibili网站数据分析的设计与实现"><meta property="og:url" content="http://example.com/posts/699ead5/index.html"><meta property="og:site_name" content="Lifeline"><meta property="og:description" content="一、研究背景&amp;emsp;&amp;emsp;哔哩哔哩也被称为Bilibili，简称为B站，于2009年6月创建，其前身为Mikufans视频分享网站，如今是一家是以泛二次元文化爱好者为目标用户的综合类视频弹幕社区和二次元社区。其早期以二次元内容和独特的弹幕分享功能聚集了一批热爱ACG文化的核心用户。随着B站"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><meta property="article:author" content="Lifeline"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><meta name="description" content="一、研究背景&amp;emsp;&amp;emsp;哔哩哔哩也被称为Bilibili，简称为B站，于2009年6月创建，其前身为Mikufans视频分享网站，如今是一家是以泛二次元文化爱好者为目标用户的综合类视频弹幕社区和二次元社区。其早期以二次元内容和独特的弹幕分享功能聚集了一批热爱ACG文化的核心用户。随着B站"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/posts/699ead5/"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="code-xxx"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/assets/font-awesome-animation.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"lhvAVTHquc9","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"api","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: Lifeline","link":"链接: ","source":"来源: Lifeline","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Lifeline',
+  title: '基于大数据技术的bilibili网站数据分析的设计与实现',
+  postAI: '',
+  pageFillDescription: '一、研究背景, 二、数据来源, 三、实现技术, 1、组内前期任务确认, 2、图表设计, ① 前言, ②设计网站：镝数图表 Dycharts：人人可用的零代码数据可视化工具强大、好用、可定制！, ③ 图表设计效果图（仅供参考）, 3、数据可视化, 4、数据可视化的实现与技术, 5、商业数据可视化案例, 三、数据呈现, 前端技术：Vue.js、Vue-router、Vue-cli、Element-ui、eCharts, , , , , , 后端技术：Node.js、Express、Python, , , , 四、研究分析, 五、总结一研究背景哔哩哔哩也被称为简称为站于年月创建其前身为视频分享网站如今是一家是以泛二次元文化爱好者为目标用户的综合类视频弹幕社区和二次元社区其早期以二次元内容和独特的弹幕分享功能聚集了一批热爱文化的核心用户随着站的不断发展逐渐加入了科技教育娱乐鬼畜等视频内容在原有视频功能基础上发展了直播电商等业务站的内容品类扩大用户圈层包含更广业务也越来越多逐渐从小众走向大众站致力于满足中国时代年轻人群的文化娱乐需求是现在风靡于年轻人之间的视频弹幕网站同时由于站广告较少观看体验极佳又包罗万象因此对用户有着不可抵挡的亲和力站内共十四个分区几乎囊括了年轻一代所有的流行需要从番剧到电竞从泛知识到电子歌姬从阿卡贝拉到说唱弹幕狂欢已经成为站独有的文化现象站的内容主要分为三大类由主创作投稿的内容这也是贡献最多文化狂欢现象的主力部队由站出品的自制内容通过版权购买获得播放权的内容如电影番剧等作为二次元爱好者的聚集地作为国内最大的弹幕视频网站站的核心竞争力是那些优秀的视频创作者们也称为主主所创作的内容是目前的主流内容有句话说得好也许在站你能看到年轻人的复杂他们或许一边刷着鬼灭之刃天官赐福一边又看着风犬落泪为说唱呐喊转头在鬼畜区看张三犯罪实录又会去认真听罗翔讲课在评论区整理视频知识重点不要轻易定义年轻人你们原以为沉迷于娱乐番剧的人们却可能在站上学习各种知识那么在站到底什么类型的视频是最火的我们又该如何定义视频的火呢主该怎样提升视频质量呢我们基于站全区排行榜的视频数据展开了我们的分析通过对站天数据及几个知名主的年度视频数据进行了分析为主提升视频热度提供了可行性的建议二数据来源通过爬取番剧页纪录片页国创页电影页电视页综艺页数据进行数据的清洗及数据的分析主要从以下四个方面去分析每个页面的情况播放量前五饼图播放量前五弹幕占比柱状图播放占比折线图长短评论的占比双轴柱状图通过以上图表分析可以更好的分析得出用户的行为与喜好从而更好的去优化网站的视频质量从而使得用户获得更好的使用体验三实现技术组内前期任务确认组名成员职责所负责的整体模块任务无敌暴龙组织部李坤晋组长后端开发无敌暴龙组织部孟凡宇组员前端开发无敌暴龙组织部郝忠文组员数据爬取无敌暴龙组织部李帅辉组员数据清洗无敌暴龙组织部娄晨飞组员图表设计图表设计前言无论是数据展示设计还是工作汇报中都离不开图表的运用相较于繁琐的数据内容用户可以更好更快了解大小位置颜色形状等视觉信息可视化过后的数据可以加深人们对数据的理解和记忆设计网站镝数图表人人可用的零代码数据可视化工具强大好用可定制镝数图表能够快速生成可视化视频网页交互图表数据动态图表数据大屏矢量图表信息图表等只需输入数据即可一键生成镝数图表支持近种图表种类包括词云图桑基图玫瑰图河流图雷达图等用户可以根据自己的需求选择合适的图表类型镝数图表提供上千种可视化模版可以帮助用户快速完成内容创作媒体运营营销海报市场研究论文写作工作总结个人简历等场景的可视化设计比如可以进行文章配图内容长图信息图海报设计设计简历设计以及数据大屏镝数图表支持基于的数据分析和图表处理目前分析提供了数据趋势综合分析数据对比维度解释相关性分析数据要点异常识别分布分析等多种预设指令辅助用户快速对图表内容进行数据分析可广泛用于商业分析个人总结报告制作热点讨论活动传播等需要数据传播的场景用户人群镝数图表适合那些需要进行数据展示和汇报的职场人士包括互联网高校媒体电商金融保险等行业数据分析运营设计市场销售等职业群体访问镝数图表图表设计效果图仅供参考播放量前五饼图播放量前五弹幕占比柱状图播放占比折线图长短评论的占比双轴柱状图数据可视化数据可视化是一种以图形表格图像等形式呈现数据的技术它可以帮助人们更好地理解和分析数据以下是数据可视化的发展简介特点和优势的简要介绍发展数据可视化起源于世纪年代当时科学家们开始使用图表来理解和解释实验数据随着计算机技术的发展数据可视化技术得到了广泛应用包括商业智能数据分析科学研究和医学等领域现在随着大数据时代的到来数据可视化在各个领域的应用更加广泛它已经成为了一种重要的技术手段简介数据可视化是指将大量数据通过图形表格图像等形式呈现出来以帮助人们更好地理解和分析数据它可以通过计算机软件和工具来实现也可以手动制作数据可视化可以展示数据的分布趋势关联和异常情况等从而帮助人们更好地理解数据特点直观性数据可视化将数据以图形表格图像等形式呈现出来使人们可以直观地看到数据的分布趋势和关联等可视化程度高数据可视化可以展示大量数据并且可以通过颜色形状大小等方式区分不同的数据使人们可以更清晰地看到数据的分布和趋势交互性数据可视化可以通过交互式界面来实现使人们可以自由地选择要展示的数据和展示方式从而更好地理解和分析数据实时性数据可视化可以实时更新数据使人们可以及时地了解数据的最新情况优势提高理解和分析能力数据可视化可以使人们更容易地理解数据并且可以帮助人们发现数据的隐藏模式和趋势从而更好地分析数据提高工作效率数据可视化可以快速地展示大量数据并且可以通过交互式界面来实现数据的筛选和分析从而提高工作效率增强决策能力数据可视化可以帮助人们更好地理解数据并且可以提供更多的信息和视角来支持决策制定增强沟通效果数据可视化可以使人们更容易地理解复杂的数据并且可以通过图表和图像等方式清晰地表达自己的观点从而增强沟通效果数据可视化的实现与技术数据可视化的实现需要多种技术结合其中最主要的技术包括以下几个方面数据处理对原始数据进行清洗整理和加工以便用于可视化展示可视化工具如山海鲸可视化等数据可视化工具可以将处理好的数据以图表地图仪表盘等形式展示出来编程语言如等编程语言可以用于自定义数据可视化的实现或是在可视化工具上进行自定义操作数据库技术对于大数据的可视化需要使用数据库技术进行数据的存储和管理如等界面设计良好的用户界面设计可以提升数据可视化的易用性和用户体验商业数据可视化案例飞瓜数据飞瓜数据是一款短视频及直播数据查询工具提供专业全面的数据分析和运营效果监控服务罗网数据罗网数据是一家专注于网络数据收集和分析的科技公司致力于为客户提供全面的数据解决方案卡思数据卡思数据是一家数据科技公司致力于提供全面的数据分析和智能决策支持解决方案蝉妈妈数据蝉妈妈数据是一款提供直播电商数据服务的平台帮助用户进行数据分析和挖掘提升直播电商运营效果飞瓜智投飞瓜智投是飞瓜数据旗下推出的直播运营系统为主播团队的直播提供基础设施助力直播带货精细化运营灰豚数据灰豚数据是一款短视频直播数据分析工具帮助用户进行数据分析和挖掘提升直播电商运营效果热浪数据热浪数据是一款针对短视频直播电商的数据分析工具帮助挖掘数据价值提升运营效率三数据呈现前端技术一个用于构建用户界面的渐进式框架是一个非常流行的框架主要用于构建用户界面主要有一下特征响应式数据绑定使用数据劫持和发布订阅模式来实现响应式数据绑定当数据发生变化时视图会自动更新组件系统的另一个关键特性是组件系统组件是自定义元素用实例或另一个组件实例化并管理组件可以扩展元素封装可重用的代码模板语法使用基于的模板语法允许你声明式地将已存在的绑定至实例的数据所有的模板都是合法的所以可以被遵循规范的浏览器和解析器解析客户端路由通过提供了客户端路由功能你可以定义路由规则并将其映射到组件然后你可以通过来导航到不同的页面状态管理是的状态管理模式和库它提供了一种集中存储来存储所有组件的状态并且规定了一些规则保证状态以一种可预测的方式发生改变构建工具配合诸如这样的构建工具可以更好地管理和组织你的代码提供诸如代码分割热模块替换等特性服务端渲染虽然主要被视为一个客户端框架但它也可以用于服务端渲染这使得搜索引擎优化更容易因为搜索引擎通常不能很好地理解插件系统的插件系统允许你通过注册全局组件混入自定义指令等方式来扩展集成其它库你可以很容易地将与其他库或框架集成例如与或一起使用性能优化在内部使用虚拟和算法来最大限度地减少重新渲染次数使得应用运行得更快提供了一个灵活的方式来构建用户界面无论是简单的单页面应用还是复杂的单页应用框架都可以使用它官方的路由管理器用于构建单页面应用安装和配置首先你需要在项目中安装然后在项目中配置路由规则三种模式提供了三种模式模式模式和模式路由映射在中你可以通过路由映射将路由规则映射到组件嵌套路由支持嵌套路由可以通过嵌套路由来构建更复杂的页面结构全局前置守卫支持全局前置守卫可以在路由变化前执行一些操作懒加载支持懒加载可以将一些不常用的组件在需要的时候才加载从而提高页面加载速度导航守卫支持导航守卫可以在路由变化时执行一些操作例如权限验证等编程式导航除了配置式导航外还支持编程式导航可以通过编程方式来控制页面的跳转滚动行为支持自定义滚动行为例如在页面跳转时禁止滚动恢复滚动等性能优化通过虚拟和算法来最大限度地减少重新渲染次数使得应用运行得更快的命令行工具用于快速创建和管理项目是一个基于的命令行工具用于快速创建构建和管理项目它提供了一系列的命令和功能帮助开发者快速搭建项目管理依赖构建应用等主要有以下核心功能和特点项目脚手架使用项目脚手架来生成项目的基本结构和配置它提供了多种模板供开发者选择可以根据不同的项目需求选择合适的模板来生成项目结构插件和功能集成了大量的插件和功能例如热模块替换代码压缩路由状态管理等开发者可以根据需要选择所需的插件和功能来扩展项目开发服务器提供了开发服务器可以在本地开发时实时预览和调试项目开发服务器支持热模块替换可以在修改代码后即时生效无需手动刷新页面构建和打包工具提供了构建和打包工具可以将项目打包成可以在不同环境中运行的静态资源文件它支持和其他构建工具可以根据项目需求进行自定义配置自动化测试和部署提供了自动化测试和部署的功能可以通过命令行或配置文件来自动化测试和部署项目它支持自动化运行单元测试端到端测试等并可以将项目部署到不同的环境中版本控制使用版本控制来管理项目的版本可以通过命令行或配置文件来控制项目的版本它支持多种版本控制工具例如等自定义配置允许开发者自定义配置来满足不同的项目需求它提供了多个配置选项例如端口号环境变量自定义插件等可以让开发者根据项目需求进行个性化配置是一个功能强大的开发工具可以快速搭建开发和构建项目基于的一套高质量的组件库是饿了么前端团队推出的一款基于的桌面端框架一套为开发者设计师和产品经理准备的基于的桌面端组件库手机端有对应框架是基于开发与深度集成有优秀的版本适配性组件丰富提供了表格表单布局通知导航等众多组件设计风格简洁现代的组件主要遵循设计规范采用扁平化的风格具有清晰直观的视觉效果功能和特性丰富提供了一套完整的国际化方案支持多种语言的切换提供了一套灵活的主题定制能力还提供了一套插件机制和扩展能力使用纯编写的开源可视化库可以生成丰富的交互式图表是一款基于的数据可视化图表库提供直观生动可交互可个性化定制的数据可视化图表灵活性使用开发具有很高的灵活性和可定制性可以轻松创建各种类型的图表和图形直观性的图表类型丰富包括折线图柱状图饼图散点图等可以直观地展示数据易于理解和分析交互性支持用户交互可以通过鼠标悬停点击等操作获取更多数据信息提高用户体验个性化支持高度个性化定制可以自定义图表的样式颜色标签等满足不同用户的需求跨平台兼容当前绝大部分浏览器可以在和移动设备上流畅运行为用户提供优质的数据可视化体验后端技术一个运行在服务器端的运行环境用于构建网络应用是一个开源的跨平台的用于服务器端和网络应用的运行环境它可以让代码在服务器端运行使得开发者能够快速地搭建网络服务是由在年创建的最初是为了在服务器端运行代码它的核心库包括文件系统路径查询字符串等这些库全部使用事件驱动非阻塞模型编写而成的特点包括异步和事件驱动的所有都是非阻塞的它基于事件驱动的架构设计使得其高度的异步和非阻塞可以进行高效的并发操作这意味着可以处理大量并发连接而且每个连接都只使用很少的内存这使其成为实时应用程序如聊天游戏等的理想选择单线程采用了单线程模型虽然在服务器上只运行在单线程中但由于的事件循环和非阻塞操作使得并发操作变得容易处理跨平台可以在多种平台上运行包括但不限于等使用由于使用的是语言这使得前端开发人员可以使用同一种语言在服务器端进行编程这极大地提高了开发效率并减少了开发人员需要掌握的编程语言种类在社区可以找到许多高质量的库和工具例如一个帮助你构建应用的框架一个用于处理数据库的库一个预处理器等等一个基于的快速简洁的开发框架是一个基于的应用程序框架它提供了一个简单而灵活的帮助开发者快速构建高效可靠的应用和基于事件驱动和非阻塞模型使其具有高效的事件处理和并发能力非常适合处理大规模的并发请求的主要特点包括简单快速的简洁明了易于学习和使用它提供了许多中间件用于处理请求和响应使得开发应用变得非常快速和简单灵活性强的设计理念是约定优于配置它提供了一些默认的约定和规则但同时也允许开发者根据项目的需求进行定制和扩展功能强大内置了强大的中间件用于处理路由模板渲染会话管理安全验证等功能此外还有丰富的第三方中间件和库用于处理各种不同的需求高效稳定基于平台充分利用了的事件驱动和非阻塞模型使得应用能够高效地处理大量并发请求社区活跃有着活跃的社区和支持有大量的开源项目和使用案例可以参考和使用这也意味着开发者可以很容易地找到相关的文档教程和问题解答总之是一个功能强大灵活易用高效稳定的框架适用于构建各种类型的应用和一种广泛使用的编程语言常用于后端开发是一种解释型交互式的编程语言它具有简单易学代码可读性高应用广泛等特点被广泛应用于开发数据分析人工智能等领域以下是的简介和特点简介由于年创造是一种通用的编程语言旨在让开发者能够快速编写高质量的代码采用解释型无需编译器可以直接运行代码的语法简洁清晰易于学习而且具有丰富的第三方库和框架可以用于构建各种类型的应用程序特点简单易学的语法简洁易懂开发者可以快速上手编写代码同时的社区提供了大量的学习资源和教程使得开发者可以轻松地学习和掌握编程代码可读性高的代码风格简洁明了易于阅读和理解这使得开发者可以更容易地协作和分享代码也使得代码更易于维护和修改应用广泛被广泛应用于开发数据分析人工智能等领域它具有丰富的第三方库和框架可以满足不同领域的需求强大的社区支持有一个庞大的开发者社区提供了大量的开源项目教程和问题解答这使得开发者可以很容易地找到相关的资源和支持跨平台兼容性可以在不同的操作系统上运行包括和等这使得开发者可以轻松地在不同的平台上开发和部署应用程序在中有许多库可以帮助我们进行数据清洗接下来我们将使用进行数据清洗加载数据在中可以使用库来加载数据当然数据清洗之前需要对数据的类型进行检查如果数据是文件则使用函数如果数据来自关系型数据库则使用或其他数据库包来获取数据识别数据错误数据清洗中的第一步是识别数据错误数据错误包括丢失值异常值重复数据数据清洗填充空值删除空值替换异常值保存清洗后的数据四研究分析五总结通过以上分析我们可以看出站目前的主流分区为游戏区和生活区符合当代年轻人的文化娱乐需求同时站知识区良好的生态正在源源不断地吸引着越来越多的专业人士加入分享自己专业领域的知识在站成立那一天没人能想到它还能作为一个学习网站所存在而站独有的弹幕和三连文化使得视频发布者和观众之间情感维系更为强烈视频发布者容易获得成就感普通用户容易获得身份认同感正是由于这样的强连接越来越多的年轻人愿意到站看视频也有越来越多的年轻人愿意进驻到站成为一名主对于主而言要想使自己的视频受到更多人的关注最重要的还是视频的质量视频的时长与用户是否喜欢无关重要的是能否激起用户的积极反馈发送弹幕而如果想要在站后台的算法中获得高分登上排行榜让用户慷慨投币是最为重要的一千个用户眼中有一千个站二十个不同的兴趣分区保证再偏门的内容创造者都有可能在站走红相比其他的在线视频网站站各个分区的流量分发较为均匀功能发挥性更强这也使得不同兴趣偏好的用户都能在站观看各自喜欢的内容要是有新的主想要进驻站也不必迎合大众的口味可以在自己喜欢的领域内尽情施展自己的才华总会有爱好相同者为他她摇旗呐喊总而言之站用户有自己独有的行为特点对于新的主来说如果选对板块并且持续产出高质量内容有很大可能在短时间内积攒起可观人气时至今日哔哩哔哩的用户已经覆盖年轻群体除了最初的内容生产模式以及相关视频业务也都有涉及产品本身的功能也非常完善探索出的商业模式也初现成果从站目前的不断扩张的行动来看它的最终目标是要发展成为一个大型综合性社区最初的用户因为觉得初心不再而离开站也无可厚非面对现如今越来越多忘了初心的质疑声和弹幕低龄化趋势视频质量走低的问题对于站而言关注用户需求保持用户高活跃度留住老用户才是最重要的',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-08 20:23:04',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="/js/update.js"></script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" type="text/css" href="/css/heoMainColor.css"><link rel="stylesheet" type="text/css" href="/css/poem.css"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="/css/update.css"><script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script><link rel="stylesheet" type="text/css" href="/css/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><div class="loading-image-dot"></div><div class="spinner-box"></div><div id="loadingtxt"><ul id="con1"><li class="li-style">阐述清楚问题就解决了一半</li><li class="li-style">一致的体验是更好的体验</li><li class="li-style">创造允许犯错，设计要知道保留哪些</li><li class="li-style">想让用户爱上你的设计，先爱上你的用户</li><li class="li-style">好的设计是我们与竞争对手保持差距最重要的方式</li><li class="li-style">如果你觉得好的设计是昂贵的，你应该看看坏设计的成本</li><li class="li-style">像其他设计一样，视觉设计也是解决问题，不是个人喜好</li><li class="li-style">因为每个人都知道自己喜欢什么，所以每个人都觉得自己是用户界面专家</li><li class="li-style">易用性也许不可见，但却不可缺席</li><li class="li-style">如果我有1000个想法，即使最终只有一个实现了，我也会非常满意</li><li class="li-style">如果你发现你界面中某个元素需要说明，你需要重新设计</li><li class="li-style">简化意味着去掉不必要的元素，让必要元素凸显</li><li class="li-style">天才就是将复杂问题简单化的人</li><li class="li-style">不用盯着空白太久，勇敢的跨出第一步，其他的自然而然就会发生</li><li class="li-style">有些人认为设计就是看起来长什么样。 但是如果你深入挖掘就会发现设计更关乎如何运作</li></ul><ul id="con2"></ul></div><script type="text/javascript">var area = document.getElementById('loadingtxt');
+var con1 = document.getElementById('con1');
+var con2 = document.getElementById('con2');
+var mytimer1 = null;
+var mytimer = null;
+var time = 1000 / 60;
+con2.innerHTML = con1.innerHTML;
+function scrollUp () {
+if (area.scrollTop >= con1.offsetHeight) {
+area.scrollTop = 0;
+} else {
+if (area.scrollTop % 25 == 0) {
+clearInterval(mytimer);
+clearInterval(mytimer1);
+mytimer1 = setTimeout(function () {
+mytimer = setInterval(scrollUp, time);
+}, 1000);
+}
+area.scrollTop++;
+}
+}
+mytimer = setInterval(scrollUp, time);</script></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">工具</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/empty" title="kimi"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg" alt="kimi"><span class="back-menu-item-text">kimi</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://pan.baidu.com/" title="百度网盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png" alt="百度网盘"><span class="back-menu-item-text">百度网盘</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">娱乐</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.163.com/?from=itab" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg" alt="网易云音乐"><span class="back-menu-item-text">网易云音乐</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="哔哩哔哩"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg" alt="哔哩哔哩"><span class="back-menu-item-text">哔哩哔哩</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.zhihu.com/" title="知乎"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=1821089500,4276043120&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=415&amp;h=312" alt="知乎"><span class="back-menu-item-text">知乎</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.skypixel.com/" title="天空之城"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=11010786,400614760&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" alt="天空之城"><span class="back-menu-item-text">天空之城</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Lifeline</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/equipment/"><span> 我的装备</span></a></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://s21.ax1x.com/2025/03/29/pEspfq1.jpg" target="_blank"><img class="post-qr-code-img" alt="wechat" src="/null"></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://s21.ax1x.com/2025/03/29/pEspRM9.jpg" target="_blank"><img class="post-qr-code-img" alt="alipay" src="/null"></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Markdown/" style="font-size: 1.05rem;">Markdown<sup>2</sup></a><a href="/tags/VPN/" style="font-size: 1.05rem;">VPN<sup>1</sup></a><a href="/tags/github/" style="font-size: 1.05rem;">github<sup>13</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 1.05rem;">个人博客<sup>6</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%AE%89%E5%85%A8/" style="font-size: 1.05rem;">个人安全<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 1.05rem;">内网穿透<sup>1</sup></a><a href="/tags/%E5%88%B7%E6%9C%BA/" style="font-size: 1.05rem;">刷机<sup>5</sup></a><a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 1.05rem;">娱乐<sup>10</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>39</sup></a><a href="/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">实用工具<sup>13</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>29</sup></a><a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 1.05rem;">微信<sup>2</sup></a><a href="/tags/%E6%9A%97%E7%BD%91/" style="font-size: 1.05rem;">暗网<sup>1</sup></a><a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" style="font-size: 1.05rem;">毕业设计<sup>1</sup></a><a href="/tags/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/" style="font-size: 1.05rem;">电脑软件<sup>21</sup></a><a href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" style="font-size: 1.05rem;">碎碎念<sup>3</sup></a><a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 1.05rem;">科学上网<sup>3</sup></a></div></div><hr></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><span class="card-archive-list-count">7</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><span class="card-archive-list-count">1</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><span class="card-archive-list-count">16</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><span class="card-archive-list-count">22</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/03/"><span class="card-archive-list-date">三月 2025</span><span class="card-archive-list-count">6</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">7</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">2</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li></ul></div><hr></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url">毕业设计</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>毕业设计</span></a></span></div></div><h1 class="post-title" itemprop="name headline">基于大数据技术的bilibili网站数据分析的设计与实现</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2023-11-02T08:46:00.000Z" title="发表于 2023-11-02 16:46:00">2023-11-02</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-08T12:23:04.444Z" title="更新于 2025-07-08 20:23:04">2025-07-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">7.3k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="基于大数据技术的bilibili网站数据分析的设计与实现"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为卫辉"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>卫辉</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope="" itemtype="http://example.com/posts/699ead5/"><header><a class="post-meta-categories" href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url">毕业设计</a><a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" tabindex="-1" itemprop="url">毕业设计</a><h1 id="CrawlerTitle" itemprop="name headline">基于大数据技术的bilibili网站数据分析的设计与实现</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Lifeline</span><time itemprop="dateCreated datePublished" datetime="2023-11-02T08:46:00.000Z" title="发表于 2023-11-02 16:46:00">2023-11-02</time><time itemprop="dateCreated datePublished" datetime="2025-07-08T12:23:04.444Z" title="更新于 2025-07-08 20:23:04">2025-07-08</time></header><div id="postchat_postcontent"><h2 id="一、研究背景"><a href="#一、研究背景" class="headerlink" title="一、研究背景"></a>一、研究背景</h2><p>  哔哩哔哩也被称为Bilibili，简称为B站，于2009年6月创建，其前身为Mikufans视频分享网站，如今是一家是以泛二次元文化爱好者为目标用户的综合类视频弹幕社区和二次元社区。其早期以二次元内容和独特的弹幕分享功能聚集了一批热爱ACG文化的核心用户。随着B站的不断发展，逐渐加入了科技、教育、娱乐、鬼畜等视频内容，在原有视频功能基础上发展了直播、电商等业务。B站的内容品类扩大，用户圈层包含更广，业务也越来越多，逐渐从小众走向大众。B站致力于满足中国Z时代年轻人群的文化娱乐需求，是现在风靡于年轻人之间的视频弹幕网站，同时由于B站广告较少，观看体验极佳，又包罗万象，因此对用户有着不可抵挡的亲和力。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img2.baidu.com/it/u=2061638070,3066642647&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=1123&amp;h=500" alt="B站"><br>  站内共十四个分区，几乎囊括了年轻一代所有的流行需要。从番剧到电竞，从泛知识到电子歌姬，从阿卡贝拉到说唱rap。弹幕狂欢已经成为B站独有的文化现象。<br>  B站的内容主要分为三大类：由up主创作投稿的UGC内容（这也是贡献最多文化狂欢现象的主力部队），由B站出品的自制内容，通过版权购买获得播放权的内容（如电影、番剧等）。作为二次元爱好者的聚集地，作为国内最大的弹幕视频网站，B站的核心竞争力是那些优秀的视频创作者们，也称为up主。Up主所创作的UGC内容是目前的主流内容。<br>  有句话说得好，“也许在B站，你能看到年轻人的复杂”。他们或许一边刷着鬼灭之刃、天官赐福；一边又看着风犬落泪，为说唱呐喊。转头在鬼畜区看《张三犯罪实录》，又会去认真听罗翔讲课，在评论区整理视频知识重点。不要轻易定义年轻人，你们原以为沉迷于娱乐、番剧的人们却可能在B站上学习各种知识。<br>  那么在B站，到底什么类型的视频是最火的？我们又该如何定义视频的“火”呢？up主该怎样提升视频质量呢？我们基于B站全区TOP100排行榜的视频数据展开了我们的分析，通过对B站7天数据及几个知名up主的年度视频数据进行了分析，为up主提升视频热度提供了可行性的建议。</p>
+<hr>
+<h2 id="二、数据来源"><a href="#二、数据来源" class="headerlink" title="二、数据来源"></a>二、数据来源</h2><p>  通过爬取番剧页、纪录片页、国创页、电影页、电视页、综艺页数据进行数据的清洗及数据的分析，主要从以下四个方面去分析每个页面的情况。<br>    1：播放量前五【饼图】<br>    2：播放量前五弹幕占比【柱状图】<br>    3：播放占比【折线图】<br>    4：长短评论的占比【双轴柱状图】<br>  通过以上图表分析可以更好的分析得出用户的行为与喜好，从而更好的去优化网站的视频质量，从而使得用户获得更好的使用体验。</p>
+<hr>
+<h2 id="三、实现技术"><a href="#三、实现技术" class="headerlink" title="三、实现技术"></a>三、实现技术</h2><h3 id="1、组内前期任务确认"><a href="#1、组内前期任务确认" class="headerlink" title="1、组内前期任务确认"></a>1、组内前期任务确认</h3><table>
+<thead>
+<tr>
+<th>组名</th>
+<th>成员</th>
+<th>职责</th>
+<th>所负责的整体模块/任务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无敌暴龙组织部</td>
+<td>李坤晋</td>
+<td>组长</td>
+<td>后端开发</td>
+</tr>
+<tr>
+<td>无敌暴龙组织部</td>
+<td>孟凡宇</td>
+<td>组员</td>
+<td>前端开发</td>
+</tr>
+<tr>
+<td>无敌暴龙组织部</td>
+<td>郝忠文</td>
+<td>组员</td>
+<td>数据爬取</td>
+</tr>
+<tr>
+<td>无敌暴龙组织部</td>
+<td>李帅辉</td>
+<td>组员</td>
+<td>数据清洗</td>
+</tr>
+<tr>
+<td>无敌暴龙组织部</td>
+<td>娄晨飞</td>
+<td>组员</td>
+<td>图表设计</td>
+</tr>
+</tbody></table>
+<h3 id="2、图表设计"><a href="#2、图表设计" class="headerlink" title="2、图表设计"></a>2、图表设计</h3><h4 id="①-前言"><a href="#①-前言" class="headerlink" title="① 前言"></a>① 前言</h4><p>  无论是数据展示设计还是工作汇报中，都离不开图表的运用。相较于繁琐的数据内容，用户可以更好更快了解大小、位置、颜色、形状等视觉信息。可视化过后的数据可以加深人们对数据的理解和记忆。</p>
+<h4 id="②设计网站：镝数图表-Dycharts：人人可用的零代码数据可视化工具，强大、好用、可定制！"><a href="#②设计网站：镝数图表-Dycharts：人人可用的零代码数据可视化工具，强大、好用、可定制！" class="headerlink" title="②设计网站：镝数图表 Dycharts：人人可用的零代码数据可视化工具，强大、好用、可定制！"></a>②设计网站：<strong>镝数图表 Dycharts：人人可用的零代码数据可视化工具，强大、好用、可定制！</strong></h4><p>  镝数图表 Dycharts 能够快速生成可视化视频、网页交互图表、数据动态图表、数据大屏、矢量图表、信息图表等，只需输入数据即可一键生成。<br>  镝数图表支持近 140种 图表种类，包括词云图、桑基图、玫瑰图、河流图、雷达图等，用户可以根据自己的需求选择合适的图表类型。<br>镝数图表提供上千种可视化模版，可以帮助用户快速完成内容创作、媒体运营、营销海报、市场研究、论文写作、工作总结、个人简历等场景的可视化设计。比如，可以进行文章配图、内容长图/信息图、海报设计、PPT 设计、简历设计，以及数据大屏。<br>  镝数图表 Dycharts 支持基于 AI 的数据分析和图表处理。目前，AI 分析提供了数据趋势、综合分析、数据对比、维度解释、相关性分析、数据要点、异常识别、分布分析等多种预设指令，辅助用户快速对图表内容进行数据分析。AI 可广泛用于商业分析、个人总结、报告制作、热点讨论、活动传播等需要数据传播的场景。<br>  用户人群：镝数图表 Dycharts 适合那些需要进行数据展示和汇报的职场人士，包括互联网、高校、媒体、电商、金融保险等行业，数据分析、运营、设计、市场销售等职业群体。<br><strong>访问</strong>：<a target="_blank" rel="noopener" href="https://dycharts.com/appv2/#/pages/home/index?channelCode=N2UHF85F&amp;hmsr=KOL-Spike&amp;hmpl=">镝数图表 Dycharts</a></p>
+<h4 id="③-图表设计效果图（仅供参考）"><a href="#③-图表设计效果图（仅供参考）" class="headerlink" title="③ 图表设计效果图（仅供参考）"></a>③ 图表设计效果图（仅供参考）</h4><p>    1：播放量前五<a target="_blank" rel="noopener" href="https://dycharts.com/xshow/index.html?id=c_307bc6c1079c6f843733110fe106e74f">【饼图】</a><br>    2：播放量前五弹幕占比<a target="_blank" rel="noopener" href="https://dycharts.com/xshow/index.html?id=c_080582079fa828f4e5239cb0e2371c8b">【柱状图】</a><br>    3：播放占比<a target="_blank" rel="noopener" href="https://dycharts.com/xshow/index.html?id=c_583f5ca6280659ef01b2379226f313dc">【折线图】</a><br>    4：长短评论的占比<a target="_blank" rel="noopener" href="https://dycharts.com/xshow/index.html?id=c_4d8623c34d647b8eb65cfbf6f6166bd0">【双轴柱状图】</a></p>
+<h3 id="3、数据可视化"><a href="#3、数据可视化" class="headerlink" title="3、数据可视化"></a>3、数据可视化</h3><p>  数据可视化是一种以图形、表格、图像等形式呈现数据的技术，它可以帮助人们更好地理解和分析数据。以下是数据可视化的发展、简介、特点和优势的简要介绍：<br><strong>发展：</strong><br>  数据可视化起源于20世纪50年代，当时科学家们开始使用图表来理解和解释实验数据。随着计算机技术的发展，数据可视化技术得到了广泛应用，包括商业智能、数据分析、科学研究和医学等领域。现在，随着大数据时代的到来，数据可视化在各个领域的应用更加广泛，它已经成为了一种重要的技术手段。<br><strong>简介：</strong><br>  数据可视化是指将大量数据通过图形、表格、图像等形式呈现出来，以帮助人们更好地理解和分析数据。它可以通过计算机软件和工具来实现，也可以手动制作。数据可视化可以展示数据的分布、趋势、关联和异常情况等，从而帮助人们更好地理解数据。<br><strong>特点：</strong><br>1：直观性：数据可视化将数据以图形、表格、图像等形式呈现出来，使人们可以直观地看到数据的分布、趋势和关联等。<br>2：可视化程度高：数据可视化可以展示大量数据，并且可以通过颜色、形状、大小等方式区分不同的数据，使人们可以更清晰地看到数据的分布和趋势。<br>3：交互性：数据可视化可以通过交互式界面来实现，使人们可以自由地选择要展示的数据和展示方式，从而更好地理解和分析数据。<br>4：实时性：数据可视化可以实时更新数据，使人们可以及时地了解数据的最新情况。<br><strong>优势：</strong><br>1：提高理解和分析能力：数据可视化可以使人们更容易地理解数据，并且可以帮助人们发现数据的隐藏模式和趋势，从而更好地分析数据。<br>2：提高工作效率：数据可视化可以快速地展示大量数据，并且可以通过交互式界面来实现数据的筛选和分析，从而提高工作效率。<br>3：增强决策能力：数据可视化可以帮助人们更好地理解数据，并且可以提供更多的信息和视角来支持决策制定。<br>4：增强沟通效果：数据可视化可以使人们更容易地理解复杂的数据，并且可以通过图表和图像等方式清晰地表达自己的观点，从而增强沟通效果。</p>
+<h3 id="4、数据可视化的实现与技术"><a href="#4、数据可视化的实现与技术" class="headerlink" title="4、数据可视化的实现与技术"></a>4、数据可视化的实现与技术</h3><p>数据可视化的实现需要多种技术结合，其中最主要的技术包括以下几个方面：<br><strong>1：数据处理</strong>：对原始数据进行清洗、整理和加工，以便用于可视化展示。<br><strong>2：可视化工具</strong>：如<a target="_blank" rel="noopener" href="https://d3js.org/">D3.js</a>、<a target="_blank" rel="noopener" href="https://www.tableau.com/">Tableau</a>、<a target="_blank" rel="noopener" href="https://powerbi.microsoft.com/zh-cn/">Power BI</a>、<a target="_blank" rel="noopener" href="https://www.shanhaibi.com/">山海鲸可视化</a>等数据可视化工具，可以将处理好的数据以图表、地图、仪表盘等形式展示出来。<br><strong>3：编程语言</strong>：如JavaScript、Python等编程语言，可以用于自定义数据可视化的实现，或是在可视化工具上进行自定义操作。<br><strong>4：数据库技术</strong>：对于大数据的可视化，需要使用数据库技术进行数据的存储和管理，如MySQL、MongoDB等。<br><strong>5：界面设计</strong>：良好的用户界面设计可以提升数据可视化的易用性和用户体验。</p>
+<h3 id="5、商业数据可视化案例"><a href="#5、商业数据可视化案例" class="headerlink" title="5、商业数据可视化案例"></a>5、商业数据可视化案例</h3><p>1：<a target="_blank" rel="noopener" href="https://bz.feigua.cn/member#/ContentV2/WorkBench">飞瓜数据</a>：飞瓜数据是一款短视频及直播数据查询工具，提供专业、全面的数据分析和运营效果监控服务。<br>2：<a target="_blank" rel="noopener" href="https://www.luonet.com/workbench">罗网数据</a>：罗网数据是一家专注于网络数据收集和分析的科技公司，致力于为客户提供全面的数据解决方案。<br>3：<a target="_blank" rel="noopener" href="https://www.caasdata.com/">卡思数据</a>：卡思数据是一家数据科技公司，致力于提供全面的数据分析和智能决策支持解决方案。<br>4：<a target="_blank" rel="noopener" href="https://www.chanmama.com/douyin">蝉妈妈数据</a>：蝉妈妈数据是一款提供直播电商数据服务的平台，帮助用户进行数据分析和挖掘，提升直播电商运营效果。<br>5：<a target="_blank" rel="noopener" href="https://zhitou.feigua.cn/">飞瓜智投</a>：飞瓜智投是飞瓜数据旗下推出的直播运营系统，为主播团队的直播提供基础IT设施，助力直播带货精细化运营。<br>6：<a target="_blank" rel="noopener" href="https://www.huitun.com/">灰豚数据</a>：灰豚数据是一款短视频直播数据分析工具，帮助用户进行数据分析和挖掘，提升直播电商运营效果。<br>7：<a target="_blank" rel="noopener" href="https://www.relangdata.cn/">热浪数据</a>：热浪数据是一款针对短视频直播电商的数据分析工具，帮助挖掘数据价值，提升运营效率。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic1.zhimg.com/v2-16bc468bb2ef266911d09e829f7e00b5_r.jpg?source=1def8aca#pic_center" alt="数据分析技能学习图谱"></p>
+<hr>
+<h3 id="三、数据呈现"><a href="#三、数据呈现" class="headerlink" title="三、数据呈现"></a>三、数据呈现</h3><h4 id="前端技术：Vue-js、Vue-router、Vue-cli、Element-ui、eCharts"><a href="#前端技术：Vue-js、Vue-router、Vue-cli、Element-ui、eCharts" class="headerlink" title="前端技术：Vue.js、Vue-router、Vue-cli、Element-ui、eCharts"></a>前端技术：Vue.js、Vue-router、Vue-cli、Element-ui、eCharts</h4><h5 id="Vue-js：一个用于构建用户界面的渐进式JavaScript框架。"><a href="#Vue-js：一个用于构建用户界面的渐进式JavaScript框架。" class="headerlink" title="Vue.js：一个用于构建用户界面的渐进式JavaScript框架。"></a><a target="_blank" rel="noopener" href="https://cn.vuejs.org/">Vue.js：一个用于构建用户界面的渐进式JavaScript框架。</a></h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=465521538,3144323540&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=980&amp;h=250#pic_center" alt="Vue.js"><br>Vue.js 是一个非常流行的 JavaScript 框架，主要用于构建用户界面。Vue.js主要有一下特征：<br><strong>1：响应式数据绑定</strong>：Vue.js 使用数据劫持和发布订阅模式来实现响应式数据绑定。当数据发生变化时，视图会自动更新。<br><strong>2：组件系统</strong>：Vue.js 的另一个关键特性是组件系统。组件是自定义元素，用 Vue 实例或另一个组件实例化并管理。组件可以扩展 HTML 元素，封装可重用的代码。<br><strong>3：模板语法</strong>：Vue.js 使用基于 HTML 的模板语法，允许你声明式地将已存在的 DOM 绑定至 Vue 实例的数据。所有 Vue.js 的模板都是合法的 HTML，所以可以被遵循规范的浏览器和 HTML 解析器解析。<br><strong>4：客户端路由</strong>：Vue.js 通过 vue-router 提供了客户端路由功能。你可以定义路由规则并将其映射到组件，然后你可以通过 URL 来导航到不同的页面。<br><strong>5：状态管理</strong>：Vuex 是 Vue.js 的状态管理模式和库。它提供了一种集中存储来存储所有组件的状态，并且规定了一些规则保证状态以一种可预测的方式发生改变。<br>构建工具：Vue.js 配合诸如 webpack 这样的构建工具可以更好地管理和组织你的代码，提供诸如代码分割、热模块替换等特性。<br><strong>6：服务端渲染</strong>：虽然 Vue.js 主要被视为一个客户端 JavaScript 框架，但它也可以用于服务端渲染。这使得搜索引擎优化(SEO)更容易，因为搜索引擎通常不能很好地理解 JavaScript。<br><strong>7：插件系统</strong>：Vue.js 的插件系统允许你通过注册全局组件、混入、自定义指令等方式来扩展 Vue。<br>集成其它库：你可以很容易地将 Vue.js 与其他 JavaScript 库或框架集成，例如与 Bootstrap 或 jQuery 一起使用。<br><strong>8：性能优化</strong>：Vue.js 在内部使用虚拟 DOM 和 diffing 算法来最大限度地减少重新渲染次数，使得应用运行得更快。<br>Vue.js 提供了一个灵活的方式来构建用户界面，无论是简单的单页面应用还是复杂的单页应用框架都可以使用它。</p>
+<h5 id="Vue-router：Vue-js官方的路由管理器，用于构建单页面应用。"><a href="#Vue-router：Vue-js官方的路由管理器，用于构建单页面应用。" class="headerlink" title="Vue-router：Vue.js官方的路由管理器，用于构建单页面应用。"></a><a target="_blank" rel="noopener" href="https://router.vuejs.org/">Vue-router：Vue.js官方的路由管理器，用于构建单页面应用。</a></h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=4007065615,1889057584&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=500&amp;h=288#pic_center" alt="Vue-router"><br><strong>1：安装和配置</strong>：首先，你需要在项目中安装 Vue-router，然后，在项目中配置路由规则。<br><strong>2：三种模式</strong>：Vue-router 提供了三种模式：hash 模式、history 模式和 abstract 模式。<br><strong>3：路由映射</strong>：在 Vue-router 中，你可以通过路由映射将路由规则映射到组件。<br><strong>4：嵌套路由</strong>：Vue-router 支持嵌套路由，可以通过嵌套路由来构建更复杂的页面结构。<br><strong>5：全局前置守卫</strong>：Vue-router 支持全局前置守卫，可以在路由变化前执行一些操作。<br><strong>6：懒加载</strong>：Vue-router 支持懒加载，可以将一些不常用的组件在需要的时候才加载，从而提高页面加载速度。<br><strong>7：导航守卫</strong>：Vue-router 支持导航守卫，可以在路由变化时执行一些操作，例如权限验证等。<br><strong>8：编程式导航</strong>：除了配置式导航外，Vue-router 还支持编程式导航，可以通过编程方式来控制页面的跳转。<br><strong>9：滚动行为</strong>：Vue-router 支持自定义滚动行为，例如在页面跳转时禁止滚动、恢复滚动等。<br><strong>10：性能优化</strong>：Vue-router 通过虚拟 DOM 和 diffing 算法来最大限度地减少重新渲染次数，使得应用运行得更快。</p>
+<h5 id="Vue-cli：Vue-js的命令行工具，用于快速创建和管理Vue-js项目。"><a href="#Vue-cli：Vue-js的命令行工具，用于快速创建和管理Vue-js项目。" class="headerlink" title="Vue-cli：Vue.js的命令行工具，用于快速创建和管理Vue.js项目。"></a><a target="_blank" rel="noopener" href="https://cli.vuejs.org/">Vue-cli：Vue.js的命令行工具，用于快速创建和管理Vue.js项目。</a></h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img0.baidu.com/it/u=2591903103,36501195&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=828&amp;h=500#pic_center" alt="Vue-cli"><br>Vue-cli 是一个基于 Node.js 的命令行工具，用于快速创建、构建和管理 Vue.js 项目。它提供了一系列的命令和功能，帮助开发者快速搭建项目、管理依赖、构建应用等。Vue-cli 主要有以下核心功能和特点：<br><strong>1：项目脚手架</strong>：Vue-cli 使用项目脚手架来生成项目的基本结构和配置。它提供了多种模板供开发者选择，可以根据不同的项目需求选择合适的模板来生成项目结构。<br><strong>2：插件和功能</strong>：Vue-cli 集成了大量的插件和功能，例如热模块替换（HMR）、代码压缩、路由、状态管理等。开发者可以根据需要选择所需的插件和功能来扩展项目。<br><strong>3：开发服务器</strong>：Vue-cli 提供了开发服务器，可以在本地开发时实时预览和调试项目。开发服务器支持热模块替换（HMR），可以在修改代码后即时生效，无需手动刷新页面。<br><strong>4：构建和打包工具</strong>：Vue-cli 提供了构建和打包工具，可以将项目打包成可以在不同环境中运行的静态资源文件。它支持 Webpack 和其他构建工具，可以根据项目需求进行自定义配置。<br><strong>5：自动化测试和部署</strong>：Vue-cli 提供了自动化测试和部署的功能，可以通过命令行或配置文件来自动化测试和部署项目。它支持自动化运行单元测试、端到端测试等，并可以将项目部署到不同的环境中。<br>版本控制：Vue-cli 使用版本控制来管理项目的版本，可以通过命令行或配置文件来控制项目的版本。它支持多种版本控制工具，例如 Git、SVN 等。<br><strong>6：自定义配置</strong>：Vue-cli 允许开发者自定义配置来满足不同的项目需求。它提供了多个配置选项，例如端口号、环境变量、自定义插件等，可以让开发者根据项目需求进行个性化配置。<br>Vue-cli 是一个功能强大的 Vue.js 开发工具，可以快速搭建、开发和构建 Vue.js 项目。</p>
+<h5 id="Element-ui：基于Vue-js的一套高质量的UI组件库。"><a href="#Element-ui：基于Vue-js的一套高质量的UI组件库。" class="headerlink" title="Element-ui：基于Vue.js的一套高质量的UI组件库。"></a><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/">Element-ui：基于Vue.js的一套高质量的UI组件库。</a></h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img0.baidu.com/it/u=1971896995,1049119596&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=889&amp;h=500#pic_center" alt="Element-ui"><br>Element-Ul是饿了么前端团队推出的一款基于Vue.js 2.0 的桌面端UI框架，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库，手机端有对应框架是Mint UI 。<br><strong>1：基于Vue.js开发</strong>：Element-ui与Vue.js深度集成，有优秀的版本适配性。<br><strong>2：组件丰富</strong>：Element-ui提供了表格、表单、布局、通知、导航等众多组件。<br><strong>3：设计风格简洁、现代</strong>：Element-ui的组件主要遵循Material Design设计规范，采用扁平化的风格，具有清晰、直观的视觉效果。<br><strong>4：功能和特性丰富</strong>：Element-ui提供了一套完整的国际化方案，支持多种语言的切换；提供了一套灵活的主题定制能力；还提供了一套插件机制和扩展能力。</p>
+<h5 id="ECharts：使用纯JavaScript编写的开源可视化库，可以生成丰富的交互式图表。"><a href="#ECharts：使用纯JavaScript编写的开源可视化库，可以生成丰富的交互式图表。" class="headerlink" title="ECharts：使用纯JavaScript编写的开源可视化库，可以生成丰富的交互式图表。"></a><a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/index.html">ECharts：使用纯JavaScript编写的开源可视化库，可以生成丰富的交互式图表。</a></h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img2.baidu.com/it/u=2678243110,582939112&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=1078&amp;h=500#pic_center" alt="ECharts"><br>ECharts是一款基于JavaScript的数据可视化图表库，提供直观、生动、可交互、可个性化定制的数据可视化图表。<br><strong>1：灵活性</strong>: ECharts使用JavaScript开发，具有很高的灵活性和可定制性，可以轻松创建各种类型的图表和图形。<br><strong>2：直观性</strong>: ECharts的图表类型丰富，包括折线图、柱状图、饼图、散点图等，可以直观地展示数据，易于理解和分析。<br><strong>3：交互性</strong>: ECharts支持用户交互，可以通过鼠标悬停、点击等操作获取更多数据信息，提高用户体验。<br><strong>4：个性化</strong>: ECharts支持高度个性化定制，可以自定义图表的样式、颜色、标签等，满足不同用户的需求。<br><strong>5：跨平台</strong>: ECharts兼容当前绝大部分浏览器，可以在PC和移动设备上流畅运行，为用户提供优质的数据可视化体验。</p>
+<h4 id="后端技术：Node-js、Express、Python"><a href="#后端技术：Node-js、Express、Python" class="headerlink" title="后端技术：Node.js、Express、Python"></a>后端技术：Node.js、Express、Python</h4><h5 id="Node-js：一个运行在服务器端的JavaScript运行环境，用于构建网络应用。"><a href="#Node-js：一个运行在服务器端的JavaScript运行环境，用于构建网络应用。" class="headerlink" title="Node.js：一个运行在服务器端的JavaScript运行环境，用于构建网络应用。"></a><a target="_blank" rel="noopener" href="https://nodejs.org/en">Node.js：一个运行在服务器端的JavaScript运行环境，用于构建网络应用。</a></h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img0.baidu.com/it/u=3614847849,644798935&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=1143&amp;h=500#pic_center" alt="Node.js"><br>  Node.js是一个开源的、跨平台的、用于服务器端和网络应用的运行环境。它可以让JavaScript代码在服务器端运行，使得开发者能够快速地搭建网络服务。<br>  Node.js是由Ryan Dahl在2009年创建的，最初是为了在服务器端运行JavaScript代码。它的核心库包括文件系统（fs）、HTTP、路径（path）、查询字符串（querystring）等，这些库全部使用事件驱动、非阻塞I/O模型编写而成。<br>Node.js的特点包括：<br><strong>1：异步和事件驱动</strong>：Node.js的所有API都是非阻塞的，它基于事件驱动的架构设计，使得其高度的异步和非阻塞I/O可以进行高效的并发操作。这意味着Node.js可以处理大量并发连接，而且每个连接都只使用很少的内存，这使其成为实时应用程序（如聊天、游戏等）的理想选择。<br><strong>2：单线程</strong>：Node.js采用了单线程模型，虽然JavaScript在服务器上只运行在单线程中，但由于Node.js的事件循环和非阻塞I/O操作，使得并发操作变得容易处理。<br><strong>3：跨平台</strong>：Node.js可以在多种平台上运行，包括但不限于Windows、Mac OS X、Linux等。<br><strong>4：使用JavaScript</strong>：由于Node.js使用的是JavaScript语言，这使得前端开发人员可以使用同一种语言在服务器端进行编程，这极大地提高了开发效率并减少了开发人员需要掌握的编程语言种类。<br>  在Node.js社区，可以找到许多高质量的库和工具，例如Express.js（一个帮助你构建web应用的框架）、Mongoose（一个用于处理MongoDB数据库的库）、Less（一个CSS预处理器）等等。</p>
+<h5 id="Express：一个基于Node-js的快速、简洁的web开发框架。"><a href="#Express：一个基于Node-js的快速、简洁的web开发框架。" class="headerlink" title="Express：一个基于Node.js的快速、简洁的web开发框架。"></a><a target="_blank" rel="noopener" href="https://www.expressjs.com.cn/">Express：一个基于Node.js的快速、简洁的web开发框架。</a></h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img0.baidu.com/it/u=3372631836,692363275&amp;fm=253&amp;fmt=auto&amp;app=120&amp;f=JPEG?w=608&amp;h=318#pic_center" alt="Express"><br>  Express是一个基于Node.js的Web应用程序框架，它提供了一个简单而灵活的API，帮助开发者快速构建高效、可靠的Web应用和API。Express基于事件驱动和非阻塞I/O模型，使其具有高效的事件处理和并发能力，非常适合处理大规模的并发请求。<br>Express的主要特点包括：<br><strong>1：简单快速</strong>：Express的API简洁明了，易于学习和使用。它提供了许多中间件，用于处理HTTP请求和响应，使得开发Web应用变得非常快速和简单。<br><strong>2：灵活性强</strong>：Express的设计理念是“约定优于配置”，它提供了一些默认的约定和规则，但同时也允许开发者根据项目的需求进行定制和扩展。<br><strong>3：功能强大</strong>：Express内置了强大的中间件，用于处理路由、模板渲染、会话管理、安全验证等功能。此外，还有丰富的第三方中间件和库，用于处理各种不同的需求。<br><strong>4：高效稳定</strong>：Express基于Node.js平台，充分利用了Node.js的事件驱动和非阻塞I/O模型，使得Web应用能够高效地处理大量并发请求。<br><strong>5：社区活跃</strong>：Express有着活跃的社区和支持，有大量的开源项目和使用案例可以参考和使用。这也意味着开发者可以很容易地找到相关的文档、教程和问题解答。<br>  总之，Express是一个功能强大、灵活易用、高效稳定的Node.js框架，适用于构建各种类型的Web应用和API。</p>
+<h5 id="Python：一种广泛使用的编程语言，常用于后端开发。"><a href="#Python：一种广泛使用的编程语言，常用于后端开发。" class="headerlink" title="Python：一种广泛使用的编程语言，常用于后端开发。"></a><a target="_blank" rel="noopener" href="https://www.python.org/">Python：一种广泛使用的编程语言，常用于后端开发。</a></h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=2768927931,3568013698&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=713&amp;h=285#pic_center" alt="Python"><br>  Python是一种解释型、交互式的编程语言，它具有简单易学、代码可读性高、应用广泛等特点，被广泛应用于Web开发、数据分析、人工智能等领域。以下是Python的简介和特点：<br>简介：<br>  Python由Guido van Rossum于1989年创造，是一种通用的编程语言，旨在让开发者能够快速编写高质量的代码。Python采用解释型，无需编译器，可以直接运行代码。Python的语法简洁清晰，易于学习，而且具有丰富的第三方库和框架，可以用于构建各种类型的应用程序。<br>特点：<br><strong>1：简单易学</strong>：Python的语法简洁易懂，开发者可以快速上手编写代码。同时，Python的社区提供了大量的学习资源和教程，使得开发者可以轻松地学习和掌握Python编程。<br><strong>2：代码可读性高</strong>：Python的代码风格简洁明了，易于阅读和理解。这使得开发者可以更容易地协作和分享代码，也使得代码更易于维护和修改。<br><strong>3：应用广泛</strong>：Python被广泛应用于Web开发、数据分析、人工智能等领域。它具有丰富的第三方库和框架，可以满足不同领域的需求。<br><strong>4：强大的社区支持</strong>：Python有一个庞大的开发者社区，提供了大量的开源项目、教程和问题解答。这使得开发者可以很容易地找到相关的资源和支持。<br><strong>5：跨平台兼容性</strong>：Python可以在不同的操作系统上运行，包括Windows、Linux和Mac OS等。这使得开发者可以轻松地在不同的平台上开发和部署应用程序。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    在Python中，有许多库可以帮助我们进行数据清洗。接下来，我们将使用Python进行</span><br><span class="line">数据清洗。</span><br><span class="line">① 加载数据</span><br><span class="line">    在Python中，可以使用pandas库来加载数据。当然，数据清洗之前需要对数据的类型</span><br><span class="line">进行检查。如果数据是Excel文件，则使用read_excel()函数。如果数据来自关系型</span><br><span class="line">数据库，则使用SQLAlchemy或其他数据库包来获取数据。</span><br><span class="line">② 识别数据错误</span><br><span class="line">数据清洗中的第一步是识别数据错误。数据错误包括：</span><br><span class="line">1：丢失值</span><br><span class="line">2：异常值</span><br><span class="line">3：重复数据</span><br><span class="line">③ 数据清洗</span><br><span class="line">1：填充空值</span><br><span class="line">2：删除空值</span><br><span class="line">3：替换异常值</span><br><span class="line">4：保存清洗后的数据</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h3 id="四、研究分析"><a href="#四、研究分析" class="headerlink" title="四、研究分析"></a>四、研究分析</h3><hr>
+<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><p>  通过以上分析我们可以看出，B站目前的主流分区为游戏区和生活区，符合当代年轻人的文化娱乐需求。同时,B站知识区良好的生态，正在源源不断地吸引着越来越多的专业人士加入，分享自己专业领域的知识。在B站成立那一天，没人能想到它还能作为一个学习网站所存在。而B站独有的弹幕和三连文化，使得视频发布者和观众之间情感维系更为强烈。视频发布者容易获得成就感，普通用户容易获得身份认同感。正是由于这样的强连接，越来越多的年轻人愿意到B站看视频，也有越来越多的年轻人愿意进驻到B站成为一名up主。<br>  对于up主而言，要想使自己的视频受到更多人的关注，最重要的还是视频的质量，视频的时长与用户是否喜欢无关，重要的是能否激起用户的积极反馈，发送弹幕。而如果想要在B站后台的算法中获得高分登上排行榜，让用户慷慨投币是最为重要的。<br>  一千个用户眼中有一千个B站，二十个不同的兴趣分区保证再偏门的内容创造者都有可能在B站走红。相比其他的在线视频网站，B站各个分区的流量分发较为均匀，功能发挥性更强，这也使得不同兴趣偏好的用户都能在B站观看各自喜欢的内容。要是有新的up主想要进驻B站，也不必迎合大众的口味，可以在自己喜欢的领域内尽情施展自己的才华，总会有爱好相同者为他/她摇旗呐喊。总而言之，B站用户有自己独有的行为特点，对于新的up主来说，如果选对板块并且持续产出高质量内容，有很大可能在短时间内积攒起可观人气。<br>  时至今日，哔哩哔哩的用户已经覆盖年轻群体，除了最初的ACG，内容生产模式以及相关视频业务也都有涉及，产品本身的功能也非常完善，探索出的商业模式也初现成果。从B站目前的不断扩张的行动来看，它的最终目标是要发展成为一个大型综合性社区，最初的用户因为觉得初心不再而离开B站，也无可厚非。面对现如今越来越多“忘了初心”的质疑声和弹幕低龄化趋势、视频质量走低的问题，对于B站而言，关注用户需求、保持用户高活跃度、留住老用户，才是最重要的。</p>
+</div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" title="头像" alt="头像"></a><div class="post-copyright__author_name">Lifeline</div><div class="post-copyright__author_desc">经世致用 自强不息</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/posts/699ead5/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/posts/699ead5/')">基于大数据技术的bilibili网站数据分析的设计与实现</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/posts/699ead5/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=基于大数据技术的bilibili网站数据分析的设计与实现&amp;url=http://example.com/posts/699ead5/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Lifeline</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>毕业设计<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/%E4%B8%8B%E8%BD%BD_%E5%89%AF%E6%9C%AC11.jpg.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/6336ac44/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">红米K305G刷root</div></div></a></div></nav><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"></div></div><div class="author-info__description">日落终归山海，你我总将相遇。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">Lifeline</h1><div class="author-info__desc">经世致用 自强不息</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/lifelinest" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/694787378" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence">加载中...</div><div id="poem_info"><div id="poem_dynasty">加载中...</div><div class="poem-title-scroll"><div id="poem_author">加载中...</div></div></div></div><script type="text/javascript">// 本地诗词备选
+var localPoems = [
+  {
+    content: "床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+    dynasty: "唐代",
+    author: "李白",
+    title: "静夜思"
+  },
+  {
+    content: "人生自是有情痴，此恨不关风与月。",
+    dynasty: "宋代",
+    author: "欧阳修",
+    title: "玉楼春"
+  },
+  {
+    content: "大漠孤烟直，长河落日圆。",
+    dynasty: "唐代",
+    author: "王维",
+    title: "使至塞上"
+  },
+  {
+    content: "会当凌绝顶，一览众山小。",
+    dynasty: "唐代",
+    author: "杜甫",
+    title: "望岳"
+  }
+];
+function renderPoem(poem) {
+  var sentence = document.querySelector("#poem_sentence");
+  var author = document.querySelector("#poem_author");
+  var dynasty = document.querySelector("#poem_dynasty");
+  var lines = poem.content.match(/[^，。！？；]+[，。！？；]?/g) || [poem.content];
+  sentence.innerHTML = lines.map(l => `<div class='poem-line'>${l.trim()}</div>`).join('');
+  dynasty.innerHTML = poem.dynasty || '无';
+  author.innerHTML = (poem.author || '') + '《' + (poem.title || '') + '》';
+}
+// 尝试API
+function tryApi() {
+  if (window.jinrishici) {
+    jinrishici.load(function(result) {
+      try {
+        var data = result.data;
+        renderPoem({
+          content: data.content,
+          dynasty: data.origin.dynasty,
+          author: data.origin.author,
+          title: data.origin.title
+        });
+      } catch(e) {
+        renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+      }
+    });
+  } else {
+    renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+  }
+}
+// 加载API脚本
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js';
+script.charset = 'utf-8';
+script.onload = tryApi;
+script.onerror = function(){renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);}
+document.head.appendChild(script);</script><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%A0%94%E7%A9%B6%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">一、研究背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><span class="toc-number">2.</span> <span class="toc-text">二、数据来源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E7%8E%B0%E6%8A%80%E6%9C%AF"><span class="toc-number">3.</span> <span class="toc-text">三、实现技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%BB%84%E5%86%85%E5%89%8D%E6%9C%9F%E4%BB%BB%E5%8A%A1%E7%A1%AE%E8%AE%A4"><span class="toc-number">3.1.</span> <span class="toc-text">1、组内前期任务确认</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%9B%BE%E8%A1%A8%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.2.</span> <span class="toc-text">2、图表设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E5%89%8D%E8%A8%80"><span class="toc-number">3.2.1.</span> <span class="toc-text">① 前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E8%AE%BE%E8%AE%A1%E7%BD%91%E7%AB%99%EF%BC%9A%E9%95%9D%E6%95%B0%E5%9B%BE%E8%A1%A8-Dycharts%EF%BC%9A%E4%BA%BA%E4%BA%BA%E5%8F%AF%E7%94%A8%E7%9A%84%E9%9B%B6%E4%BB%A3%E7%A0%81%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%BC%BA%E5%A4%A7%E3%80%81%E5%A5%BD%E7%94%A8%E3%80%81%E5%8F%AF%E5%AE%9A%E5%88%B6%EF%BC%81"><span class="toc-number">3.2.2.</span> <span class="toc-text">②设计网站：镝数图表 Dycharts：人人可用的零代码数据可视化工具，强大、好用、可定制！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2-%E5%9B%BE%E8%A1%A8%E8%AE%BE%E8%AE%A1%E6%95%88%E6%9E%9C%E5%9B%BE%EF%BC%88%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83%EF%BC%89"><span class="toc-number">3.2.3.</span> <span class="toc-text">③ 图表设计效果图（仅供参考）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">3.3.</span> <span class="toc-text">3、数据可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%8A%80%E6%9C%AF"><span class="toc-number">3.4.</span> <span class="toc-text">4、数据可视化的实现与技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%95%86%E4%B8%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A1%88%E4%BE%8B"><span class="toc-number">3.5.</span> <span class="toc-text">5、商业数据可视化案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E5%91%88%E7%8E%B0"><span class="toc-number">3.6.</span> <span class="toc-text">三、数据呈现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%EF%BC%9AVue-js%E3%80%81Vue-router%E3%80%81Vue-cli%E3%80%81Element-ui%E3%80%81eCharts"><span class="toc-number">3.6.1.</span> <span class="toc-text">前端技术：Vue.js、Vue-router、Vue-cli、Element-ui、eCharts</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Vue-js%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%94%A8%E4%BA%8E%E6%9E%84%E5%BB%BA%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E7%9A%84%E6%B8%90%E8%BF%9B%E5%BC%8FJavaScript%E6%A1%86%E6%9E%B6%E3%80%82"><span class="toc-number">3.6.1.1.</span> <span class="toc-text">Vue.js：一个用于构建用户界面的渐进式JavaScript框架。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Vue-router%EF%BC%9AVue-js%E5%AE%98%E6%96%B9%E7%9A%84%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%9E%84%E5%BB%BA%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E3%80%82"><span class="toc-number">3.6.1.2.</span> <span class="toc-text">Vue-router：Vue.js官方的路由管理器，用于构建单页面应用。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Vue-cli%EF%BC%9AVue-js%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%BF%AB%E9%80%9F%E5%88%9B%E5%BB%BA%E5%92%8C%E7%AE%A1%E7%90%86Vue-js%E9%A1%B9%E7%9B%AE%E3%80%82"><span class="toc-number">3.6.1.3.</span> <span class="toc-text">Vue-cli：Vue.js的命令行工具，用于快速创建和管理Vue.js项目。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Element-ui%EF%BC%9A%E5%9F%BA%E4%BA%8EVue-js%E7%9A%84%E4%B8%80%E5%A5%97%E9%AB%98%E8%B4%A8%E9%87%8F%E7%9A%84UI%E7%BB%84%E4%BB%B6%E5%BA%93%E3%80%82"><span class="toc-number">3.6.1.4.</span> <span class="toc-text">Element-ui：基于Vue.js的一套高质量的UI组件库。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ECharts%EF%BC%9A%E4%BD%BF%E7%94%A8%E7%BA%AFJavaScript%E7%BC%96%E5%86%99%E7%9A%84%E5%BC%80%E6%BA%90%E5%8F%AF%E8%A7%86%E5%8C%96%E5%BA%93%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%94%9F%E6%88%90%E4%B8%B0%E5%AF%8C%E7%9A%84%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%9B%BE%E8%A1%A8%E3%80%82"><span class="toc-number">3.6.1.5.</span> <span class="toc-text">ECharts：使用纯JavaScript编写的开源可视化库，可以生成丰富的交互式图表。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%EF%BC%9ANode-js%E3%80%81Express%E3%80%81Python"><span class="toc-number">3.6.2.</span> <span class="toc-text">后端技术：Node.js、Express、Python</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Node-js%EF%BC%9A%E4%B8%80%E4%B8%AA%E8%BF%90%E8%A1%8C%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E7%9A%84JavaScript%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%9E%84%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E3%80%82"><span class="toc-number">3.6.2.1.</span> <span class="toc-text">Node.js：一个运行在服务器端的JavaScript运行环境，用于构建网络应用。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Express%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8ENode-js%E7%9A%84%E5%BF%AB%E9%80%9F%E3%80%81%E7%AE%80%E6%B4%81%E7%9A%84web%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E3%80%82"><span class="toc-number">3.6.2.2.</span> <span class="toc-text">Express：一个基于Node.js的快速、简洁的web开发框架。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Python%EF%BC%9A%E4%B8%80%E7%A7%8D%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%8C%E5%B8%B8%E7%94%A8%E4%BA%8E%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E3%80%82"><span class="toc-number">3.6.2.3.</span> <span class="toc-text">Python：一种广泛使用的编程语言，常用于后端开发。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%A0%94%E7%A9%B6%E5%88%86%E6%9E%90"><span class="toc-number">3.7.</span> <span class="toc-text">四、研究分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">3.8.</span> <span class="toc-text">五、总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/a6aeac5e/" title="abbrlink与SEO优化的深度配合"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E4%B8%8B%E8%BD%BD_%E5%89%AF%E6%9C%AC11.jpg.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="abbrlink与SEO优化的深度配合"></a><div class="content"><a class="title" href="/posts/a6aeac5e/" title="abbrlink与SEO优化的深度配合">abbrlink与SEO优化的深度配合</a><time datetime="2025-07-08T12:56:07.000Z" title="发表于 2025-07-08 20:56:07">2025-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/dced8aaa/" title="中国守军抵抗三次进攻的战术是什么？"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/68.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中国守军抵抗三次进攻的战术是什么？"></a><div class="content"><a class="title" href="/posts/dced8aaa/" title="中国守军抵抗三次进攻的战术是什么？">中国守军抵抗三次进攻的战术是什么？</a><time datetime="2025-07-07T15:15:11.000Z" title="发表于 2025-07-07 23:15:11">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2080dcc7/" title="芝麻粒如何绕过支付宝安全检测？"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="芝麻粒如何绕过支付宝安全检测？"></a><div class="content"><a class="title" href="/posts/2080dcc7/" title="芝麻粒如何绕过支付宝安全检测？">芝麻粒如何绕过支付宝安全检测？</a><time datetime="2025-07-07T12:53:33.000Z" title="发表于 2025-07-07 20:53:33">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/cab7a2a3/" title="Hexo 博客接入 giscus 完整流程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E6%9C%AA%E5%91%BD%E5%90%8D11.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo 博客接入 giscus 完整流程"></a><div class="content"><a class="title" href="/posts/cab7a2a3/" title="Hexo 博客接入 giscus 完整流程">Hexo 博客接入 giscus 完整流程</a><time datetime="2025-07-06T23:31:58.000Z" title="发表于 2025-07-07 07:31:58">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/c50d6270/" title="Easyspider 如何解决我的日常数据抓取难题？"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E6%9C%AA%E5%91%BD%E5%90%8D44.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Easyspider 如何解决我的日常数据抓取难题？"></a><div class="content"><a class="title" href="/posts/c50d6270/" title="Easyspider 如何解决我的日常数据抓取难题？">Easyspider 如何解决我的日常数据抓取难题？</a><time datetime="2025-07-06T00:17:58.000Z" title="发表于 2025-07-06 08:17:58">2025-07-06</time></div></div></div></div></div></div></div></main><footer id="footer"><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3434848843@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/7340189538" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100092208016287&amp;sk=about" title="facebook"><i class="anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/lifelinest" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/694787378" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/self" title="抖音"><i class="anzhiyufont anzhiyu-icon-tiktok"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档中心" href="/docs/">文档中心</a><a class="footer-item" title="博客插件" target="_blank" rel="noopener" href="https://hexo.io/plugins/">博客插件</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="友链文章" href="/fcircle/">友链文章</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">作品集</div><div class="footer-links"><a class="footer-item" title="设计图仓" href="/design/">设计图仓</a><a class="footer-item" title="微码仓库" href="/code/">微码仓库</a><a class="footer-item" title="智造工坊" href="/Workshop/">智造工坊</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">©2023 - 2025 By <a class="footer-bar-link" href="/" title="Lifeline" target="_blank">Lifeline</a></div><div class="footer-bar-subtitle" style="display: flex; align-items: center; gap: 0.3em;"><div id="footer-type-tips"></div><span class="typed-cursor"></span></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://cdnjson.com/upload" title="图床">图床</a></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script><script>if (typeof Typed === 'function') {
+  // 先清空内容，防止被其他JS写入
+  document.querySelector('#footer-type-tips').innerText = '';
+  new Typed("#footer-type-tips", {
+    strings: ["心墙开扇窗，微风递糖霜。"],
+    startDelay: 300,
+    typeSpeed: 150,
+    backSpeed: 50,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
+}
+    </script></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">61</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">1</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">工具</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/empty" title="kimi"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg" alt="kimi"><span class="back-menu-item-text">kimi</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://pan.baidu.com/" title="百度网盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png" alt="百度网盘"><span class="back-menu-item-text">百度网盘</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">娱乐</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.163.com/?from=itab" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg" alt="网易云音乐"><span class="back-menu-item-text">网易云音乐</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="哔哩哔哩"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg" alt="哔哩哔哩"><span class="back-menu-item-text">哔哩哔哩</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.zhihu.com/" title="知乎"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=1821089500,4276043120&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=415&amp;h=312" alt="知乎"><span class="back-menu-item-text">知乎</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.skypixel.com/" title="天空之城"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=11010786,400614760&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" alt="天空之城"><span class="back-menu-item-text">天空之城</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/equipment/"><span> 我的装备</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Markdown/" style="font-size: 0.88rem;">Markdown<sup>2</sup></a><a href="/tags/VPN/" style="font-size: 0.88rem;">VPN<sup>1</sup></a><a href="/tags/github/" style="font-size: 0.88rem;">github<sup>13</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" style="font-size: 0.88rem;">个人博客<sup>6</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%AE%89%E5%85%A8/" style="font-size: 0.88rem;">个人安全<sup>3</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 0.88rem;">内网穿透<sup>1</sup></a><a href="/tags/%E5%88%B7%E6%9C%BA/" style="font-size: 0.88rem;">刷机<sup>5</sup></a><a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 0.88rem;">娱乐<sup>10</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>39</sup></a><a href="/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">实用工具<sup>13</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>29</sup></a><a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 0.88rem;">微信<sup>2</sup></a><a href="/tags/%E6%9A%97%E7%BD%91/" style="font-size: 0.88rem;">暗网<sup>1</sup></a><a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" style="font-size: 0.88rem;">毕业设计<sup>1</sup></a><a href="/tags/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/" style="font-size: 0.88rem;">电脑软件<sup>21</sup></a><a href="/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/" style="font-size: 0.88rem;">碎碎念<sup>3</sup></a><a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 0.88rem;">科学上网<sup>3</sup></a></div></div><hr></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Lifeline 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'lifelinest/giscus',
+      'data-repo-id': 'R_kgDOPINt6A',
+      'data-category-id': '',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category-id":"DIC_kwDOPINt6M4Cslgg","data-strict":1,"data-input-position":"top"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><script src="/js/anzhiyu/article-encryption.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="/js/update.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div><!-- hexo injector body_end start --><script data-pjax="">
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '9d0c37912c4d49ddb29a7a14e1bf54cb';
+  var gaud_map_key = 'dc1eaa8e383ff12ca596ba00fe2b2ed1';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'true';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax="" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer="" src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer="" src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = 'S-H9ELQNJWQ168OMRJ';
+        let tianliGPT_postSelector = '#postchat_postcontent';
+        let tianliGPT_Title = '文章摘要';
+        let tianliGPT_postURL = '/^https?://[^/]+/posts/[a-f0-9]{8}/';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#3e86f6",
+          bottom: "36px",
+          left: "1530px",
+          fill: "#FFFFFF",
+          width: "44px",
+          frameWidth: "375px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: true,
+          userTitle: "PostChat",
+          userDesc: "如果你对网站的内容有任何疑问，可以来问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "https://ai.tianli0.top/static/img/PostChat.webp",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="S-H9ELQNJWQ168OMRJ" src="https://ai.tianli0.top/static/public/tianli_gpt.min.js"></script>
+  </body></html>
