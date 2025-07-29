@@ -6,7 +6,11 @@ tags:
 categories: []
 abbrlink: a4b9adb4
 date: 2024-03-07 16:06:00
+encrypted: true
+password: markdown123
+hint: markdown
 ---
+
 #### 《一》什么是Markdown<br>
 Markdown是一种轻量级的标记语言，它允许人们使用易读易写的纯文本格式编写文档，借助可实现快速排版且转换成格式丰富的HTML页面。目前被越来越多的写作爱好者及工作者使用。其语法十分简单，常用标记符号少，学习时间少，一旦掌握这种标记语言，将极大提高效率。但是若需要复杂排版如左右对齐缩进等，还是选择word等专业软件。
 
