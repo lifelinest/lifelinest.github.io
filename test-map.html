@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地图控件测试</title>
+    <style>
+        #mapContainer {
+            width: 100%;
+            height: 600px;
+            margin: 0 auto;
+        }
+        .control-container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+        button {
+            margin: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <!-- 引入高德地图API -->
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=YOUR_AMAP_KEY"></script>
+</head>
+<body>
+    <h1>地图控件测试页面</h1>
+    <button id="testButton">测试控件布局</button>
+    <div id="mapContainer"></div>
+    <div id="consoleOutput"></div>
+
+    <script>
+        // 替换为你的高德地图key
+        const AMAP_KEY = 'YOUR_AMAP_KEY';
+
+        // 简单的日志记录函数
+        function log(message) {
+            console.log(message);
+            const consoleOutput = document.getElementById('consoleOutput');
+            const logElement = document.createElement('div');
+            logElement.textContent = message;
+            consoleOutput.appendChild(logElement);
+        }
+
+        // 初始化地图
+        function initMap() {
+            log('开始初始化地图...');
+            const map = new AMap.Map('mapContainer', {
+                zoom: 10,
+                center: [116.397428, 39.90923],
+                resizeEnable: true
+            });
+
+            // 创建自定义控件容器
+            const controlContainer = document.createElement('div');
+            controlContainer.className = 'control-container';
+            document.getElementById('mapContainer').appendChild(controlContainer);
+            log('已创建自定义控件容器');
+
+            // 添加平移控件
+            const controlBar = new AMap.ControlBar({
+                showZoomBar: false,
+                showControlButton: true,
+                position: 'RB'
+            });
+            map.addControl(controlBar);
+            log('已添加平移控件');
+
+            // 添加缩放工具条
+            const toolBar = new AMap.ToolBar({
+                liteStyle: true,
+                position: 'RB'
+            });
+            map.addControl(toolBar);
+            log('已添加缩放工具条');
+
+            // 添加地图加载完成事件
+            map.on('complete', function() {
+                log('地图加载完成，开始移动控件...');
+                moveControls(map, controlBar, toolBar, controlContainer);
+            });
+
+            // 手动触发测试按钮
+            document.getElementById('testButton').addEventListener('click', function() {
+                log('手动触发控件移动...');
+                moveControls(map, controlBar, toolBar, controlContainer);
+            });
+
+            return map;
+        }
+
+        // 移动控件到自定义容器
+        function moveControls(map, controlBar, toolBar, controlContainer) {
+            try {
+                // 检查控件是否存在
+                log('controlBar是否存在: ' + (controlBar !== undefined && controlBar !== null));
+                log('toolBar是否存在: ' + (toolBar !== undefined && toolBar !== null));
+
+                if (controlBar && toolBar) {
+                    // 获取控件容器ID
+                    const controlBarContainerId = controlBar.getContainer().id;
+                    const toolBarContainerId = toolBar.getContainer().id;
+                    log('平移控件容器ID: ' + controlBarContainerId);
+                    log('缩放工具条容器ID: ' + toolBarContainerId);
+
+                    // 检查ID是否有效
+                    log('平移控件容器ID是否有效: ' + (typeof controlBarContainerId === 'string' && controlBarContainerId.length > 0));
+                    log('缩放工具条容器ID是否有效: ' + (typeof toolBarContainerId === 'string' && toolBarContainerId.length > 0));
+
+                    // 使用ID选择器获取DOM元素
+                    const controlBarDom = document.getElementById(controlBarContainerId);
+                    const toolBarDom = document.getElementById(toolBarContainerId);
+                    log('通过ID获取平移控件DOM: ' + controlBarDom);
+                    log('通过ID获取缩放工具条DOM: ' + toolBarDom);
+
+                    // 检查容器是否存在
+                    log('自定义容器是否存在: ' + (controlContainer !== null));
+                    if (controlContainer) {
+                        log('自定义容器: ' + controlContainer);
+                        log('自定义容器原始子元素数量: ' + controlContainer.children.length);
+                        log('自定义容器原始子元素: ' + Array.from(controlContainer.children).map(child => child.className).join(', '));
+
+                        // 将平移控件移动到自定义容器中
+                        if (controlBarDom) {
+                            // 先保存控件的父元素引用
+                            const originalParent = controlBarDom.parentNode;
+                            log('平移控件原始父元素: ' + originalParent);
+
+                            // 移除所有定位样式
+                            controlBarDom.style.position = 'static';
+                            controlBarDom.style.bottom = 'auto';
+                            controlBarDom.style.right = 'auto';
+                            controlBarDom.style.margin = '0';
+
+                            // 确保控件已从原始父元素中移除
+                            if (originalParent && originalParent.contains(controlBarDom)) {
+                                originalParent.removeChild(controlBarDom);
+                                log('已从原始父元素移除平移控件');
+                            }
+
+                            // 添加到自定义容器
+                            controlContainer.appendChild(controlBarDom);
+                            log('平移控件已移动到自定义容器');
+                        } else {
+                            log('未找到平移控件DOM元素');
+                            // 尝试备选方案: 直接使用控件实例的getDom方法
+                            const fallbackControlBarDom = controlBar.getDom ? controlBar.getDom() : null;
+                            log('备选方案 - 通过getDom获取平移控件: ' + fallbackControlBarDom);
+                            if (fallbackControlBarDom) {
+                                fallbackControlBarDom.style.position = 'static';
+                                fallbackControlBarDom.style.bottom = 'auto';
+                                fallbackControlBarDom.style.right = 'auto';
+                                fallbackControlBarDom.style.margin = '0';
+                                controlContainer.appendChild(fallbackControlBarDom);
+                                log('备选方案 - 平移控件已移动到自定义容器');
+                            }
+                        }
+
+                        // 将缩放工具条移动到自定义容器中
+                        if (toolBarDom) {
+                            // 先保存控件的父元素引用
+                            const originalParent = toolBarDom.parentNode;
+                            log('缩放工具条原始父元素: ' + originalParent);
+
+                            // 移除所有定位样式
+                            toolBarDom.style.position = 'static';
+                            toolBarDom.style.bottom = 'auto';
+                            toolBarDom.style.right = 'auto';
+                            toolBarDom.style.margin = '0';
+
+                            // 确保控件已从原始父元素中移除
+                            if (originalParent && originalParent.contains(toolBarDom)) {
+                                originalParent.removeChild(toolBarDom);
+                                log('已从原始父元素移除缩放工具条');
+                            }
+
+                            // 添加到自定义容器
+                            controlContainer.appendChild(toolBarDom);
+                            log('缩放工具条已移动到自定义容器');
+                        } else {
+                            log('未找到缩放工具条DOM元素');
+                            // 尝试备选方案: 直接使用控件实例的getDom方法
+                            const fallbackToolBarDom = toolBar.getDom ? toolBar.getDom() : null;
+                            log('备选方案 - 通过getDom获取缩放工具条: ' + fallbackToolBarDom);
+                            if (fallbackToolBarDom) {
+                                fallbackToolBarDom.style.position = 'static';
+                                fallbackToolBarDom.style.bottom = 'auto';
+                                fallbackToolBarDom.style.right = 'auto';
+                                fallbackToolBarDom.style.margin = '0';
+                                controlContainer.appendChild(fallbackToolBarDom);
+                                log('备选方案 - 缩放工具条已移动到自定义容器');
+                            }
+                        }
+
+                        // 验证结果
+                        log('自定义容器中的子元素数量: ' + controlContainer.children.length);
+                        log('自定义容器中的子元素: ' + Array.from(controlContainer.children).map(child => child.className).join(', '));
+
+                        // 检查控件是否真的在容器中
+                        if (controlBarDom && controlContainer.contains(controlBarDom)) {
+                            log('平移控件确实在自定义容器中');
+                        } else {
+                            log('平移控件不在自定义容器中');
+                        }
+
+                        if (toolBarDom && controlContainer.contains(toolBarDom)) {
+                            log('缩放工具条确实在自定义容器中');
+                        } else {
+                            log('缩放工具条不在自定义容器中');
+                        }
+                    } else {
+                        log('自定义容器不存在');
+                    }
+                } else {
+                    log('控件未定义或为空');
+                }
+            } catch (error) {
+                log('移动控件时出错: ' + error.message);
+                log('错误堆栈: ' + error.stack);
+            }
+        }
+
+        // 初始化地图
+        let map = null;
+        window.onload = function() {
+            map = initMap();
+        };
+    </script>
+</body>
+</html>

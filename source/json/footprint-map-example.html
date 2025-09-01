@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexo博客足迹地图示例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .intro {
+            font-size: 16px;
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            flex: 1 1 200px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-card h3 {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        .stat-card p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .timeline-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .timeline-container h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #e0e0e0;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -35px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3498db;
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+        .timeline-place {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .timeline-desc {
+            color: #7f8c8d;
+        }
+        @media (max-width: 768px) {
+            .map-container {
+                height: 400px;
+            }
+            .stat-card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>我的旅行足迹地图</h1>
+            <p class="intro">记录我的旅行经历，展示走过的城市和留下的回忆。这个示例页面基于Hexo博客足迹地图功能开发文档创建。</p>
+        </header>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>总访问城市</h3>
+                <p id="total-cities">5</p>
+            </div>
+            <div class="stat-card">
+                <h3>总旅行距离</h3>
+                <p id="total-distance">12,500 km</p>
+            </div>
+            <div class="stat-card">
+                <h3>访问省份</h3>
+                <p id="visited-provinces">5</p>
+            </div>
+            <div class="stat-card">
+                <h3>最常访问</h3>
+                <p id="most-visited">北京</p>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div class="timeline-container">
+            <h2>旅行时间轴</h2>
+            <div class="timeline" id="timeline"></div>
+        </div>
+    </div>
+
+    <!-- 引入高德地图API，并加载必要的插件 -->
+    <script src="https://webapi.amap.com/maps?v=2.0&key=a3e72d2dfc9f9b32c02b70d541b48f26&plugin=AMap.ControlBar,AMap.Scale,AMap.MapType,AMap.Geolocation"></script>
+    <script>
+        // 示例足迹数据
+        const footprints = [
+            {
+                id: 1,
+                name: "北京",
+                location: [116.404, 39.915],
+                date: "2023-05-15",
+                description: "参观了故宫、长城和天安门广场，感受到了浓厚的历史文化氛围。",
+                type: "travel",
+                images: ["https://via.placeholder.com/150"],
+                tags: ["历史", "文化", "首都"]
+            },
+            {
+                id: 2,
+                name: "上海",
+                location: [121.4737, 31.2304],
+                date: "2023-07-20",
+                description: "游览了外滩、东方明珠和上海迪士尼乐园，体验了国际大都市的魅力。",
+                type: "travel",
+                images: ["https://via.placeholder.com/150"],
+                tags: ["现代", "繁华", "迪士尼"]
+            },
+            {
+                id: 3,
+                name: "杭州",
+                location: [120.1551, 30.2797],
+                date: "2023-09-10",
+                description: "欣赏了西湖美景，品尝了地道的杭州美食，感受了江南水乡的韵味。",
+                type: "travel",
+                images: ["https://via.placeholder.com/150"],
+                tags: ["自然", "美食", "江南"]
+            },
+            {
+                id: 4,
+                name: "成都",
+                location: [104.0665, 30.5728],
+                date: "2023-11-05",
+                description: "品尝了正宗的川菜，参观了大熊猫基地，体验了悠闲的成都生活。",
+                type: "travel",
+                images: ["https://via.placeholder.com/150"],
+                tags: ["美食", "熊猫", "休闲"]
+            },
+            {
+                id: 5,
+                name: "广州",
+                location: [113.2644, 23.1291],
+                date: "2024-01-18",
+                description: "游览了广州塔，品尝了丰富的粤菜和早茶，感受了岭南文化的独特魅力。",
+                type: "travel",
+                images: ["https://via.placeholder.com/150"],
+                tags: ["美食", "现代", "岭南"]
+            }
+        ];
+
+        // 初始化地图
+        let map = new AMap.Map('map', {
+            zoom: 5,
+            center: [116.404, 39.915],
+            viewMode: '3D',
+            // 添加控件
+            controlBar: {position: 'RB'},
+            scale: {position: 'RB'},
+            mapType: {position: 'RB', defaultType: 0},
+            geolocation: {position: 'RB'}
+        });
+
+        // 添加地图控件 (使用插件加载方式)
+        // 添加控制栏控件 (包含缩放按钮)
+        map.addControl(new AMap.ControlBar({
+            position: 'RB'
+        }));
+
+        // 添加比例尺控件
+        map.addControl(new AMap.Scale({
+            position: 'RB'
+        }));
+
+        // 添加地图类型切换控件
+        map.addControl(new AMap.MapType({
+            defaultType: 0,
+            showRoad: true,
+            position: 'RB'
+        }));
+
+        // 确保地图加载完成后再添加标记
+        map.on('complete', function() {
+            addFootprintMarkers();
+            console.log('地图加载完成，已添加足迹点和所有控件');
+        });
+
+        // 存储所有标记点
+        let markers = [];
+
+        // 在地图上添加足迹点
+        function addFootprintMarkers() {
+            // 清除现有标记
+            markers.forEach(marker => marker.setMap(null));
+            markers = [];
+
+            // 添加新标记
+            footprints.forEach(footprint => {
+                // 根据类型设置不同颜色的图标
+                let iconColor = 'blue';
+                if (footprint.type === 'work') iconColor = 'red';
+                else if (footprint.type === 'life') iconColor = 'green';
+                else if (footprint.type === 'study') iconColor = 'purple';
+
+                // 创建自定义图标
+                let icon = new AMap.Icon({
+                    size: new AMap.Size(30, 30),
+                    image: `https://webapi.amap.com/theme/v1.3/markers/${iconColor}/A.png`,
+                    imageSize: new AMap.Size(30, 30)
+                });
+
+                // 创建标记
+                let marker = new AMap.Marker({
+                    position: footprint.location,
+                    title: footprint.name,
+                    icon: icon,
+                    offset: new AMap.Pixel(-15, -15)
+                });
+
+                // 添加点击事件
+                marker.on('click', function() {
+                    showInfoWindow(footprint);
+                });
+
+                // 添加到地图
+                marker.setMap(map);
+                markers.push(marker);
+            });
+
+            // 设置地图视野，显示所有标记
+            if (markers.length > 0) {
+                map.setFitView(markers);
+            }
+        }
+
+        // 显示信息窗口
+        function showInfoWindow(footprint) {
+            // 创建信息窗口内容
+            let content = `
+                <div style="padding: 10px;">
+                    <h3 style="margin-bottom: 10px;">${footprint.name}</h3>
+                    <p><strong>日期:</strong> ${footprint.date}</p>
+                    <p><strong>描述:</strong> ${footprint.description}</p>
+                    <p><strong>标签:</strong> ${footprint.tags.join(', ')}</p>
+                    <img src="${footprint.images[0]}" alt="${footprint.name}" style="max-width: 100%; margin-top: 10px;">
+                </div>
+            `;
+
+            // 创建信息窗口
+            let infoWindow = new AMap.InfoWindow({
+                content: content,
+                offset: new AMap.Pixel(0, -30)
+            });
+
+            // 打开信息窗口
+            infoWindow.open(map, footprint.location);
+        }
+
+        // 渲染时间轴
+        function renderTimeline() {
+            const timelineEl = document.getElementById('timeline');
+            timelineEl.innerHTML = '';
+
+            // 按日期排序（最新的在前）
+            const sortedFootprints = [...footprints].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            // 渲染每个时间轴项
+            sortedFootprints.forEach(footprint => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'timeline-item';
+                itemEl.innerHTML = `
+                    <div class="timeline-date">${footprint.date}</div>
+                    <div class="timeline-place">${footprint.name}</div>
+                    <div class="timeline-desc">${footprint.description}</div>
+                `;
+                timelineEl.appendChild(itemEl);
+            });
+        }
+
+        // 初始化
+        window.onload = function() {
+            addFootprintMarkers();
+            renderTimeline();
+        };
+    </script>
+</body>
+</html>

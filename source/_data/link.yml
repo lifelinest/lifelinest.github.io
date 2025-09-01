@@ -44,8 +44,55 @@
       avatar: https://npm.elemecdn.com/opicture@1.0.0/main/avatar.webp
       descr: 妙不可言
       siteshot: https://npm.webcache.cn/opicture@1.1.2/blog/siteshot/siteshot.webp
-    - name: chenlei
-      link: https://blog.opeach.cn
-      avatar: https://img.hellolei.xin/preview.jpg
-      descr: Live Long and Prosper!
-      siteshot: https://img.hellolei.xin/preview.jpg
+    - name: Calyee
+      link: https://blog.calyee.top/
+      avatar: https://blog.calyee.top/img/avatar.jpg
+      descr: 追求充实，分享快乐
+      siteshot: https://blog.calyee.top/img/siteshot.webp
+    - name: FrWalker
+      link: https://blog.frwalker.top/
+      avatar: http://blog.frwalker.top/favicon.ico
+      descr: 听风雨，问星辰，随心归✨
+      siteshot: https://blog.frwalker.top/siteshot.webp
+    - name: Yeppioo
+      link: https://blog.yeppioo.vip/
+      avatar: https://blog.yeppioo.vip/static/img/avatar.png
+      descr: 梦想成为庄稼地里的读书人.....
+      siteshot: https://blog.yeppioo.vip/static/img/screenshot.png
+    - name: 小赵の破宅
+      link: https://www.ziyis.cn
+      avatar: http://doc.ziyis.cn/avatar.jpg
+      descr: 让美好持续发生.
+      siteshot: 
+    - name: 青桔气球
+      link: https://blog.qjqq.cn/
+      avatar: https://q2.qlogo.cn/headimg_dl?dst_uin=1645253&spec=640
+      descr: 分享网络安全与科技生活
+      siteshot: https://q2.qlogo.cn/headimg_dl?dst_uin=1645253&spec=640
+    - name: 前尘小筑
+      link: https://mnchen.cn/
+      avatar: https://image.mnchen.cn/2023/12/mnochen.jpg
+      descr: 虽多尘色染，犹见墨痕浓
+      siteshot: 
+    - name: Aurielの小破站
+      link: https://www.auriel.top/
+      avatar: https://blog.auriel.top/img/avatar.png
+      descr: 生活的最佳状态，是冷冷清清的风风火火
+      siteshot: 
+    - name: 未央の童话镇
+      link: https://forever97.top
+      avatar: https://forever97-picture-bed.oss-cn-hangzhou.aliyuncs.com/img/avatar.png
+      descr: 在人海里梦游
+      siteshot: https://cdn.jsdelivr.net/gh/Akilarlxh/ScreenShot@gh-pages/forever97.top.jpg
+    - name: 安小歪
+      link: https://blog.anxy.top/
+      avatar: https://imgse.koxiuqiu.cc/imgse/u/19/2025/02/20/67b737d854192.webp
+      descr: 记住你！自己！
+      siteshot: https://imgse.koxiuqiu.cc/imgse/u/19/2025/02/20/67b739bef3f9c.png
+    - name: 幻雪的博客
+      link: https://huanxueblog.top/
+      avatar: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_avatar.webp
+      descr: 腐烂于花海，致死于所爱
+      siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
+
+

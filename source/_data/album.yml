@@ -1,9 +1,9 @@
-
-- class_name: 世界各地夕阳与风景
-  path_name: /wordScenery
-  type: 2
-  description: 因为到不了世界各地，所以请网友们发来了各地的夕阳与风景🌇。
-  cover: 
+# 城市韵律
+- class_name: 巴黎清晨
+  path_name: /album/paris-morning
+  type: city
+  description: 法国巴黎，蒙马特高地
+  cover: https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=1473&q=80
   top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
   rowHeight: 220
   limit: 10
@@ -12,17 +12,467 @@
   url: false
   top_link: /album
   top_btn_text: 返回
+  camera: Sony A7III
+  lens: 35mm f/1.8
+  shutter: 1/200s
+  iso: ISO 400
   album_list:
-    - date: 2022/10/26 01:00:00
-      content: 湘潭的一角。
-      address: 湖南湘潭
-      from: 再吃一口就减肥
+    - date: 2025/01/15 08:00:00
+      content: 巴黎清晨的第一缕阳光洒在古典建筑上
+      address: 法国巴黎，蒙马特高地
+      from: 摄影师
       image:
-        - https://bu.dusays.com/2023/04/09/64329399db122.webp
-    - date: 2022-10-25
-      content: 洛阳暴雨后的天空。
-      address: 河南洛阳
-      from: 紫菜卷
+        - https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=1473&q=80
+
+- class_name: 东京夜景
+  path_name: /album/tokyo-night
+  type: city
+  description: 日本东京，涩谷十字路口
+  cover: https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Sony A7IV
+  lens: 24-70mm f/2.8
+  shutter: 1/30s
+  iso: ISO 800
+  album_list:
+    - date: 2025/02/01 20:00:00
+      content: 东京涩谷十字路口的繁华夜景
+      address: 日本东京，涩谷十字路口
+      from: 摄影师
       image:
-        - 
-        - https://bu.dusays.com/2023/04/09/64329399db2e1.webp
+        - https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80
+
+- class_name: 纽约天际线
+  path_name: /album/new-york-skyline
+  type: city
+  description: 美国纽约，曼哈顿
+  cover: https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Canon EOS R6
+  lens: 70-200mm f/2.8
+  shutter: 1/100s
+  iso: ISO 400
+  album_list:
+    - date: 2025/02/05 18:30:00
+      content: 纽约曼哈顿的壮丽天际线
+      address: 美国纽约，曼哈顿
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 伦敦塔桥
+  path_name: /album/london-bridge
+  type: city
+  description: 英国伦敦，泰晤士河
+  cover: https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Nikon Z7
+  lens: 24-70mm f/4
+  shutter: 1/60s
+  iso: ISO 200
+  album_list:
+    - date: 2025/02/10 16:45:00
+      content: 伦敦塔桥的经典英伦风情
+      address: 英国伦敦，泰晤士河
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 上海外滩
+  path_name: /album/shanghai-bund
+  type: city
+  description: 中国上海，黄浦江畔
+  cover: https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Sony A7R IV
+  lens: 16-35mm f/2.8
+  shutter: 1/125s
+  iso: ISO 100
+  album_list:
+    - date: 2025/02/15 19:00:00
+      content: 上海外滩的璀璨夜景
+      address: 中国上海，黄浦江畔
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 威尼斯水城
+  path_name: /album/venice-canal
+  type: city
+  description: 意大利威尼斯，大运河
+  cover: https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Fujifilm X-T4
+  lens: 18-55mm f/2.8-4
+  shutter: 1/80s
+  iso: ISO 400
+  album_list:
+    - date: 2025/02/20 09:15:00
+      content: 威尼斯大运河的浪漫风情
+      address: 意大利威尼斯，大运河
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 迪拜帆船酒店
+  path_name: /album/dubai-burj
+  type: city
+  description: 阿联酋迪拜，帆船酒店
+  cover: https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Canon EOS R5
+  lens: 100-400mm f/4.5-5.6
+  shutter: 1/200s
+  iso: ISO 100
+  album_list:
+    - date: 2025/02/25 17:30:00
+      content: 迪拜帆船酒店的奢华建筑
+      address: 阿联酋迪拜，帆船酒店
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 新加坡滨海湾
+  path_name: /album/singapore-marina
+  type: city
+  description: 新加坡，滨海湾花园
+  cover: https://images.unsplash.com/photo-1525625293386-3f8f99389edd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Sony A7III
+  lens: 28-70mm f/3.5-5.6
+  shutter: 1/60s
+  iso: ISO 800
+  album_list:
+    - date: 2025/03/01 20:15:00
+      content: 新加坡滨海湾的现代都市风光
+      address: 新加坡，滨海湾花园
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1525625293386-3f8f99389edd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 香港维多利亚港
+  path_name: /album/hong-kong-victoria
+  type: city
+  description: 中国香港，维多利亚港
+  cover: https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Nikon Z6
+  lens: 24-120mm f/4
+  shutter: 1/100s
+  iso: ISO 400
+  album_list:
+    - date: 2025/03/05 19:45:00
+      content: 香港维多利亚港的璀璨夜景
+      address: 中国香港，维多利亚港
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 悉尼歌剧院
+  path_name: /album/sydney-opera
+  type: city
+  description: 澳大利亚悉尼，歌剧院
+  cover: https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Canon EOS R
+  lens: 16-35mm f/2.8
+  shutter: 1/125s
+  iso: ISO 100
+  album_list:
+    - date: 2025/03/10 16:20:00
+      content: 悉尼歌剧院的标志性建筑
+      address: 澳大利亚悉尼，歌剧院
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+# 自然物语
+- class_name: 落基山脉
+  path_name: /album/rocky-mountains
+  type: nature
+  description: 加拿大班夫国家公园
+  cover: https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1557&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Canon EOS R5
+  lens: 24-70mm f/2.8
+  shutter: 1/125s
+  iso: ISO 100
+  album_list:
+    - date: 2025/01/20 16:30:00
+      content: 落基山脉的壮丽景色
+      address: 加拿大班夫国家公园
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1557&q=80
+
+- class_name: 森林晨雾
+  path_name: /album/forest-mist
+  type: nature
+  description: 日本京都，岚山竹林
+  cover: https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Sony A7III
+  lens: 16-35mm f/4
+  shutter: 1/30s
+  iso: ISO 400
+  album_list:
+    - date: 2025/02/15 07:00:00
+      content: 岚山竹林的晨雾缭绕
+      address: 日本京都，岚山竹林
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 极光之夜
+  path_name: /album/aurora-night
+  type: nature
+  description: 冰岛雷克雅未克
+  cover: https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Nikon Z7
+  lens: 14-24mm f/2.8
+  shutter: 15s
+  iso: ISO 3200
+  album_list:
+    - date: 2025/03/01 23:30:00
+      content: 冰岛极光的梦幻之夜
+      address: 冰岛雷克雅未克
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+# 人像故事
+- class_name: 街头艺人
+  path_name: /album/street-artist
+  type: portrait
+  description: 西班牙巴塞罗那
+  cover: https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1456&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Nikon Z6
+  lens: 85mm f/1.4
+  shutter: 1/160s
+  iso: ISO 200
+  album_list:
+    - date: 2025/01/25 14:00:00
+      content: 巴塞罗那街头的音乐表演者
+      address: 西班牙巴塞罗那
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1456&q=80
+
+- class_name: 老人微笑
+  path_name: /album/old-man-smile
+  type: portrait
+  description: 意大利威尼斯
+  cover: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Canon EOS R6
+  lens: 50mm f/1.2
+  shutter: 1/200s
+  iso: ISO 100
+  album_list:
+    - date: 2025/02/20 11:30:00
+      content: 威尼斯老船夫温暖的笑容
+      address: 意大利威尼斯
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 儿童纯真
+  path_name: /album/child-innocence
+  type: portrait
+  description: 印度孟买
+  cover: https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Sony A7IV
+  lens: 35mm f/1.4
+  shutter: 1/125s
+  iso: ISO 200
+  album_list:
+    - date: 2025/03/15 16:45:00
+      content: 孟买街头儿童的纯真眼神
+      address: 印度孟买
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+# 静物微光
+- class_name: 咖啡时光
+  path_name: /album/coffee-time
+  type: still
+  description: 工作室拍摄
+  cover: https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Fujifilm X-T4
+  lens: 56mm f/1.2
+  shutter: 1/60s
+  iso: ISO 400
+  album_list:
+    - date: 2025/01/30 10:00:00
+      content: 清晨的咖啡时光
+      address: 工作室拍摄
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80
+
+- class_name: 花艺之美
+  path_name: /album/flower-art
+  type: still
+  description: 工作室拍摄
+  cover: https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Canon EOS R
+  lens: 100mm f/2.8 Macro
+  shutter: 1/100s
+  iso: ISO 100
+  album_list:
+    - date: 2025/02/25 14:30:00
+      content: 精致的花艺作品
+      address: 工作室拍摄
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+
+- class_name: 古董怀表
+  path_name: /album/vintage-watch
+  type: still
+  description: 工作室拍摄
+  cover: https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80
+  top_background: http://cdnjson.com/images/2025/04/10/_20250410193125.jpg
+  rowHeight: 220
+  limit: 10
+  lazyload: true
+  btnLazyload: false
+  url: false
+  top_link: /album
+  top_btn_text: 返回
+  camera: Nikon Z7
+  lens: 105mm f/2.8 Macro
+  shutter: 1/80s
+  iso: ISO 200
+  album_list:
+    - date: 2025/03/20 16:00:00
+      content: 精致的古董怀表
+      address: 工作室拍摄
+      from: 摄影师
+      image:
+        - https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80

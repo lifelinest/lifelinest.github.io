@@ -1,0 +1,129 @@
+/* 文章朗读功能样式 */
+.article-reader-btn-container {
+  margin-left: 10px;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.article-reader-btn {
+  padding: 3px 15px;
+  background-color: var(--anzhiyu-main);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  line-height: 1;
+  height: 22px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+}
+
+.article-reader-btn:hover {
+  background-color: var(--anzhiyu-main-op);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.article-reader-controls {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 100;
+  padding: 15px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  width: 250px;
+  margin-top: 10px;
+  border: 1px solid var(--anzhiyu-card-border);
+}
+
+.article-reader-controls h4 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--anzhiyu-fontcolor);
+}
+
+.article-reader-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--anzhiyu-fontcolor);
+}
+
+.article-reader-rate {
+  width: 100%;
+  accent-color: var(--anzhiyu-main);
+}
+
+.article-reader-voice {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid var(--anzhiyu-card-border);
+  border-radius: 4px;
+  background-color: var(--card-bg);
+  color: var(--anzhiyu-fontcolor);
+}
+
+.article-reader-play-pause,
+.article-reader-stop {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.article-reader-play-pause {
+  flex: 1;
+  background-color: var(--anzhiyu-main);
+  color: white;
+}
+
+.article-reader-play-pause:hover {
+  background-color: var(--anzhiyu-main-op);
+}
+
+.article-reader-stop {
+  background-color: #f44336;
+  color: white;
+}
+
+.article-reader-stop:hover {
+  background-color: #e53935;
+}
+
+/* 适配暗黑模式 */
+[data-theme="dark"] .article-reader-controls {
+  background-color: var(--card-bg);
+  border-color: var(--anzhiyu-card-border);
+}
+
+[data-theme="dark"] .article-reader-voice {
+  background-color: var(--card-bg);
+  color: var(--anzhiyu-fontcolor);
+  border-color: var(--anzhiyu-card-border);
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .article-reader-btn {
+    padding: 1px 8px;
+    font-size: 12px;
+  }
+  
+  .article-reader-controls {
+    width: 220px;
+  }
+}

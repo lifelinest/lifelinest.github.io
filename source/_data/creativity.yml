@@ -1,0 +1,62 @@
+- name: 技能展示
+  color: "#425AEF"
+  creativity_list:
+    - name: HTML
+      color: "#e34c26"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/html.svg'
+      background: "linear-gradient(to bottom right, #e34c26, #ff7e70)"
+      
+    - name: CSS
+      color: "#2965f1"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/css.svg'
+      background: "linear-gradient(to bottom right, #2965f1, #57abff)"
+      
+    - name: JavaScript
+      color: "#f0db4f"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/js.svg'
+      background: "linear-gradient(to bottom right, #f0db4f, #ffeb3b)"
+      
+    - name: Vue
+      color: "#41b883"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/vue.svg'
+      background: "linear-gradient(to bottom right, #41b883, #35495e)"
+      
+    - name: Docker
+      color: "#2496ED"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/docker.svg'
+      background: "linear-gradient(to bottom right, #2496ED, #1D70B8)"
+      
+    - name: Node.js
+      color: "#339933"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/node.svg'
+      background: "linear-gradient(to bottom right, #339933, #68a063)"
+      
+    - name: Python
+      color: "#3776ab"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/python.svg'
+      background: "linear-gradient(to bottom right, #3776ab, #ffd343)"
+      
+    - name: Java
+      color: "#007396"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/java.svg'
+      background: "linear-gradient(to bottom right, #007396, #5382A1)"
+      
+    - name: 设计
+      color: "#ff7c7c"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/ps.svg'
+      background: "linear-gradient(to bottom right, #ff7c7c, #ffb8b8)"
+      
+    - name: After Effects
+      color: "#7d669e"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/ae.svg'
+      background: "linear-gradient(to bottom right, #7d669e, #b292ea)"
+      
+    - name: Photoshop
+      color: "#00a8ff"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/ps.svg'
+      background: "linear-gradient(to bottom right, #00a8ff, #82ccff)"
+      
+    - name: Premiere
+      color: "#f857a6"
+      icon: 'https://npm.elemecdn.com/opicture@1.0.3/blog/creativity/pr.svg'
+      background: "linear-gradient(to bottom right, #f857a6, #ff5858)"
