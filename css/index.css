@@ -23116,9 +23116,12 @@ details .content > *:nth-child(1) {
 
 #console .aside-list-item .content .comment {
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   display: -webkit-box;
+  display: box;
   overflow: hidden;
   -webkit-box-orient: vertical;
+  box-orient: vertical;
   line-height: 24px;
   font-size: 14px;
   border-radius: 0px;
@@ -23226,6 +23229,8 @@ details .content > *:nth-child(1) {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  max-height: 80px;
+  overflow-y: auto;
 }
 
 #console .console-card.history .card-archive-list li.card-archive-list-item {
@@ -23267,8 +23272,15 @@ details .content > *:nth-child(1) {
 #console ul li {
   list-style: none;
 }
+#console .console-card.history .card-archives {
+  max-height: 80px;
+  overflow-y: auto;
+}
+
 #console .console-card.history ul.card-archive-list {
   margin: -4px;
+  max-height: 80px;
+  overflow-y: auto;
 }
 
 [data-theme="dark"] #console .button-group .console-btn-item a.darkmode_switchbutton {
@@ -23548,9 +23560,12 @@ body:has(#console.show) #nav-music .aplayer .aplayer-lrc .aplayer-lrc-contents {
     max-width: 55%;
     width: auto;
     display: -webkit-box;
+    display: box;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
     overflow: hidden;
     -webkit-box-orient: vertical;
+    box-orient: vertical;
   }
   body:has(#console.show) ol > li span.aplayer-list-author {
     position: absolute;
@@ -23558,9 +23573,12 @@ body:has(#console.show) #nav-music .aplayer .aplayer-lrc .aplayer-lrc-contents {
     width: auto;
     max-width: 35%;
     display: -webkit-box;
+    display: box;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
     overflow: hidden;
     -webkit-box-orient: vertical;
+    box-orient: vertical;
   }
   body:has(#console.show) ol > li.aplayer-list-light span.aplayer-list-author {
     right: 15px;
