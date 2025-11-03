@@ -64,3 +64,76 @@ function observeFooterTypeTips() {
 
 // 页面加载完成后开始观察
 document.addEventListener('DOMContentLoaded', observeFooterTypeTips); 
+
+// 那年今日功能
+document.addEventListener('DOMContentLoaded', function () {
+ async function cardHistory() {
+     const historyContainer = document.getElementById('history-container');
+     if (!historyContainer) return;
+
+     const data = await fetchHistoryData();
+     const html = data.map(item => `
+         <div class="swiper-slide history_slide">
+             <span class="history_slide_time">A.D.${item.year}</span>
+             <span class="history_slide_link">${item.title}</span>
+         </div>
+     `).join('');
+
+     const swiperContainer = document.querySelector('.history_swiper-container');
+     document.getElementById('history_container_wrapper').innerHTML = html;
+
+     const swiperHistory = new Swiper(swiperContainer, {
+         loop: true,
+         direction: 'vertical',
+         autoplay: {disableOnInteraction: true, delay: 5000},
+         mousewheel: false,
+     });
+
+     historyContainer.onmouseenter = () => swiperHistory.autoplay.stop();
+     historyContainer.onmouseleave = () => swiperHistory.autoplay.start();
+ }
+
+ cardHistory();
+ document.addEventListener('pjax:complete', cardHistory);
+
+ async function fetchHistoryData() {
+     const myDate = new Date();
+     const month = `${myDate.getMonth() + 1}`.padStart(2, '0');
+     const day = `${myDate.getDate()}`.padStart(2, '0');
+     const formattedDate = `${month}${day}`;
+     const historyDataUrl = "https://api.nsmao.net/api/history/query?key=demo_key"; // 由于API需要key，这里使用demo_key作为示例
+
+     try {
+         const response = await fetch(historyDataUrl);
+         const result = await response.json();
+
+         if (result.code === 200) {
+             const data = result.data;
+             const formattedData = Object.entries(data).map(([year, event]) => ({
+                 year: year.replace(/年$/, ''),
+                 title: event
+             }));
+             return formattedData;
+         } else {
+             console.error('Error fetching history data:', result.msg);
+             // 返回模拟数据，避免因为API调用失败导致显示空白
+             return [
+                 { year: '1924', title: '孙中山在广州成立大元帅府' },
+                 { year: '1949', title: '中国人民解放军解放南京' },
+                 { year: '1970', title: '中国发射第一颗人造地球卫星' }
+             ];
+         }
+     } catch (error) {
+         console.error('Fetch error:', error);
+         // 返回模拟数据，避免因为API调用失败导致显示空白
+         return [
+             { year: '1924', title: '孙中山在广州成立大元帅府' },
+             { year: '1949', title: '中国人民解放军解放南京' },
+             { year: '1970', title: '中国发射第一颗人造地球卫星' }
+         ];
+     }
+ }
+
+ cardHistory();
+ document.addEventListener('pjax:complete', cardHistory);
+});

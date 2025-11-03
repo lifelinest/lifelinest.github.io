@@ -1,0 +1,36 @@
+/* 字体css */
+@font-face{
+  font-family: 'HuangkaihuaLawyerFont';
+  font-display: swap;
+  src: url('/ttf/huangkaihuaLawyerfont-2.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 应用到所有文本元素，提高优先级 */
+* {
+  font-family: 'HuangkaihuaLawyerFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* 确保body和主要内容区域使用自定义字体 */
+body,
+html,
+h1,h2,h3,h4,h5,h6,
+p,
+a,
+span,
+li,
+div,
+article,
+section,
+main,
+header,
+footer,
+nav {
+  font-family: 'HuangkaihuaLawyerFont', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* 保留代码字体样式，但增加自定义字体作为备选 */
+pre, code {
+  font-family: consolas, Menlo, 'HuangkaihuaLawyerFont', monospace !important;
+}

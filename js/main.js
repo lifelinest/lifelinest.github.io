@@ -494,8 +494,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let lastScrollTop = 0;
 
     if (document.body.scrollHeight <= innerHeight) {
-      $rightside.style.cssText = "opacity: 1; transform: translateX(-58px)";
-    }
+        $rightside.style.cssText = "opacity: 1; transform: translateX(-48px)";
+      }
 
     // find the scroll direction
     function scrollDirection(currentTop) {
@@ -623,8 +623,8 @@ document.addEventListener("DOMContentLoaded", function () {
           $header.classList.add("nav-fixed");
         });
         if (window.getComputedStyle($rightside).getPropertyValue("opacity") === "0") {
-          $rightside.style.cssText = "opacity: 0.8; transform: translateX(-58px)";
-        }
+            $rightside.style.cssText = "opacity: 0.8; transform: translateX(-48px)";
+          }
       } else {
         if (currentTop <= 5) {
           requestAnimationFrame(() => {
@@ -638,8 +638,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (document.body.scrollHeight <= innerHeight) {
-        $rightside.style.cssText = "opacity: 0.8; transform: translateX(-58px)";
-      }
+          $rightside.style.cssText = "opacity: 0.8; transform: translateX(-48px)";
+        }
 
       percentageScrollFn(currentTop);
     }, 96);

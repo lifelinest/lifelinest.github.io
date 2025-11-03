@@ -4292,7 +4292,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: HuangkaihuaLawyerFont;
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -4440,7 +4440,7 @@ a:hover {
 #site-name,
 #aside-content .author-info__name,
 #aside-content .author-info__description {
-  font-family: PingFang SC, 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei', sans-serif;
+  font-family: HuangkaihuaLawyerFont;
 }
 .is-center {
   text-align: center;
@@ -5067,7 +5067,7 @@ figure.highlight pre .javascript .function {
   height: 100%;
   vertical-align: top;
   text-align: center;
-  font-family: PingFang SC, 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei', sans-serif;
+  font-family: HuangkaihuaLawyerFont;
 }
 @media screen and (max-width: 768px) {
   .error404 #error-wrap .error-content .error-info {
@@ -9680,27 +9680,111 @@ body:has(#console.show) #nav-music {
   position: relative;
   border-radius: 4px;
 }
+.reward .reward-buttons-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+@media screen and (max-width: 768px) {
+  .reward .reward-buttons-container {
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -o-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+.reward #reward-admin-btn {
+  width: 157px;
+  height: 50px;
+  background-color: #f25d8e;
+  -webkit-box-shadow: 0 4px 4px rgba(255,112,159,0.3);
+  box-shadow: 0 4px 4px rgba(255,112,159,0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .reward #reward-admin-btn {
+    width: 125px;
+  }
+}
+.reward #reward-admin-btn:hover {
+  background-color: #ff6b9a;
+}
+.reward #admin-text-con {
+  width: 100px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.reward #admin-TA {
+  line-height: 50px;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+#reward-admin-btn:hover .reward #admin-TA {
+  color: #fff;
+}
+#reward-admin-btn:active .reward #admin-TA {
+  color: #fff;
+}
+#reward-admin-btn:disabled .reward #admin-TA {
+  color: #fff;
+}
 .reward #TA-con {
   width: 157px;
   height: 50px;
   background-color: #f25d8e;
   -webkit-box-shadow: 0 4px 4px rgba(255,112,159,0.3);
   box-shadow: 0 4px 4px rgba(255,112,159,0.3);
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   border-radius: 4px;
   cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .reward #TA-con {
     width: 125px;
-    left: 54px;
   }
 }
 .reward #TA-con:hover {
@@ -9754,6 +9838,7 @@ body:has(#console.show) #nav-music {
   color: #fff;
 }
 .reward #tube-con {
+  display: none !important;
   width: 157px;
   height: 55px;
   position: absolute;
@@ -9761,10 +9846,12 @@ body:has(#console.show) #nav-music {
   top: 15px;
 }
 .reward svg {
+  display: none !important;
   width: 100%;
   height: 100%;
 }
 .reward #mask {
+  display: none !important;
   width: 0px;
   height: 100%;
   overflow: hidden;
@@ -9778,6 +9865,7 @@ body:has(#console.show) #nav-music {
   transition: all 0.5s;
 }
 .reward #mask svg {
+  display: none !important;
   width: 157px;
   height: 55px;
 }
@@ -10020,7 +10108,7 @@ body:has(#console.show) #nav-music {
   color: var(--anzhiyu-lighttext);
 }
 #tag #tag-page-tags a {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: HuangkaihuaLawyerFont;
   font-size: 0.9em;
 }
 #tag #tag-page-tags a:hover {
@@ -10039,7 +10127,7 @@ span.categoryes-punctuation .icon-biaoqian {
   font-size: 13px;
 }
 .tagsPageCount {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: HuangkaihuaLawyerFont;
 }
 [data-theme="light"] #post .tag_share .post-meta__box__tags span.tagsPageCount {
   background-color: transparent;
@@ -10332,7 +10420,7 @@ h1.page-title + .tag-cloud-list {
   padding: 0.5rem;
   text-align: center;
   font-size: 14px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: HuangkaihuaLawyerFont;
 }
 @media screen and (max-width: 768px) {
   #error-wrap .error-content .error-info {
@@ -16870,6 +16958,7 @@ blockquote {
   -o-transition: all 0.5s;
   -ms-transition: all 0.5s;
   transition: all 0.5s;
+/* 确保所有右侧边栏按钮和链接具有统一宽度 */
 }
 @media screen and (max-width: 768px) {
   #rightside #switch-commentBarrage {
@@ -16912,22 +17001,78 @@ blockquote {
   -ms-filter: none;
   filter: none;
 }
-#rightside > div > button,
-#rightside > div > a {
-  display: block;
+#rightside #rightside-config-show > button,
+#rightside #rightside-config-hide > button,
+#rightside #rightside-config-show > a,
+#rightside #rightside-config-hide > a {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
   margin-bottom: 5px;
   width: 35px;
   height: 35px;
   border-radius: 5px;
   background-color: var(--btn-bg);
   color: var(--btn-color);
-  text-align: center;
   font-size: 16px;
-  line-height: 35px;
+  line-height: 1;
+/* 确保没有额外的内边距影响宽度 */
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+/* 移除默认按钮样式 */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
 }
-#rightside > div > button:hover,
-#rightside > div > a:hover {
+#rightside #rightside-config-show > button:hover,
+#rightside #rightside-config-hide > button:hover,
+#rightside #rightside-config-show > a:hover,
+#rightside #rightside-config-hide > a:hover {
   background-color: var(--btn-hover-color);
+}
+#rightside #rightside-config-show > button i.anzhiyufont,
+#rightside #rightside-config-hide > button i.anzhiyufont,
+#rightside #rightside-config-show > a i.anzhiyufont,
+#rightside #rightside-config-hide > a i.anzhiyufont {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+/* 确保图标居中且大小一致 */
+  font-size: 16px !important;
 }
 #rightside #mobile-toc-button {
   display: none;

@@ -1,3 +1,192 @@
+/* ===== 滚动选择器样式 - 左右布局单项目滚动版 ===== */
+
+/* 位置选择器容器 - 显示相邻项目预览的滚动设计 */
+.scroll-selector {
+  position: relative;
+  height: 60px; /* 减小高度但仍保留预览功能 */
+  overflow-y: auto; /* 允许滚动但隐藏滚动条 */
+  -webkit-overflow-scrolling: touch;
+  background: var(--anzhiyu-background);
+  min-height: 60px;
+  border-radius: 4px;
+  /* 添加渐变阴影效果 */
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+/* 隐藏滚动条，实现平滑滚动效果 */
+.scroll-selector::-webkit-scrollbar {
+  display: none;
+}
+
+/* 选择器内容容器 - 启用平滑滚动和滚动捕捉 */
+.scroll-selector {
+  scroll-snap-type: y mandatory;
+  -webkit-scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
+}
+
+/* 选择项样式 - 显示相邻项目预览的设计 */
+.scroll-select-item {
+  padding: 0 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 40px; /* 保持行高以实现垂直居中 */
+  height: 40px; /* 固定高度 */
+  width: 100%;
+  scroll-snap-align: center; /* 使项目在容器中居中对齐 */
+  -webkit-scroll-snap-align: center;
+  /* 确保项目在中间位置 */
+  position: relative;
+}
+
+/* 选择项悬停效果 - 平滑过渡 */
+.scroll-select-item:hover {
+  background: var(--anzhiyu-card-bg);
+  padding-left: 18px;
+  padding-right: 14px;
+}
+
+/* 选中项样式 - 明确视觉反馈 */
+.scroll-select-item.selected {
+  background: var(--anzhiyu-card-bg);
+  border-left-color: var(--anzhiyu-main);
+  color: var(--anzhiyu-main);
+  font-weight: 500;
+}
+
+/* 选中项指示 - 简洁清晰 */
+.scroll-select-item.selected::after {
+  content: '✓';
+  position: absolute;
+  right: 16px;
+  font-size: 14px;
+  opacity: 1;
+}
+
+/* 选择器行 - 左右布局设计 */
+.selector-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px; /* 进一步减小底部间距至最小可行值 */
+  background: var(--anzhiyu-background);
+  border-radius: 6px;
+  border: 1px solid var(--anzhiyu-border);
+  overflow: hidden;
+}
+
+/* 标题文本样式 - 左侧固定宽度 */
+.selector-title {
+  flex-shrink: 0;
+  width: 80px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--anzhiyu-font-color);
+  background: var(--anzhiyu-card-bg);
+  height: 40px;
+  line-height: 40px;
+  text-align: right;
+  border-right: 1px solid var(--anzhiyu-border);
+}
+
+/* 选择器容器 - 右侧填充剩余空间 */
+.selector-content {
+  flex-grow: 1;
+  position: relative;
+  /* 允许内容滚动 */
+}
+
+/* 滚动选择器控制按钮 - 居中布局设计 */
+.scroll-select-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px; /* 进一步减小顶部间距至最小可行值 */
+  padding: 2px 0; /* 进一步减小内边距至最小可行值 */
+}
+
+.scroll-select-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.scroll-select-btn.cancel {
+  background: var(--anzhiyu-background);
+  color: var(--anzhiyu-font-color);
+  border: 1px solid var(--anzhiyu-border);
+}
+
+.scroll-select-btn.cancel:hover {
+  background: var(--anzhiyu-gray-bg);
+}
+
+.scroll-select-btn.save {
+  background: var(--anzhiyu-main);
+  color: white;
+}
+
+.scroll-select-btn.save:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.scroll-select-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 省市区联动容器 - 垂直堆叠布局 */
+.province-city-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 4px 0; /* 减小整体容器的内边距 */
+}
+
+/* 移除原有的包装器样式，使用新的左右布局结构 */
+.province-selector-wrapper,
+.city-selector-wrapper {
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  /* 确保内部滚动容器正常工作 */
+  position: relative;
+}
+
+/* 触摸反馈 */
+@media (hover: none) and (pointer: coarse) {
+  .scroll-select-item:active {
+    background: var(--anzhiyu-card-bg);
+    transform: scale(0.98);
+  }
+  
+  .scroll-select-btn:active {
+    transform: scale(0.96);
+  }
+}
+
 /* ===== FOOTER 布局修复 ===== */
 
 /* 1. 基础布局 - 确保footer-bar整体结构 */
@@ -157,4 +346,46 @@
 
 #aside-content .card-announcement#welcome-card .announcement_content a:hover {
     text-decoration: underline;
+}
+
+/* 那年今日样式 */
+#aside-content .card-history .swiper-wrapper {
+    flex-direction: column
+}
+
+#aside-content .card-history .item-headline {
+    margin-left: 0;
+}
+
+#aside-content .card-history .history_slide {
+    text-align: left;
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+#aside-content .card-history .history_slide_time {
+    color: var(--efu-secondtext);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: lighter
+}
+
+#aside-content .card-history .history_slide_link {
+    line-height: 1.5;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical
+}
+
+#aside-content .card-history .history_slide_link a {
+    color: var(--efu-main);
+    padding: 0 4px;
+    border-radius: 4px
+}
+
+#aside-content .card-history .history_slide_link a:hover {
+    color: var(--efu-white);
+    background: var(--efu-main)
 }
