@@ -1,0 +1,748 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>如何实现更好的排版效果？ | Lifeline</title><meta name="keywords" content="免费工具,博客搭建,办公技巧"><meta name="author" content="Lifeline"><meta name="copyright" content="Lifeline"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="如何实现更好的排版效果？"><meta name="application-name" content="如何实现更好的排版效果？"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="如何实现更好的排版效果？"><meta property="og:url" content="https://lifelinest.github.io/posts/b9342cef/index.html"><meta property="og:site_name" content="Lifeline"><meta property="og:description" content="一、引言 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做独立站时总被排版卡壳：“首图咋放右上角还让文字绕着走？”我当初推工业阀门文章时，就因排版粗糙丢过潜在客户——专业感全被乱码似的布局磨没了。 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;现在有AI工具兜底就省心多了，像中国制造网的AI麦可"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://lifelinest.github.io/images/%E5%B0%81%E9%9D%A2/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88.png"><meta property="article:author" content="Lifeline"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://lifelinest.github.io/images/%E5%B0%81%E9%9D%A2/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88.png"><meta name="description" content="一、引言 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做独立站时总被排版卡壳：“首图咋放右上角还让文字绕着走？”我当初推工业阀门文章时，就因排版粗糙丢过潜在客户——专业感全被乱码似的布局磨没了。 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;现在有AI工具兜底就省心多了，像中国制造网的AI麦可"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://lifelinest.github.io/posts/b9342cef/"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="codeva-dmPP1sPmLD"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/assets/font-awesome-animation.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/privacy.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"lhvAVTHquc9","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: {"apiurl":null},
+  navMusic: true,
+  mainTone: {"mode":"api","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: Lifeline","link":"链接: ","source":"来源: Lifeline","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Lifeline',
+  title: '如何实现更好的排版效果？',
+  postAI: '',
+  pageFillDescription: '一、引言, 二、价值与场景：为何首图排版要下功夫？, 三、效果预览：优化后到底长啥样？, 四、实战操作：从基础到多平台适配（附避坑指南）, Step 1：用HTML代码固定图片位置（核心一步）, Step 2：加CSS实现自适应（桌面+移动端都好看）, Step 3：多平台适配（Shopifyx2F中国制造网专属方案）, 五、AI提效：让智能工具帮你省80%时间, 首图内容优化：按产品类型对号入座, 核心技巧：用AI抄作业优质排版, 六、批量操作：让AI写手直接生成带排版的文章, 优化后的GPT指令（直接复制使用）, 七、避坑与评估：让排版效果可落地、可验证, 实操故障解决指南, 效果评估：用数据验证排版价值, 无代码方案：纯新手也能玩的插件, 八、结语, 工具简化方案：无代码插件推荐一引言做独立站时总被排版卡壳首图咋放右上角还让文字绕着走我当初推工业阀门文章时就因排版粗糙丢过潜在客户专业感全被乱码似的布局磨没了现在有工具兜底就省心多了像中国制造网的麦可自带排版功能我结合实操经验磨出这套方案零代码基础也能一步到位今天全部分享给大家二价值与场景为何首图排版要下功夫外贸内容的首图排版从来不是好不好看的审美题而是能不能留客的转化题右上对齐文字环绕的核心价值全踩在客户决策的关键点上锚定专业信任整洁排版让客户第一眼就觉得这家企业懂行合作的信任基础往往从这类细节开始建立降低阅读门槛右上角图片抓眼球又不压正文避免传统大图顶头让客户划走的尴尬自然引导读完全文适配产品属性机械建材等产品需要场景支撑文字绕图能让产品图卖点无缝衔接比纯文字更有说服力跨平台不踩坑从到一套逻辑适配多数外贸工具不用反复学新方法我做过组对照试验同篇光伏支架推广文右上绕排版本客户停留时长涨转发率提而大图置顶版跳失率飙到细节差异直接拉开转化差距三效果预览优化后到底长啥样优化后的开篇排版桌面端和移动端各有侧重但都逃不开三个核心优势兼顾吸睛与流畅正文左排不割裂句子读起来不绕客户快速核心信息右上图片呈方形产品主体比如机械部件建材样品突出不抢文字风头文字自动绕开图片没有大片空白或挤压变形图文像嵌在一起似的自然比起图片在上文字在下的老套路这种排版把产品展示和价值说明绑在一起尤其适合机械五金等需要视觉佐证的外贸品类四实战操作从基础到多平台适配附避坑指南核心操作以为基准这是咱们外贸人用得最多的组合全程不用写一行代码跟着步骤点就行后面还补了中国制造网的适配技巧覆盖外贸场景用代码固定图片位置核心一步这步是实现右上对齐的基础本质是用简单代码替换默认插入方式步搞定记不住就存成文档模板复制基础代码直接抄下面的代码块连带尖括号一起复制别漏任何字符巴拉巴拉小魔仙替换占位符在编辑器里找到首图的默认代码行一般是图片描述双击选中整行切勿只选部分把上面的代码粘贴进去覆盖操作示意图换自己的图片链接先在里通过添加媒体上传首图上传后点复制链接再把代码里换成这个专属链接获取方式示意图写好文本关键步把巴拉巴拉小魔仙换成生成的精准描述必须带产品关键词比如推广不锈钢阀门就写不锈钢法兰阀门工业级耐腐蚀或麦可都能生成避坑提醒粘贴后编辑器预览里图片可能还是乱的正常这是预览窗口的发布或点文章预览才能看到真实效果别慌着改代码加实现自适应桌面移动端都好看海外客户一半用电脑一半用手机这步就是让图片智能变形桌面端是方形移动端全屏显示步完成适配进设置界面后台点外观自定义找到额外选项一般在左侧菜单栏最下面操作路径示意图粘贴自适应代码把下面的代码完整粘贴到额外输入框点发布保存代码里的注释不用删方便后续修改固定宽度不挤文字强制正方形比例裁掉多余部分保产品主体轻微圆角不生硬移动端屏幕全屏适配占满屏幕宽度不拉伸变形恢复原图比例保存后立刻见效电脑上看是的规整方形手机上点开就是全屏清晰图客户不管用啥设备都不影响体验多平台适配中国制造网专属方案不用重复写代码核心逻辑不变改改操作入口就行三个高频平台的适配方法直接抄独立站编辑器插图后右侧勾右对齐再把的代码粘到在线商店编辑代码末尾不用加属性中国制造网直接用麦可的智能排版传图后选右上环绕模板系统自动生成代码最后在高级设置里把产品关键词填进文本框就行秒搞定插图后右键编辑代码用的代码替换原标签代码粘到设置网站页面模板自定义里五提效让智能工具帮你省时间是来当助手的用对技巧排版效率翻倍另外提醒首图内容比排版更重要也能帮着优化图片本身首图内容优化按产品类型对号入座排版是架子图片内容是肉不同外贸产品的首图重点不一样我整理了适配表直接对应着做就行产品类型首图内容要点优化工具推荐工业机械设备产品占图突出核心部件如机床工作台阀门接口背景用浅灰或工厂实景角落加认证不挡主体画工业场景清背景消费品家居用品场景化拍摄如帐篷配露营地餐具配餐桌拍细节面料纹理五金扣加清晰尺寸标注可画外贸模板合成场景原材料化工品白底拍标规格如颗粒熔指配检测报告截图箭头标特性高韧性写标注截图标注核心技巧用抄作业优质排版看到同行的排版好不用自己瞎琢磨步让帮你拆解复刻举个实例我曾复制国外模具站的图片代码不仅讲清了是强制正方形是裁切优化还直接生成了适配我客户编辑器的代码省了小时钻研时间右键点目标图片选检查复制图片对应的完整代码别漏任何标签把代码发给提问分析这段代码实现右上对齐方形显示的核心属性解释每个关键参数作用补需求帮我改成适配的版本只在桌面端生效移动端自动全屏提问记录示意图提问别含糊越具体越省时间我把高频模板整理好了替换括号内容直接用场景发外贸水泵推广文需求首图右上对齐文字环绕桌面端正方形移动端自适应裁切保水泵主体请改下面的原始代码确保粘贴即用六批量操作让写手直接生成带排版的文章优化后的指令直接复制使用深耕外贸的博客代笔以外贸经理口吻写文贴合海外客户阅读习惯内容务实短句为主用格式我输入主标题二级标题见解后按以下规则输出主标题以问号结尾例如何提升外贸邮件回复率文章开头必须插以下首图代码禁用图格式图片描述开篇结构第一段策略痛点焦虑方案第一人称字第二段加粗直接答标题问题字冲谷歌精选摘要第三段承上启下引下文二级标题按我给的来均以问号结尾二级标题下结构第一段策略第一人称字第二段加粗答核心问题字图片占位符格式链接固定为含关键词延展段字加和表格结合外贸案例结尾加二级标题总结字年外贸运营经验专注工业机械产品推广服务过外贸企业总字数词延展段字仅加粗段用第一人称其余第三人称补外贸实操案例风格简洁高中英语水平能懂无生僻词和长句仅首图用上述其余图用指定链接含个表格文章默认输出英语纯无解释自检首图格式若为立即修正并提示关键提醒严格按规则来不缺首图代码和表格确保复制能直接粘用批量发品时手动改代码太费时间直接给写手加排版指令让它生成文章时自带代码你只需要换图片链接这才是高效玩法七避坑与评估让排版效果可落地可验证实操故障解决指南实操时踩坑很正常我把外贸人常犯的个错和解决办法列出来配合秒搞定问题文字绕不开图片独占一行先查代码有没有没有就加上若有还是乱直接把页面代码丢给指令明确标注排查属性冲突问题移动端图片变形看里移动端配置有没有没有就加还变形就补限制图片最大宽度问题图片加载慢用压缩压缩不影响清晰度再在标签里加实现懒加载海外客户打开速度能快一倍效果评估用数据验证排版价值别凭感觉判断好不好用用数据说话结合和网站后台盯好这个指标评估指标目标值数据获取方式首屏加载时间秒文章停留时长分钟行为站点内容图片点击量占文章点击网站后台图片统计跳失率受众概览无代码方案纯新手也能玩的插件八结语外贸的排版本质是用细节传递专业花分钟学好这套方法让每篇文章都成为获客伏笔客户自然愿意多停留多咨询工具简化方案无代码插件推荐完全不想碰代码这个插件一键搞定批量排版特别香插件装完在图片编辑栏直接选右上环绕方形裁切支持批量应用到多篇文章浏览器插件看别人博客时右键图片直接生成适配的代码复制就能用工具插件输入给我的外贸水泵博客生成首图右上环绕代码产品链接直接出个性化代码建议先拿最近篇文章练手根据数据调参数形成自己的专属模板',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-28 21:34:03',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="/js/update.js"></script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/calendar-card.css"><link rel="stylesheet" href="/css/progress-fix.css"><link rel="stylesheet" href="/css/zhihu.css"><link rel="stylesheet" href="/css/article-reading.css"><link rel="stylesheet" href="/css/home.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"><script src="https://open.lightxi.com/unpkg/chinese-lunar@0.1.4/lib/chinese-lunar.js"></script><link rel="stylesheet" type="text/css" href="/css/heoMainColor.css"><link rel="stylesheet" type="text/css" href="/css/poem.css"><link rel="stylesheet" href="/css/font.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/update.css"><link rel="stylesheet" href="/css/privacy.css"><script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" type="text/css" href="/css/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><div class="loading-image-dot"></div><div class="spinner-box"></div><div id="loadingtxt"><ul id="con1"><li class="li-style">阐述清楚问题就解决了一半</li><li class="li-style">一致的体验是更好的体验</li><li class="li-style">创造允许犯错，设计要知道保留哪些</li><li class="li-style">想让用户爱上你的设计，先爱上你的用户</li><li class="li-style">好的设计是我们与竞争对手保持差距最重要的方式</li><li class="li-style">如果你觉得好的设计是昂贵的，你应该看看坏设计的成本</li><li class="li-style">像其他设计一样，视觉设计也是解决问题，不是个人喜好</li><li class="li-style">因为每个人都知道自己喜欢什么，所以每个人都觉得自己是用户界面专家</li><li class="li-style">易用性也许不可见，但却不可缺席</li><li class="li-style">如果我有1000个想法，即使最终只有一个实现了，我也会非常满意</li><li class="li-style">如果你发现你界面中某个元素需要说明，你需要重新设计</li><li class="li-style">简化意味着去掉不必要的元素，让必要元素凸显</li><li class="li-style">天才就是将复杂问题简单化的人</li><li class="li-style">不用盯着空白太久，勇敢的跨出第一步，其他的自然而然就会发生</li><li class="li-style">有些人认为设计就是看起来长什么样。 但是如果你深入挖掘就会发现设计更关乎如何运作</li></ul><ul id="con2"></ul></div><script type="text/javascript">var area = document.getElementById('loadingtxt');
+var con1 = document.getElementById('con1');
+var con2 = document.getElementById('con2');
+var mytimer1 = null;
+var mytimer = null;
+var time = 1000 / 60;
+con2.innerHTML = con1.innerHTML;
+function scrollUp () {
+if (area.scrollTop >= con1.offsetHeight) {
+area.scrollTop = 0;
+} else {
+if (area.scrollTop % 25 == 0) {
+clearInterval(mytimer);
+clearInterval(mytimer1);
+mytimer1 = setTimeout(function () {
+mytimer = setInterval(scrollUp, time);
+}, 1000);
+}
+area.scrollTop++;
+}
+}
+mytimer = setInterval(scrollUp, time);</script></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">工具</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/empty" title="kimi"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg" alt="kimi"><span class="back-menu-item-text">kimi</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://pan.baidu.com/" title="百度网盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png" alt="百度网盘"><span class="back-menu-item-text">百度网盘</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">娱乐</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.163.com/?from=itab" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg" alt="网易云音乐"><span class="back-menu-item-text">网易云音乐</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="哔哩哔哩"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg" alt="哔哩哔哩"><span class="back-menu-item-text">哔哩哔哩</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.zhihu.com/" title="知乎"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=1821089500,4276043120&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=415&amp;h=312" alt="知乎"><span class="back-menu-item-text">知乎</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.skypixel.com/" title="天空之城"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=11010786,400614760&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" alt="天空之城"><span class="back-menu-item-text">天空之城</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Lifeline</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-comments faa-tada" style="font-size: 0.9em;"></i><span> 聊天室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/FootprintMap/"><i class="anzhiyufont anzhiyu-icon-location-dot faa-tada" style="font-size: 0.9em;"></i><span> 足迹地图</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/equipment/"><span> 我的装备</span></a></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://thumbnail0.baidupcs.com/thumbnail/f43e05cf8ofa2a03ebbf27c2897255f8?fid=3941818526-250528-866601796230841&amp;time=1762340400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-jEgAJtpLcmbX4iRxkSTXMNizNVA%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=245144769539721350&amp;dp-callid=0&amp;file_type=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://thumbnail0.baidupcs.com/thumbnail/f43e05cf8ofa2a03ebbf27c2897255f8?fid=3941818526-250528-866601796230841&amp;time=1762340400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-jEgAJtpLcmbX4iRxkSTXMNizNVA%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=245144769539721350&amp;dp-callid=0&amp;file_type=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://thumbnail0.baidupcs.com/thumbnail/936b1d5cdn9f9535a51e81f98d0bd1db?fid=3941818526-250528-1077566226278329&amp;time=1762340400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-KBQqR9iGCtu3HzTB5BpNRwzzxQQ%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=245166653620654864&amp;dp-callid=0&amp;file_type=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://thumbnail0.baidupcs.com/thumbnail/936b1d5cdn9f9535a51e81f98d0bd1db?fid=3941818526-250528-1077566226278329&amp;time=1762340400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-KBQqR9iGCtu3HzTB5BpNRwzzxQQ%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=245166653620654864&amp;dp-callid=0&amp;file_type=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/%E4%BA%BA%E6%96%87%E8%A7%82%E5%AF%9F/" style="font-size: 1.05rem;">人文观察<sup>3</sup></a><a href="/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/" style="font-size: 1.05rem;">人生思考<sup>3</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E4%BA%AB/" style="font-size: 1.05rem;">代码分享<sup>4</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E8%A7%82%E5%88%86%E4%BA%AB/" style="font-size: 1.05rem;">价值观分享<sup>3</sup></a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">免费工具<sup>38</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">前端开发<sup>5</sup></a><a href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/" style="font-size: 1.05rem;">办公技巧<sup>17</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 1.05rem;">博客搭建<sup>9</sup></a><a href="/tags/%E5%9F%8E%E5%B8%82%E6%BC%AB%E6%B8%B8/" style="font-size: 1.05rem;">城市漫游<sup>1</sup></a><a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 1.05rem;">娱乐<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>1</sup></a><a href="/tags/%E5%AE%A0%E7%89%A9%E6%97%A5%E5%B8%B8/" style="font-size: 1.05rem;">宠物日常<sup>1</sup></a><a href="/tags/%E5%B0%8F%E4%BC%97%E7%9B%AE%E7%9A%84%E5%9C%B0/" style="font-size: 1.05rem;">小众目的地<sup>2</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">工具教程<sup>26</sup></a><a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 1.05rem;">开源项目<sup>5</sup></a><a href="/tags/%E6%80%80%E6%97%A7%E5%9B%9E%E5%BF%86/" style="font-size: 1.05rem;">怀旧回忆<sup>2</sup></a><a href="/tags/%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F/" style="font-size: 1.05rem;">思维方式<sup>2</sup></a><a href="/tags/%E6%89%8B%E5%B7%A5-DIY/" style="font-size: 1.05rem;">手工 DIY<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" style="font-size: 1.05rem;">技术踩坑<sup>21</sup></a><a href="/tags/%E6%91%84%E5%BD%B1%E8%AE%B0%E5%BD%95/" style="font-size: 1.05rem;">摄影记录<sup>3</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87/" style="font-size: 1.05rem;">效率提升<sup>5</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E8%BD%AF%E4%BB%B6/" style="font-size: 1.05rem;">效率软件<sup>34</sup></a><a href="/tags/%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1/" style="font-size: 1.05rem;">旅行摄影<sup>2</sup></a><a href="/tags/%E6%9C%AA%E6%9D%A5%E8%A7%84%E5%88%92/" style="font-size: 1.05rem;">未来规划<sup>1</sup></a><a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/" style="font-size: 1.05rem;">浏览器插件<sup>3</sup></a><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BF%83%E5%BE%97/" style="font-size: 1.05rem;">游戏心得<sup>2</sup></a><a href="/tags/%E7%83%AD%E7%82%B9%E8%AF%84%E8%AE%BA/" style="font-size: 1.05rem;">热点评论<sup>2</sup></a><a href="/tags/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/" style="font-size: 1.05rem;">电脑软件<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" style="font-size: 1.05rem;">知识总结<sup>10</sup></a><a href="/tags/%E7%9F%AD%E9%80%94%E6%97%85%E8%A1%8C/" style="font-size: 1.05rem;">短途旅行<sup>1</sup></a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">编程学习<sup>3</sup></a><a href="/tags/%E7%BE%8E%E9%A3%9F%E5%88%B6%E4%BD%9C/" style="font-size: 1.05rem;">美食制作<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%8A%80%E8%83%BD/" style="font-size: 1.05rem;">职场技能<sup>5</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/" style="font-size: 1.05rem;">行业观察<sup>11</sup></a><a href="/tags/%E8%A7%82%E7%82%B9%E8%BE%93%E5%87%BA/" style="font-size: 1.05rem;">观点输出<sup>9</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/" style="font-size: 1.05rem;">认知升级<sup>5</sup></a><a href="/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/" style="font-size: 1.05rem;">资源分享<sup>23</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/" style="font-size: 1.05rem;">软件测评<sup>14</sup></a><a href="/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" style="font-size: 1.05rem;">避坑指南<sup>1</sup></a></div></div><hr></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><span class="card-archive-list-count">19</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">19</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><span class="card-archive-list-count">2</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><span class="card-archive-list-count">10</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><span class="card-archive-list-count">6</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><span class="card-archive-list-count">7</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><span class="card-archive-list-count">1</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><span class="card-archive-list-count">16</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><span class="card-archive-list-count">22</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li></ul></div><hr></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/" itemprop="url">工具分享</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>免费工具</span></a><a class="article-meta__tags" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>博客搭建</span></a><a class="article-meta__tags" href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>办公技巧</span></a></span></div></div><h1 class="post-title" itemprop="name headline">如何实现更好的排版效果？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-26T12:46:41.000Z" title="发表于 2025-11-26 20:46:41">2025-11-26</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-28T13:34:03.394Z" title="更新于 2025-11-28 21:34:03">2025-11-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">3.4k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="如何实现更好的排版效果？"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为卫辉"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>卫辉</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/images/%E5%B0%81%E9%9D%A2/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope="" itemtype="https://lifelinest.github.io/posts/b9342cef/"><header><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/" itemprop="url">工具分享</a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/" tabindex="-1" itemprop="url">免费工具</a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" tabindex="-1" itemprop="url">博客搭建</a><a href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/" tabindex="-1" itemprop="url">办公技巧</a><h1 id="CrawlerTitle" itemprop="name headline">如何实现更好的排版效果？</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Lifeline</span><time itemprop="dateCreated datePublished" datetime="2025-11-26T12:46:41.000Z" title="发表于 2025-11-26 20:46:41">2025-11-26</time><time itemprop="dateCreated datePublished" datetime="2025-11-28T13:34:03.394Z" title="更新于 2025-11-28 21:34:03">2025-11-28</time></header><div id="postchat_postcontent"><h2 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%A4%96%E8%B4%B8%20B2B%20%E6%96%87%E7%AB%A0%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%88%20(1).webp" alt="外贸 B2B 文章首图排版 (1).webp"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;做独立站时总被排版卡壳：“首图咋放右上角还让文字绕着走？”我当初推工业阀门文章时，就因排版粗糙丢过潜在客户——专业感全被乱码似的布局磨没了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;现在有AI工具兜底就省心多了，像中国制造网的AI麦可自带排版功能。我结合实操经验磨出这套方案，零代码基础也能一步到位，今天全部分享给大家。</p>
+<h2 id="二、价值与场景：为何首图排版要下功夫？"><a href="#二、价值与场景：为何首图排版要下功夫？" class="headerlink" title="二、价值与场景：为何首图排版要下功夫？"></a>二、价值与场景：为何首图排版要下功夫？</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%A4%96%E8%B4%B8%20B2B%20%E6%96%87%E7%AB%A0%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%88%20(2).webp" alt="外贸 B2B 文章首图排版 (2).webp"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;外贸B2B内容的首图排版，从来不是“好不好看”的审美题，而是“能不能留客”的转化题。“右上对齐+文字环绕”的核心价值，全踩在客户决策的关键点上：</p>
+<ul>
+<li><strong>锚定专业信任</strong>：整洁排版让客户第一眼就觉得“这家企业懂行”，B2B合作的信任基础，往往从这类细节开始建立。</li>
+<li><strong>降低阅读门槛</strong>：右上角图片抓眼球又不压正文，避免传统“大图顶头”让客户划走的尴尬，自然引导读完全文。</li>
+<li><strong>适配产品属性</strong>：机械、建材等产品需要场景支撑，文字绕图能让“产品图+卖点”无缝衔接，比纯文字更有说服力。</li>
+<li><strong>跨平台不踩坑</strong>：从WordPress到Shopify，一套逻辑适配多数外贸工具，不用反复学新方法。</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;我做过组对照试验：同篇光伏支架推广文，右上绕排版本客户停留时长涨32%，转发率提18%；而大图置顶版跳失率飙到45%——细节差异直接拉开转化差距。</p>
+<h2 id="三、效果预览：优化后到底长啥样？"><a href="#三、效果预览：优化后到底长啥样？" class="headerlink" title="三、效果预览：优化后到底长啥样？"></a>三、效果预览：优化后到底长啥样？</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%A4%96%E8%B4%B8%20B2B%20%E6%96%87%E7%AB%A0%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%88.webp" alt="外贸 B2B 文章首图排版.webp"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;优化后的开篇排版，桌面端和移动端各有侧重，但都逃不开三个核心优势，兼顾吸睛与流畅：</p>
+<ol>
+<li>正文左排不割裂，句子读起来不绕，客户快速get核心信息；</li>
+<li>右上图片呈1:1方形，产品主体（比如机械部件、建材样品）突出，不抢文字风头；</li>
+<li>文字自动“绕开”图片，没有大片空白或挤压变形，图文像“嵌”在一起似的自然。</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;比起“图片在上、文字在下”的老套路，这种排版把“产品展示”和“价值说明”绑在一起，尤其适合机械、五金等需要视觉佐证的外贸品类。</p>
+<h2 id="四、实战操作：从基础到多平台适配（附避坑指南）"><a href="#四、实战操作：从基础到多平台适配（附避坑指南）" class="headerlink" title="四、实战操作：从基础到多平台适配（附避坑指南）"></a>四、实战操作：从基础到多平台适配（附避坑指南）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%A4%96%E8%B4%B8%20B2B%20%E6%96%87%E7%AB%A0%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%88%20(3).webp" alt="外贸 B2B 文章首图排版 (3).webp"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;核心操作以“WordPress+Markdown”为基准——这是咱们外贸人用得最多的组合，全程不用写一行代码，跟着步骤点就行。后面还补了Shopify、中国制造网的适配技巧，覆盖90%外贸场景。</p>
+<h3 id="Step-1：用HTML代码固定图片位置（核心一步）"><a href="#Step-1：用HTML代码固定图片位置（核心一步）" class="headerlink" title="Step 1：用HTML代码固定图片位置（核心一步）"></a>Step 1：用HTML代码固定图片位置（核心一步）</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;这步是实现“右上对齐”的基础，本质是用简单代码替换默认插入方式，4步搞定，记不住就存成文档模板：</p>
+<ol>
+<li><strong>复制基础代码</strong>：直接抄下面的代码块，连带尖括号一起复制，别漏任何字符。<code>&lt;p style="float: right; margin-left: 15px; margin-bottom: 15px;"&gt; &lt;img src="https://abcd.jpg" alt="巴拉巴拉小魔仙" class="top-image-square"&gt; </code> <code>&lt;/p&gt;</code></li>
+<li><strong>替换占位符</strong>：在Markdown编辑器里找到首图的默认代码行（一般是“ ! <a href="%E9%93%BE%E6%8E%A5">图片描述</a> ”），双击选中整行（切勿只选部分），把上面的代码粘贴进去覆盖。（操作示意图：image-20250923173107447）</li>
+<li><strong>换自己的图片链接</strong>：先在WordPress里通过【添加媒体】上传首图，上传后点“复制链接”，再把代码里“ <a target="_blank" rel="noopener" href="https://abcd.jpg/">https://abcd.jpg</a> ”换成这个专属链接。（获取方式示意图：image-20250923173702089）</li>
+<li><strong>写好alt文本（关键SEO步）</strong>：把“巴拉巴拉小魔仙”换成AI生成的精准描述，必须带产品关键词。比如推广“不锈钢阀门”就写“304不锈钢法兰阀门 工业级耐腐蚀”，GPT或AI麦可都能生成。</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;避坑提醒：粘贴后编辑器预览里图片可能还是乱的——正常！这是预览窗口的bug，发布或点“文章预览”才能看到真实效果，别慌着改代码。</p>
+<h3 id="Step-2：加CSS实现自适应（桌面-移动端都好看）"><a href="#Step-2：加CSS实现自适应（桌面-移动端都好看）" class="headerlink" title="Step 2：加CSS实现自适应（桌面+移动端都好看）"></a>Step 2：加CSS实现自适应（桌面+移动端都好看）</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;海外客户一半用电脑一半用手机，这步就是让图片“智能变形”：桌面端是方形，移动端全屏显示，2步完成适配：</p>
+<ol>
+<li><strong>进CSS设置界面</strong>：WordPress后台点【外观】→【自定义】，找到“额外CSS”选项（一般在左侧菜单栏最下面）。（操作路径示意图：image-20250924091901034）</li>
+<li><strong>粘贴自适应代码</strong>：把下面的代码完整粘贴到“额外CSS”输入框，点“发布”保存。代码里的注释不用删，方便后续修改。</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">@media (min-width: 769px) {</span><br><span class="line">.top-image-square {</span><br><span class="line">width: 300px; /* 固定宽度，不挤文字 */</span><br><span class="line">aspect-ratio: 1 / 1; /* 强制1:1正方形比例 */</span><br><span class="line">object-fit: cover; /* 裁掉多余部分，保产品主体 */</span><br><span class="line">border-radius: 5px; /* 轻微圆角，不生硬 */</span><br><span class="line">display: block;</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">/* 移动端（屏幕≤768px）：全屏适配 */</span><br><span class="line">@media (max-width: 768px) {</span><br><span class="line">.top-image-square {</span><br><span class="line">width: 100%; /* 占满屏幕宽度 */</span><br><span class="line">height: auto; /* 不拉伸变形 */</span><br><span class="line">aspect-ratio: auto; /* 恢复原图比例 */</span><br><span class="line">object-fit: initial;</span><br><span class="line">border-radius: 5px;</span><br><span class="line">display: block;</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<br>保存后立刻见效：电脑上看是300×300的规整方形，手机上点开就是全屏清晰图，客户不管用啥设备都不影响体验。</p>
+<h3 id="Step-3：多平台适配（Shopify-中国制造网专属方案）"><a href="#Step-3：多平台适配（Shopify-中国制造网专属方案）" class="headerlink" title="Step 3：多平台适配（Shopify/中国制造网专属方案）"></a>Step 3：多平台适配（Shopify/中国制造网专属方案）</h3><p>不用重复写代码，核心逻辑不变，改改操作入口就行，三个高频平台的适配方法直接抄：</p>
+<ul>
+<li><strong>Shopify独立站</strong>：编辑器插图后，右侧勾“右对齐”；再把Step 2的CSS代码粘到【在线商店】→【编辑代码】→【Assets】→【base.css】末尾，不用加float属性。</li>
+<li><strong>中国制造网</strong>：直接用AI麦可的“智能排版”，传图后选“右上环绕”模板，系统自动生成代码；最后在“高级设置”里把产品关键词填进alt文本框就行，5秒搞定。</li>
+<li><strong>HubSpot</strong>：插图后右键“编辑代码”，用Step 1的HTML代码替换原标签；CSS代码粘到【设置】→【网站】→【页面模板】→【自定义CSS】里。</li>
+</ul>
+<h2 id="五、AI提效：让智能工具帮你省80-时间"><a href="#五、AI提效：让智能工具帮你省80-时间" class="headerlink" title="五、AI提效：让智能工具帮你省80%时间"></a>五、AI提效：让智能工具帮你省80%时间</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%A4%96%E8%B4%B8%20B2B%20%E6%96%87%E7%AB%A0%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%88%20(6).webp" alt="外贸 B2B 文章首图排版 (6).webp"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;AI是来当助手的。用对技巧排版效率翻10倍，另外提醒：首图“内容”比“排版”更重要，AI也能帮着优化图片本身。</p>
+<h3 id="首图内容优化：按产品类型对号入座"><a href="#首图内容优化：按产品类型对号入座" class="headerlink" title="首图内容优化：按产品类型对号入座"></a>首图内容优化：按产品类型对号入座</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;排版是“架子”，图片内容是“肉”。不同外贸产品的首图重点不一样，我整理了适配表，直接对应着做就行：</p>
+<table>
+<thead>
+<tr>
+<th>产品类型</th>
+<th>首图内容要点</th>
+<th>AI优化工具推荐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工业机械/设备</td>
+<td>1. 产品占图70%+，突出核心部件（如机床工作台、阀门接口）；2. 背景用浅灰或工厂实景；3. 角落加CE/ISO认证（不挡主体）</td>
+<td>MidJourney（画工业场景）、Remove.bg（清背景）</td>
+</tr>
+<tr>
+<td>消费品/家居用品</td>
+<td>1. 场景化拍摄（如帐篷配露营地、餐具配餐桌）；2. 拍细节（面料纹理、五金扣）；3. 加清晰尺寸标注</td>
+<td>Canva可画（外贸模板）、Pixelcut（合成场景）</td>
+</tr>
+<tr>
+<td>原材料/化工品</td>
+<td>1. 白底拍，标规格（如“PP颗粒 熔指2.5”）；2. 配检测报告截图；3. 箭头标特性（“高韧性”）</td>
+<td>GPT-4o（写标注）、Snagit（截图标注）</td>
+</tr>
+</tbody></table>
+<h3 id="核心技巧：用AI“抄作业”优质排版"><a href="#核心技巧：用AI“抄作业”优质排版" class="headerlink" title="核心技巧：用AI“抄作业”优质排版"></a>核心技巧：用AI“抄作业”优质排版</h3><p>看到同行的排版好，不用自己瞎琢磨，3步让AI帮你拆解复刻：</p>
+<p>举个实例：我曾复制国外模具站的图片代码，AI不仅讲清了“aspect-ratio:1”是强制正方形、“object-fit:cover”是裁切优化，还直接生成了适配我客户编辑器的代码，省了1小时钻研时间。</p>
+<ol>
+<li>右键点目标图片→选“检查”，复制图片对应的完整HTML代码（别漏任何标签）；</li>
+<li>把代码发给GPT-4/Claude，提问：“分析这段代码实现‘右上对齐+方形显示’的核心属性，解释每个关键参数作用”；</li>
+<li>补需求：“帮我改成适配WordPress+Markdown的版本，只在桌面端生效，移动端自动全屏”。</li>
+</ol>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">decoding</span>=<span class="string">"async"</span> <span class="attr">src</span>=<span class="string">"https://www.moldall.com/wp-content/uploads/2025/04/industrial-mold-set.webp"</span> <span class="attr">alt</span>=<span class="string">"A set of industrial metal molds on a green factory floor"</span> <span class="attr">title</span>=<span class="string">"Injection mold"</span> <span class="attr">class</span>=<span class="string">"img-floating-right"</span> <span class="attr">width</span>=<span class="string">"800"</span> <span class="attr">height</span>=<span class="string">"456"</span> <span class="attr">loading</span>=<span class="string">"lazy"</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（提问记录示意图：image-20250924100747549、image-20250924100857926）</p>
+<p>AI提问别含糊，越具体越省时间。我把高频模板整理好了，替换括号内容直接用：</p>
+<blockquote>
+<p>“场景：WordPress+Markdown，发（外贸水泵）推广文。需求：1. 首图右上对齐+文字环绕；2. 桌面端400×400正方形，移动端自适应；3. 裁切保水泵主体。请改下面的原始代码，确保粘贴即用。”</p>
+</blockquote>
+<h2 id="六、批量操作：让AI写手直接生成带排版的文章"><a href="#六、批量操作：让AI写手直接生成带排版的文章" class="headerlink" title="六、批量操作：让AI写手直接生成带排版的文章"></a>六、批量操作：让AI写手直接生成带排版的文章</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%A4%96%E8%B4%B8%20B2B%20%E6%96%87%E7%AB%A0%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%88%20(6).webp" alt="外贸 B2B 文章首图排版 (6).webp"></p>
+<h3 id="优化后的GPT指令（直接复制使用）"><a href="#优化后的GPT指令（直接复制使用）" class="headerlink" title="优化后的GPT指令（直接复制使用）"></a>优化后的GPT指令（直接复制使用）</h3><figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># Your Role:</span><br><span class="line">深耕外贸B2B的博客代笔，以外贸经理口吻写文，贴合海外客户阅读习惯，内容务实、短句为主，用Markdown格式。</span><br><span class="line"></span><br><span class="line"># Your Responsibilities:</span><br><span class="line">我输入【主标题+二级标题+见解】后，按以下规则输出：</span><br><span class="line">1. 主标题以问号结尾（例：如何提升外贸邮件回复率？）</span><br><span class="line">2. 文章开头必须插以下HTML首图代码，禁用Markdown图格式</span><br><span class="line">   &lt;p style="float: right; margin-left: 15px; margin-bottom: 15px;"&gt;</span><br><span class="line">     &lt;img src="图片URL" alt="描述" class="top-image-square"&gt;</span><br><span class="line">   &lt;/p&gt;</span><br><span class="line">3. 开篇结构：</span><br><span class="line">   - 第一段：PAS策略（痛点-焦虑-方案），第一人称，≤30字</span><br><span class="line">   - 第二段：加粗，直接答标题问题，30-50字（冲谷歌精选摘要）</span><br><span class="line">   - 第三段：承上启下引下文</span><br><span class="line">4. 二级标题按我给的来，均以问号结尾</span><br><span class="line">5. 二级标题下结构：</span><br><span class="line">   - 第一段：PAS策略，第一人称，≤30字</span><br><span class="line">   - 第二段：加粗答核心问题，30-50字</span><br><span class="line">   - 图片占位符：Markdown格式，链接固定为"https://placehold.co/600x400.jpg"，alt含关键词</span><br><span class="line">   - 延展段：≥200字，加H3和表格，结合外贸案例</span><br><span class="line">6. 结尾加"Conclusion"二级标题，总结≤30字</span><br><span class="line"></span><br><span class="line"># My Role Background:</span><br><span class="line">10年外贸B2B运营经验，专注工业机械产品推广，服务过50+外贸企业</span><br><span class="line"></span><br><span class="line"># My Requirements:</span><br><span class="line">1. 总字数≥1500词，延展段≥200字</span><br><span class="line">2. 仅加粗段用第一人称，其余第三人称，补外贸实操案例</span><br><span class="line">3. 风格简洁，高中英语水平能懂，无生僻词和长句</span><br><span class="line">4. 仅首图用上述HTML，其余图用指定Markdown链接</span><br><span class="line">5. 含3个表格，文章默认输出英语，纯Markdown无解释</span><br><span class="line">6. 自检首图格式，若为Markdown立即修正并提示</span><br><span class="line"></span><br><span class="line"># 关键提醒：</span><br><span class="line">严格按规则来，不缺首图代码和表格，确保复制能直接粘WordPress用。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;批量发品时手动改代码太费时间，直接给AI写手加“排版指令”，让它生成文章时自带代码，你只需要换图片链接——这才是高效玩法。</p>
+<h2 id="七、避坑与评估：让排版效果可落地、可验证"><a href="#七、避坑与评估：让排版效果可落地、可验证" class="headerlink" title="七、避坑与评估：让排版效果可落地、可验证"></a>七、避坑与评估：让排版效果可落地、可验证</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%A4%96%E8%B4%B8%20B2B%20%E6%96%87%E7%AB%A0%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%88%20(5).webp" alt="外贸 B2B 文章首图排版 (5).webp"></p>
+<h3 id="实操故障解决指南"><a href="#实操故障解决指南" class="headerlink" title="实操故障解决指南"></a>实操故障解决指南</h3><p>实操时踩坑很正常，我把外贸人常犯的3个错和解决办法列出来，配合AI秒搞定：</p>
+<ul>
+<li><strong>问题1：文字绕不开，图片独占一行</strong>：先查代码有没有“float: right”，没有就加上；若有还是乱，直接把页面代码丢给AI，指令明确标注“排查float属性冲突”。</li>
+<li><strong>问题2：移动端图片变形</strong>：看CSS里移动端配置有没有“height: auto”，没有就加；还变形就补“max-width: 100%”，限制图片最大宽度。</li>
+<li><strong>问题3：图片加载慢</strong>：用TinyPNG压缩（压缩50%不影响清晰度），再在img标签里加“loading=”lazy””实现懒加载——海外客户打开速度能快一倍。</li>
+</ul>
+<h3 id="效果评估：用数据验证排版价值"><a href="#效果评估：用数据验证排版价值" class="headerlink" title="效果评估：用数据验证排版价值"></a>效果评估：用数据验证排版价值</h3><p>别凭感觉判断好不好用，用数据说话。结合Google Analytics和网站后台，盯好这4个指标：</p>
+<table>
+<thead>
+<tr>
+<th>评估指标</th>
+<th>目标值</th>
+<th>数据获取方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>首屏加载时间</td>
+<td>≤2秒</td>
+<td>Google PageSpeed Insights</td>
+</tr>
+<tr>
+<td>文章停留时长</td>
+<td>≥3分钟</td>
+<td>Google Analytics【行为】→【站点内容】</td>
+</tr>
+<tr>
+<td>图片点击量</td>
+<td>占文章点击15%+</td>
+<td>网站后台【图片统计】</td>
+</tr>
+<tr>
+<td>跳失率</td>
+<td>≤30%</td>
+<td>Google Analytics【受众】→【概览】</td>
+</tr>
+</tbody></table>
+<h3 id="无代码方案：纯新手也能玩的插件"><a href="#无代码方案：纯新手也能玩的插件" class="headerlink" title="无代码方案：纯新手也能玩的插件"></a>无代码方案：纯新手也能玩的插件</h3><h2 id="八、结语"><a href="#八、结语" class="headerlink" title="八、结语"></a>八、结语</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%A4%96%E8%B4%B8%20B2B%20%E6%96%87%E7%AB%A0%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%887.webp" alt="外贸 B2B 文章首图排版7.webp"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;外贸B2B的排版，本质是用细节传递专业。花5分钟学好这套方法，让每篇文章都成为获客伏笔，客户自然愿意多停留、多咨询。</p>
+<h3 id="工具简化方案：无代码插件推荐"><a href="#工具简化方案：无代码插件推荐" class="headerlink" title="工具简化方案：无代码插件推荐"></a>工具简化方案：无代码插件推荐</h3><p>完全不想碰代码？这3个插件一键搞定，批量排版特别香：</p>
+<ul>
+<li><strong>WordPress插件</strong>：WP Image Align &amp; Float，装完在图片编辑栏直接选“右上环绕+方形裁切”，支持批量应用到多篇文章。</li>
+<li><strong>浏览器插件</strong>：Image Layout Helper，看别人博客时右键图片，直接生成适配的HTML/CSS代码，复制就能用。</li>
+<li><strong>AI工具</strong>：ChatGPT Plus+WebPilot插件，输入“给我的外贸水泵博客生成首图右上环绕代码”+产品链接，直接出个性化代码。</li>
+</ul>
+<p>建议先拿最近1篇文章练手，根据数据调参数，形成自己的专属模板。</p>
+</div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" title="头像" alt="头像"></a><div class="post-copyright__author_name">Lifeline</div><div class="post-copyright__author_desc">经世致用 自强不息</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://lifelinest.github.io/posts/b9342cef/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://lifelinest.github.io/posts/b9342cef/')">如何实现更好的排版效果？</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://thumbnail0.baidupcs.com/thumbnail/f43e05cf8ofa2a03ebbf27c2897255f8?fid=3941818526-250528-866601796230841&amp;time=1762340400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-jEgAJtpLcmbX4iRxkSTXMNizNVA%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=245144769539721350&amp;dp-callid=0&amp;file_type=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://thumbnail0.baidupcs.com/thumbnail/f43e05cf8ofa2a03ebbf27c2897255f8?fid=3941818526-250528-866601796230841&amp;time=1762340400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-jEgAJtpLcmbX4iRxkSTXMNizNVA%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=245144769539721350&amp;dp-callid=0&amp;file_type=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://thumbnail0.baidupcs.com/thumbnail/936b1d5cdn9f9535a51e81f98d0bd1db?fid=3941818526-250528-1077566226278329&amp;time=1762340400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-KBQqR9iGCtu3HzTB5BpNRwzzxQQ%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=245166653620654864&amp;dp-callid=0&amp;file_type=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://thumbnail0.baidupcs.com/thumbnail/936b1d5cdn9f9535a51e81f98d0bd1db?fid=3941818526-250528-1077566226278329&amp;time=1762340400&amp;rt=sh&amp;sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-KBQqR9iGCtu3HzTB5BpNRwzzxQQ%3D&amp;expires=8h&amp;chkv=0&amp;chkbd=0&amp;chkpc=&amp;dp-logid=245166653620654864&amp;dp-callid=0&amp;file_type=0&amp;size=c710_u400&amp;quality=100&amp;vuk=-&amp;ft=video" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://lifelinest.github.io/posts/b9342cef/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=如何实现更好的排版效果？&amp;url=https://lifelinest.github.io/posts/b9342cef/&amp;pic=/images/%E5%B0%81%E9%9D%A2/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lifelinest.github.io" target="_blank">Lifeline</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>免费工具<span class="tagsPageCount">38</span></a><a class="post-meta__box__tags" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>博客搭建<span class="tagsPageCount">9</span></a><a class="post-meta__box__tags" href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>办公技巧<span class="tagsPageCount">17</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/%E5%B0%81%E9%9D%A2/%E6%95%88%E7%8E%87%E7%BF%BB%E5%80%8D.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/b63649ea/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%B0%81%E9%9D%A2/%E5%9B%BE%E7%89%87%E6%94%B6%E5%BD%95.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">B2B文章高效插入图片完整指南</div></div></a></div><div class="next-post pull-right"><a href="/posts/bfa77aa4/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%B0%81%E9%9D%A2/%E6%95%88%E7%8E%87%E7%BF%BB%E5%80%8D.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的AI写外贸B2B文章高效工作流</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/66ea8cb4/" title="DeepSeek + Kimi 如何用 AI 颠覆传统 PPT 制作？"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/Kimi%E5%A6%82%E4%BD%95%E7%94%A8AI%E9%A2%A0%E8%A6%86%E4%BC%A0%E7%BB%9F%20PPT%E5%88%B6%E4%BD%9C%EF%BC%9F.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-03-27</div><div class="title">DeepSeek + Kimi 如何用 AI 颠覆传统 PPT 制作？</div></div></a></div><div><a href="/posts/d0dc42b8/" title="几款主流好用的 Markdown 编辑器，值得拥有"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%87%A0%E6%AC%BE%E4%B8%BB%E6%B5%81%E5%A5%BD%E7%94%A8%E7%9A%84Markdown%E7%BC%96%E8%BE%91%E5%99%A8.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-03-06</div><div class="title">几款主流好用的 Markdown 编辑器，值得拥有</div></div></a></div><div><a href="/posts/b25123cd/" title="QuickLook：一款值得拥有的预览软件？"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/QuickLook%E4%B8%80%E6%AC%BE%E5%80%BC%E5%BE%97%E6%8B%A5%E6%9C%89%E7%9A%84%E9%A2%84%E8%A7%88%E8%BD%AF%E4%BB%B6%EF%BC%9F.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-13</div><div class="title">QuickLook：一款值得拥有的预览软件？</div></div></a></div><div><a href="/posts/618f4052/" title="百度搜索高能技巧你 get 到了吗？"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E9%AB%98%E8%83%BD%E6%8A%80%E5%B7%A7%E4%BD%A0get%E5%88%B0%E4%BA%86%E5%90%97.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-25</div><div class="title">百度搜索高能技巧你 get 到了吗？</div></div></a></div><div><a href="/posts/d8b0d66/" title="使用Ventoy制作可启动U盘有多简单？"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E4%BD%BF%E7%94%A8Ventoy%E5%88%B6%E4%BD%9C%E5%8F%AF%E5%90%AF%E5%8A%A8U%E7%9B%98%E6%9C%89%E5%A4%9A%E7%AE%80%E5%8D%95%EF%BC%9F.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-05-14</div><div class="title">使用Ventoy制作可启动U盘有多简单？</div></div></a></div><div><a href="/posts/9fc22798/" title="ProcessOn思维导图和流程图怎么用？"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/ProcessOn%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%92%8C%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%80%8E%E4%B9%88%E7%94%A8.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-05-16</div><div class="title">ProcessOn思维导图和流程图怎么用？</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/DT.png" alt="status"></div></div><div class="author-info__description">日落终归山海，你我总将相遇。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">Lifeline</h1><div class="author-info__desc">经世致用 自强不息</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/lifelinest" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/694787378" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence">加载中...</div><div id="poem_info"><div id="poem_dynasty">加载中...</div><div class="poem-title-scroll"><div id="poem_author">加载中...</div></div></div></div><script type="text/javascript">// 本地诗词备选
+var localPoems = [
+  {
+    content: "床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+    dynasty: "唐代",
+    author: "李白",
+    title: "静夜思"
+  },
+  {
+    content: "人生自是有情痴，此恨不关风与月。",
+    dynasty: "宋代",
+    author: "欧阳修",
+    title: "玉楼春"
+  },
+  {
+    content: "大漠孤烟直，长河落日圆。",
+    dynasty: "唐代",
+    author: "王维",
+    title: "使至塞上"
+  },
+  {
+    content: "会当凌绝顶，一览众山小。",
+    dynasty: "唐代",
+    author: "杜甫",
+    title: "望岳"
+  }
+];
+function renderPoem(poem) {
+  var sentence = document.querySelector("#poem_sentence");
+  var author = document.querySelector("#poem_author");
+  var dynasty = document.querySelector("#poem_dynasty");
+  var lines = poem.content.match(/[^，。！？；]+[，。！？；]?/g) || [poem.content];
+  sentence.innerHTML = lines.map(l => `<div class='poem-line'>${l.trim()}</div>`).join('');
+  dynasty.innerHTML = poem.dynasty || '无';
+  author.innerHTML = (poem.author || '') + '《' + (poem.title || '') + '》';
+}
+// 尝试API
+function tryApi() {
+  if (window.jinrishici) {
+    jinrishici.load(function(result) {
+      try {
+        var data = result.data;
+        renderPoem({
+          content: data.content,
+          dynasty: data.origin.dynasty,
+          author: data.origin.author,
+          title: data.origin.title
+        });
+      } catch(e) {
+        renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+      }
+    });
+  } else {
+    renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+  }
+}
+// 加载API脚本
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js';
+script.charset = 'utf-8';
+script.onload = tryApi;
+script.onerror = function(){renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);}
+document.head.appendChild(script);</script><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">一、引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BB%B7%E5%80%BC%E4%B8%8E%E5%9C%BA%E6%99%AF%EF%BC%9A%E4%B8%BA%E4%BD%95%E9%A6%96%E5%9B%BE%E6%8E%92%E7%89%88%E8%A6%81%E4%B8%8B%E5%8A%9F%E5%A4%AB%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">二、价值与场景：为何首图排版要下功夫？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88%EF%BC%9A%E4%BC%98%E5%8C%96%E5%90%8E%E5%88%B0%E5%BA%95%E9%95%BF%E5%95%A5%E6%A0%B7%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">三、效果预览：优化后到底长啥样？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C%EF%BC%9A%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E5%A4%9A%E5%B9%B3%E5%8F%B0%E9%80%82%E9%85%8D%EF%BC%88%E9%99%84%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">四、实战操作：从基础到多平台适配（附避坑指南）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-1%EF%BC%9A%E7%94%A8HTML%E4%BB%A3%E7%A0%81%E5%9B%BA%E5%AE%9A%E5%9B%BE%E7%89%87%E4%BD%8D%E7%BD%AE%EF%BC%88%E6%A0%B8%E5%BF%83%E4%B8%80%E6%AD%A5%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">Step 1：用HTML代码固定图片位置（核心一步）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-2%EF%BC%9A%E5%8A%A0CSS%E5%AE%9E%E7%8E%B0%E8%87%AA%E9%80%82%E5%BA%94%EF%BC%88%E6%A1%8C%E9%9D%A2-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%83%BD%E5%A5%BD%E7%9C%8B%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">Step 2：加CSS实现自适应（桌面+移动端都好看）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-3%EF%BC%9A%E5%A4%9A%E5%B9%B3%E5%8F%B0%E9%80%82%E9%85%8D%EF%BC%88Shopify-%E4%B8%AD%E5%9B%BD%E5%88%B6%E9%80%A0%E7%BD%91%E4%B8%93%E5%B1%9E%E6%96%B9%E6%A1%88%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">Step 3：多平台适配（Shopify/中国制造网专属方案）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81AI%E6%8F%90%E6%95%88%EF%BC%9A%E8%AE%A9%E6%99%BA%E8%83%BD%E5%B7%A5%E5%85%B7%E5%B8%AE%E4%BD%A0%E7%9C%8180-%E6%97%B6%E9%97%B4"><span class="toc-number">5.</span> <span class="toc-text">五、AI提效：让智能工具帮你省80%时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E5%9B%BE%E5%86%85%E5%AE%B9%E4%BC%98%E5%8C%96%EF%BC%9A%E6%8C%89%E4%BA%A7%E5%93%81%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%8F%B7%E5%85%A5%E5%BA%A7"><span class="toc-number">5.1.</span> <span class="toc-text">首图内容优化：按产品类型对号入座</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E5%B7%A7%EF%BC%9A%E7%94%A8AI%E2%80%9C%E6%8A%84%E4%BD%9C%E4%B8%9A%E2%80%9D%E4%BC%98%E8%B4%A8%E6%8E%92%E7%89%88"><span class="toc-number">5.2.</span> <span class="toc-text">核心技巧：用AI“抄作业”优质排版</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C%EF%BC%9A%E8%AE%A9AI%E5%86%99%E6%89%8B%E7%9B%B4%E6%8E%A5%E7%94%9F%E6%88%90%E5%B8%A6%E6%8E%92%E7%89%88%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-number">6.</span> <span class="toc-text">六、批量操作：让AI写手直接生成带排版的文章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%90%8E%E7%9A%84GPT%E6%8C%87%E4%BB%A4%EF%BC%88%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">优化后的GPT指令（直接复制使用）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E9%81%BF%E5%9D%91%E4%B8%8E%E8%AF%84%E4%BC%B0%EF%BC%9A%E8%AE%A9%E6%8E%92%E7%89%88%E6%95%88%E6%9E%9C%E5%8F%AF%E8%90%BD%E5%9C%B0%E3%80%81%E5%8F%AF%E9%AA%8C%E8%AF%81"><span class="toc-number">7.</span> <span class="toc-text">七、避坑与评估：让排版效果可落地、可验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%93%8D%E6%95%85%E9%9A%9C%E8%A7%A3%E5%86%B3%E6%8C%87%E5%8D%97"><span class="toc-number">7.1.</span> <span class="toc-text">实操故障解决指南</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%EF%BC%9A%E7%94%A8%E6%95%B0%E6%8D%AE%E9%AA%8C%E8%AF%81%E6%8E%92%E7%89%88%E4%BB%B7%E5%80%BC"><span class="toc-number">7.2.</span> <span class="toc-text">效果评估：用数据验证排版价值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E4%BB%A3%E7%A0%81%E6%96%B9%E6%A1%88%EF%BC%9A%E7%BA%AF%E6%96%B0%E6%89%8B%E4%B9%9F%E8%83%BD%E7%8E%A9%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="toc-number">7.3.</span> <span class="toc-text">无代码方案：纯新手也能玩的插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%BB%93%E8%AF%AD"><span class="toc-number">8.</span> <span class="toc-text">八、结语</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%AE%80%E5%8C%96%E6%96%B9%E6%A1%88%EF%BC%9A%E6%97%A0%E4%BB%A3%E7%A0%81%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="toc-number">8.1.</span> <span class="toc-text">工具简化方案：无代码插件推荐</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1488d0d5/" title="AI写外贸B2B文章3个增强插件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%B0%81%E9%9D%A2/%E5%AE%9E%E7%94%A8%E6%8F%92%E4%BB%B6.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AI写外贸B2B文章3个增强插件"></a><div class="content"><a class="title" href="/posts/1488d0d5/" title="AI写外贸B2B文章3个增强插件">AI写外贸B2B文章3个增强插件</a><time datetime="2025-11-26T13:06:28.000Z" title="发表于 2025-11-26 21:06:28">2025-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/bfa77aa4/" title="我的AI写外贸B2B文章高效工作流"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%B0%81%E9%9D%A2/%E6%95%88%E7%8E%87%E7%BF%BB%E5%80%8D.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的AI写外贸B2B文章高效工作流"></a><div class="content"><a class="title" href="/posts/bfa77aa4/" title="我的AI写外贸B2B文章高效工作流">我的AI写外贸B2B文章高效工作流</a><time datetime="2025-11-26T12:57:15.000Z" title="发表于 2025-11-26 20:57:15">2025-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b9342cef/" title="如何实现更好的排版效果？"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%B0%81%E9%9D%A2/%E6%96%87%E7%AB%A0%E6%8E%92%E7%89%88.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何实现更好的排版效果？"></a><div class="content"><a class="title" href="/posts/b9342cef/" title="如何实现更好的排版效果？">如何实现更好的排版效果？</a><time datetime="2025-11-26T12:46:41.000Z" title="发表于 2025-11-26 20:46:41">2025-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b63649ea/" title="B2B文章高效插入图片完整指南"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%B0%81%E9%9D%A2/%E5%9B%BE%E7%89%87%E6%94%B6%E5%BD%95.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="B2B文章高效插入图片完整指南"></a><div class="content"><a class="title" href="/posts/b63649ea/" title="B2B文章高效插入图片完整指南">B2B文章高效插入图片完整指南</a><time datetime="2025-11-26T12:43:01.000Z" title="发表于 2025-11-26 20:43:01">2025-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/41032b74/" title="如何在外贸B2B文章中插入合适外链"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E5%B0%81%E9%9D%A2/%E5%A4%96%E9%93%BE%E5%BB%BA%E8%AE%BE.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何在外贸B2B文章中插入合适外链"></a><div class="content"><a class="title" href="/posts/41032b74/" title="如何在外贸B2B文章中插入合适外链">如何在外贸B2B文章中插入合适外链</a><time datetime="2025-11-26T12:33:58.000Z" title="发表于 2025-11-26 20:33:58">2025-11-26</time></div></div></div></div></div></div></div></main><footer id="footer"><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3434848843@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/7340189538" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100092208016287&amp;sk=about" title="facebook"><i class="anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/lifelinest" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/694787378" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/self" title="抖音"><i class="anzhiyufont anzhiyu-icon-tiktok"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档中心" href="/docs/">文档中心</a><a class="footer-item" title="博客插件" target="_blank" rel="noopener" href="https://hexo.io/plugins/">博客插件</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="导航网站" target="_blank" rel="noopener" href="https://www.mfy-lifeline.top/#/">导航网站</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">作品集</div><div class="footer-links"><a class="footer-item" title="设计图仓" href="/design/">设计图仓</a><a class="footer-item" title="微码仓库" href="/code/">微码仓库</a><a class="footer-item" title="智造工坊" href="/Workshop/">智造工坊</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><div id="footer-animal"><div class="animal-wall"></div><img class="animal" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/photo.avif" alt="动物" onerror="this.onerror=null;this.src='/img/404.jpg'"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">©2023 - 2025 By <a class="footer-bar-link" href="/" title="Lifeline" target="_blank">Lifeline</a></div><div class="footer-bar-subtitle" style="display: flex; align-items: center; gap: 0.3em;"><div id="footer-type-tips"></div><span class="typed-cursor"></span></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://cloudflare-img-bzb.pages.dev/" title="图床">图床</a></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script><script>if (typeof Typed === 'function') {
+  // 先清空内容，防止被其他JS写入
+  document.querySelector('#footer-type-tips').innerText = '';
+  new Typed("#footer-type-tips", {
+    strings: ["心墙开扇窗，微风递糖霜。"],
+    startDelay: 300,
+    typeSpeed: 150,
+    backSpeed: 50,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
+}
+    </script></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">98</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">46</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">8</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">工具</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/empty" title="kimi"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg" alt="kimi"><span class="back-menu-item-text">kimi</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://pan.baidu.com/" title="百度网盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png" alt="百度网盘"><span class="back-menu-item-text">百度网盘</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">娱乐</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.163.com/?from=itab" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg" alt="网易云音乐"><span class="back-menu-item-text">网易云音乐</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="哔哩哔哩"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg" alt="哔哩哔哩"><span class="back-menu-item-text">哔哩哔哩</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.zhihu.com/" title="知乎"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=1821089500,4276043120&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=415&amp;h=312" alt="知乎"><span class="back-menu-item-text">知乎</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.skypixel.com/" title="天空之城"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=11010786,400614760&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" alt="天空之城"><span class="back-menu-item-text">天空之城</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-comments faa-tada" style="font-size: 0.9em;"></i><span> 聊天室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/FootprintMap/"><i class="anzhiyufont anzhiyu-icon-location-dot faa-tada" style="font-size: 0.9em;"></i><span> 足迹地图</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/equipment/"><span> 我的装备</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/%E4%BA%BA%E6%96%87%E8%A7%82%E5%AF%9F/" style="font-size: 0.88rem;">人文观察<sup>3</sup></a><a href="/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/" style="font-size: 0.88rem;">人生思考<sup>3</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E4%BA%AB/" style="font-size: 0.88rem;">代码分享<sup>4</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E8%A7%82%E5%88%86%E4%BA%AB/" style="font-size: 0.88rem;">价值观分享<sup>3</sup></a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">免费工具<sup>38</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">前端开发<sup>5</sup></a><a href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/" style="font-size: 0.88rem;">办公技巧<sup>17</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 0.88rem;">博客搭建<sup>9</sup></a><a href="/tags/%E5%9F%8E%E5%B8%82%E6%BC%AB%E6%B8%B8/" style="font-size: 0.88rem;">城市漫游<sup>1</sup></a><a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 0.88rem;">娱乐<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>1</sup></a><a href="/tags/%E5%AE%A0%E7%89%A9%E6%97%A5%E5%B8%B8/" style="font-size: 0.88rem;">宠物日常<sup>1</sup></a><a href="/tags/%E5%B0%8F%E4%BC%97%E7%9B%AE%E7%9A%84%E5%9C%B0/" style="font-size: 0.88rem;">小众目的地<sup>2</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">工具教程<sup>26</sup></a><a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 0.88rem;">开源项目<sup>5</sup></a><a href="/tags/%E6%80%80%E6%97%A7%E5%9B%9E%E5%BF%86/" style="font-size: 0.88rem;">怀旧回忆<sup>2</sup></a><a href="/tags/%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F/" style="font-size: 0.88rem;">思维方式<sup>2</sup></a><a href="/tags/%E6%89%8B%E5%B7%A5-DIY/" style="font-size: 0.88rem;">手工 DIY<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" style="font-size: 0.88rem;">技术踩坑<sup>21</sup></a><a href="/tags/%E6%91%84%E5%BD%B1%E8%AE%B0%E5%BD%95/" style="font-size: 0.88rem;">摄影记录<sup>3</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87/" style="font-size: 0.88rem;">效率提升<sup>5</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E8%BD%AF%E4%BB%B6/" style="font-size: 0.88rem;">效率软件<sup>34</sup></a><a href="/tags/%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1/" style="font-size: 0.88rem;">旅行摄影<sup>2</sup></a><a href="/tags/%E6%9C%AA%E6%9D%A5%E8%A7%84%E5%88%92/" style="font-size: 0.88rem;">未来规划<sup>1</sup></a><a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/" style="font-size: 0.88rem;">浏览器插件<sup>3</sup></a><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BF%83%E5%BE%97/" style="font-size: 0.88rem;">游戏心得<sup>2</sup></a><a href="/tags/%E7%83%AD%E7%82%B9%E8%AF%84%E8%AE%BA/" style="font-size: 0.88rem;">热点评论<sup>2</sup></a><a href="/tags/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/" style="font-size: 0.88rem;">电脑软件<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" style="font-size: 0.88rem;">知识总结<sup>10</sup></a><a href="/tags/%E7%9F%AD%E9%80%94%E6%97%85%E8%A1%8C/" style="font-size: 0.88rem;">短途旅行<sup>1</sup></a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">编程学习<sup>3</sup></a><a href="/tags/%E7%BE%8E%E9%A3%9F%E5%88%B6%E4%BD%9C/" style="font-size: 0.88rem;">美食制作<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%8A%80%E8%83%BD/" style="font-size: 0.88rem;">职场技能<sup>5</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/" style="font-size: 0.88rem;">行业观察<sup>11</sup></a><a href="/tags/%E8%A7%82%E7%82%B9%E8%BE%93%E5%87%BA/" style="font-size: 0.88rem;">观点输出<sup>9</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/" style="font-size: 0.88rem;">认知升级<sup>5</sup></a><a href="/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/" style="font-size: 0.88rem;">资源分享<sup>23</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/" style="font-size: 0.88rem;">软件测评<sup>14</sup></a><a href="/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" style="font-size: 0.88rem;">避坑指南<sup>1</sup></a></div></div><hr></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用Lifeline!`,
+    `经世致用, 自强不息`,
+    `
+        
+       ██╗      ██╗     ██╗     ██╗     ██╗    ██╗
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ███████╗ ███████╗███████╗███████╗███████╗
+       ╚══════╝ ╚══════╝╚══════╝╚══════╝╚══════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by Lifeline %c 你正在访问 Lifeline 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script src="/js/welcome.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'lifelinest/giscus',
+      'data-repo-id': 'R_kgDOPINt6A',
+      'data-category-id': '',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category-id":"DIC_kwDOPINt6M4Cslgg","data-strict":1,"data-input-position":"top"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><script src="/js/anzhiyu/article-encryption.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="" pjax="" src="/js/custom.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script><script src="/js/update.js"></script><script src="/js/calendar-card.js"></script><script src="/js/zhihu.js"></script><script src="/js/article-reading.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script src="//code.tidio.co/qjjsrrwucuilkpqc8um0uslohzolhxld.js" async="async"></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div><!-- hexo injector body_end start --><script data-pjax="">
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '9d0c37912c4d49ddb29a7a14e1bf54cb';
+  var gaud_map_key = 'dc1eaa8e383ff12ca596ba00fe2b2ed1';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'true';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax="" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer="" src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer="" src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = 'S-H9ELQNJWQ168OMRJ';
+        let tianliGPT_postSelector = '#postchat_postcontent';
+        let tianliGPT_Title = '文章摘要';
+        let tianliGPT_postURL = '/^https?://[^/]+/posts/[a-f0-9]{8}/';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#3e86f6",
+          bottom: "36px",
+          left: "1530px",
+          fill: "#FFFFFF",
+          width: "44px",
+          frameWidth: "375px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: true,
+          userTitle: "PostChat",
+          userDesc: "如果你对网站的内容有任何疑问，可以来问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "https://ai.tianli0.top/static/img/PostChat.webp",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="S-H9ELQNJWQ168OMRJ" src="https://ai.tianli0.top/static/public/tianli_gpt.min.js"></script>
+  </body></html>
