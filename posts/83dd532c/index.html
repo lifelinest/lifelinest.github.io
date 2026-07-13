@@ -1,0 +1,755 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>如何运用 Cursor Skill 高阶语法实现动态适配能力 | Lifeline</title><meta name="keywords" content="人工智能,技术踩坑,开发工具"><meta name="author" content="Lifeline"><meta name="copyright" content="Lifeline"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="如何运用 Cursor Skill 高阶语法实现动态适配能力"><meta name="application-name" content="如何运用 Cursor Skill 高阶语法实现动态适配能力"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="如何运用 Cursor Skill 高阶语法实现动态适配能力"><meta property="og:url" content="https://lifelinest.github.io/posts/83dd532c/index.html"><meta property="og:site_name" content="Lifeline"><meta property="og:description" content="一、本篇定位 &amp;amp; 学习目标 本篇定位在前7篇教程中，我们学习的Skill均为静态固定规则：步骤、路径、逻辑全部硬编码固定，仅能适配单一固定场景，灵活性与复用性极差。 本篇作为Skill体系的高阶核心进阶课程，将深度拆解主流AI编程工具专属的增强语法，针对性解决静态Skill的四大核心痛点："><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://lifelinest.github.io/images/doubao_image_1_1783753204553.jpg"><meta property="article:author" content="Lifeline"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://lifelinest.github.io/images/doubao_image_1_1783753204553.jpg"><meta name="description" content="一、本篇定位 &amp;amp; 学习目标 本篇定位在前7篇教程中，我们学习的Skill均为静态固定规则：步骤、路径、逻辑全部硬编码固定，仅能适配单一固定场景，灵活性与复用性极差。 本篇作为Skill体系的高阶核心进阶课程，将深度拆解主流AI编程工具专属的增强语法，针对性解决静态Skill的四大核心痛点："><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://lifelinest.github.io/posts/83dd532c/"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="codeva-dmPP1sPmLD"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/assets/font-awesome-animation.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/privacy.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"lhvAVTHquc9","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: {"apiurl":null},
+  navMusic: true,
+  mainTone: {"mode":"api","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: Lifeline","link":"链接: ","source":"来源: Lifeline","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Lifeline',
+  title: '如何运用 Cursor Skill 高阶语法实现动态适配能力',
+  postAI: '',
+  pageFillDescription: '一、本篇定位 amp 学习目标, 本篇定位, 学习目标, 二、前置认知：高阶语法核心价值, 三、核心语法一：内置动态变量（实现全自动环境取值）, 3.1 变量原理, 3.2 全网通用内置变量大全（小白可直接抄用）, 3.3 变量实操案例（新旧写法正反对比）, ❌ 传统低级写法（静态硬编码完全不推荐）, ✅ 高阶标准写法（动态变量适配永久通用）, 四、核心语法二：条件判断（Ifx2FElse 智能分支逻辑）, 4.1 语法作用, 4.2 标准固定语法模板, 4.3 高频实战场景案例, 案例1：跨系统适配（Windowsx2FMacx2FLinux 差异化执行脚本）, 案例2：根据文件后缀差异化处理代码规范, 4.4 常用内置判断条件汇总, 五、核心语法三：Include 公共内容引用（团队规范化神器）, 5.1 解决核心痛点, 5.2 标准目录规范（公共资源统一存放）, 5.3 Include引用语法 amp 实操案例, 基础语法, 实战落地用法, 5.4 核心优势总结, 六、核心语法四：强制约束标记（彻底杜绝AI自由发挥）, 6.1 四大核心标记详解（全场景通用）, 1、[STRICT] 严格模式, 2、[ONLY_CODE] 仅输出代码, 3、[NO_EXTRA_CONTENT] 禁止多余内容, 4、[NO_COMMENT] 禁止多余注释, 6.2 组合使用万能模板, 七、综合实战：跨系统兼容复合型高阶Skill, 完整 SKILL.md 源码, 技能能力总结, 八、高阶语法避坑清单（小白必看）, 九、课后练习（巩固落地）, 十、本篇总结一本篇定位学习目标本篇定位在前篇教程中我们学习的均为静态固定规则步骤路径逻辑全部硬编码固定仅能适配单一固定场景灵活性与复用性极差本篇作为体系的高阶核心进阶课程将深度拆解主流编程工具专属的增强语法针对性解决静态的四大核心痛点无法兼容多操作系统环境跨设备直接失效无法自动识别文件类型不能按需差异化执行任务逻辑通用规则重复冗余团队技能规范难以统一维护迭代自主发挥度高输出格式杂乱贴合业务需求度低通过掌握全套高阶语法可将传统固化的模板型全面升级为动态适配智能判断严格可控全域复用的企业级自动化能力学习目标完成本篇学习后你将全面掌握高阶开发能力熟练实现以下核心能力运用内置动态变量完成项目路径文件信息用户指令的全自动动态取值掌握条件判断语法实现多系统多文件类型的差异化分支执行逻辑熟练使用公共引用语法实现团队规范统一复用极简迭代维护活用强制约束标记彻底杜绝无效输出格式错乱私自改逻辑等问题独立开发跨系统多场景兼容的复合型高阶适配复杂业务场景二前置认知高阶语法核心价值静态基础等同于固定死的模板文案场景适配单一修改繁琐容错率极低仅适用于极简固定任务高阶依托增强语法实现了动态变量填充智能分支判断可自适应各类可变场景真正实现一次编写全域通用本篇所有高阶语法全面兼容主流编程工具语法标准通用无需单独适配是开发标准化企业级的核心必备能力三核心语法一内置动态变量实现全自动环境取值变量原理高阶专属支持变量名双大括号动态变量语法可实时自动读取当前项目环境文件用户操作信息无需人工硬编码路径文件名指令内容彻底解决换项目换设备换环境后直接失效的行业痛点核心优势一次编写全项目适配全系统兼容零修改复用大幅降低维护成本全网通用内置变量大全小白可直接抄用以下为全平台通用的个核心内置变量覆盖的动态场景开发需求是高阶的基础核心能力内置变量作用说明落地使用场景自动读取当前项目根目录的绝对路径调用项目本地脚本读取全局配置文件批量处理项目目录文件自动读取当前打开操作的目标文件完整路径单文件代码修改格式化缺陷修复内容优化自动识别当前文件后缀等根据不同文件类型执行差异化的处理规则与规范自动获取鼠标选中的代码文本片段内容局部代码优化选中内容注释片段纠错与改写自动读取用户当前输入的完整指令文本智能匹配用户自定义需求动态响应个性化指令变量实操案例新旧写法正反对比传统低级写法静态硬编码完全不推荐路径文件名全部写死更换项目设备后直接失效后续维护成本极高执行代码格式化脚本执行路径格式化当前文件高阶标准写法动态变量适配永久通用执行代码格式化脚本执行路径格式化当前文件当前文件后缀四核心语法二条件判断智能分支逻辑语法作用该语法核心解决单一只能适配固定场景的短板支持根据操作系统文件类型项目路径等环境状态自动切换不同执行流程是开发复杂复合型的核心基础标准固定语法模板语法简洁通用无需深度记忆可直接复制套用判断条件满足条件时执行的指令步骤代码不满足条件时执行的指令步骤代码高频实战场景案例案例跨系统适配差异化执行脚本清理项目临时文件执行清理脚本执行清理脚本检查点项目无临时缓存文件日志残留冗余垃圾文件案例根据文件后缀差异化处理代码规范适配对应语言格式化规则遵循规范格式化代码自动补全类型注解排序导入包遵循官方编码规范执行标准化格式化统一代码风格统一全局代码缩进空行换行语句排版通用规范常用内置判断条件汇总系统环境判断文件类型判断后缀名支持等所有格式项目路径判断包含指定目录适配多目录差异化规则五核心语法三公共内容引用团队规范化神器解决核心痛点传统开发模式中多个技能需要复用同一套安全规则编码规范校验标准时只能重复复制粘贴一旦规范迭代更新需逐个修改所有关联极易出现规范不统一更新遗漏内容冗余的问题引用语法实现一处定义全局复用一次修改全部生效是团队标准化轻量化维护的核心能力标准目录规范公共资源统一存放需在根目录创建固定公共文件夹统一存储全局通用规则文件目录结构标准化可通用公共规则目录固定命名全局识别项目通用安全规范全局代码格式规范任务执行校验清单各类自定义文件夹引用语法实操案例基础语法公共文件相对路径实战落地用法在任意正文内通过单行指令快速引用公共规范无需重复编写冗余规则通用执行规范本次任务严格遵循团队统一标准自动加载全局公共规则最终校验标准任务执行完成后对照团队统一校验清单完成合规检测核心优势总结彻底消除规则冗余精简正文内容有效降低资源消耗团队所有统一遵循同一套规范彻底杜绝风格标准差异化乱象迭代维护高效仅需修改公共文件所有引用该规则的自动同步更新生效六核心语法四强制约束标记彻底杜绝自由发挥常规即便编写完整规则仍易出现额外赘述多余润色私自篡改格式输出冗余内容偏离需求等问题本篇专属组约束标记可强制锁定输出行为确保严格遵循指令执行杜绝无效发挥四大核心标记详解全场景通用严格模式作用强制严格匹配规则与示例复刻执行效果禁止私自修改代码格式业务逻辑输出风格完全杜绝自由发挥适用场景代码迁移格式统一标准化生成合规校验批量规整任务严格按照以下示例修改代码禁止调整格式新增逻辑删减内容额外优化仅输出代码作用屏蔽所有中文解释话术铺垫总结说明仅输出纯净代码块适配自动化场景适用场景快速代码生成批量代码修改脚本执行输出纯技术落地场景仅输出修改后的完整代码不添加任何解释说明总结铺垫话术禁止多余内容作用严格限制输出范围仅完成用户指定核心任务禁止输出规则外的多余内容拓展建议适用场景自动化批量处理标准化报告生成固定格式输出任务禁止多余注释作用禁止私自添加冗余注释无效注释仅保留项目官方标准注释保证代码简洁规范适用场景代码精简优化标准化代码生成商用代码规整组合使用万能模板高强度组合约束全方位锁定输出效果杜绝一切无效发挥严格遵循下方规则与示例执行任务仅输出最终成品内容无任何多余话术额外解释自定义修改与拓展内容七综合实战跨系统兼容复合型高阶整合本篇四大核心知识点动态变量条件判断公共引用强制约束标记打造可直接落地开箱即用的跨系统智能代码格式化零基础可直接复制部署使用完整源码自动跨系统格式化代码适配全平台根据文件后缀自动匹配对应编程语言规范统一项目代码格式触发指令格式化代码美化代码统一缩进整理代码格式规整代码风格高阶实战跨系统智能代码格式化技能一通用规范二执行规则严格根据当前操作系统文件类型执行差异化格式化禁止私自修改业务代码逻辑三动态执行步骤获取当前环境信息当前项目根目录当前操作文件当前文件类型跨系统差异化格式化执行格式化脚本执行格式化脚本语言差异化适配遵循规范自动缩进排序包补全类型注解规整代码排版执行官方标准化格式化统一项目代码风格统一全局缩进空行换行变量命名语句排版通用规范四最终验证执行全局格式校验确保完全符合团队统一规范五输出要求仅输出格式化后的文件变更结果无多余解释与话术技能能力总结动态读取项目文件环境信息无需手动修改路径参数适配所有项目自动兼容三大操作系统一套全平台通用智能识别文件类型差异化适配对应编程语言的格式化规则复用团队公共规范保证所有项目代码风格统一标准一致多层强制约束行为输出内容纯净标准无冗余无偏差八高阶语法避坑清单小白必看变量使用坑动态变量仅支持官方内置变量名格式禁止自定义私有变量否则无法正常解析生效条件判断坑分支语法必须成对闭合严禁遗漏结束标签否则会直接导致加载失败执行报错引用路径坑引用必须使用相对路径禁止使用绝对路径避免换设备换项目后引用失效约束标记坑所有约束标记仅大写格式生效小写无效多个标记可空格叠加组合使用适配高强度约束场景性能坑高阶语法仅为逻辑控制指令几乎不占用资源相比静态冗余写法可有效降低资源消耗提升响应速度九课后练习巩固落地自主仿写跨系统日志清理综合运用系统条件判断项目根目录变量实现全平台日志一键清理新建团队公共规范文件通过语法引入到现有中完成规则复用与统一迭代为过往编写的基础添加全套约束标记彻底解决多余输出自由发挥格式错乱等问题十本篇总结高阶增强语法是区分入门级模板和专业企业级的核心分水岭动态变量彻底解决路径固化环境适配差的问题条件判断解决场景单一灵活性低的问题引用解决规则冗余维护繁琐的问题强制约束标记解决不可控输出不标准的问题熟练掌握本篇所有语法后你已完全具备开发动态适配智能可控标准化可复用高阶的能力彻底脱离小白静态模板开发阶段达到企业级实战开发水平',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-07-11 15:00:13',
+  postMainColor: '',
+  chbg: {"enable":true,"presets":["https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/1.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/2.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/3.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/4.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/5.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/6.webp"],"default_blur":0,"default_mask_opacity":0.3}
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="https://kit.fontawesome.com/7af8740427.js" crossorigin="anonymous"></script><script src="/js/update.js"></script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/calendar-card.css"><link rel="stylesheet" href="/css/progress-fix.css"><link rel="stylesheet" href="/css/zhihu.css"><link rel="stylesheet" href="/css/article-reading.css"><link rel="stylesheet" href="/css/home.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"><script src="https://open.lightxi.com/unpkg/chinese-lunar@0.1.4/lib/chinese-lunar.js"></script><link rel="stylesheet" type="text/css" href="/css/heoMainColor.css"><link rel="stylesheet" type="text/css" href="/css/poem.css"><link rel="stylesheet" href="/css/font.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/update.css"><link rel="stylesheet" href="/css/privacy.css"><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" type="text/css" href="/css/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><div class="loading-image-dot"></div><div class="spinner-box"></div><div id="loadingtxt"><ul id="con1"><li class="li-style">阐述清楚问题就解决了一半</li><li class="li-style">一致的体验是更好的体验</li><li class="li-style">创造允许犯错，设计要知道保留哪些</li><li class="li-style">想让用户爱上你的设计，先爱上你的用户</li><li class="li-style">好的设计是我们与竞争对手保持差距最重要的方式</li><li class="li-style">如果你觉得好的设计是昂贵的，你应该看看坏设计的成本</li><li class="li-style">像其他设计一样，视觉设计也是解决问题，不是个人喜好</li><li class="li-style">因为每个人都知道自己喜欢什么，所以每个人都觉得自己是用户界面专家</li><li class="li-style">易用性也许不可见，但却不可缺席</li><li class="li-style">如果我有1000个想法，即使最终只有一个实现了，我也会非常满意</li><li class="li-style">如果你发现你界面中某个元素需要说明，你需要重新设计</li><li class="li-style">简化意味着去掉不必要的元素，让必要元素凸显</li><li class="li-style">天才就是将复杂问题简单化的人</li><li class="li-style">不用盯着空白太久，勇敢的跨出第一步，其他的自然而然就会发生</li><li class="li-style">有些人认为设计就是看起来长什么样。 但是如果你深入挖掘就会发现设计更关乎如何运作</li></ul><ul id="con2"></ul></div><script type="text/javascript">var area = document.getElementById('loadingtxt');
+var con1 = document.getElementById('con1');
+var con2 = document.getElementById('con2');
+var mytimer1 = null;
+var mytimer = null;
+var time = 1000 / 60;
+con2.innerHTML = con1.innerHTML;
+function scrollUp () {
+if (area.scrollTop >= con1.offsetHeight) {
+area.scrollTop = 0;
+} else {
+if (area.scrollTop % 25 == 0) {
+clearInterval(mytimer);
+clearInterval(mytimer1);
+mytimer1 = setTimeout(function () {
+mytimer = setInterval(scrollUp, time);
+}, 1000);
+}
+area.scrollTop++;
+}
+}
+mytimer = setInterval(scrollUp, time);</script></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">工具</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/empty" title="kimi"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg" alt="kimi"><span class="back-menu-item-text">kimi</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://pan.baidu.com/" title="百度网盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png" alt="百度网盘"><span class="back-menu-item-text">百度网盘</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">娱乐</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.163.com/?from=itab" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg" alt="网易云音乐"><span class="back-menu-item-text">网易云音乐</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="哔哩哔哩"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg" alt="哔哩哔哩"><span class="back-menu-item-text">哔哩哔哩</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.zhihu.com/" title="知乎"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=1821089500,4276043120&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=415&amp;h=312" alt="知乎"><span class="back-menu-item-text">知乎</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.skypixel.com/" title="天空之城"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=11010786,400614760&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" alt="天空之城"><span class="back-menu-item-text">天空之城</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Lifeline</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-comments faa-tada" style="font-size: 0.9em;"></i><span> 聊天室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="anzhiyufont anzhiyu-icon-calendar-days faa-tada" style="font-size: 0.9em;"></i><span> 待办清单</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/equipment/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 我的装备</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个异次元之旅-跃迁项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个异次元之旅-跃迁项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><img class="travel-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/14/684d99d607c49.png" alt="" style="width: 24px; height: 24px; vertical-align: middle;"></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="font-size: 1.05rem;">人工智能<sup>13</sup></a><a href="/tags/%E4%BA%BA%E6%96%87%E8%A7%82%E5%AF%9F/" style="font-size: 1.05rem;">人文观察<sup>3</sup></a><a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 1.05rem;">人生感悟<sup>2</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E4%BA%AB/" style="font-size: 1.05rem;">代码分享<sup>5</sup></a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">免费工具<sup>38</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">前端开发<sup>7</sup></a><a href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/" style="font-size: 1.05rem;">办公技巧<sup>17</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 1.05rem;">博客搭建<sup>11</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF%E5%85%A5%E9%97%A8/" style="font-size: 1.05rem;">后端入门<sup>2</sup></a><a href="/tags/%E5%9F%8E%E5%B8%82%E6%BC%AB%E6%B8%B8/" style="font-size: 1.05rem;">城市漫游<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>1</sup></a><a href="/tags/%E5%B0%8F%E4%BC%97%E7%9B%AE%E7%9A%84%E5%9C%B0/" style="font-size: 1.05rem;">小众目的地<sup>2</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">工具教程<sup>29</sup></a><a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 1.05rem;">开源项目<sup>9</sup></a><a href="/tags/%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F/" style="font-size: 1.05rem;">思维方式<sup>2</sup></a><a href="/tags/%E6%89%8B%E5%B7%A5-DIY/" style="font-size: 1.05rem;">手工 DIY<sup>2</sup></a><a href="/tags/%E6%89%8B%E6%9C%BA-APP/" style="font-size: 1.05rem;">手机 APP<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" style="font-size: 1.05rem;">技术踩坑<sup>37</sup></a><a href="/tags/%E6%91%84%E5%BD%B1%E8%AE%B0%E5%BD%95/" style="font-size: 1.05rem;">摄影记录<sup>3</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87/" style="font-size: 1.05rem;">效率提升<sup>6</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E8%BD%AF%E4%BB%B6/" style="font-size: 1.05rem;">效率软件<sup>38</sup></a><a href="/tags/%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1/" style="font-size: 1.05rem;">旅行摄影<sup>2</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8%E9%9A%8F%E6%83%B3/" style="font-size: 1.05rem;">日常随想<sup>1</sup></a><a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/" style="font-size: 1.05rem;">浏览器插件<sup>3</sup></a><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BF%83%E5%BE%97/" style="font-size: 1.05rem;">游戏心得<sup>2</sup></a><a href="/tags/%E7%83%AD%E7%82%B9%E8%AF%84%E8%AE%BA/" style="font-size: 1.05rem;">热点评论<sup>2</sup></a><a href="/tags/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/" style="font-size: 1.05rem;">电脑软件<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" style="font-size: 1.05rem;">知识总结<sup>10</sup></a><a href="/tags/%E7%9F%AD%E9%80%94%E6%97%85%E8%A1%8C/" style="font-size: 1.05rem;">短途旅行<sup>1</sup></a><a href="/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/" style="font-size: 1.05rem;">社会观察<sup>1</sup></a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">编程学习<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%8A%80%E8%83%BD/" style="font-size: 1.05rem;">职场技能<sup>6</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/" style="font-size: 1.05rem;">行业观察<sup>12</sup></a><a href="/tags/%E8%A7%82%E7%82%B9%E8%BE%93%E5%87%BA/" style="font-size: 1.05rem;">观点输出<sup>9</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/" style="font-size: 1.05rem;">认知升级<sup>7</sup></a><a href="/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/" style="font-size: 1.05rem;">资源分享<sup>24</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/" style="font-size: 1.05rem;">软件测评<sup>15</sup></a><a href="/tags/%E8%BF%90%E7%BB%B4%E9%83%A8%E7%BD%B2/" style="font-size: 1.05rem;">运维部署<sup>1</sup></a><a href="/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" style="font-size: 1.05rem;">避坑指南<sup>3</sup></a></div></div><hr></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><span class="card-archive-list-count">2</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><span class="card-archive-list-count">10</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><span class="card-archive-list-count">6</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><span class="card-archive-list-count">3</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><span class="card-archive-list-count">2</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><span class="card-archive-list-count">3</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><span class="card-archive-list-count">19</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">19</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><span class="card-archive-list-count">2</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li></ul></div><hr></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/" itemprop="url">技术探索</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>人工智能</span></a><a class="article-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>技术踩坑</span></a><a class="article-meta__tags" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>开发工具</span></a></span></div></div><h1 class="post-title" itemprop="name headline">如何运用 Cursor Skill 高阶语法实现动态适配能力</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-06-19T08:03:08.000Z" title="发表于 2026-06-19 16:03:08">2026-06-19</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-07-11T07:00:13.559Z" title="更新于 2026-07-11 15:00:13">2026-07-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">3.9k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="如何运用 Cursor Skill 高阶语法实现动态适配能力"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为卫辉"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>卫辉</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/images/doubao_image_1_1783753204553.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope="" itemtype="https://lifelinest.github.io/posts/83dd532c/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/" itemprop="url">技术探索</a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" tabindex="-1" itemprop="url">人工智能</a><a href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" tabindex="-1" itemprop="url">技术踩坑</a><a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" tabindex="-1" itemprop="url">开发工具</a><h1 id="CrawlerTitle" itemprop="name headline">如何运用 Cursor Skill 高阶语法实现动态适配能力</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Lifeline</span><time itemprop="dateCreated datePublished" datetime="2026-06-19T08:03:08.000Z" title="发表于 2026-06-19 16:03:08">2026-06-19</time><time itemprop="dateCreated datePublished" datetime="2026-07-11T07:00:13.559Z" title="更新于 2026-07-11 15:00:13">2026-07-11</time></header><div id="postchat_postcontent"><h2 id="一、本篇定位-学习目标"><a href="#一、本篇定位-学习目标" class="headerlink" title="一、本篇定位 &amp; 学习目标"></a>一、本篇定位 &amp; 学习目标</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_3_1781856399721.png" alt="doubao_image_3_1781856399721.png"></p>
+<h3 id="本篇定位"><a href="#本篇定位" class="headerlink" title="本篇定位"></a>本篇定位</h3><p>在前7篇教程中，我们学习的Skill均为<strong>静态固定规则</strong>：步骤、路径、逻辑全部硬编码固定，仅能适配单一固定场景，灵活性与复用性极差。</p>
+<p>本篇作为Skill体系的<strong>高阶核心进阶课程</strong>，将深度拆解主流AI编程工具专属的增强语法，针对性解决静态Skill的<strong>四大核心痛点</strong>：</p>
+<ul>
+<li>无法兼容 Windows、Mac、Linux 多操作系统环境，跨设备直接失效</li>
+<li>无法自动识别文件类型，不能按需差异化执行任务逻辑</li>
+<li>通用规则重复冗余，团队技能规范难以统一维护迭代</li>
+<li>AI自主发挥度高，输出格式杂乱、贴合业务需求度低</li>
+</ul>
+<p>通过掌握全套高阶语法，可将传统固化的模板型Skill，全面升级为<strong>动态适配、智能判断、严格可控、全域复用</strong>的<strong>企业级自动化能力</strong>。</p>
+<h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><p>完成本篇学习后，你将全面掌握高阶Skill开发能力，熟练实现以下核心能力：</p>
+<ol>
+<li>运用<strong>内置动态变量</strong>，完成项目路径、文件信息、用户指令的全自动动态取值</li>
+<li>掌握<strong>条件判断语法</strong>，实现多系统、多文件类型的差异化分支执行逻辑</li>
+<li>熟练使用<strong>Include公共引用语法</strong>，实现团队规范统一复用、极简迭代维护</li>
+<li>活用<strong>强制约束标记</strong>，彻底杜绝AI无效输出、格式错乱、私自改逻辑等问题</li>
+<li>独立开发<strong>跨系统、多场景兼容</strong>的复合型高阶Skill，适配复杂业务场景</li>
+</ol>
+<h2 id="二、前置认知：高阶语法核心价值"><a href="#二、前置认知：高阶语法核心价值" class="headerlink" title="二、前置认知：高阶语法核心价值"></a>二、前置认知：高阶语法核心价值</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_13_1781856476415.png" alt="doubao_image_13_1781856476415.png"></p>
+<p>静态基础Skill等同于「固定死的模板文案」，场景适配单一、修改繁琐、容错率极低，仅适用于极简固定任务。</p>
+<p>高阶Skill依托增强语法，实现了「动态变量填充 + 智能分支判断」，可<strong>自适应各类可变场景</strong>，真正实现一次编写、全域通用。</p>
+<p>本篇所有高阶语法<strong>全面兼容 Claude Code、CodeBuddy、Cursor 主流AI编程工具</strong>，语法标准通用、无需单独适配，是开发标准化、企业级Skill的核心必备能力。</p>
+<h1 id="三、核心语法一：内置动态变量（实现全自动环境取值）"><a href="#三、核心语法一：内置动态变量（实现全自动环境取值）" class="headerlink" title="三、核心语法一：内置动态变量（实现全自动环境取值）"></a>三、核心语法一：内置动态变量（实现全自动环境取值）</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_9_1781856454898.png" alt="doubao_image_9_1781856454898.png"></p>
+<h2 id="3-1-变量原理"><a href="#3-1-变量原理" class="headerlink" title="3.1 变量原理"></a>3.1 变量原理</h2><p>高阶Skill专属支持 <code>{{变量名}}</code> 双大括号动态变量语法，AI可<strong>实时自动读取当前项目环境、文件、用户操作信息</strong>，无需人工硬编码路径、文件名、指令内容，彻底解决「换项目、换设备、换环境后Skill直接失效」的行业痛点。</p>
+<p>核心优势：一次编写、全项目适配、全系统兼容、零修改复用，大幅降低维护成本。</p>
+<h2 id="3-2-全网通用内置变量大全（小白可直接抄用）"><a href="#3-2-全网通用内置变量大全（小白可直接抄用）" class="headerlink" title="3.2 全网通用内置变量大全（小白可直接抄用）"></a>3.2 全网通用内置变量大全（小白可直接抄用）</h2><p>以下为全平台通用的5个核心内置变量，覆盖99%的动态场景开发需求，是高阶Skill的基础核心能力：</p>
+<table>
+<thead>
+<tr>
+<th>内置变量</th>
+<th>作用说明</th>
+<th>落地使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>{{project_root}}</code></td>
+<td>自动读取当前项目根目录的绝对路径</td>
+<td>调用项目本地脚本、读取全局配置文件、批量处理项目目录文件</td>
+</tr>
+<tr>
+<td><code>{{current_file}}</code></td>
+<td>自动读取当前打开、操作的目标文件完整路径</td>
+<td>单文件代码修改、格式化、缺陷修复、内容优化</td>
+</tr>
+<tr>
+<td><code>{{file_ext}}</code></td>
+<td>自动识别当前文件后缀（py/go/js/java等）</td>
+<td>根据不同文件类型，执行差异化的处理规则与规范</td>
+</tr>
+<tr>
+<td><code>{{selected_text}}</code></td>
+<td>自动获取鼠标选中的代码、文本片段内容</td>
+<td>局部代码优化、选中内容注释、片段纠错与改写</td>
+</tr>
+<tr>
+<td><code>{{user_input}}</code></td>
+<td>自动读取用户当前输入的完整指令文本</td>
+<td>智能匹配用户自定义需求，动态响应个性化指令</td>
+</tr>
+</tbody></table>
+<h2 id="3-3-变量实操案例（新旧写法正反对比）"><a href="#3-3-变量实操案例（新旧写法正反对比）" class="headerlink" title="3.3 变量实操案例（新旧写法正反对比）"></a>3.3 变量实操案例（新旧写法正反对比）</h2><h3 id="❌-传统低级写法（静态硬编码，完全不推荐）"><a href="#❌-传统低级写法（静态硬编码，完全不推荐）" class="headerlink" title="❌ 传统低级写法（静态硬编码，完全不推荐）"></a>❌ 传统低级写法（静态硬编码，完全不推荐）</h3><p>路径、文件名全部写死，更换项目、设备后直接失效，后续维护成本极高</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">### Step1：执行代码格式化脚本</span></span><br><span class="line">执行路径：/Users/xxx/project/scripts/format.sh</span><br><span class="line">格式化当前文件：test.py</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="✅-高阶标准写法（动态变量适配，永久通用）"><a href="#✅-高阶标准写法（动态变量适配，永久通用）" class="headerlink" title="✅ 高阶标准写法（动态变量适配，永久通用）"></a>✅ 高阶标准写法（动态变量适配，永久通用）</h3><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">### Step1：执行代码格式化脚本</span></span><br><span class="line">执行路径：{{project<span class="emphasis">_root}}/scripts/format.sh</span></span><br><span class="line"><span class="emphasis">格式化当前文件：{{current_</span>file}}</span><br><span class="line">当前文件后缀：{{file<span class="emphasis">_ext}}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="四、核心语法二：条件判断（If-Else-智能分支逻辑）"><a href="#四、核心语法二：条件判断（If-Else-智能分支逻辑）" class="headerlink" title="四、核心语法二：条件判断（If/Else 智能分支逻辑）"></a>四、核心语法二：条件判断（If/Else 智能分支逻辑）</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_4_1781856409538.png" alt="doubao_image_4_1781856409538.png"></p>
+<h2 id="4-1-语法作用"><a href="#4-1-语法作用" class="headerlink" title="4.1 语法作用"></a>4.1 语法作用</h2><p>该语法核心解决「单一Skill只能适配固定场景」的短板，支持<strong>根据操作系统、文件类型、项目路径等环境状态</strong>，自动切换不同执行流程，是开发复杂复合型Skill的核心基础。</p>
+<h2 id="4-2-标准固定语法模板"><a href="#4-2-标准固定语法模板" class="headerlink" title="4.2 标准固定语法模板"></a>4.2 标准固定语法模板</h2><p>语法简洁通用，无需深度记忆，可直接复制套用：</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{{#if 判断条件}}</span><br><span class="line">满足条件时执行的指令、步骤、代码</span><br><span class="line">{{else}}</span><br><span class="line">不满足条件时执行的指令、步骤、代码</span><br><span class="line">{{/if}}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-3-高频实战场景案例"><a href="#4-3-高频实战场景案例" class="headerlink" title="4.3 高频实战场景案例"></a>4.3 高频实战场景案例</h2><h3 id="案例1：跨系统适配（Windows-Mac-Linux-差异化执行脚本）"><a href="#案例1：跨系统适配（Windows-Mac-Linux-差异化执行脚本）" class="headerlink" title="案例1：跨系统适配（Windows/Mac/Linux 差异化执行脚本）"></a>案例1：跨系统适配（Windows/Mac/Linux 差异化执行脚本）</h3><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">### Step1：清理项目临时文件</span></span><br><span class="line">{{#if is<span class="emphasis">_windows}}</span></span><br><span class="line"><span class="emphasis">执行Windows清理脚本：{{project_</span>root}}/scripts/clean.bat</span><br><span class="line">{{else}}</span><br><span class="line">执行Mac/Linux清理脚本：{{project<span class="emphasis">_root}}/scripts/clean.sh</span></span><br><span class="line"><span class="emphasis">{{/if}}</span></span><br><span class="line"><span class="emphasis"><span class="strong">**检查点**</span>：项目无临时缓存文件、日志残留、冗余垃圾文件</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="案例2：根据文件后缀差异化处理代码规范"><a href="#案例2：根据文件后缀差异化处理代码规范" class="headerlink" title="案例2：根据文件后缀差异化处理代码规范"></a>案例2：根据文件后缀差异化处理代码规范</h3><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">### Step2：适配对应语言格式化规则</span></span><br><span class="line">{{#if file<span class="emphasis">_ext == "py"}}</span></span><br><span class="line"><span class="emphasis">遵循Python PEP8规范格式化代码，自动补全类型注解、排序导入包</span></span><br><span class="line"><span class="emphasis">{{else if file_</span>ext == "go"}}</span><br><span class="line">遵循Golang官方编码规范，执行go fmt标准化格式化，统一代码风格</span><br><span class="line">{{else}}</span><br><span class="line">统一全局代码缩进、空行、换行、语句排版通用规范</span><br><span class="line">{{/if}}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-4-常用内置判断条件汇总"><a href="#4-4-常用内置判断条件汇总" class="headerlink" title="4.4 常用内置判断条件汇总"></a>4.4 常用内置判断条件汇总</h2><ul>
+<li>系统环境判断：<code>is_windows</code> / <code>is_mac</code> / <code>is_linux</code></li>
+<li>文件类型判断：<code>file_ext == "后缀名"</code>（支持py、go、js、java等所有格式）</li>
+<li>项目路径判断：<code>project_root 包含指定目录</code>，适配多目录差异化规则</li>
+</ul>
+<h1 id="五、核心语法三：Include-公共内容引用（团队规范化神器）"><a href="#五、核心语法三：Include-公共内容引用（团队规范化神器）" class="headerlink" title="五、核心语法三：Include 公共内容引用（团队规范化神器）"></a>五、核心语法三：Include 公共内容引用（团队规范化神器）</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_3_1781856779500.png" alt="doubao_image_3_1781856779500.png"></p>
+<h2 id="5-1-解决核心痛点"><a href="#5-1-解决核心痛点" class="headerlink" title="5.1 解决核心痛点"></a>5.1 解决核心痛点</h2><p>传统Skill开发模式中，多个技能需要复用同一套安全规则、编码规范、校验标准时，只能重复复制粘贴。一旦规范迭代更新，需逐个修改所有关联Skill，极易出现规范不统一、更新遗漏、内容冗余的问题。</p>
+<p>Include引用语法实现<strong>一处定义、全局复用、一次修改、全部生效</strong>，是团队Skill标准化、轻量化维护的核心能力。</p>
+<h2 id="5-2-标准目录规范（公共资源统一存放）"><a href="#5-2-标准目录规范（公共资源统一存放）" class="headerlink" title="5.2 标准目录规范（公共资源统一存放）"></a>5.2 标准目录规范（公共资源统一存放）</h2><p>需在Skill根目录创建固定公共文件夹，统一存储全局通用规则文件，目录结构标准化、可通用：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">skills/</span><br><span class="line">├── _common/                # 公共规则目录（固定命名，全局识别）</span><br><span class="line">│   ├── safe-rule.md        # 项目通用安全规范</span><br><span class="line">│   ├── code-standard.md    # 全局代码格式规范</span><br><span class="line">│   └── check-list.md       # 任务执行校验清单</span><br><span class="line">└── 各类自定义Skill文件夹/</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="5-3-Include引用语法-实操案例"><a href="#5-3-Include引用语法-实操案例" class="headerlink" title="5.3 Include引用语法 &amp; 实操案例"></a>5.3 Include引用语法 &amp; 实操案例</h2><h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{include 公共文件相对路径}}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="实战落地用法"><a href="#实战落地用法" class="headerlink" title="实战落地用法"></a>实战落地用法</h3><p>在任意Skill正文内，通过单行指令快速引用公共规范，无需重复编写冗余规则：</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 通用执行规范</span></span><br><span class="line">本次任务严格遵循团队统一标准，自动加载全局公共规则：</span><br><span class="line">{{include ../<span class="emphasis">_common/code-standard.md}}</span></span><br><span class="line"><span class="emphasis">{{include ../_</span>common/safe-rule.md}}</span><br><span class="line"></span><br><span class="line"><span class="section">## 最终校验标准</span></span><br><span class="line">任务执行完成后，对照团队统一校验清单完成合规检测：</span><br><span class="line">{{include ../<span class="emphasis">_common/check-list.md}}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="5-4-核心优势总结"><a href="#5-4-核心优势总结" class="headerlink" title="5.4 核心优势总结"></a>5.4 核心优势总结</h2><ol>
+<li>彻底消除规则冗余，精简Skill正文内容，有效降低Token资源消耗</li>
+<li>团队所有Skill统一遵循同一套规范，彻底杜绝风格、标准差异化乱象</li>
+<li>迭代维护高效：仅需修改公共文件，所有引用该规则的Skill自动同步更新生效</li>
+</ol>
+<h1 id="六、核心语法四：强制约束标记（彻底杜绝AI自由发挥）"><a href="#六、核心语法四：强制约束标记（彻底杜绝AI自由发挥）" class="headerlink" title="六、核心语法四：强制约束标记（彻底杜绝AI自由发挥）"></a>六、核心语法四：强制约束标记（彻底杜绝AI自由发挥）</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_4_1781856790337.png" alt="doubao_image_4_1781856790337.png"></p>
+<p>常规Skill即便编写完整规则，AI仍易出现<strong>额外赘述、多余润色、私自篡改格式、输出冗余内容、偏离需求</strong>等问题。本篇专属4组约束标记，可强制锁定AI输出行为，确保100%严格遵循指令执行，杜绝无效发挥。</p>
+<h2 id="6-1-四大核心标记详解（全场景通用）"><a href="#6-1-四大核心标记详解（全场景通用）" class="headerlink" title="6.1 四大核心标记详解（全场景通用）"></a>6.1 四大核心标记详解（全场景通用）</h2><h3 id="1、-STRICT-严格模式"><a href="#1、-STRICT-严格模式" class="headerlink" title="1、[STRICT] 严格模式"></a>1、[STRICT] 严格模式</h3><p><strong>作用</strong>：强制AI严格匹配规则与示例，1:1复刻执行效果，禁止私自修改代码格式、业务逻辑、输出风格，完全杜绝自由发挥。</p>
+<p><strong>适用场景</strong>：代码迁移、格式统一、标准化生成、合规校验、批量规整任务</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[STRICT] 严格按照以下Before/After示例修改代码，禁止调整格式、新增逻辑、删减内容、额外优化</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2、-ONLY-CODE-仅输出代码"><a href="#2、-ONLY-CODE-仅输出代码" class="headerlink" title="2、[ONLY_CODE] 仅输出代码"></a>2、[ONLY_CODE] 仅输出代码</h3><p><strong>作用</strong>：屏蔽所有中文解释、话术铺垫、总结说明，仅输出纯净代码块，适配自动化场景。</p>
+<p><strong>适用场景</strong>：快速代码生成、批量代码修改、脚本执行输出、纯技术落地场景</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ONLY<span class="emphasis">_CODE] 仅输出修改后的完整代码，不添加任何解释、说明、总结、铺垫话术</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3、-NO-EXTRA-CONTENT-禁止多余内容"><a href="#3、-NO-EXTRA-CONTENT-禁止多余内容" class="headerlink" title="3、[NO_EXTRA_CONTENT] 禁止多余内容"></a>3、[NO_EXTRA_CONTENT] 禁止多余内容</h3><p><strong>作用</strong>：严格限制AI输出范围，仅完成用户指定核心任务，禁止输出规则外的多余内容、拓展建议。</p>
+<p><strong>适用场景</strong>：自动化批量处理、标准化报告生成、固定格式输出任务</p>
+<h3 id="4、-NO-COMMENT-禁止多余注释"><a href="#4、-NO-COMMENT-禁止多余注释" class="headerlink" title="4、[NO_COMMENT] 禁止多余注释"></a>4、[NO_COMMENT] 禁止多余注释</h3><p><strong>作用</strong>：禁止AI私自添加冗余注释、无效注释，仅保留项目官方标准注释，保证代码简洁规范。</p>
+<p><strong>适用场景</strong>：代码精简优化、标准化代码生成、商用代码规整</p>
+<h2 id="6-2-组合使用万能模板"><a href="#6-2-组合使用万能模板" class="headerlink" title="6.2 组合使用万能模板"></a>6.2 组合使用万能模板</h2><p>高强度组合约束，全方位锁定AI输出效果，杜绝一切无效发挥：</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[STRICT] [ONLY<span class="emphasis">_CODE] [NO_</span>EXTRA<span class="emphasis">_CONTENT]</span></span><br><span class="line"><span class="emphasis">严格遵循下方规则与示例执行任务，仅输出最终成品内容，无任何多余话术、额外解释、自定义修改与拓展内容</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="七、综合实战：跨系统兼容复合型高阶Skill"><a href="#七、综合实战：跨系统兼容复合型高阶Skill" class="headerlink" title="七、综合实战：跨系统兼容复合型高阶Skill"></a>七、综合实战：跨系统兼容复合型高阶Skill</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_6_1781856808688.png" alt="doubao_image_6_1781856808688.png"></p>
+<p>整合本篇四大核心知识点（动态变量+条件判断+Include公共引用+强制约束标记），打造可直接落地、开箱即用的<strong>跨系统智能代码格式化Skill</strong>，零基础可直接复制部署使用。</p>
+<h2 id="完整-SKILL-md-源码"><a href="#完整-SKILL-md-源码" class="headerlink" title="完整 SKILL.md 源码"></a>完整 SKILL.md 源码</h2><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">auto-code-format</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&gt;</span></span><br><span class="line"><span class="string">  自动跨系统格式化代码，适配Windows/Mac/Linux全平台，</span></span><br><span class="line"><span class="string">  根据文件后缀自动匹配对应编程语言规范，统一项目代码格式。</span></span><br><span class="line"><span class="string">  触发指令：格式化代码、美化代码、统一缩进、整理代码格式、规整代码风格。</span></span><br><span class="line"><span class="string"></span><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">"1.0"</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">"高阶Skill实战"</span></span><br><span class="line"><span class="attr">triggers:</span></span><br><span class="line">  <span class="attr">file_patterns:</span> [<span class="string">"*.py"</span>, <span class="string">"*.go"</span>, <span class="string">"*.js"</span>, <span class="string">"*.java"</span>]</span><br><span class="line"><span class="attr">permissions:</span></span><br><span class="line">  <span class="attr">allow_delete:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="comment"># 跨系统智能代码格式化技能</span></span><br><span class="line"><span class="comment">## 一、通用规范</span></span><br><span class="line">{{<span class="string">include</span> <span class="string">../_common/code-standard.md</span>}}</span><br><span class="line"></span><br><span class="line"><span class="comment">## 二、执行规则</span></span><br><span class="line">[<span class="string">STRICT</span>] [<span class="string">NO_EXTRA_CONTENT</span>]</span><br><span class="line"><span class="string">严格根据当前操作系统、文件类型执行差异化格式化，禁止私自修改业务代码逻辑。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 三、动态执行步骤</span></span><br><span class="line"><span class="comment">### Step1：获取当前环境信息</span></span><br><span class="line"><span class="string">当前项目根目录：{{project_root}}</span></span><br><span class="line"><span class="string">当前操作文件：{{current_file}}</span></span><br><span class="line"><span class="string">当前文件类型：{{file_ext}}</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### Step2：跨系统差异化格式化</span></span><br><span class="line">{{<span class="comment">#if is_windows}}</span></span><br><span class="line"><span class="string">执行Windows格式化脚本：<span class="template-variable">{{project_root}}</span></span><span class="string">/scripts/format.bat</span></span><br><span class="line">{{<span class="string">else</span>}}</span><br><span class="line"><span class="string">执行Mac/Linux格式化脚本：<span class="template-variable">{{project_root}}</span></span><span class="string">/scripts/format.sh</span></span><br><span class="line">{{<span class="string">/if</span>}}</span><br><span class="line"></span><br><span class="line"><span class="comment">### Step3：语言差异化适配</span></span><br><span class="line">{{<span class="comment">#if file_ext == "py"}}</span></span><br><span class="line"><span class="string">遵循PEP8规范：自动缩进、排序import包、补全类型注解、规整代码排版</span></span><br><span class="line">{{<span class="string">else</span> <span class="string">if</span> <span class="string">file_ext</span> <span class="string">==</span> <span class="string">"go"</span>}}</span><br><span class="line"><span class="string">执行go</span> <span class="string">fmt官方标准化格式化，统一Golang项目代码风格</span></span><br><span class="line">{{<span class="string">else</span>}}</span><br><span class="line"><span class="string">统一全局缩进、空行、换行、变量命名、语句排版通用规范</span></span><br><span class="line">{{<span class="string">/if</span>}}</span><br><span class="line"></span><br><span class="line"><span class="comment">## 四、最终验证</span></span><br><span class="line"><span class="string">执行全局格式校验，确保完全符合团队统一规范：</span></span><br><span class="line">{{<span class="string">include</span> <span class="string">../_common/check-list.md</span>}}</span><br><span class="line"></span><br><span class="line"><span class="comment">## 五、输出要求</span></span><br><span class="line">[<span class="string">ONLY_CODE</span>]</span><br><span class="line"><span class="string">仅输出格式化后的文件变更结果，无多余解释与话术</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="技能能力总结"><a href="#技能能力总结" class="headerlink" title="技能能力总结"></a>技能能力总结</h2><ol>
+<li>动态读取项目、文件环境信息，无需手动修改路径参数，适配所有项目</li>
+<li>自动兼容Windows、Mac、Linux三大操作系统，一套Skill全平台通用</li>
+<li>智能识别文件类型，差异化适配对应编程语言的格式化规则</li>
+<li>复用团队公共规范，保证所有项目代码风格统一、标准一致</li>
+<li>多层强制约束AI行为，输出内容纯净、标准、无冗余、无偏差</li>
+</ol>
+<h1 id="八、高阶语法避坑清单（小白必看）"><a href="#八、高阶语法避坑清单（小白必看）" class="headerlink" title="八、高阶语法避坑清单（小白必看）"></a>八、高阶语法避坑清单（小白必看）</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_7_1781856830118.png" alt="doubao_image_7_1781856830118.png"></p>
+<ul>
+<li><strong>变量使用坑</strong>：动态变量仅支持官方内置 <code>{{变量名}}</code> 格式，禁止自定义私有变量，否则无法正常解析生效</li>
+<li><strong>条件判断坑</strong>：if/else 分支语法必须成对闭合，严禁遗漏 <code>{{/if}}</code> 结束标签，否则会直接导致Skill加载失败、执行报错</li>
+<li><strong>引用路径坑</strong>：Include引用必须使用<strong>相对路径</strong>，禁止使用绝对路径，避免换设备、换项目后引用失效</li>
+<li><strong>约束标记坑</strong>：所有约束标记仅大写格式生效，小写无效；多个标记可空格叠加组合使用，适配高强度约束场景</li>
+<li><strong>Token性能坑</strong>：高阶语法仅为逻辑控制指令，几乎不占用Token资源，相比静态冗余写法，可有效降低资源消耗、提升响应速度</li>
+</ul>
+<h1 id="九、课后练习（巩固落地）"><a href="#九、课后练习（巩固落地）" class="headerlink" title="九、课后练习（巩固落地）"></a>九、课后练习（巩固落地）</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_8_1781856840743.png" alt="doubao_image_8_1781856840743.png"></p>
+<ol>
+<li>自主仿写「跨系统日志清理Skill」，综合运用系统条件判断+项目根目录变量，实现全平台日志一键清理</li>
+<li>新建团队公共规范文件，通过Include语法引入到现有Skill中，完成规则复用与统一迭代</li>
+<li>为过往编写的基础Skill添加全套约束标记，彻底解决AI多余输出、自由发挥、格式错乱等问题</li>
+</ol>
+<h1 id="十、本篇总结"><a href="#十、本篇总结" class="headerlink" title="十、本篇总结"></a>十、本篇总结</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_14_1781856850403.png" alt="doubao_image_14_1781856850403.png"></p>
+<p>高阶增强语法，是区分「入门级模板Skill」和「专业企业级Skill」的核心分水岭。</p>
+<p>动态变量彻底解决<strong>路径固化、环境适配差</strong>的问题，条件判断解决<strong>场景单一、灵活性低</strong>的问题，Include引用解决<strong>规则冗余、维护繁琐</strong>的问题，强制约束标记解决<strong>AI不可控、输出不标准</strong>的问题。</p>
+<p>熟练掌握本篇所有语法后，你已完全具备开发<strong>动态适配、智能可控、标准化、可复用</strong>高阶Skill的能力，彻底脱离小白静态模板开发阶段，达到企业级实战开发水平。</p>
+</div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" title="头像" alt="头像"></a><div class="post-copyright__author_name">Lifeline</div><div class="post-copyright__author_desc">经世致用 自强不息</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://lifelinest.github.io/posts/83dd532c/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://lifelinest.github.io/posts/83dd532c/')">如何运用 Cursor Skill 高阶语法实现动态适配能力</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://lifelinest.github.io/posts/83dd532c/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=如何运用 Cursor Skill 高阶语法实现动态适配能力&amp;url=https://lifelinest.github.io/posts/83dd532c/&amp;pic=/images/doubao_image_1_1783753204553.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lifelinest.github.io" target="_blank">Lifeline</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>人工智能<span class="tagsPageCount">13</span></a><a class="post-meta__box__tags" href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>技术踩坑<span class="tagsPageCount">37</span></a><a class="post-meta__box__tags" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>开发工具<span class="tagsPageCount">10</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/doubao_image_11.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/f83bd290/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_14.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">如何设计 AI 编程助手 Skill 复杂任务模块化架构</div></div></a></div><div class="next-post pull-right"><a href="/posts/6cae7b2c/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">如何管理 Claude Skill 版本迭代与团队协作配置</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/5daa7ae4/" title="如何从零开发 AI 编程助手 Skill 可运行自定义技能"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_12.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-06-19</div><div class="title">如何从零开发 AI 编程助手 Skill 可运行自定义技能</div></div></a></div><div><a href="/posts/24c9c254/" title="如何借助 Claude Skill 脚本实现批量自动化操作"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-06-19</div><div class="title">如何借助 Claude Skill 脚本实现批量自动化操作</div></div></a></div><div><a href="/posts/e57cb390/" title="如何入门 AI 编程助手 Skill 核心运行原理与专业名词"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-06-19</div><div class="title">如何入门 AI 编程助手 Skill 核心运行原理与专业名词</div></div></a></div><div><a href="/posts/30a2dcc4/" title="如何优化 Cursor Skill 正文指令逻辑与执行效果"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_13.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-06-19</div><div class="title">如何优化 Cursor Skill 正文指令逻辑与执行效果</div></div></a></div><div><a href="/posts/fe9f2465/" title="如何排查 AI 编程助手 Skill 故障并规范安全上线"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_14_1783753546631.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-06-19</div><div class="title">如何排查 AI 编程助手 Skill 故障并规范安全上线</div></div></a></div><div><a href="/posts/f2b68b74/" title="如何搭建 Cursor Skill 标准化目录结构与部署环境"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-06-19</div><div class="title">如何搭建 Cursor Skill 标准化目录结构与部署环境</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/DT.png" alt="status"></div></div><div class="author-info__description">日落终归山海，你我总将相遇。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">Lifeline</h1><div class="author-info__desc">经世致用 自强不息</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/lifelinest" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/694787378" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence">加载中...</div><div id="poem_info"><div id="poem_dynasty">加载中...</div><div class="poem-title-scroll"><div id="poem_author">加载中...</div></div></div></div><script type="text/javascript">// 本地诗词备选
+var localPoems = [
+  {
+    content: "床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+    dynasty: "唐代",
+    author: "李白",
+    title: "静夜思"
+  },
+  {
+    content: "人生自是有情痴，此恨不关风与月。",
+    dynasty: "宋代",
+    author: "欧阳修",
+    title: "玉楼春"
+  },
+  {
+    content: "大漠孤烟直，长河落日圆。",
+    dynasty: "唐代",
+    author: "王维",
+    title: "使至塞上"
+  },
+  {
+    content: "会当凌绝顶，一览众山小。",
+    dynasty: "唐代",
+    author: "杜甫",
+    title: "望岳"
+  }
+];
+function renderPoem(poem) {
+  var sentence = document.querySelector("#poem_sentence");
+  var author = document.querySelector("#poem_author");
+  var dynasty = document.querySelector("#poem_dynasty");
+  var lines = poem.content.match(/[^，。！？；]+[，。！？；]?/g) || [poem.content];
+  sentence.innerHTML = lines.map(l => `<div class='poem-line'>${l.trim()}</div>`).join('');
+  dynasty.innerHTML = poem.dynasty || '无';
+  author.innerHTML = (poem.author || '') + '《' + (poem.title || '') + '》';
+}
+// 尝试API
+function tryApi() {
+  if (window.jinrishici) {
+    jinrishici.load(function(result) {
+      try {
+        var data = result.data;
+        renderPoem({
+          content: data.content,
+          dynasty: data.origin.dynasty,
+          author: data.origin.author,
+          title: data.origin.title
+        });
+      } catch(e) {
+        renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+      }
+    });
+  } else {
+    renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+  }
+}
+// 加载API脚本
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js';
+script.charset = 'utf-8';
+script.onload = tryApi;
+script.onerror = function(){renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);}
+document.head.appendChild(script);</script><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%AC%E7%AF%87%E5%AE%9A%E4%BD%8D-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">一、本篇定位 &amp; 学习目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.</span> <span class="toc-text">本篇定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="toc-number">1.2.</span> <span class="toc-text">学习目标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%89%8D%E7%BD%AE%E8%AE%A4%E7%9F%A5%EF%BC%9A%E9%AB%98%E9%98%B6%E8%AF%AD%E6%B3%95%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">二、前置认知：高阶语法核心价值</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E4%B8%80%EF%BC%9A%E5%86%85%E7%BD%AE%E5%8A%A8%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%88%E5%AE%9E%E7%8E%B0%E5%85%A8%E8%87%AA%E5%8A%A8%E7%8E%AF%E5%A2%83%E5%8F%96%E5%80%BC%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">三、核心语法一：内置动态变量（实现全自动环境取值）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%8F%98%E9%87%8F%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">3.1 变量原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E5%85%A8%E7%BD%91%E9%80%9A%E7%94%A8%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F%E5%A4%A7%E5%85%A8%EF%BC%88%E5%B0%8F%E7%99%BD%E5%8F%AF%E7%9B%B4%E6%8E%A5%E6%8A%84%E7%94%A8%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">3.2 全网通用内置变量大全（小白可直接抄用）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%8F%98%E9%87%8F%E5%AE%9E%E6%93%8D%E6%A1%88%E4%BE%8B%EF%BC%88%E6%96%B0%E6%97%A7%E5%86%99%E6%B3%95%E6%AD%A3%E5%8F%8D%E5%AF%B9%E6%AF%94%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">3.3 变量实操案例（新旧写法正反对比）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E4%BC%A0%E7%BB%9F%E4%BD%8E%E7%BA%A7%E5%86%99%E6%B3%95%EF%BC%88%E9%9D%99%E6%80%81%E7%A1%AC%E7%BC%96%E7%A0%81%EF%BC%8C%E5%AE%8C%E5%85%A8%E4%B8%8D%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">❌ 传统低级写法（静态硬编码，完全不推荐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E9%AB%98%E9%98%B6%E6%A0%87%E5%87%86%E5%86%99%E6%B3%95%EF%BC%88%E5%8A%A8%E6%80%81%E5%8F%98%E9%87%8F%E9%80%82%E9%85%8D%EF%BC%8C%E6%B0%B8%E4%B9%85%E9%80%9A%E7%94%A8%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">✅ 高阶标准写法（动态变量适配，永久通用）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%EF%BC%88If-Else-%E6%99%BA%E8%83%BD%E5%88%86%E6%94%AF%E9%80%BB%E8%BE%91%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">四、核心语法二：条件判断（If/Else 智能分支逻辑）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E8%AF%AD%E6%B3%95%E4%BD%9C%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">4.1 语法作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%A0%87%E5%87%86%E5%9B%BA%E5%AE%9A%E8%AF%AD%E6%B3%95%E6%A8%A1%E6%9D%BF"><span class="toc-number">2.</span> <span class="toc-text">4.2 标准固定语法模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E9%AB%98%E9%A2%91%E5%AE%9E%E6%88%98%E5%9C%BA%E6%99%AF%E6%A1%88%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">4.3 高频实战场景案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B1%EF%BC%9A%E8%B7%A8%E7%B3%BB%E7%BB%9F%E9%80%82%E9%85%8D%EF%BC%88Windows-Mac-Linux-%E5%B7%AE%E5%BC%82%E5%8C%96%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">案例1：跨系统适配（Windows/Mac/Linux 差异化执行脚本）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B2%EF%BC%9A%E6%A0%B9%E6%8D%AE%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%B7%AE%E5%BC%82%E5%8C%96%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-number">3.2.</span> <span class="toc-text">案例2：根据文件后缀差异化处理代码规范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6%E6%B1%87%E6%80%BB"><span class="toc-number">4.</span> <span class="toc-text">4.4 常用内置判断条件汇总</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E4%B8%89%EF%BC%9AInclude-%E5%85%AC%E5%85%B1%E5%86%85%E5%AE%B9%E5%BC%95%E7%94%A8%EF%BC%88%E5%9B%A2%E9%98%9F%E8%A7%84%E8%8C%83%E5%8C%96%E7%A5%9E%E5%99%A8%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">五、核心语法三：Include 公共内容引用（团队规范化神器）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E8%A7%A3%E5%86%B3%E6%A0%B8%E5%BF%83%E7%97%9B%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">5.1 解决核心痛点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E6%A0%87%E5%87%86%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83%EF%BC%88%E5%85%AC%E5%85%B1%E8%B5%84%E6%BA%90%E7%BB%9F%E4%B8%80%E5%AD%98%E6%94%BE%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">5.2 标准目录规范（公共资源统一存放）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-Include%E5%BC%95%E7%94%A8%E8%AF%AD%E6%B3%95-%E5%AE%9E%E6%93%8D%E6%A1%88%E4%BE%8B"><span class="toc-number">3.</span> <span class="toc-text">5.3 Include引用语法 &amp; 实操案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">基础语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E8%90%BD%E5%9C%B0%E7%94%A8%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">实战落地用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">5.4 核心优势总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E5%9B%9B%EF%BC%9A%E5%BC%BA%E5%88%B6%E7%BA%A6%E6%9D%9F%E6%A0%87%E8%AE%B0%EF%BC%88%E5%BD%BB%E5%BA%95%E6%9D%9C%E7%BB%9DAI%E8%87%AA%E7%94%B1%E5%8F%91%E6%8C%A5%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">六、核心语法四：强制约束标记（彻底杜绝AI自由发挥）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E5%9B%9B%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%A0%87%E8%AE%B0%E8%AF%A6%E8%A7%A3%EF%BC%88%E5%85%A8%E5%9C%BA%E6%99%AF%E9%80%9A%E7%94%A8%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">6.1 四大核心标记详解（全场景通用）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81-STRICT-%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1、[STRICT] 严格模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81-ONLY-CODE-%E4%BB%85%E8%BE%93%E5%87%BA%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">2、[ONLY_CODE] 仅输出代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81-NO-EXTRA-CONTENT-%E7%A6%81%E6%AD%A2%E5%A4%9A%E4%BD%99%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.</span> <span class="toc-text">3、[NO_EXTRA_CONTENT] 禁止多余内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81-NO-COMMENT-%E7%A6%81%E6%AD%A2%E5%A4%9A%E4%BD%99%E6%B3%A8%E9%87%8A"><span class="toc-number">1.4.</span> <span class="toc-text">4、[NO_COMMENT] 禁止多余注释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8%E4%B8%87%E8%83%BD%E6%A8%A1%E6%9D%BF"><span class="toc-number">2.</span> <span class="toc-text">6.2 组合使用万能模板</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%EF%BC%9A%E8%B7%A8%E7%B3%BB%E7%BB%9F%E5%85%BC%E5%AE%B9%E5%A4%8D%E5%90%88%E5%9E%8B%E9%AB%98%E9%98%B6Skill"><span class="toc-number"></span> <span class="toc-text">七、综合实战：跨系统兼容复合型高阶Skill</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4-SKILL-md-%E6%BA%90%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">完整 SKILL.md 源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E8%83%BD%E8%83%BD%E5%8A%9B%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">技能能力总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E9%AB%98%E9%98%B6%E8%AF%AD%E6%B3%95%E9%81%BF%E5%9D%91%E6%B8%85%E5%8D%95%EF%BC%88%E5%B0%8F%E7%99%BD%E5%BF%85%E7%9C%8B%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">八、高阶语法避坑清单（小白必看）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A0%EF%BC%88%E5%B7%A9%E5%9B%BA%E8%90%BD%E5%9C%B0%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">九、课后练习（巩固落地）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E6%9C%AC%E7%AF%87%E6%80%BB%E7%BB%93"><span class="toc-number"></span> <span class="toc-text">十、本篇总结</span></a></li></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1a7e4f01/" title="放弃一众竞品最终留下了小米平板8"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="放弃一众竞品最终留下了小米平板8"></a><div class="content"><a class="title" href="/posts/1a7e4f01/" title="放弃一众竞品最终留下了小米平板8">放弃一众竞品最终留下了小米平板8</a><time datetime="2026-07-12T03:16:54.000Z" title="发表于 2026-07-12 11:16:54">2026-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/91d3c7cc/" title="制造业外贸客户开发全链路实战复盘与思考"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_6.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="制造业外贸客户开发全链路实战复盘与思考"></a><div class="content"><a class="title" href="/posts/91d3c7cc/" title="制造业外贸客户开发全链路实战复盘与思考">制造业外贸客户开发全链路实战复盘与思考</a><time datetime="2026-07-11T18:04:19.000Z" title="发表于 2026-07-12 02:04:19">2026-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fe9f2465/" title="如何排查 AI 编程助手 Skill 故障并规范安全上线"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_14_1783753546631.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何排查 AI 编程助手 Skill 故障并规范安全上线"></a><div class="content"><a class="title" href="/posts/fe9f2465/" title="如何排查 AI 编程助手 Skill 故障并规范安全上线">如何排查 AI 编程助手 Skill 故障并规范安全上线</a><time datetime="2026-06-19T08:25:46.000Z" title="发表于 2026-06-19 16:25:46">2026-06-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6cae7b2c/" title="如何管理 Claude Skill 版本迭代与团队协作配置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何管理 Claude Skill 版本迭代与团队协作配置"></a><div class="content"><a class="title" href="/posts/6cae7b2c/" title="如何管理 Claude Skill 版本迭代与团队协作配置">如何管理 Claude Skill 版本迭代与团队协作配置</a><time datetime="2026-06-19T08:23:21.000Z" title="发表于 2026-06-19 16:23:21">2026-06-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/83dd532c/" title="如何运用 Cursor Skill 高阶语法实现动态适配能力"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_1_1783753204553.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何运用 Cursor Skill 高阶语法实现动态适配能力"></a><div class="content"><a class="title" href="/posts/83dd532c/" title="如何运用 Cursor Skill 高阶语法实现动态适配能力">如何运用 Cursor Skill 高阶语法实现动态适配能力</a><time datetime="2026-06-19T08:03:08.000Z" title="发表于 2026-06-19 16:03:08">2026-06-19</time></div></div></div></div></div></div></div></main><footer id="footer"><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3434848843@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/7340189538" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100092208016287&amp;sk=about" title="facebook"><i class="anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/lifelinest" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/694787378" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/self" title="抖音"><i class="anzhiyufont anzhiyu-icon-tiktok"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档中心" href="/docs/">文档中心</a><a class="footer-item" title="博客插件" target="_blank" rel="noopener" href="https://hexo.io/plugins/">博客插件</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="导航网站" target="_blank" rel="noopener" href="https://www.mfy-lifeline.top/#/">导航网站</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">作品集</div><div class="footer-links"><a class="footer-item" title="设计图仓" href="/design/">设计图仓</a><a class="footer-item" title="微码仓库" href="/code/">微码仓库</a><a class="footer-item" title="智造工坊" href="/Workshop/">智造工坊</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><div id="footer-animal"><div class="animal-wall"></div><img class="animal" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/photo.avif" alt="动物" onerror="this.onerror=null;this.src='/img/404.jpg'"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">©2023 - 2026 By <a class="footer-bar-link" href="/" title="Lifeline" target="_blank">Lifeline</a></div><div class="footer-bar-subtitle" style="display: flex; align-items: center; gap: 0.3em;"><div id="footer-type-tips"></div><span class="typed-cursor"></span></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><div class="love-heart"><div class="heart-shape">❤️</div></div><a class="footer-bar-link" target="_blank" rel="noopener" href="https://cloudflare-img-bzb.pages.dev/" title="图床">图床</a></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script><script>if (typeof Typed === 'function') {
+  // 先清空内容，防止被其他JS写入
+  document.querySelector('#footer-type-tips').innerText = '';
+  new Typed("#footer-type-tips", {
+    strings: ["心墙开扇窗，微风递糖霜。"],
+    startDelay: 300,
+    typeSpeed: 150,
+    backSpeed: 50,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
+}
+    </script></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">124</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">56</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">8</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">工具</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/empty" title="kimi"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg" alt="kimi"><span class="back-menu-item-text">kimi</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://pan.baidu.com/" title="百度网盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png" alt="百度网盘"><span class="back-menu-item-text">百度网盘</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">娱乐</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.163.com/?from=itab" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg" alt="网易云音乐"><span class="back-menu-item-text">网易云音乐</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="哔哩哔哩"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg" alt="哔哩哔哩"><span class="back-menu-item-text">哔哩哔哩</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.zhihu.com/" title="知乎"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=1821089500,4276043120&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=415&amp;h=312" alt="知乎"><span class="back-menu-item-text">知乎</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.skypixel.com/" title="天空之城"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=11010786,400614760&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" alt="天空之城"><span class="back-menu-item-text">天空之城</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-comments faa-tada" style="font-size: 0.9em;"></i><span> 聊天室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="anzhiyufont anzhiyu-icon-calendar-days faa-tada" style="font-size: 0.9em;"></i><span> 待办清单</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/equipment/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 我的装备</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="font-size: 0.88rem;">人工智能<sup>13</sup></a><a href="/tags/%E4%BA%BA%E6%96%87%E8%A7%82%E5%AF%9F/" style="font-size: 0.88rem;">人文观察<sup>3</sup></a><a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 0.88rem;">人生感悟<sup>2</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E4%BA%AB/" style="font-size: 0.88rem;">代码分享<sup>5</sup></a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">免费工具<sup>38</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">前端开发<sup>7</sup></a><a href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/" style="font-size: 0.88rem;">办公技巧<sup>17</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 0.88rem;">博客搭建<sup>11</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF%E5%85%A5%E9%97%A8/" style="font-size: 0.88rem;">后端入门<sup>2</sup></a><a href="/tags/%E5%9F%8E%E5%B8%82%E6%BC%AB%E6%B8%B8/" style="font-size: 0.88rem;">城市漫游<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>1</sup></a><a href="/tags/%E5%B0%8F%E4%BC%97%E7%9B%AE%E7%9A%84%E5%9C%B0/" style="font-size: 0.88rem;">小众目的地<sup>2</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">工具教程<sup>29</sup></a><a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 0.88rem;">开源项目<sup>9</sup></a><a href="/tags/%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F/" style="font-size: 0.88rem;">思维方式<sup>2</sup></a><a href="/tags/%E6%89%8B%E5%B7%A5-DIY/" style="font-size: 0.88rem;">手工 DIY<sup>2</sup></a><a href="/tags/%E6%89%8B%E6%9C%BA-APP/" style="font-size: 0.88rem;">手机 APP<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" style="font-size: 0.88rem;">技术踩坑<sup>37</sup></a><a href="/tags/%E6%91%84%E5%BD%B1%E8%AE%B0%E5%BD%95/" style="font-size: 0.88rem;">摄影记录<sup>3</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87/" style="font-size: 0.88rem;">效率提升<sup>6</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E8%BD%AF%E4%BB%B6/" style="font-size: 0.88rem;">效率软件<sup>38</sup></a><a href="/tags/%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1/" style="font-size: 0.88rem;">旅行摄影<sup>2</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8%E9%9A%8F%E6%83%B3/" style="font-size: 0.88rem;">日常随想<sup>1</sup></a><a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/" style="font-size: 0.88rem;">浏览器插件<sup>3</sup></a><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BF%83%E5%BE%97/" style="font-size: 0.88rem;">游戏心得<sup>2</sup></a><a href="/tags/%E7%83%AD%E7%82%B9%E8%AF%84%E8%AE%BA/" style="font-size: 0.88rem;">热点评论<sup>2</sup></a><a href="/tags/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/" style="font-size: 0.88rem;">电脑软件<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" style="font-size: 0.88rem;">知识总结<sup>10</sup></a><a href="/tags/%E7%9F%AD%E9%80%94%E6%97%85%E8%A1%8C/" style="font-size: 0.88rem;">短途旅行<sup>1</sup></a><a href="/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/" style="font-size: 0.88rem;">社会观察<sup>1</sup></a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">编程学习<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%8A%80%E8%83%BD/" style="font-size: 0.88rem;">职场技能<sup>6</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/" style="font-size: 0.88rem;">行业观察<sup>12</sup></a><a href="/tags/%E8%A7%82%E7%82%B9%E8%BE%93%E5%87%BA/" style="font-size: 0.88rem;">观点输出<sup>9</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/" style="font-size: 0.88rem;">认知升级<sup>7</sup></a><a href="/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/" style="font-size: 0.88rem;">资源分享<sup>24</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/" style="font-size: 0.88rem;">软件测评<sup>15</sup></a><a href="/tags/%E8%BF%90%E7%BB%B4%E9%83%A8%E7%BD%B2/" style="font-size: 0.88rem;">运维部署<sup>1</sup></a><a href="/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" style="font-size: 0.88rem;">避坑指南<sup>3</sup></a></div></div><hr></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><!-- 确保showArray始终是数组且包含mindmap--><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><!-- 确保showArray是数组且不为空--><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="chbg-btn" type="button" title="切换背景" onclick="toggleWinbox()"><i class="anzhiyufont anzhiyu-icon-images"></i></button><button id="mindmap-btn" type="button" title="思维导图"><i class="anzhiyufont anzhiyu-icon-lightbulb"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script src="/js/chbg.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用Lifeline!`,
+    `经世致用, 自强不息`,
+    `
+        
+       ██╗      ██╗     ██╗     ██╗     ██╗    ██╗
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ███████╗ ███████╗███████╗███████╗███████╗
+       ╚══════╝ ╚══════╝╚══════╝╚══════╝╚══════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by Lifeline %c 你正在访问 Lifeline 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script src="/js/welcome.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'lifelinest/giscus',
+      'data-repo-id': 'R_kgDOPINt6A',
+      'data-category-id': '',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category-id":"DIC_kwDOPINt6M4Cslgg","data-strict":1,"data-input-position":"top"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><script src="/js/anzhiyu/article-encryption.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script defer="" pjax="" src="/js/custom.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script><script src="/js/update.js"></script><script src="/js/calendar-card.js"></script><script src="/js/zhihu.js"></script><script src="/js/article-reading.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script src="//code.tidio.co/qjjsrrwucuilkpqc8um0uslohzolhxld.js" async="async"></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script><!-- 思维导图功能--><script src="/js/mindmap.js"></script></div><div class="mindmap-modal" id="mindmap-modal"><div class="mindmap-overlay"></div><div class="mindmap-content"><div class="mindmap-header"><span class="mindmap-title">文章思维导图</span><button class="mindmap-btn" id="mindmap-btn-close"><i class="anzhiyufont anzhiyu-icon-close"></i></button></div><div class="mindmap-toolbar"><button class="mindmap-toolbar-btn" id="mindmap-btn-fullscreen"><svg class="mindmap-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path></svg></button><button class="mindmap-toolbar-btn" id="mindmap-btn-export"><i class="anzhiyufont anzhiyu-icon-download"></i></button></div><div class="mindmap-svg-container" id="mindmap-svg-container"></div><div class="mindmap-empty-state"><i class="anzhiyufont anzhiyu-icon-file-text"></i><span>本文暂无目录结构</span></div></div></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div><!-- hexo injector body_end start --><script data-pjax="">
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '9d0c37912c4d49ddb29a7a14e1bf54cb';
+  var gaud_map_key = 'dc1eaa8e383ff12ca596ba00fe2b2ed1';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'true';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax="" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer="" src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer="" src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = 'S-H9ELQNJWQ168OMRJ';
+        let tianliGPT_postSelector = '#postchat_postcontent';
+        let tianliGPT_Title = '文章摘要';
+        let tianliGPT_postURL = '/^https?://[^/]+/posts/[a-f0-9]{8}/';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#3e86f6",
+          bottom: "36px",
+          left: "1530px",
+          fill: "#FFFFFF",
+          width: "44px",
+          frameWidth: "375px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: true,
+          userTitle: "PostChat",
+          userDesc: "如果你对网站的内容有任何疑问，可以来问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "https://ai.tianli0.top/static/img/PostChat.webp",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="S-H9ELQNJWQ168OMRJ" src="https://ai.tianli0.top/static/public/tianli_gpt.min.js"></script>
+  </body></html>

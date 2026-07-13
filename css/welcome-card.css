@@ -1,0 +1,84 @@
+/* 欢迎卡片样式优化 */
+#welcome-card {
+  transition: all 0.3s ease-in-out;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+#welcome-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+#welcome-card .item-headline {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 0.8rem 1rem;
+  background: var(--anzhiyu-card-bg);
+  border-bottom: 1px solid var(--anzhiyu-border);
+}
+
+#welcome-card .item-headline i {
+  margin-right: 8px;
+  color: var(--anzhiyu-main);
+}
+
+#welcome-card .announcement_content {
+  padding: 1rem;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* 位置信息高亮 */
+#welcome-info span[style*="color: var(--anzhiyu-main)"] {
+  position: relative;
+  padding: 0 2px;
+  transition: all 0.3s ease;
+}
+
+#welcome-info span[style*="color: var(--anzhiyu-main)"]:hover {
+  text-shadow: 0 0 3px rgba(73, 177, 245, 0.3);
+}
+
+/* 加载动画 */
+@keyframes welcome-loading {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+#welcome-info:empty::before,
+#welcome-info[data-loading="true"]::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--anzhiyu-main);
+  margin-right: 8px;
+  animation: welcome-loading 1.5s infinite ease-in-out;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+  #welcome-card .item-headline {
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  #welcome-card .announcement_content {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] #welcome-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] #welcome-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}

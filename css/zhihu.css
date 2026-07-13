@@ -1,0 +1,94 @@
+.hot-tabs {
+  display: flex;
+  justify-content: center; /* 居中显示切换按钮 */
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--anzhiyu-card-border);
+  padding-bottom: 5px;
+}
+
+.hot-tab {
+  padding: 5px 8px; /* 减小内边距 */
+  margin: 0 3px; /* 减小外边距并使用左右对称边距 */
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.85rem; /* 减小字体大小 */
+  transition: all 0.3s;
+}
+
+.hot-tab:hover {
+  background-color: var(--anzhiyu-main-op);
+  color: var(--anzhiyu-white);
+}
+
+.hot-tab.active {
+  background-color: var(--anzhiyu-main);
+  color: var(--anzhiyu-white);
+}
+
+#zhihu-container {
+  width: 100%; 
+  height: 200px; /* 将高度从300px减小到200px，约为原来的三分之二 */
+  font-size: 90%; /* 稍微减小字体大小 */
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#zhihu-container::-webkit-scrollbar {
+  display: none;
+}
+
+.zhihu-loading {
+  text-align: center;
+  padding: 15px; /* 减小内边距 */
+  color: var(--anzhiyu-fontcolor);
+  opacity: 0.8;
+}
+
+/* 减小列表项的间距 */
+.zhihu-list-item {
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+}
+
+.zhihu-list-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--anzhiyu-lighttext);
+}
+
+.zhihu-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: auto;
+  padding: 0 8px;
+}
+
+.zhihu-hot {
+  flex-shrink: 0;
+  color: var(--anzhiyu-fontcolor);
+  opacity: 0.8;
+}
+
+.zhihu-hotness {
+  display: inline-block;
+  padding: 0 6px;
+  transform: scale(.8) translateX(-3px);
+  font-weight: bold;
+  color: #fff;
+  border-top: rgba(255, 255, 255, 0.87) 1px solid;
+  border-left: rgba(255, 255, 255, 0.87) 1px solid;
+  background: linear-gradient(to bottom right, var(--anzhiyu-main), var(--anzhiyu-main-op));
+  border-radius: 8px;
+}
+
+.zhihu-error {
+  color: var(--anzhiyu-fontcolor);
+  text-align: center;
+  padding: 10px;
+}

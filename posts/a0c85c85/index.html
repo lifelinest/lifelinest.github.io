@@ -1,0 +1,793 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>OpenClaw（龙虾）Windows 部署实操知识库 | Lifeline</title><meta name="keywords" content="技术踩坑,开源项目,运维部署"><meta name="author" content="Lifeline"><meta name="copyright" content="Lifeline"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="OpenClaw（龙虾）Windows 部署实操知识库"><meta name="application-name" content="OpenClaw（龙虾）Windows 部署实操知识库"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="OpenClaw（龙虾）Windows 部署实操知识库"><meta property="og:url" content="https://lifelinest.github.io/posts/a0c85c85/index.html"><meta property="og:site_name" content="Lifeline"><meta property="og:description" content="核心参考：  OpenClaw 官方知识库：OpenClaw 知识库 部署教程参考：Windows 也能跑 OpenClaw！最完整安装教程 + 飞书接入 实操依据：与用户的全量部署对话（含各类报错解决、命令适配、实操踩坑）  适配版本：OpenClaw 2026.3.8（最新版）、Windows"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://lifelinest.github.io/images/4_1773231968549.jpg"><meta property="article:author" content="Lifeline"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://lifelinest.github.io/images/4_1773231968549.jpg"><meta name="description" content="核心参考：  OpenClaw 官方知识库：OpenClaw 知识库 部署教程参考：Windows 也能跑 OpenClaw！最完整安装教程 + 飞书接入 实操依据：与用户的全量部署对话（含各类报错解决、命令适配、实操踩坑）  适配版本：OpenClaw 2026.3.8（最新版）、Windows"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://lifelinest.github.io/posts/a0c85c85/"><link rel="preconnect" href="//cdn.cbd.int"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="xxx"><meta name="baidu-site-verification" content="codeva-dmPP1sPmLD"><meta name="msvalidate.01" content="xxx"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/assets/font-awesome-animation.min.css"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/privacy.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: {"enable":true,"title":"与数百名博主无限进步","addFriendPlaceholder":"昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"},
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"lhvAVTHquc9","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: {"apiurl":null},
+  navMusic: true,
+  mainTone: {"mode":"api","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":true,"limitCount":50,"languages":{"author":"作者: Lifeline","link":"链接: ","source":"来源: Lifeline","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Lifeline',
+  title: 'OpenClaw（龙虾）Windows 部署实操知识库',
+  postAI: '',
+  pageFillDescription: '一、OpenClaw 基础认知（结合知识库+对话补充）, 1. 核心定义与昵称由来, 2. 核心优势（贴合实操场景）, 3. 版本注意事项（对话高频坑点）, 二、Windows 系统完整部署流程（结合对话实操+腾讯云教程）, 核心前提（必看避免踩坑）, 1. 前置环境准备（解决依赖x2F命令不识别问题）, （1）安装 nvm for Windows（版本管理工具）, （2）安装 Node.js 22.22.0（适配最新版龙虾）, （3）安装 Windows 编译工具（可选解决依赖编译报错）, 2. 龙虾（OpenClaw）安装（解决国内源卡顿问题）, 3. 初始化配置（解决配置验证失败问题）, （1）快速初始化向导（参考腾讯云教程适配 Windows）, （2）初始化关键操作（对话中用户实操步骤）, （3）配置文件异常修复（对话中用户遇到的报错）, 4. 启动龙虾核心服务（解决命令不识别问题）, 5. 生成网关令牌+访问 Web 仪表盘（解决加载失败问题）, （1）生成网关令牌（认证必备）, （2）访问 Web 仪表盘（避免加载失败x2FURL 错误）, 三、核心渠道配置（结合对话报错+教程电报+飞书）, 1. Telegram（电报）配置（解决不支持类型报错）, 2. 飞书配置（参考腾讯云教程Windows 适配版）, （1）安装飞书插件, （2）飞书开放平台配置（关键步骤）, 四、常用操作命令汇总（对话实操+教程新手必备）, 1. 核心启动命令, 2. 配置x2F管理命令, 3. 排错x2F日志命令（对话中高频使用）, 五、后续简化使用流程（对话实操总结）, 六、常见问题与避坑指南（全部来自对话实操）, 七、部署成功验证标准（对话实操总结）核心参考官方知识库知识库部署教程参考也能跑最完整安装教程飞书接入实操依据与用户的全量部署对话含各类报错解决命令适配实操踩坑适配版本最新版版本核心说明整合基础认知完整部署流程对话中遇到的所有问题及解决方案严格贴合实际操作场景所有命令均经实操验证代码块规范呈现新手可全程跟着操作避开所有高频坑点一基础认知结合知识库对话补充核心定义与昵称由来是一款本地优先自托管多通道统一接入的开源执行引擎协议开源社区昵称龙虾并非普通聊天机器人核心能力是将自然语言指令转化为可执行操作实现自动化办公与任务落地注对话中用户全程称其为龙虾后续流程中统一沿用该昵称方便理解核心优势贴合实操场景本地优先数据私有化部署在本地设备无网络也可运行基础功能保护隐私自托管无需依赖第三方云服务可完全掌控部署环境和配置避免外部干扰多通道接入支持电报飞书等主流通讯工具可在任意渠道下达指令开源可扩展支持自定义插件技能和模型可对接等各类大模型适配性强系统可正常部署经实操验证解决各类环境适配命令报错问题版本注意事项对话高频坑点当前实操版本为最新版与旧版本相比核心命令有重大变更无命令核心启动命令为这是对话中用户多次遇到命令不识别的核心原因后续流程将重点标注二系统完整部署流程结合对话实操腾讯云教程核心前提必看避免踩坑全程使用或特殊步骤标注管理员模式其余无需关闭代理梯子避免干扰国内镜像下载和本地服务连接所有操作路径无中文空格及特殊字符防止环境冲突依赖版本优先通过管理避免版本冲突对话中用户使用适配成功前置环境准备解决依赖命令不识别问题安装版本管理工具参考腾讯云教程推荐方式用管理版本避免后续版本冲突下载地址选择最新版安装步骤双击安装包全程下一步默认路径即可无需额外配置安装适配最新版龙虾管理员模式打开依次执行以下命令对话中用户实操验证成功安装版本切换并使用版本验证安装执行以下命令能正常显示版本号即为成功验证版本需显示左右验证版本任意有效版本均可补充若下载失败可直接从官网下载版本安装时务必勾选加入系统环境变量否则会出现命令不识别报错对话中用户未出现此问题但为高频坑点安装编译工具可选解决依赖编译报错若后续安装龙虾时出现相关报错管理员执行以下命令说明安装耗时分钟期间看似无反应耐心等待至出现提示即可无需中途操作龙虾安装解决国内源卡顿问题对话中用户遇到安装时一直卡在核心原因是默认国外源下载速度极慢解决方案如下配置阿里云国内镜像大幅提升下载速度清理旧缓存避免安装异常全局安装最新版安装成功判定耗时分钟依网络而定终端显示无红色报错对话中用户的安装日志符合此标准判定为安装成功验证安装验证版本显示即为成功查看所有支持的命令确认核心启动命令为无初始化配置解决配置验证失败问题安装完成后需初始化生成适配当前版本的配置文件对话中用户遇到报错核心是配置参数与版本不兼容流程如下快速初始化向导参考腾讯云教程适配快速初始化避免冗余步骤新手友好初始化关键操作对话中用户实操步骤风险提示输入回车模型选择可选腾讯云教程示例或选后续在仪表盘配置通讯渠道配置直接选原生对插件支持有限后续单独配置技能配置选暂不配置对话中用户选择避免安装无用依赖加快初始化速度初始化完成后终端会自动生成网关令牌无需手动记录配置文件异常修复对话中用户遇到的报错若启动时提示执行以下命令打开配置文件删除该无效配置行打开配置文件格式操作说明打开文件后找到包含的配置段删除这一行保存文件后重新启动即可启动龙虾核心服务解决命令不识别问题对话中用户多次尝试均报错核心原因是最新版无此命令核心启动命令为且网关窗口不可关闭关闭则服务停止正常启动网关默认端口端口被占用时强制杀进程并启动推荐对话中用户多次使用自定义端口启动如端口后续仪表盘对应端口访问启动成功标志终端持续输出日志无报错且不闪退显示以下内容生成网关令牌访问仪表盘解决加载失败问题对话中用户遇到未授权缺少网关令牌仪表盘加载空白等问题核心是缺少令牌网关未正常运行解决方案如下生成网关令牌认证必备新开一个终端窗口不要关闭网关窗口执行命令生成认证令牌并复制实操说明终端会输出一串令牌如右键终端标记选中令牌回车复制后续认证需用到访问仪表盘避免加载失败错误禁止手动输入执行命令生成带令牌的精准地址避免因令牌缺失端口错误导致加载失败生成带令牌的不自动打开浏览器方便复制访问步骤对话中用户实操验证成功复制终端输出的完整格式用无痕模式粘贴访问避免插件缓存干扰对话中用户用此方式解决加载问题确认仪表盘左侧板块状态为在线即为认证成功加载失败排查对话中用户遇到的问题清空浏览器缓存重新访问临时关闭防火墙测试后重新打开确认网关窗口仍在运行若已关闭重新执行三核心渠道配置结合对话报错教程电报飞书电报配置解决不支持类型报错对话中用户遇到不支持类型使用模式报错核心是龙虾无法识别电报部分消息类型贴纸动图等解决方案如下仪表盘进入选择配置机器人账号找到消息模式选择原始模式点击保存重启连接器或重启网关报错即可消失若仍有报错执行以下命令查看实时日志定位不支持的消息类型添加过滤规则忽略实时查看日志定位电报消息类型报错飞书配置参考腾讯云教程适配版原生对飞书插件支持有限需先安装插件再在飞书开放平台完成配置步骤如下安装飞书插件飞书开放平台配置关键步骤进入飞书开放平台创建企业自建应用添加机器人应用能力复制应用和在仪表盘飞书配置页粘贴权限配置进入权限管理批量导入导出权限粘贴以下配置事件订阅进入事件与回调订阅方式选择使用长连接接收事件添加核心事件无此事件则无法接收消息版本发布进入版本管理与发布创建版本并发布所有配置仅发布后生效配对绑定飞书向机器人发消息获取配对码终端执行以下命令完成绑定配对码补充若提示未建立长连接等待分钟再保存配置确认网关正常运行即可四常用操作命令汇总对话实操教程新手必备整理对话中用到的所有核心命令按启动配置排错分类可直接复制使用核心启动命令启动网关核心命令最新版唯一启动方式强制启动网关解决端口占用对话中高频使用重启网关刷新插件机器人状态打开仪表盘自动带令牌快速访问配置管理命令快速初始化配置新手推荐重置修改模型配置生成网关令牌认证必备安装插件如飞书插件插件名称飞书配对绑定配对码查看渠道网关健康状态重置龙虾保留清空旧配置解决配置混乱问题排错日志命令对话中高频使用系统诊断排查环境配置问题实时查看日志定位所有报错最常用查看所有支持的命令解决命令不识别问题验证龙虾版本五后续简化使用流程对话实操总结首次部署完成后无需重复执行初始化生成令牌等操作每次使用仅需两步高效便捷打开执行启动网关保持窗口打开不可关闭新开终端执行或直接打开浏览器收藏的带令牌仪表盘即可正常使用六常见问题与避坑指南全部来自对话实操汇总对话中用户遇到的所有报错及解决方案覆盖高频坑点遇到问题可直接对应查找报错现象核心原因解决方案最新版无此命令为旧版本指令使用核心命令启动仪表盘加载空白拼写错误缺少令牌网关未运行浏览器防火墙拦截用生成带令牌无痕模式访问关闭代理临时防火墙电报不支持类型使用模式龙虾无法识别电报部分消息类型贴纸动图等在电报连接器中开启模式或过滤不支持的消息类型安装卡顿超时默认国外源下载速度慢切换阿里云国内镜像清理缓存后重新安装配置文件存在无效参数与当前版本不兼容打开删除无效配置行或执行重置配置未授权缺少网关令牌未生成网关令牌或未携带令牌执行生成令牌用带令牌访问仪表盘七部署成功验证标准对话实操总结完成所有操作后确认以下点即为部署成功可正常使用龙虾的所有功能网关服务终端无报错持续显示仪表盘正常加载状态为可进入聊天配置界面渠道功能电报飞书配置后能正常接收发送自然语言消息无类型连接报错',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-11 20:26:17',
+  postMainColor: '',
+  chbg: {"enable":true,"presets":["https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/1.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/2.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/3.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/4.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/5.webp","https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/6.webp"],"default_blur":0,"default_mask_opacity":0.3}
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><script src="https://kit.fontawesome.com/7af8740427.js" crossorigin="anonymous"></script><script src="/js/update.js"></script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/calendar-card.css"><link rel="stylesheet" href="/css/progress-fix.css"><link rel="stylesheet" href="/css/zhihu.css"><link rel="stylesheet" href="/css/article-reading.css"><link rel="stylesheet" href="/css/home.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"><script src="https://open.lightxi.com/unpkg/chinese-lunar@0.1.4/lib/chinese-lunar.js"></script><link rel="stylesheet" type="text/css" href="/css/heoMainColor.css"><link rel="stylesheet" type="text/css" href="/css/poem.css"><link rel="stylesheet" href="/css/font.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/update.css"><link rel="stylesheet" href="/css/privacy.css"><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><link rel="stylesheet" type="text/css" href="/css/poem.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><div class="loading-image-dot"></div><div class="spinner-box"></div><div id="loadingtxt"><ul id="con1"><li class="li-style">阐述清楚问题就解决了一半</li><li class="li-style">一致的体验是更好的体验</li><li class="li-style">创造允许犯错，设计要知道保留哪些</li><li class="li-style">想让用户爱上你的设计，先爱上你的用户</li><li class="li-style">好的设计是我们与竞争对手保持差距最重要的方式</li><li class="li-style">如果你觉得好的设计是昂贵的，你应该看看坏设计的成本</li><li class="li-style">像其他设计一样，视觉设计也是解决问题，不是个人喜好</li><li class="li-style">因为每个人都知道自己喜欢什么，所以每个人都觉得自己是用户界面专家</li><li class="li-style">易用性也许不可见，但却不可缺席</li><li class="li-style">如果我有1000个想法，即使最终只有一个实现了，我也会非常满意</li><li class="li-style">如果你发现你界面中某个元素需要说明，你需要重新设计</li><li class="li-style">简化意味着去掉不必要的元素，让必要元素凸显</li><li class="li-style">天才就是将复杂问题简单化的人</li><li class="li-style">不用盯着空白太久，勇敢的跨出第一步，其他的自然而然就会发生</li><li class="li-style">有些人认为设计就是看起来长什么样。 但是如果你深入挖掘就会发现设计更关乎如何运作</li></ul><ul id="con2"></ul></div><script type="text/javascript">var area = document.getElementById('loadingtxt');
+var con1 = document.getElementById('con1');
+var con2 = document.getElementById('con2');
+var mytimer1 = null;
+var mytimer = null;
+var time = 1000 / 60;
+con2.innerHTML = con1.innerHTML;
+function scrollUp () {
+if (area.scrollTop >= con1.offsetHeight) {
+area.scrollTop = 0;
+} else {
+if (area.scrollTop % 25 == 0) {
+clearInterval(mytimer);
+clearInterval(mytimer1);
+mytimer1 = setTimeout(function () {
+mytimer = setInterval(scrollUp, time);
+}, 1000);
+}
+area.scrollTop++;
+}
+}
+mytimer = setInterval(scrollUp, time);</script></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">工具</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/empty" title="kimi"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg" alt="kimi"><span class="back-menu-item-text">kimi</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://pan.baidu.com/" title="百度网盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png" alt="百度网盘"><span class="back-menu-item-text">百度网盘</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">娱乐</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.163.com/?from=itab" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg" alt="网易云音乐"><span class="back-menu-item-text">网易云音乐</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="哔哩哔哩"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg" alt="哔哩哔哩"><span class="back-menu-item-text">哔哩哔哩</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.zhihu.com/" title="知乎"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=1821089500,4276043120&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=415&amp;h=312" alt="知乎"><span class="back-menu-item-text">知乎</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.skypixel.com/" title="天空之城"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=11010786,400614760&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" alt="天空之城"><span class="back-menu-item-text">天空之城</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">Lifeline</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-comments faa-tada" style="font-size: 0.9em;"></i><span> 聊天室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="anzhiyufont anzhiyu-icon-calendar-days faa-tada" style="font-size: 0.9em;"></i><span> 待办清单</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/equipment/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 我的装备</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个异次元之旅-跃迁项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个异次元之旅-跃迁项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><img class="travel-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/14/684d99d607c49.png" alt="" style="width: 24px; height: 24px; vertical-align: middle;"></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg"></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="font-size: 1.05rem;">人工智能<sup>13</sup></a><a href="/tags/%E4%BA%BA%E6%96%87%E8%A7%82%E5%AF%9F/" style="font-size: 1.05rem;">人文观察<sup>3</sup></a><a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 1.05rem;">人生感悟<sup>2</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E4%BA%AB/" style="font-size: 1.05rem;">代码分享<sup>5</sup></a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">免费工具<sup>38</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">前端开发<sup>7</sup></a><a href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/" style="font-size: 1.05rem;">办公技巧<sup>17</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 1.05rem;">博客搭建<sup>11</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF%E5%85%A5%E9%97%A8/" style="font-size: 1.05rem;">后端入门<sup>2</sup></a><a href="/tags/%E5%9F%8E%E5%B8%82%E6%BC%AB%E6%B8%B8/" style="font-size: 1.05rem;">城市漫游<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">学习<sup>1</sup></a><a href="/tags/%E5%B0%8F%E4%BC%97%E7%9B%AE%E7%9A%84%E5%9C%B0/" style="font-size: 1.05rem;">小众目的地<sup>2</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">工具教程<sup>29</sup></a><a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 1.05rem;">开源项目<sup>9</sup></a><a href="/tags/%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F/" style="font-size: 1.05rem;">思维方式<sup>2</sup></a><a href="/tags/%E6%89%8B%E5%B7%A5-DIY/" style="font-size: 1.05rem;">手工 DIY<sup>2</sup></a><a href="/tags/%E6%89%8B%E6%9C%BA-APP/" style="font-size: 1.05rem;">手机 APP<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" style="font-size: 1.05rem;">技术踩坑<sup>37</sup></a><a href="/tags/%E6%91%84%E5%BD%B1%E8%AE%B0%E5%BD%95/" style="font-size: 1.05rem;">摄影记录<sup>3</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87/" style="font-size: 1.05rem;">效率提升<sup>6</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E8%BD%AF%E4%BB%B6/" style="font-size: 1.05rem;">效率软件<sup>38</sup></a><a href="/tags/%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1/" style="font-size: 1.05rem;">旅行摄影<sup>2</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8%E9%9A%8F%E6%83%B3/" style="font-size: 1.05rem;">日常随想<sup>1</sup></a><a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/" style="font-size: 1.05rem;">浏览器插件<sup>3</sup></a><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BF%83%E5%BE%97/" style="font-size: 1.05rem;">游戏心得<sup>2</sup></a><a href="/tags/%E7%83%AD%E7%82%B9%E8%AF%84%E8%AE%BA/" style="font-size: 1.05rem;">热点评论<sup>2</sup></a><a href="/tags/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/" style="font-size: 1.05rem;">电脑软件<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" style="font-size: 1.05rem;">知识总结<sup>10</sup></a><a href="/tags/%E7%9F%AD%E9%80%94%E6%97%85%E8%A1%8C/" style="font-size: 1.05rem;">短途旅行<sup>1</sup></a><a href="/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/" style="font-size: 1.05rem;">社会观察<sup>1</sup></a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">编程学习<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%8A%80%E8%83%BD/" style="font-size: 1.05rem;">职场技能<sup>6</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/" style="font-size: 1.05rem;">行业观察<sup>12</sup></a><a href="/tags/%E8%A7%82%E7%82%B9%E8%BE%93%E5%87%BA/" style="font-size: 1.05rem;">观点输出<sup>9</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/" style="font-size: 1.05rem;">认知升级<sup>7</sup></a><a href="/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/" style="font-size: 1.05rem;">资源分享<sup>24</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/" style="font-size: 1.05rem;">软件测评<sup>15</sup></a><a href="/tags/%E8%BF%90%E7%BB%B4%E9%83%A8%E7%BD%B2/" style="font-size: 1.05rem;">运维部署<sup>1</sup></a><a href="/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" style="font-size: 1.05rem;">避坑指南<sup>3</sup></a></div></div><hr></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><span class="card-archive-list-count">2</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><span class="card-archive-list-count">10</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><span class="card-archive-list-count">6</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><span class="card-archive-list-count">3</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><span class="card-archive-list-count">2</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><span class="card-archive-list-count">3</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><span class="card-archive-list-count">19</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">19</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><span class="card-archive-list-count">2</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li></ul></div><hr></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/" itemprop="url">技术探索</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>技术踩坑</span></a><a class="article-meta__tags" href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>开源项目</span></a><a class="article-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4%E9%83%A8%E7%BD%B2/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>运维部署</span></a></span></div></div><h1 class="post-title" itemprop="name headline">OpenClaw（龙虾）Windows 部署实操知识库</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-03-11T12:16:43.000Z" title="发表于 2026-03-11 20:16:43">2026-03-11</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-03-11T12:26:17.362Z" title="更新于 2026-03-11 20:26:17">2026-03-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">3.7k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="OpenClaw（龙虾）Windows 部署实操知识库"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为卫辉"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>卫辉</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/images/4_1773231968549.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope="" itemtype="https://lifelinest.github.io/posts/a0c85c85/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/" itemprop="url">技术探索</a><a href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" tabindex="-1" itemprop="url">技术踩坑</a><a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" tabindex="-1" itemprop="url">开源项目</a><a href="/tags/%E8%BF%90%E7%BB%B4%E9%83%A8%E7%BD%B2/" tabindex="-1" itemprop="url">运维部署</a><h1 id="CrawlerTitle" itemprop="name headline">OpenClaw（龙虾）Windows 部署实操知识库</h1><span itemprop="author" itemscope="" itemtype="http://schema.org/Person">Lifeline</span><time itemprop="dateCreated datePublished" datetime="2026-03-11T12:16:43.000Z" title="发表于 2026-03-11 20:16:43">2026-03-11</time><time itemprop="dateCreated datePublished" datetime="2026-03-11T12:26:17.362Z" title="更新于 2026-03-11 20:26:17">2026-03-11</time></header><div id="postchat_postcontent"><p>核心参考：</p>
+<ul>
+<li>OpenClaw 官方知识库：<a target="_blank" rel="noopener" href="https://geekbang.feishu.cn/wiki/TSUqwoAn5iL6WxkkxHcci3pzn7c?from=from_copylink">OpenClaw 知识库</a></li>
+<li>部署教程参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2628002">Windows 也能跑 OpenClaw！最完整安装教程 + 飞书接入</a></li>
+<li>实操依据：与用户的全量部署对话（含各类报错解决、命令适配、实操踩坑）</li>
+</ul>
+<p>适配版本：OpenClaw 2026.3.8（最新版）、Windows 10（版本 10.0.18363.592）</p>
+<p>核心说明：整合 OpenClaw 基础认知、Windows 完整部署流程、对话中遇到的所有问题及解决方案，严格贴合实际操作场景，所有命令均经实操验证，代码块规范呈现，新手可全程跟着操作，避开所有高频坑点。</p>
+<h2 id="一、OpenClaw-基础认知（结合知识库-对话补充）"><a href="#一、OpenClaw-基础认知（结合知识库-对话补充）" class="headerlink" title="一、OpenClaw 基础认知（结合知识库+对话补充）"></a>一、OpenClaw 基础认知（结合知识库+对话补充）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/6_1773231502572.jpg" alt="6_1773231502572.jpg"></p>
+<h3 id="1-核心定义与昵称由来"><a href="#1-核心定义与昵称由来" class="headerlink" title="1. 核心定义与昵称由来"></a>1. 核心定义与昵称由来</h3><p>OpenClaw 是一款本地优先、自托管、多通道统一接入的开源 AI Agent 执行引擎（MIT 协议开源），社区昵称「龙虾」，并非普通聊天机器人，核心能力是将自然语言指令转化为可执行操作，实现自动化办公与任务落地。</p>
+<p>注：对话中用户全程称其为「龙虾」，后续流程中统一沿用该昵称，方便理解。</p>
+<h3 id="2-核心优势（贴合实操场景）"><a href="#2-核心优势（贴合实操场景）" class="headerlink" title="2. 核心优势（贴合实操场景）"></a>2. 核心优势（贴合实操场景）</h3><ul>
+<li>本地优先：数据私有化，部署在本地设备，无网络也可运行基础功能，保护隐私；</li>
+<li>自托管：无需依赖第三方云服务，可完全掌控部署环境和配置，避免外部干扰；</li>
+<li>多通道接入：支持 Telegram（电报）、飞书等主流通讯工具，可在任意渠道下达指令；</li>
+<li>开源可扩展：支持自定义插件、技能和模型，可对接 Kimi、OpenAI 等各类大模型；</li>
+<li>适配性强：Windows 系统可正常部署，经实操验证，解决各类环境适配、命令报错问题。</li>
+</ul>
+<h3 id="3-版本注意事项（对话高频坑点）"><a href="#3-版本注意事项（对话高频坑点）" class="headerlink" title="3. 版本注意事项（对话高频坑点）"></a>3. 版本注意事项（对话高频坑点）</h3><p>当前实操版本为 OpenClaw 2026.3.8（最新版），与旧版本相比，核心命令有重大变更，<strong>无 serve/start 命令</strong>，核心启动命令为 <code>gateway</code>，这是对话中用户多次遇到「命令不识别」的核心原因，后续流程将重点标注。</p>
+<h2 id="二、Windows-系统完整部署流程（结合对话实操-腾讯云教程）"><a href="#二、Windows-系统完整部署流程（结合对话实操-腾讯云教程）" class="headerlink" title="二、Windows 系统完整部署流程（结合对话实操+腾讯云教程）"></a>二、Windows 系统完整部署流程（结合对话实操+腾讯云教程）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/5_1773231502556.jpg" alt="5_1773231502556.jpg"></p>
+<h3 id="核心前提（必看，避免踩坑）"><a href="#核心前提（必看，避免踩坑）" class="headerlink" title="核心前提（必看，避免踩坑）"></a>核心前提（必看，避免踩坑）</h3><ol>
+<li>全程使用 <strong>CMD 或 PowerShell</strong>，特殊步骤标注「管理员模式」，其余无需；</li>
+<li>关闭代理/梯子，避免干扰国内镜像下载和本地服务连接；</li>
+<li>所有操作路径无中文、空格及特殊字符，防止环境冲突；</li>
+<li>依赖 Node.js v22.x.x 版本，优先通过 nvm 管理，避免版本冲突（对话中用户使用 Node.js v22.22.0 适配成功）。</li>
+</ol>
+<h3 id="1-前置环境准备（解决依赖-命令不识别问题）"><a href="#1-前置环境准备（解决依赖-命令不识别问题）" class="headerlink" title="1. 前置环境准备（解决依赖/命令不识别问题）"></a>1. 前置环境准备（解决依赖/命令不识别问题）</h3><h4 id="（1）安装-nvm-for-Windows（版本管理工具）"><a href="#（1）安装-nvm-for-Windows（版本管理工具）" class="headerlink" title="（1）安装 nvm for Windows（版本管理工具）"></a>（1）安装 nvm for Windows（版本管理工具）</h4><p>参考腾讯云教程推荐方式，用 nvm 管理 Node.js 版本，避免后续版本冲突：</p>
+<ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">nvm-windows GitHub Releases</a>（选择最新版 <code>nvm-setup.exe</code>）；</li>
+<li>安装步骤：双击安装包，全程下一步，默认路径即可，无需额外配置。</li>
+</ul>
+<h4 id="（2）安装-Node-js-22-22-0（适配最新版龙虾）"><a href="#（2）安装-Node-js-22-22-0（适配最新版龙虾）" class="headerlink" title="（2）安装 Node.js 22.22.0（适配最新版龙虾）"></a>（2）安装 Node.js 22.22.0（适配最新版龙虾）</h4><p><strong>管理员模式打开 PowerShell</strong>，依次执行以下命令（对话中用户实操验证成功）：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 Node.js 22 版本</span></span><br><span class="line">nvm install <span class="number">22</span></span><br><span class="line"><span class="comment"># 切换并使用 22.22.0 版本</span></span><br><span class="line">nvm use <span class="number">22.22</span>.<span class="number">0</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>验证安装：执行以下命令，能正常显示版本号即为成功：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 验证 Node 版本（需显示 v22.22.0 左右）</span></span><br><span class="line">node <span class="literal">-v</span></span><br><span class="line"><span class="comment"># 验证 npm 版本（任意有效版本均可）</span></span><br><span class="line">npm <span class="literal">-v</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>补充：若 nvm 下载失败，可直接从 <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">Node.js 官网</a> 下载 v22.x.x 版本，安装时<strong>务必勾选 Add to PATH</strong>（加入系统环境变量），否则会出现「命令不识别」报错（对话中用户未出现此问题，但为高频坑点）。</p>
+<h4 id="（3）安装-Windows-编译工具（可选，解决依赖编译报错）"><a href="#（3）安装-Windows-编译工具（可选，解决依赖编译报错）" class="headerlink" title="（3）安装 Windows 编译工具（可选，解决依赖编译报错）"></a>（3）安装 Windows 编译工具（可选，解决依赖编译报错）</h4><p>若后续安装龙虾时出现<code>gyp</code>、<code>make</code> 相关报错，管理员 PowerShell 执行以下命令：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">--global</span> windows<span class="literal">-build-tools</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>说明：安装耗时 5-10 分钟，期间看似无反应，耐心等待至出现「success」提示即可，无需中途操作。</p>
+<h3 id="2-龙虾（OpenClaw）安装（解决国内源卡顿问题）"><a href="#2-龙虾（OpenClaw）安装（解决国内源卡顿问题）" class="headerlink" title="2. 龙虾（OpenClaw）安装（解决国内源卡顿问题）"></a>2. 龙虾（OpenClaw）安装（解决国内源卡顿问题）</h3><p>对话中用户遇到「安装时一直卡在 Installing OpenClaw (openclaw@latest)…」，核心原因是 npm 默认国外源，下载速度极慢，解决方案如下：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置阿里云国内镜像，大幅提升下载速度</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"><span class="comment"># 清理 npm 旧缓存，避免安装异常</span></span><br><span class="line">npm cache clean <span class="literal">--force</span></span><br><span class="line"><span class="comment"># 全局安装 OpenClaw 最新版（2026.3.8）</span></span><br><span class="line">npm install <span class="literal">-g</span> openclaw@latest</span><br></pre></td></tr></tbody></table></figure>
+
+<p>安装成功判定：耗时 3-8 分钟（依网络而定），终端显示「removed 5 packages, and changed 751 packages」，<strong>无红色 error/ERR! 报错</strong>（对话中用户的安装日志符合此标准，判定为安装成功）。</p>
+<p>验证安装：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 验证 OpenClaw 版本（显示 2026.3.8 即为成功）</span></span><br><span class="line">openclaw <span class="literal">--version</span></span><br><span class="line"><span class="comment"># 查看所有支持的命令（确认核心启动命令为 gateway，无 serve/start）</span></span><br><span class="line">openclaw <span class="literal">--help</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-初始化配置（解决“配置验证失败”问题）"><a href="#3-初始化配置（解决“配置验证失败”问题）" class="headerlink" title="3. 初始化配置（解决“配置验证失败”问题）"></a>3. 初始化配置（解决“配置验证失败”问题）</h3><p>安装完成后，需初始化生成适配当前版本的配置文件，对话中用户遇到「Config validation failed: models.providers.kimi-coding.models.0.compat: Unrecognized key: requiresOpenAiAnthropicToolPayload」报错，核心是配置参数与版本不兼容，流程如下：</p>
+<h4 id="（1）快速初始化向导（参考腾讯云教程，适配-Windows）"><a href="#（1）快速初始化向导（参考腾讯云教程，适配-Windows）" class="headerlink" title="（1）快速初始化向导（参考腾讯云教程，适配 Windows）"></a>（1）快速初始化向导（参考腾讯云教程，适配 Windows）</h4><figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 快速初始化，避免冗余步骤，新手友好</span></span><br><span class="line">openclaw onboard <span class="literal">--flow</span> quickstart</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="（2）初始化关键操作（对话中用户实操步骤）"><a href="#（2）初始化关键操作（对话中用户实操步骤）" class="headerlink" title="（2）初始化关键操作（对话中用户实操步骤）"></a>（2）初始化关键操作（对话中用户实操步骤）</h4><ol>
+<li>风险提示「I understand this is powerful and inherently risky. Continue?」→ 输入 <code>Yes</code> 回车；</li>
+<li>模型选择 → 可选「Moonshot AI (Kimi)」（腾讯云教程示例），或选「Skip for now」后续在仪表盘配置；</li>
+<li>通讯渠道配置 → 直接选「Skip for now」（Windows 原生对插件支持有限，后续单独配置）；</li>
+<li>技能配置 → 选「No」暂不配置（对话中用户选择“Skip for now”，避免安装无用依赖，加快初始化速度）；</li>
+<li>初始化完成后，终端会自动生成网关令牌，无需手动记录。</li>
+</ol>
+<h4 id="（3）配置文件异常修复（对话中用户遇到的报错）"><a href="#（3）配置文件异常修复（对话中用户遇到的报错）" class="headerlink" title="（3）配置文件异常修复（对话中用户遇到的报错）"></a>（3）配置文件异常修复（对话中用户遇到的报错）</h4><p>若启动时提示「Unrecognized key: requiresOpenAiAnthropicToolPayload」，执行以下命令打开配置文件，删除该无效配置行：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开 OpenClaw 配置文件（JSON 格式）</span></span><br><span class="line">notepad <span class="variable">$env:USERPROFILE</span>\.openclaw\config.json</span><br></pre></td></tr></tbody></table></figure>
+
+<p>操作说明：打开文件后，找到包含「kimi-coding」的配置段，删除「”requiresOpenAiAnthropicToolPayload”: xxx」这一行，保存文件后重新启动即可。</p>
+<h3 id="4-启动龙虾核心服务（解决“命令不识别”问题）"><a href="#4-启动龙虾核心服务（解决“命令不识别”问题）" class="headerlink" title="4. 启动龙虾核心服务（解决“命令不识别”问题）"></a>4. 启动龙虾核心服务（解决“命令不识别”问题）</h3><p>对话中用户多次尝试 <code>openclaw serve</code>、<code>openclaw start</code> 均报错「unknown command」，核心原因是最新版无此命令，核心启动命令为 <code>gateway</code>，且网关窗口<strong>不可关闭</strong>（关闭则服务停止）：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 正常启动网关（默认端口 18789）</span></span><br><span class="line">openclaw gateway</span><br><span class="line"><span class="comment"># 端口被占用时，强制杀进程并启动（推荐，对话中用户多次使用）</span></span><br><span class="line">openclaw gateway <span class="literal">--force</span></span><br><span class="line"><span class="comment"># 自定义端口启动（如 3000 端口，后续仪表盘对应端口访问）</span></span><br><span class="line">openclaw gateway <span class="literal">--port</span> <span class="number">3000</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>启动成功标志：终端持续输出日志，无报错且不闪退，显示以下内容：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[INFO] Gateway listening on ws://127.0.0.1:18789</span><br><span class="line">[INFO] HTTP server for dashboard ready on http://127.0.0.1:18789</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-生成网关令牌-访问-Web-仪表盘（解决“加载失败”问题）"><a href="#5-生成网关令牌-访问-Web-仪表盘（解决“加载失败”问题）" class="headerlink" title="5. 生成网关令牌+访问 Web 仪表盘（解决“加载失败”问题）"></a>5. 生成网关令牌+访问 Web 仪表盘（解决“加载失败”问题）</h3><p>对话中用户遇到「未授权：缺少网关令牌」「仪表盘加载空白」等问题，核心是 URL 缺少令牌、网关未正常运行，解决方案如下：</p>
+<h4 id="（1）生成网关令牌（认证必备）"><a href="#（1）生成网关令牌（认证必备）" class="headerlink" title="（1）生成网关令牌（认证必备）"></a>（1）生成网关令牌（认证必备）</h4><p><strong>新开一个终端窗口</strong>（不要关闭网关窗口），执行命令生成认证令牌并复制：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw doctor <span class="literal">--generate-gateway-token</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>实操说明：终端会输出一串令牌（如「abcdef1234567890abcdef1234567890」），右键终端→标记→选中令牌→回车复制，后续认证需用到。</p>
+<h4 id="（2）访问-Web-仪表盘（避免加载失败-URL-错误）"><a href="#（2）访问-Web-仪表盘（避免加载失败-URL-错误）" class="headerlink" title="（2）访问 Web 仪表盘（避免加载失败/URL 错误）"></a>（2）访问 Web 仪表盘（避免加载失败/URL 错误）</h4><p>禁止手动输入 URL，执行命令生成「带令牌的精准地址」，避免因令牌缺失、端口错误导致加载失败：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成带令牌的 URL，不自动打开浏览器（方便复制）</span></span><br><span class="line">openclaw dashboard <span class="literal">--no-open</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>访问步骤（对话中用户实操验证成功）：</p>
+<ol>
+<li>复制终端输出的完整 URL（格式：<code>http://127.0.0.1:18789/dashboard?token=xxx</code>）；</li>
+<li>用 <strong>Chrome/Edge 无痕模式</strong> 粘贴访问（避免插件、缓存干扰，对话中用户用此方式解决加载问题）；</li>
+<li>确认仪表盘左侧「Gateway」板块状态为 <strong>Online（在线）</strong>，即为认证成功。</li>
+</ol>
+<p>加载失败排查（对话中用户遇到的问题）：</p>
+<ul>
+<li>清空浏览器缓存（<code>Ctrl+Shift+Del</code>），重新访问；</li>
+<li>临时关闭 Windows 防火墙（测试后重新打开）；</li>
+<li>确认网关窗口仍在运行，若已关闭，重新执行 <code>openclaw gateway --force</code>。</li>
+</ul>
+<h2 id="三、核心渠道配置（结合对话报错-教程，电报-飞书）"><a href="#三、核心渠道配置（结合对话报错-教程，电报-飞书）" class="headerlink" title="三、核心渠道配置（结合对话报错+教程，电报+飞书）"></a>三、核心渠道配置（结合对话报错+教程，电报+飞书）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/8_1773231502848.jpg" alt="8_1773231502848.jpg"></p>
+<h3 id="1-Telegram（电报）配置（解决“不支持类型”报错）"><a href="#1-Telegram（电报）配置（解决“不支持类型”报错）" class="headerlink" title="1. Telegram（电报）配置（解决“不支持类型”报错）"></a>1. Telegram（电报）配置（解决“不支持类型”报错）</h3><p>对话中用户遇到「不支持类型：。使用RAW模式」报错，核心是龙虾无法识别电报部分消息类型（贴纸、动图等），解决方案如下：</p>
+<ol>
+<li>仪表盘进入「Channels」→ 选择「Telegram」，配置机器人 Token/账号；</li>
+<li>找到「Message Mode（消息模式）」，选择 <strong>RAW（原始模式）</strong>；</li>
+<li>点击「Save」保存，重启 Telegram 连接器（或重启网关），报错即可消失；</li>
+<li>若仍有报错，执行以下命令查看实时日志，定位不支持的消息类型，添加过滤规则忽略：</li>
+</ol>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实时查看日志，定位电报消息类型报错</span></span><br><span class="line">openclaw logs <span class="literal">--follow</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-飞书配置（参考腾讯云教程，Windows-适配版）"><a href="#2-飞书配置（参考腾讯云教程，Windows-适配版）" class="headerlink" title="2. 飞书配置（参考腾讯云教程，Windows 适配版）"></a>2. 飞书配置（参考腾讯云教程，Windows 适配版）</h3><p>Windows 原生对飞书插件支持有限，需先安装插件再在飞书开放平台完成配置，步骤如下：</p>
+<h4 id="（1）安装飞书插件"><a href="#（1）安装飞书插件" class="headerlink" title="（1）安装飞书插件"></a>（1）安装飞书插件</h4><figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw plugins install @m1heng<span class="literal">-clawd</span>/feishu</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="（2）飞书开放平台配置（关键步骤）"><a href="#（2）飞书开放平台配置（关键步骤）" class="headerlink" title="（2）飞书开放平台配置（关键步骤）"></a>（2）飞书开放平台配置（关键步骤）</h4><ol>
+<li>进入 <a target="_blank" rel="noopener" href="https://open.feishu.cn/">飞书开放平台</a> → 创建「企业自建应用」→ 添加「机器人」应用能力；</li>
+<li>复制应用「App ID」和「App Secret」，在仪表盘飞书配置页粘贴；</li>
+<li>权限配置：进入「权限管理」→ 批量导入导出权限 → 粘贴以下 JSON 配置：</li>
+</ol>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"scopes"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"tenant"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">"aily:file:read"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"aily:file:write"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"application:application.app_message_stats.overview:readonly"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"application:application:self_manage"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"application:bot.menu:write"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"contact:user.employee_id:readonly"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"corehr:file:download"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"event:ip_list"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"im:chat.access_event.bot_p2p_chat:read"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"im:chat.members:bot_access"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"im:message"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"im:message.group_at_msg:readonly"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"im:message.p2p_msg:readonly"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"im:message:readonly"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"im:message:send_as_bot"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"im:resource"</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"user"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"aily:file:read"</span><span class="punctuation">,</span> <span class="string">"aily:file:write"</span><span class="punctuation">,</span> <span class="string">"im:chat.access_event.bot_p2p_chat:read"</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>事件订阅：进入「事件与回调」→ 订阅方式选择「使用长连接接收事件」→ 添加核心事件 <code>im.message.receive_v1</code>（无此事件则无法接收消息）；</li>
+<li>版本发布：进入「版本管理与发布」→ 创建版本并发布（所有配置仅发布后生效）；</li>
+<li>配对绑定：飞书向机器人发消息，获取配对码 → 终端执行以下命令，完成绑定：</li>
+</ol>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw pairing approve feishu 配对码</span><br></pre></td></tr></tbody></table></figure>
+
+<p>补充：若提示「未建立长连接」，等待1-2分钟再保存配置，确认网关正常运行即可。</p>
+<h2 id="四、常用操作命令汇总（对话实操-教程，新手必备）"><a href="#四、常用操作命令汇总（对话实操-教程，新手必备）" class="headerlink" title="四、常用操作命令汇总（对话实操+教程，新手必备）"></a>四、常用操作命令汇总（对话实操+教程，新手必备）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/1_1773231502488.jpg" alt="1_1773231502488.jpg"></p>
+<p>整理对话中用到的所有核心命令，按「启动/配置/排错」分类，可直接复制使用：</p>
+<h3 id="1-核心启动命令"><a href="#1-核心启动命令" class="headerlink" title="1. 核心启动命令"></a>1. 核心启动命令</h3><figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动网关（核心命令，最新版唯一启动方式）</span></span><br><span class="line">openclaw gateway</span><br><span class="line"><span class="comment"># 强制启动网关（解决端口占用，对话中高频使用）</span></span><br><span class="line">openclaw gateway <span class="literal">--force</span></span><br><span class="line"><span class="comment"># 重启网关（刷新插件/机器人状态）</span></span><br><span class="line">openclaw gateway restart</span><br><span class="line"><span class="comment"># 打开仪表盘（自动带令牌，快速访问）</span></span><br><span class="line">openclaw dashboard</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-配置-管理命令"><a href="#2-配置-管理命令" class="headerlink" title="2. 配置/管理命令"></a>2. 配置/管理命令</h3><figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 快速初始化配置（新手推荐）</span></span><br><span class="line">openclaw onboard <span class="literal">--flow</span> quickstart</span><br><span class="line"><span class="comment"># 重置/修改模型/API 配置</span></span><br><span class="line">openclaw config</span><br><span class="line"><span class="comment"># 生成网关令牌（认证必备）</span></span><br><span class="line">openclaw doctor <span class="literal">--generate-gateway-token</span></span><br><span class="line"><span class="comment"># 安装插件（如飞书插件）</span></span><br><span class="line">openclaw plugins install 插件名称</span><br><span class="line"><span class="comment"># 飞书配对绑定</span></span><br><span class="line">openclaw pairing approve feishu 配对码</span><br><span class="line"><span class="comment"># 查看渠道/网关健康状态</span></span><br><span class="line">openclaw status <span class="literal">--deep</span></span><br><span class="line"><span class="comment"># 重置龙虾（保留CLI，清空旧配置，解决配置混乱问题）</span></span><br><span class="line">openclaw reset</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-排错-日志命令（对话中高频使用）"><a href="#3-排错-日志命令（对话中高频使用）" class="headerlink" title="3. 排错/日志命令（对话中高频使用）"></a>3. 排错/日志命令（对话中高频使用）</h3><figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 系统诊断（排查环境/配置问题）</span></span><br><span class="line">openclaw doctor</span><br><span class="line"><span class="comment"># 实时查看日志（定位所有报错，最常用）</span></span><br><span class="line">openclaw logs <span class="literal">--follow</span></span><br><span class="line"><span class="comment"># 查看所有支持的命令（解决命令不识别问题）</span></span><br><span class="line">openclaw <span class="literal">--help</span></span><br><span class="line"><span class="comment"># 验证龙虾版本</span></span><br><span class="line">openclaw <span class="literal">--version</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="五、后续简化使用流程（对话实操总结）"><a href="#五、后续简化使用流程（对话实操总结）" class="headerlink" title="五、后续简化使用流程（对话实操总结）"></a>五、后续简化使用流程（对话实操总结）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/3_1773231502526.jpg" alt="3_1773231502526.jpg"></p>
+<p>首次部署完成后，无需重复执行初始化、生成令牌等操作，每次使用仅需两步，高效便捷：</p>
+<ol>
+<li>打开 PowerShell/CMD，执行 <code>openclaw gateway --force</code> 启动网关（保持窗口打开，不可关闭）；</li>
+<li>新开终端执行 <code>openclaw dashboard</code>，或直接打开浏览器「收藏的带令牌仪表盘 URL」，即可正常使用。</li>
+</ol>
+<h2 id="六、常见问题与避坑指南（全部来自对话实操）"><a href="#六、常见问题与避坑指南（全部来自对话实操）" class="headerlink" title="六、常见问题与避坑指南（全部来自对话实操）"></a>六、常见问题与避坑指南（全部来自对话实操）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/4_1773231502457.jpg" alt="4_1773231502457.jpg"></p>
+<p>汇总对话中用户遇到的所有报错及解决方案，覆盖高频坑点，遇到问题可直接对应查找：</p>
+<table>
+<thead>
+<tr>
+<th>报错现象</th>
+<th>核心原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>error: unknown command ‘serve’/‘start’</td>
+<td>最新版（2026.3.8）无此命令，为旧版本指令</td>
+<td>使用核心命令<code>openclaw gateway</code> 启动</td>
+</tr>
+<tr>
+<td>仪表盘加载空白/URL 拼写错误</td>
+<td>URL 缺少令牌、网关未运行、浏览器/防火墙拦截</td>
+<td>用<code>openclaw dashboard --no-open</code> 生成带令牌 URL，无痕模式访问，关闭代理/临时防火墙</td>
+</tr>
+<tr>
+<td>电报：不支持类型：。使用RAW模式</td>
+<td>龙虾无法识别电报部分消息类型（贴纸、动图等）</td>
+<td>在电报连接器中开启 RAW 模式，或过滤不支持的消息类型</td>
+</tr>
+<tr>
+<td>安装卡顿/超时</td>
+<td>npm 默认国外源，下载速度慢</td>
+<td>切换阿里云国内镜像<code>npm config set registry https://registry.npmmirror.com</code>，清理缓存后重新安装</td>
+</tr>
+<tr>
+<td>Config validation failed: Unrecognized key</td>
+<td>配置文件存在无效参数，与当前版本不兼容</td>
+<td>打开<code>config.json</code> 删除无效配置行，或执行 <code>openclaw reset</code> 重置配置</td>
+</tr>
+<tr>
+<td>未授权：缺少网关令牌</td>
+<td>未生成网关令牌，或 URL 未携带令牌</td>
+<td>执行<code>openclaw doctor --generate-gateway-token</code> 生成令牌，用带令牌 URL 访问仪表盘</td>
+</tr>
+</tbody></table>
+<h2 id="七、部署成功验证标准（对话实操总结）"><a href="#七、部署成功验证标准（对话实操总结）" class="headerlink" title="七、部署成功验证标准（对话实操总结）"></a>七、部署成功验证标准（对话实操总结）</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/7_1773231502593.jpg" alt="7_1773231502593.jpg"></p>
+<p>完成所有操作后，确认以下3点，即为部署成功，可正常使用龙虾的所有功能：</p>
+<ol>
+<li>网关服务：终端无报错，持续显示 <code>Gateway listening on ws://127.0.0.1:18789</code>；</li>
+<li>仪表盘：正常加载，「Gateway」状态为「Online」，可进入聊天/配置界面；</li>
+<li>渠道功能：电报/飞书配置后，能正常接收/发送自然语言消息，无类型/连接报错。</li>
+</ol>
+</div></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" title="头像" alt="头像"></a><div class="post-copyright__author_name">Lifeline</div><div class="post-copyright__author_desc">经世致用 自强不息</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://lifelinest.github.io/posts/a0c85c85/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://lifelinest.github.io/posts/a0c85c85/')">OpenClaw（龙虾）Windows 部署实操知识库</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://lifelinest.github.io/posts/a0c85c85/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=OpenClaw（龙虾）Windows 部署实操知识库&amp;url=https://lifelinest.github.io/posts/a0c85c85/&amp;pic=/images/4_1773231968549.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lifelinest.github.io" target="_blank">Lifeline</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>技术踩坑<span class="tagsPageCount">37</span></a><a class="post-meta__box__tags" href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>开源项目<span class="tagsPageCount">9</span></a><a class="post-meta__box__tags" href="/tags/%E8%BF%90%E7%BB%B4%E9%83%A8%E7%BD%B2/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>运维部署<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/doubao_image_11.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/b2368471/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/31_1773154679082.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">一文读懂 GEO：30 个核心概念</div></div></a></div><div class="next-post pull-right"><a href="/posts/41e03a2b/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">315后GEO坚守可信底线，明确可做/灰区/高危边界</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/41e03a2b/" title="315后GEO坚守可信底线，明确可做/灰区/高危边界"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-04-01</div><div class="title">315后GEO坚守可信底线，明确可做/灰区/高危边界</div></div></a></div><div><a href="/posts/89472648/" title="ChatLog 如何挖掘聊天关键信息？"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/ChatLog%E5%A6%82%E4%BD%95%E6%8C%96%E6%8E%98%E8%81%8A%E5%A4%A9%E5%85%B3%E9%94%AE%E4%BF%A1%E6%81%AF%EF%BC%9F.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-04-24</div><div class="title">ChatLog 如何挖掘聊天关键信息？</div></div></a></div><div><a href="/posts/2d25e1d/" title="Hexo+GitHub搭建个人博客教程（2025最新版）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/Hexo+GitHub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-03-06</div><div class="title">Hexo+GitHub搭建个人博客教程（2025最新版）</div></div></a></div><div><a href="/posts/4fca6a15/" title="Hexo博客用Pretext实现杂志级排版与零抖动"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E8%BD%BB%E9%87%8F%E5%8C%96%E6%82%AC%E6%B5%AE%E7%B2%92%E5%AD%90%EF%BC%8C%E5%87%A0%20KB%20%E5%BC%95%E6%93%8E%E6%97%A0%E6%84%9F%E5%8A%A0%E8%BD%BD%E6%84%8F%E5%A2%83.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-04-01</div><div class="title">Hexo博客用Pretext实现杂志级排版与零抖动</div></div></a></div><div><a href="/posts/b2368471/" title="一文读懂 GEO：30 个核心概念"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/31_1773154679082.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-10</div><div class="title">一文读懂 GEO：30 个核心概念</div></div></a></div><div><a href="/posts/6336ac44/" title="红米K305G刷root"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/%E7%BA%A2%E7%B1%B3K305G%E5%88%B7root.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-11-14</div><div class="title">红米K305G刷root</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/DT.png" alt="status"></div></div><div class="author-info__description">日落终归山海，你我总将相遇。</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><h1 class="author-info__name">Lifeline</h1><div class="author-info__desc">经世致用 自强不息</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/lifelinest" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/694787378" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence">加载中...</div><div id="poem_info"><div id="poem_dynasty">加载中...</div><div class="poem-title-scroll"><div id="poem_author">加载中...</div></div></div></div><script type="text/javascript">// 本地诗词备选
+var localPoems = [
+  {
+    content: "床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+    dynasty: "唐代",
+    author: "李白",
+    title: "静夜思"
+  },
+  {
+    content: "人生自是有情痴，此恨不关风与月。",
+    dynasty: "宋代",
+    author: "欧阳修",
+    title: "玉楼春"
+  },
+  {
+    content: "大漠孤烟直，长河落日圆。",
+    dynasty: "唐代",
+    author: "王维",
+    title: "使至塞上"
+  },
+  {
+    content: "会当凌绝顶，一览众山小。",
+    dynasty: "唐代",
+    author: "杜甫",
+    title: "望岳"
+  }
+];
+function renderPoem(poem) {
+  var sentence = document.querySelector("#poem_sentence");
+  var author = document.querySelector("#poem_author");
+  var dynasty = document.querySelector("#poem_dynasty");
+  var lines = poem.content.match(/[^，。！？；]+[，。！？；]?/g) || [poem.content];
+  sentence.innerHTML = lines.map(l => `<div class='poem-line'>${l.trim()}</div>`).join('');
+  dynasty.innerHTML = poem.dynasty || '无';
+  author.innerHTML = (poem.author || '') + '《' + (poem.title || '') + '》';
+}
+// 尝试API
+function tryApi() {
+  if (window.jinrishici) {
+    jinrishici.load(function(result) {
+      try {
+        var data = result.data;
+        renderPoem({
+          content: data.content,
+          dynasty: data.origin.dynasty,
+          author: data.origin.author,
+          title: data.origin.title
+        });
+      } catch(e) {
+        renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+      }
+    });
+  } else {
+    renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+  }
+}
+// 加载API脚本
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js';
+script.charset = 'utf-8';
+script.onload = tryApi;
+script.onerror = function(){renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);}
+document.head.appendChild(script);</script><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81OpenClaw-%E5%9F%BA%E7%A1%80%E8%AE%A4%E7%9F%A5%EF%BC%88%E7%BB%93%E5%90%88%E7%9F%A5%E8%AF%86%E5%BA%93-%E5%AF%B9%E8%AF%9D%E8%A1%A5%E5%85%85%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">一、OpenClaw 基础认知（结合知识库+对话补充）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%98%B5%E7%A7%B0%E7%94%B1%E6%9D%A5"><span class="toc-number">1.1.</span> <span class="toc-text">1. 核心定义与昵称由来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A0%B8%E5%BF%83%E4%BC%98%E5%8A%BF%EF%BC%88%E8%B4%B4%E5%90%88%E5%AE%9E%E6%93%8D%E5%9C%BA%E6%99%AF%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">2. 核心优势（贴合实操场景）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%89%88%E6%9C%AC%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%88%E5%AF%B9%E8%AF%9D%E9%AB%98%E9%A2%91%E5%9D%91%E7%82%B9%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">3. 版本注意事项（对话高频坑点）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Windows-%E7%B3%BB%E7%BB%9F%E5%AE%8C%E6%95%B4%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B%EF%BC%88%E7%BB%93%E5%90%88%E5%AF%B9%E8%AF%9D%E5%AE%9E%E6%93%8D-%E8%85%BE%E8%AE%AF%E4%BA%91%E6%95%99%E7%A8%8B%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">二、Windows 系统完整部署流程（结合对话实操+腾讯云教程）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%89%8D%E6%8F%90%EF%BC%88%E5%BF%85%E7%9C%8B%EF%BC%8C%E9%81%BF%E5%85%8D%E8%B8%A9%E5%9D%91%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">核心前提（必看，避免踩坑）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%EF%BC%88%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96-%E5%91%BD%E4%BB%A4%E4%B8%8D%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">1. 前置环境准备（解决依赖/命令不识别问题）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AE%89%E8%A3%85-nvm-for-Windows%EF%BC%88%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">（1）安装 nvm for Windows（版本管理工具）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%AE%89%E8%A3%85-Node-js-22-22-0%EF%BC%88%E9%80%82%E9%85%8D%E6%9C%80%E6%96%B0%E7%89%88%E9%BE%99%E8%99%BE%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">（2）安装 Node.js 22.22.0（适配最新版龙虾）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%AE%89%E8%A3%85-Windows-%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%8C%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99%EF%BC%89"><span class="toc-number">2.2.3.</span> <span class="toc-text">（3）安装 Windows 编译工具（可选，解决依赖编译报错）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%BE%99%E8%99%BE%EF%BC%88OpenClaw%EF%BC%89%E5%AE%89%E8%A3%85%EF%BC%88%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85%E6%BA%90%E5%8D%A1%E9%A1%BF%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">2. 龙虾（OpenClaw）安装（解决国内源卡顿问题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE%EF%BC%88%E8%A7%A3%E5%86%B3%E2%80%9C%E9%85%8D%E7%BD%AE%E9%AA%8C%E8%AF%81%E5%A4%B1%E8%B4%A5%E2%80%9D%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">3. 初始化配置（解决“配置验证失败”问题）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%BF%AB%E9%80%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%91%E5%AF%BC%EF%BC%88%E5%8F%82%E8%80%83%E8%85%BE%E8%AE%AF%E4%BA%91%E6%95%99%E7%A8%8B%EF%BC%8C%E9%80%82%E9%85%8D-Windows%EF%BC%89"><span class="toc-number">2.4.1.</span> <span class="toc-text">（1）快速初始化向导（参考腾讯云教程，适配 Windows）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%B3%E9%94%AE%E6%93%8D%E4%BD%9C%EF%BC%88%E5%AF%B9%E8%AF%9D%E4%B8%AD%E7%94%A8%E6%88%B7%E5%AE%9E%E6%93%8D%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-number">2.4.2.</span> <span class="toc-text">（2）初始化关键操作（对话中用户实操步骤）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%BC%82%E5%B8%B8%E4%BF%AE%E5%A4%8D%EF%BC%88%E5%AF%B9%E8%AF%9D%E4%B8%AD%E7%94%A8%E6%88%B7%E9%81%87%E5%88%B0%E7%9A%84%E6%8A%A5%E9%94%99%EF%BC%89"><span class="toc-number">2.4.3.</span> <span class="toc-text">（3）配置文件异常修复（对话中用户遇到的报错）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%90%AF%E5%8A%A8%E9%BE%99%E8%99%BE%E6%A0%B8%E5%BF%83%E6%9C%8D%E5%8A%A1%EF%BC%88%E8%A7%A3%E5%86%B3%E2%80%9C%E5%91%BD%E4%BB%A4%E4%B8%8D%E8%AF%86%E5%88%AB%E2%80%9D%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">4. 启动龙虾核心服务（解决“命令不识别”问题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%94%9F%E6%88%90%E7%BD%91%E5%85%B3%E4%BB%A4%E7%89%8C-%E8%AE%BF%E9%97%AE-Web-%E4%BB%AA%E8%A1%A8%E7%9B%98%EF%BC%88%E8%A7%A3%E5%86%B3%E2%80%9C%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5%E2%80%9D%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">5. 生成网关令牌+访问 Web 仪表盘（解决“加载失败”问题）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E7%94%9F%E6%88%90%E7%BD%91%E5%85%B3%E4%BB%A4%E7%89%8C%EF%BC%88%E8%AE%A4%E8%AF%81%E5%BF%85%E5%A4%87%EF%BC%89"><span class="toc-number">2.6.1.</span> <span class="toc-text">（1）生成网关令牌（认证必备）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E8%AE%BF%E9%97%AE-Web-%E4%BB%AA%E8%A1%A8%E7%9B%98%EF%BC%88%E9%81%BF%E5%85%8D%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5-URL-%E9%94%99%E8%AF%AF%EF%BC%89"><span class="toc-number">2.6.2.</span> <span class="toc-text">（2）访问 Web 仪表盘（避免加载失败/URL 错误）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A0%B8%E5%BF%83%E6%B8%A0%E9%81%93%E9%85%8D%E7%BD%AE%EF%BC%88%E7%BB%93%E5%90%88%E5%AF%B9%E8%AF%9D%E6%8A%A5%E9%94%99-%E6%95%99%E7%A8%8B%EF%BC%8C%E7%94%B5%E6%8A%A5-%E9%A3%9E%E4%B9%A6%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">三、核心渠道配置（结合对话报错+教程，电报+飞书）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Telegram%EF%BC%88%E7%94%B5%E6%8A%A5%EF%BC%89%E9%85%8D%E7%BD%AE%EF%BC%88%E8%A7%A3%E5%86%B3%E2%80%9C%E4%B8%8D%E6%94%AF%E6%8C%81%E7%B1%BB%E5%9E%8B%E2%80%9D%E6%8A%A5%E9%94%99%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">1. Telegram（电报）配置（解决“不支持类型”报错）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%A3%9E%E4%B9%A6%E9%85%8D%E7%BD%AE%EF%BC%88%E5%8F%82%E8%80%83%E8%85%BE%E8%AE%AF%E4%BA%91%E6%95%99%E7%A8%8B%EF%BC%8CWindows-%E9%80%82%E9%85%8D%E7%89%88%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">2. 飞书配置（参考腾讯云教程，Windows 适配版）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AE%89%E8%A3%85%E9%A3%9E%E4%B9%A6%E6%8F%92%E4%BB%B6"><span class="toc-number">3.2.1.</span> <span class="toc-text">（1）安装飞书插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E9%A3%9E%E4%B9%A6%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E9%85%8D%E7%BD%AE%EF%BC%88%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4%EF%BC%89"><span class="toc-number">3.2.2.</span> <span class="toc-text">（2）飞书开放平台配置（关键步骤）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB%EF%BC%88%E5%AF%B9%E8%AF%9D%E5%AE%9E%E6%93%8D-%E6%95%99%E7%A8%8B%EF%BC%8C%E6%96%B0%E6%89%8B%E5%BF%85%E5%A4%87%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">四、常用操作命令汇总（对话实操+教程，新手必备）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">4.1.</span> <span class="toc-text">1. 核心启动命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE-%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">4.2.</span> <span class="toc-text">2. 配置/管理命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8E%92%E9%94%99-%E6%97%A5%E5%BF%97%E5%91%BD%E4%BB%A4%EF%BC%88%E5%AF%B9%E8%AF%9D%E4%B8%AD%E9%AB%98%E9%A2%91%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">3. 排错/日志命令（对话中高频使用）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%90%8E%E7%BB%AD%E7%AE%80%E5%8C%96%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B%EF%BC%88%E5%AF%B9%E8%AF%9D%E5%AE%9E%E6%93%8D%E6%80%BB%E7%BB%93%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">五、后续简化使用流程（对话实操总结）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%EF%BC%88%E5%85%A8%E9%83%A8%E6%9D%A5%E8%87%AA%E5%AF%B9%E8%AF%9D%E5%AE%9E%E6%93%8D%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">六、常见问题与避坑指南（全部来自对话实操）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E9%83%A8%E7%BD%B2%E6%88%90%E5%8A%9F%E9%AA%8C%E8%AF%81%E6%A0%87%E5%87%86%EF%BC%88%E5%AF%B9%E8%AF%9D%E5%AE%9E%E6%93%8D%E6%80%BB%E7%BB%93%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">七、部署成功验证标准（对话实操总结）</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1a7e4f01/" title="放弃一众竞品最终留下了小米平板8"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_11.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="放弃一众竞品最终留下了小米平板8"></a><div class="content"><a class="title" href="/posts/1a7e4f01/" title="放弃一众竞品最终留下了小米平板8">放弃一众竞品最终留下了小米平板8</a><time datetime="2026-07-12T03:16:54.000Z" title="发表于 2026-07-12 11:16:54">2026-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/91d3c7cc/" title="制造业外贸客户开发全链路实战复盘与思考"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_6.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="制造业外贸客户开发全链路实战复盘与思考"></a><div class="content"><a class="title" href="/posts/91d3c7cc/" title="制造业外贸客户开发全链路实战复盘与思考">制造业外贸客户开发全链路实战复盘与思考</a><time datetime="2026-07-11T18:04:19.000Z" title="发表于 2026-07-12 02:04:19">2026-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fe9f2465/" title="如何排查 AI 编程助手 Skill 故障并规范安全上线"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_14_1783753546631.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何排查 AI 编程助手 Skill 故障并规范安全上线"></a><div class="content"><a class="title" href="/posts/fe9f2465/" title="如何排查 AI 编程助手 Skill 故障并规范安全上线">如何排查 AI 编程助手 Skill 故障并规范安全上线</a><time datetime="2026-06-19T08:25:46.000Z" title="发表于 2026-06-19 16:25:46">2026-06-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6cae7b2c/" title="如何管理 Claude Skill 版本迭代与团队协作配置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何管理 Claude Skill 版本迭代与团队协作配置"></a><div class="content"><a class="title" href="/posts/6cae7b2c/" title="如何管理 Claude Skill 版本迭代与团队协作配置">如何管理 Claude Skill 版本迭代与团队协作配置</a><time datetime="2026-06-19T08:23:21.000Z" title="发表于 2026-06-19 16:23:21">2026-06-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/83dd532c/" title="如何运用 Cursor Skill 高阶语法实现动态适配能力"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/doubao_image_1_1783753204553.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何运用 Cursor Skill 高阶语法实现动态适配能力"></a><div class="content"><a class="title" href="/posts/83dd532c/" title="如何运用 Cursor Skill 高阶语法实现动态适配能力">如何运用 Cursor Skill 高阶语法实现动态适配能力</a><time datetime="2026-06-19T08:03:08.000Z" title="发表于 2026-06-19 16:03:08">2026-06-19</time></div></div></div></div></div></div></div></main><footer id="footer"><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:3434848843@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/7340189538" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100092208016287&amp;sk=about" title="facebook"><i class="anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130"><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/lifelinest" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/694787378" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/self" title="抖音"><i class="anzhiyufont anzhiyu-icon-tiktok"></i></a><a class="deal_link" href="/copyright" title="CC"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档中心" href="/docs/">文档中心</a><a class="footer-item" title="博客插件" target="_blank" rel="noopener" href="https://hexo.io/plugins/">博客插件</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="导航网站" target="_blank" rel="noopener" href="https://www.mfy-lifeline.top/#/">导航网站</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">作品集</div><div class="footer-links"><a class="footer-item" title="设计图仓" href="/design/">设计图仓</a><a class="footer-item" title="微码仓库" href="/code/">微码仓库</a><a class="footer-item" title="智造工坊" href="/Workshop/">智造工坊</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div><div id="footer-animal"><div class="animal-wall"></div><img class="animal" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/photo.avif" alt="动物" onerror="this.onerror=null;this.src='/img/404.jpg'"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">©2023 - 2026 By <a class="footer-bar-link" href="/" title="Lifeline" target="_blank">Lifeline</a></div><div class="footer-bar-subtitle" style="display: flex; align-items: center; gap: 0.3em;"><div id="footer-type-tips"></div><span class="typed-cursor"></span></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><div class="love-heart"><div class="heart-shape">❤️</div></div><a class="footer-bar-link" target="_blank" rel="noopener" href="https://cloudflare-img-bzb.pages.dev/" title="图床">图床</a></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script><script>if (typeof Typed === 'function') {
+  // 先清空内容，防止被其他JS写入
+  document.querySelector('#footer-type-tips').innerText = '';
+  new Typed("#footer-type-tips", {
+    strings: ["心墙开扇窗，微风递糖霜。"],
+    startDelay: 300,
+    typeSpeed: 150,
+    backSpeed: 50,
+    loop: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
+}
+    </script></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">124</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">56</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">8</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">工具</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://kimi.moonshot.cn/chat/empty" title="kimi"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg" alt="kimi"><span class="back-menu-item-text">kimi</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://pan.baidu.com/" title="百度网盘"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png" alt="百度网盘"><span class="back-menu-item-text">百度网盘</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">娱乐</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.163.com/?from=itab" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg" alt="网易云音乐"><span class="back-menu-item-text">网易云音乐</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.bilibili.com/" title="哔哩哔哩"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg" alt="哔哩哔哩"><span class="back-menu-item-text">哔哩哔哩</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.zhihu.com/" title="知乎"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=1821089500,4276043120&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=415&amp;h=312" alt="知乎"><span class="back-menu-item-text">知乎</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.skypixel.com/" title="天空之城"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://img1.baidu.com/it/u=11010786,400614760&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" alt="天空之城"><span class="back-menu-item-text">天空之城</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-comments faa-tada" style="font-size: 0.9em;"></i><span> 聊天室</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/todolist/"><i class="anzhiyufont anzhiyu-icon-calendar-days faa-tada" style="font-size: 0.9em;"></i><span> 待办清单</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/equipment/"><i class="anzhiyufont anzhiyu-icon-dice-d20 faa-tada" style="font-size: 0.9em;"></i><span> 我的装备</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="font-size: 0.88rem;">人工智能<sup>13</sup></a><a href="/tags/%E4%BA%BA%E6%96%87%E8%A7%82%E5%AF%9F/" style="font-size: 0.88rem;">人文观察<sup>3</sup></a><a href="/tags/%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F/" style="font-size: 0.88rem;">人生感悟<sup>2</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E4%BA%AB/" style="font-size: 0.88rem;">代码分享<sup>5</sup></a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">免费工具<sup>38</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">前端开发<sup>7</sup></a><a href="/tags/%E5%8A%9E%E5%85%AC%E6%8A%80%E5%B7%A7/" style="font-size: 0.88rem;">办公技巧<sup>17</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 0.88rem;">博客搭建<sup>11</sup></a><a href="/tags/%E5%90%8E%E7%AB%AF%E5%85%A5%E9%97%A8/" style="font-size: 0.88rem;">后端入门<sup>2</sup></a><a href="/tags/%E5%9F%8E%E5%B8%82%E6%BC%AB%E6%B8%B8/" style="font-size: 0.88rem;">城市漫游<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">学习<sup>1</sup></a><a href="/tags/%E5%B0%8F%E4%BC%97%E7%9B%AE%E7%9A%84%E5%9C%B0/" style="font-size: 0.88rem;">小众目的地<sup>2</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">工具教程<sup>29</sup></a><a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" style="font-size: 0.88rem;">开源项目<sup>9</sup></a><a href="/tags/%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F/" style="font-size: 0.88rem;">思维方式<sup>2</sup></a><a href="/tags/%E6%89%8B%E5%B7%A5-DIY/" style="font-size: 0.88rem;">手工 DIY<sup>2</sup></a><a href="/tags/%E6%89%8B%E6%9C%BA-APP/" style="font-size: 0.88rem;">手机 APP<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E8%B8%A9%E5%9D%91/" style="font-size: 0.88rem;">技术踩坑<sup>37</sup></a><a href="/tags/%E6%91%84%E5%BD%B1%E8%AE%B0%E5%BD%95/" style="font-size: 0.88rem;">摄影记录<sup>3</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87/" style="font-size: 0.88rem;">效率提升<sup>6</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E8%BD%AF%E4%BB%B6/" style="font-size: 0.88rem;">效率软件<sup>38</sup></a><a href="/tags/%E6%97%85%E8%A1%8C%E6%91%84%E5%BD%B1/" style="font-size: 0.88rem;">旅行摄影<sup>2</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8%E9%9A%8F%E6%83%B3/" style="font-size: 0.88rem;">日常随想<sup>1</sup></a><a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/" style="font-size: 0.88rem;">浏览器插件<sup>3</sup></a><a href="/tags/%E6%B8%B8%E6%88%8F%E5%BF%83%E5%BE%97/" style="font-size: 0.88rem;">游戏心得<sup>2</sup></a><a href="/tags/%E7%83%AD%E7%82%B9%E8%AF%84%E8%AE%BA/" style="font-size: 0.88rem;">热点评论<sup>2</sup></a><a href="/tags/%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/" style="font-size: 0.88rem;">电脑软件<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" style="font-size: 0.88rem;">知识总结<sup>10</sup></a><a href="/tags/%E7%9F%AD%E9%80%94%E6%97%85%E8%A1%8C/" style="font-size: 0.88rem;">短途旅行<sup>1</sup></a><a href="/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/" style="font-size: 0.88rem;">社会观察<sup>1</sup></a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">编程学习<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%8A%80%E8%83%BD/" style="font-size: 0.88rem;">职场技能<sup>6</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/" style="font-size: 0.88rem;">行业观察<sup>12</sup></a><a href="/tags/%E8%A7%82%E7%82%B9%E8%BE%93%E5%87%BA/" style="font-size: 0.88rem;">观点输出<sup>9</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/" style="font-size: 0.88rem;">认知升级<sup>7</sup></a><a href="/tags/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB/" style="font-size: 0.88rem;">资源分享<sup>24</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/" style="font-size: 0.88rem;">软件测评<sup>15</sup></a><a href="/tags/%E8%BF%90%E7%BB%B4%E9%83%A8%E7%BD%B2/" style="font-size: 0.88rem;">运维部署<sup>1</sup></a><a href="/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" style="font-size: 0.88rem;">避坑指南<sup>3</sup></a></div></div><hr></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><!-- 确保showArray始终是数组且包含mindmap--><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><!-- 确保showArray是数组且不为空--><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="chbg-btn" type="button" title="切换背景" onclick="toggleWinbox()"><i class="anzhiyufont anzhiyu-icon-images"></i></button><button id="mindmap-btn" type="button" title="思维导图"><i class="anzhiyufont anzhiyu-icon-lightbulb"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script src="/js/chbg.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用Lifeline!`,
+    `经世致用, 自强不息`,
+    `
+        
+       ██╗      ██╗     ██╗     ██╗     ██╗    ██╗
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ██║      ██║     ██║     ██║     ██║    ██║
+       ███████╗ ███████╗███████╗███████╗███████╗
+       ╚══════╝ ╚══════╝╚══════╝╚══════╝╚══════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by Lifeline %c 你正在访问 Lifeline 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async="" src="/anzhiyu/random.js"></script><script src="/js/welcome.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const getGiscusTheme = theme => {
+    return theme === 'dark' ? 'dark' : 'light'
+  }
+
+  const loadGiscus = () => {
+    const config = Object.assign({
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'lifelinest/giscus',
+      'data-repo-id': 'R_kgDOPINt6A',
+      'data-category-id': '',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true
+    },{"data-lang":"zh-CN","data-mapping":"pathname","data-category-id":"DIC_kwDOPINt6M4Cslgg","data-strict":1,"data-input-position":"top"})
+
+    const ele = document.createElement('script')
+    for (let key in config) {
+      ele.setAttribute(key, config[key])
+    }
+    document.getElementById('giscus-wrap').appendChild(ele)
+  }
+
+  const changeGiscusTheme = theme => {
+    const sendMessage = message => {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
+    }
+
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(theme)
+      }
+    });
+  }
+
+  anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script async="" data-pjax="" src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async="" data-pjax="" src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><script src="/js/anzhiyu/article-encryption.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script defer="" pjax="" src="/js/custom.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script><script src="/js/update.js"></script><script src="/js/calendar-card.js"></script><script src="/js/zhihu.js"></script><script src="/js/article-reading.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script src="//code.tidio.co/qjjsrrwucuilkpqc8um0uslohzolhxld.js" async="async"></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+      document.body.style.position = 'relative';
+      document.documentElement.style.overflow = 'auto'
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script><!-- 思维导图功能--><script src="/js/mindmap.js"></script></div><div class="mindmap-modal" id="mindmap-modal"><div class="mindmap-overlay"></div><div class="mindmap-content"><div class="mindmap-header"><span class="mindmap-title">文章思维导图</span><button class="mindmap-btn" id="mindmap-btn-close"><i class="anzhiyufont anzhiyu-icon-close"></i></button></div><div class="mindmap-toolbar"><button class="mindmap-toolbar-btn" id="mindmap-btn-fullscreen"><svg class="mindmap-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path></svg></button><button class="mindmap-toolbar-btn" id="mindmap-btn-export"><i class="anzhiyufont anzhiyu-icon-download"></i></button></div><div class="mindmap-svg-container" id="mindmap-svg-container"></div><div class="mindmap-empty-state"><i class="anzhiyufont anzhiyu-icon-file-text"></i><span>本文暂无目录结构</span></div></div></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div><!-- hexo injector body_end start --><script data-pjax="">
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '9d0c37912c4d49ddb29a7a14e1bf54cb';
+  var gaud_map_key = 'dc1eaa8e383ff12ca596ba00fe2b2ed1';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'true';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax="" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer="" src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer="" src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+    <link rel="stylesheet" href="https://ai.tianli0.top/static/public/postChatUser_summary.min.css">
+    <script>
+        let tianliGPT_key = 'S-H9ELQNJWQ168OMRJ';
+        let tianliGPT_postSelector = '#postchat_postcontent';
+        let tianliGPT_Title = '文章摘要';
+        let tianliGPT_postURL = '/^https?://[^/]+/posts/[a-f0-9]{8}/';
+        let tianliGPT_blacklist = '';
+        let tianliGPT_wordLimit = '1000';
+        let tianliGPT_typingAnimate = true;
+        let tianliGPT_theme = 'default';
+        var postChatConfig = {
+          backgroundColor: "#3e86f6",
+          bottom: "36px",
+          left: "1530px",
+          fill: "#FFFFFF",
+          width: "44px",
+          frameWidth: "375px",
+          frameHeight: "600px",
+          defaultInput: true,
+          upLoadWeb: true,
+          showInviteLink: true,
+          userTitle: "PostChat",
+          userDesc: "如果你对网站的内容有任何疑问，可以来问我哦～",
+          addButton: true,
+          beginningText: "这篇文章介绍了",
+          userIcon: "https://ai.tianli0.top/static/img/PostChat.webp",
+          userMode: "magic",
+          defaultChatQuestions: ["你好","你是谁"],
+          defaultSearchQuestions: ["视频压缩","设计"]
+        };
+    </script>
+    <script data-postchat_key="S-H9ELQNJWQ168OMRJ" src="https://ai.tianli0.top/static/public/tianli_gpt.min.js"></script>
+  </body></html>
