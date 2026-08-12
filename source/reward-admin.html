@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打赏管理工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+        
+        h1 {
+            color: #ff6b9a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #ff6b9a;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #f25d8e;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .btn-success {
+            background-color: #28a745;
+        }
+        
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        
+        .btn-danger {
+            background-color: #dc3545;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        
+        .table-container {
+            margin-top: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .actions button {
+            padding: 5px 10px;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .export-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+        
+        .instruction {
+            background-color: #e7f3ff;
+            color: #0056b3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .amount-highlight {
+            font-weight: bold;
+            color: #ff6b9a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>打赏管理工具</h1>
+        
+        <div class="instruction">
+            <strong>使用说明：</strong><br>
+            1. 添加新的打赏记录后，数据会自动保存在浏览器中<br>
+            2. 点击"导出YAML"获取最新的打赏数据<br>
+            3. 复制导出的数据，替换<code>source/_data/about.yml</code>文件中的<code>reward_list</code>部分<br>
+            4. 重新部署博客以更新打赏名单
+        </div>
+        
+        <div class="form-group">
+            <label for="name">打赏人姓名：</label>
+            <input type="text" id="name" placeholder="请输入打赏人姓名">
+        </div>
+        
+        <div class="form-group">
+            <label for="amount">打赏金额（元）：</label>
+            <input type="number" id="amount" placeholder="请输入打赏金额" min="0" step="0.01">
+        </div>
+        
+        <div class="form-group">
+            <label for="datatime">打赏时间：</label>
+            <input type="datetime-local" id="datetime">
+        </div>
+        
+        <button id="addReward">添加打赏记录</button>
+        <button id="clearForm" class="btn-secondary">清空表单</button>
+        <button id="loadDemo" class="btn-secondary">加载示例数据</button>
+        
+        <div class="success-message" id="successMessage">
+            打赏记录添加成功！
+        </div>
+        
+        <div class="table-container">
+            <h2>当前打赏记录</h2>
+            <table id="rewardTable">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>打赏人</th>
+                        <th>金额</th>
+                        <th>时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="rewardList">
+                    <!-- 打赏记录将在这里动态生成 -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="export-section">
+            <h2>导出YAML数据</h2>
+            <button id="exportYAML" class="btn-success">导出YAML</button>
+            <textarea id="yamlOutput" placeholder="导出的YAML数据将显示在这里" readonly></textarea>
+            <button id="copyYAML" class="btn-secondary">复制数据</button>
+        </div>
+    </div>
+    
+    <script>
+        // 初始化日期时间为当前时间
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('datetime').value = now.toISOString().slice(0, 16);
+            
+            // 加载保存的打赏记录
+            loadRewards();
+        });
+        
+        // 打赏记录数据
+        let rewardRecords = [];
+        
+        // 从localStorage加载打赏记录
+        function loadRewards() {
+            const saved = localStorage.getItem('rewardRecords');
+            if (saved) {
+                rewardRecords = JSON.parse(saved);
+                renderRewardList();
+            }
+        }
+        
+        // 保存打赏记录到localStorage
+        function saveRewards() {
+            localStorage.setItem('rewardRecords', JSON.stringify(rewardRecords));
+        }
+        
+        // 渲染打赏列表
+        function renderRewardList() {
+            const listElement = document.getElementById('rewardList');
+            listElement.innerHTML = '';
+            
+            // 按时间降序排序
+            rewardRecords.sort((a, b) => new Date(b.datatime) - new Date(a.datatime));
+            
+            rewardRecords.forEach((reward, index) => {
+                const row = document.createElement('tr');
+                
+                const formattedDate = new Date(reward.datatime).toLocaleString('zh-CN', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${reward.name}</td>
+                    <td class="amount-highlight">¥${reward.amount}</td>
+                    <td>${formattedDate}</td>
+                    <td class="actions">
+                        <button onclick="editReward(${index})" class="btn-secondary">编辑</button>
+                        <button onclick="deleteReward(${index})" class="btn-danger">删除</button>
+                    </td>
+                `;
+                
+                listElement.appendChild(row);
+            });
+            
+            // 如果没有记录，显示提示
+            if (rewardRecords.length === 0) {
+                const emptyRow = document.createElement('tr');
+                emptyRow.innerHTML = '<td colspan="5" style="text-align: center; color: #999;">暂无打赏记录</td>';
+                listElement.appendChild(emptyRow);
+            }
+        }
+        
+        // 添加打赏记录
+        document.getElementById('addReward').addEventListener('click', function() {
+            const name = document.getElementById('name').value.trim();
+            const amount = document.getElementById('amount').value;
+            const datetime = document.getElementById('datetime').value;
+            
+            if (!name || !amount || !datetime) {
+                alert('请填写完整信息');
+                return;
+            }
+            
+            // 转换日期格式
+            const dateObj = new Date(datetime);
+            const formattedDate = `${dateObj.getFullYear()}-${String(dateObj.getMonth() + 1).padStart(2, '0')}-${String(dateObj.getDate()).padStart(2, '0')} ${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}:00`;
+            
+            rewardRecords.push({
+                name: name,
+                amount: parseFloat(amount),
+                datatime: formattedDate
+            });
+            
+            saveRewards();
+            renderRewardList();
+            
+            // 显示成功消息
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+            
+            // 清空表单
+            clearForm();
+        });
+        
+        // 清空表单
+        document.getElementById('clearForm').addEventListener('click', clearForm);
+        
+        function clearForm() {
+            document.getElementById('name').value = '';
+            document.getElementById('amount').value = '';
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('datetime').value = now.toISOString().slice(0, 16);
+        }
+        
+        // 加载示例数据
+        document.getElementById('loadDemo').addEventListener('click', function() {
+            if (confirm('确定要加载示例数据吗？这将覆盖当前所有记录。')) {
+                rewardRecords = [
+                    {
+                        name: "张三",
+                        amount: 20,
+                        datatime: "2024-01-01 10:00:00"
+                    },
+                    {
+                        name: "李四",
+                        amount: 10,
+                        datatime: "2024-01-02 15:30:00"
+                    },
+                    {
+                        name: "王五",
+                        amount: 50,
+                        datatime: "2024-01-03 09:15:00"
+                    }
+                ];
+                saveRewards();
+                renderRewardList();
+            }
+        });
+        
+        // 编辑打赏记录
+        window.editReward = function(index) {
+            const reward = rewardRecords[index];
+            
+            // 填充表单
+            document.getElementById('name').value = reward.name;
+            document.getElementById('amount').value = reward.amount;
+            
+            // 转换日期格式
+            const dateObj = new Date(reward.datatime);
+            const formattedDate = dateObj.toISOString().slice(0, 16); // YYYY-MM-DDTHH:MM
+            document.getElementById('datetime').value = formattedDate;
+            
+            // 删除原记录
+            deleteReward(index);
+            
+            // 滚动到表单
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        
+        // 删除打赏记录
+        window.deleteReward = function(index) {
+            if (confirm('确定要删除这条记录吗？')) {
+                rewardRecords.splice(index, 1);
+                saveRewards();
+                renderRewardList();
+            }
+        };
+        
+        // 导出YAML
+        document.getElementById('exportYAML').addEventListener('click', function() {
+            // 按金额降序排序
+            const sortedRewards = [...rewardRecords].sort((a, b) => b.amount - a.amount);
+            
+            let yaml = 'reward_list:\n';
+            sortedRewards.forEach(reward => {
+                yaml += `  - name: ${reward.name}\n`;
+                yaml += `    amount: ${reward.amount}\n`;
+                yaml += `    datatime: ${reward.datatime}\n`;
+            });
+            
+            document.getElementById('yamlOutput').value = yaml;
+        });
+        
+        // 复制YAML数据
+        document.getElementById('copyYAML').addEventListener('click', function() {
+            const yamlOutput = document.getElementById('yamlOutput');
+            yamlOutput.select();
+            document.execCommand('copy');
+            alert('YAML数据已复制到剪贴板！');
+        });
+    </script>
+</body>
+</html>

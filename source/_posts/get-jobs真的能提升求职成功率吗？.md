@@ -2,10 +2,12 @@
 title: get_jobs真的能提升求职成功率吗？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-categories: []
+  - 效率软件
+  - 办公技巧
+  - 资源分享
+categories:
+  - 工具分享
+cover: /images/get_jobs真的能提升求职成功率吗？.png
 abbrlink: f288ca1
 date: 2025-04-17 20:31:27
 ---

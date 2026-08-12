@@ -2,9 +2,12 @@
 title: MCP光速建站，如何做到毫秒级访问？
 author: Lifeline
 tags:
-  - 学习
-  - 个人博客
-categories: []
+  - 前端开发
+  - 后端入门
+  - 软件测评
+categories:
+  - 技术探索
+cover: /images/MCP光速建站如何做到毫秒级访问？.png
 abbrlink: c4efaa0d
 date: 2025-04-11 16:43:08
 ---

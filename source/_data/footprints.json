@@ -1,0 +1,64 @@
+{
+  "footprints": [
+    {
+      "id": "fp-001",
+      "name": "杭州西湖",
+      "description": "西湖，位于浙江省杭州市西湖区龙井路1号，杭州市区西部，景区总面积49平方千米，汇水面积为21.22平方千米，湖面面积为6.38平方千米。",
+      "longitude": 120.1395,
+      "latitude": 30.2428,
+      "address": "浙江省杭州市西湖区龙井路1号",
+      "footprintType": "旅游",
+      "image": "https://example.com/xihu.jpg",
+      "article": "",
+      "createTime": "2023-05-15T08:00:00Z"
+    },
+    {
+      "id": "fp-002",
+      "name": "上海外滩",
+      "description": "外滩，位于上海市黄浦区中山东一路，地处上海市黄浦江畔，是上海的地标之一。",
+      "longitude": 121.4908,
+      "latitude": 31.2404,
+      "address": "上海市黄浦区中山东一路",
+      "footprintType": "旅游",
+      "image": "https://example.com/waiband.jpg",
+      "article": "",
+      "createTime": "2023-06-20T14:30:00Z"
+    },
+    {
+      "id": "fp-003",
+      "name": "北京故宫",
+      "description": "北京故宫是中国明清两代的皇家宫殿，旧称紫禁城，位于北京中轴线的中心。",
+      "longitude": 116.3974,
+      "latitude": 39.9163,
+      "address": "北京市东城区景山前街4号",
+      "footprintType": "旅游",
+      "image": "https://example.com/gugong.jpg",
+      "article": "",
+      "createTime": "2023-08-10T09:15:00Z"
+    },
+    {
+      "id": "fp-004",
+      "name": "成都锦里",
+      "description": "锦里古街位于四川省成都市武侯祠大街，是成都武侯祠博物馆的一部分。",
+      "longitude": 104.0568,
+      "latitude": 30.6496,
+      "address": "四川省成都市武侯区武侯祠大街",
+      "footprintType": "旅游",
+      "image": "https://example.com/jinli.jpg",
+      "article": "",
+      "createTime": "2023-09-05T11:20:00Z"
+    },
+    {
+      "id": "fp-005",
+      "name": "广州塔",
+      "description": "广州塔又称广州新电视塔，昵称小蛮腰，位于广州市海珠区赤岗塔附近。",
+      "longitude": 113.3249,
+      "latitude": 23.1061,
+      "address": "广东省广州市海珠区阅江西路222号",
+      "footprintType": "旅游",
+      "image": "https://example.com/guangzhouta.jpg",
+      "article": "",
+      "createTime": "2023-10-25T16:45:00Z"
+    }
+  ]
+}

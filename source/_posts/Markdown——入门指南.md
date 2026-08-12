@@ -1,9 +1,13 @@
 ---
 title: 几款主流好用的 Markdown 编辑器，值得拥有
-author: 'Lifeline[生命线]'
+author: Lifeline[生命线]
 tags:
-  - Markdown
-categories: []
+  - 免费工具
+  - 效率软件
+  - 博客搭建
+categories:
+  - 工具分享
+cover: /images/几款主流好用的Markdown编辑器.png
 abbrlink: d0dc42b8
 date: 2024-03-06 15:55:00
 ---

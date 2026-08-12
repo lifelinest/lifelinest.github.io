@@ -2,9 +2,12 @@
 title: 为什么AI生成的图像文字常常出现乱码？
 author: Lifeline
 tags:
-  - 学习
-categories: []
-cover: /images/4d505933-5da7-47f4-9236-7e12f96eaaf3_副本.jpg.jpeg
+  - 行业观察
+  - 观点输出
+  - 认知升级
+categories:
+  - 阅读思考
+cover: /images/为什么AI生成的图像文字常常出现乱码？.png
 abbrlink: 95094afd
 date: 2025-05-19 19:22:35
 ---

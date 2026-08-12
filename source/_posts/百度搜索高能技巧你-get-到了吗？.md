@@ -2,11 +2,12 @@
 title: 百度搜索高能技巧你 get 到了吗？
 author: Lifeline
 tags:
-  - 学习
-  - 科学上网
-categories: []
-cover: >-
-  https://img1.baidu.com/it/u=3229450372,3493079423&fm=253&fmt=auto&app=138&f=JPEG?w=780&h=430
+  - 免费工具
+  - 办公技巧
+  - 效率软件
+categories:
+  - 工具分享
+cover: /images/百度搜索高能技巧你get到了吗.png
 abbrlink: 618f4052
 date: 2025-04-25 22:28:44
 ---

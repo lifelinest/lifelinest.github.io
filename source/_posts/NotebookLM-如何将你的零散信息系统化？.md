@@ -2,11 +2,12 @@
 title: NotebookLM 如何将你的零散信息系统化？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 实用工具
-categories: []
-cover: /images/f509ffb8dcd18cbbb8956afc97ca4d2fffc5ba87_副本.jpg.jpeg
+  - 效率软件
+  - 办公技巧
+  - 免费工具
+categories:
+  - 工具分享
+cover: /images/NotebookLM如何将你的零散信息系统化？.png
 abbrlink: d923f1bb
 date: 2025-05-20 20:14:42
 ---

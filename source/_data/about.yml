@@ -98,7 +98,7 @@
     selfInfoTips2: 新乡职业技术学院
     selfInfoContent2: 大数据技术
     selfInfoTips3: 现在职业
-    selfInfoContent3: 大三学生👨‍🎓
+    selfInfoContent3: 网站运营🌏
   personalities:
     author_name: 建筑师
     personality_type: INTJ-A型
@@ -147,4 +147,11 @@
     music_title: 艾兰·沃克、电子音乐、世界流行
     music_bg: https://img1.baidu.com/it/u=3388783179,3062193415&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500
     music_link: /music
+  reward_list:
+    - name: 凉栀°
+      amount: 20
+      datatime: 2024-01-01 00:00:00
+    - name: Toxic、茴忆
+      amount: 15
+      datatime: 2025-04-23 00:00:00
   

@@ -2,10 +2,12 @@
 title: QuickLook：一款值得拥有的预览软件？
 author: Lifeline
 tags:
-  - 学习
-  - 电脑软件
-  - 实用工具
-categories: []
+  - 免费工具
+  - 效率软件
+  - 办公技巧
+categories:
+  - 工具分享
+cover: /images/QuickLook一款值得拥有的预览软件？.png
 abbrlink: b25123cd
 date: 2025-04-13 08:05:17
 ---

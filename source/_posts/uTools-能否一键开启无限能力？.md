@@ -2,12 +2,12 @@
 title: uTools 能否一键开启无限能力？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - 实用工具
-categories: []
-cover: 'https://img0.baidu.com/it/u=3628664797,2784938902&fm=253&fmt=auto?w=640&h=268'
+  - 效率软件
+  - 办公技巧
+  - 资源分享
+categories:
+  - 工具分享
+cover: /images/uTools能否一键开启无限能力.png
 abbrlink: f2555b7f
 date: 2025-04-29 19:52:06
 ---

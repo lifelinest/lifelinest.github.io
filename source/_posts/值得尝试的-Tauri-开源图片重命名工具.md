@@ -2,13 +2,12 @@
 title: 值得尝试的 Tauri 开源图片重命名工具
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - 实用工具
-categories: []
-cover: >-
-  https://cdn-docs.pingcode.com/wp-content/uploads/2024/12/abcae538-8d4e-4b39-88be-0917ea1138d8.webp?x-oss-process=image/auto-orient,1/format,webp
+  - 免费工具
+  - 效率软件
+  - 资源分享
+categories:
+  - 工具分享
+cover: /images/值得尝试的Tauri开源图片重命名工具.png
 abbrlink: 910dfdcb
 date: 2025-04-26 21:23:58
 ---

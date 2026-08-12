@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内容管理后台 - Lifeline</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Include the Netlify CMS script -->
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    
+    <!-- 注册中文界面 -->
+    <script>
+      // 注册诗词编辑器组件
+      CMS.registerEditorComponent({
+        id: 'poem',
+        label: '诗词',
+        fields: [
+          {name: 'title', label: '标题', widget: 'string'},
+          {name: 'author', label: '作者', widget: 'string'},
+          {name: 'content', label: '内容', widget: 'text'}
+        ],
+        pattern: /^<poem title="(.*?)" author="(.*?)">([\s\S]*?)<\/poem>$/,
+        fromBlock: function(match) {
+          return {
+            title: match[1],
+            author: match[2],
+            content: match[3]
+          };
+        },
+        toBlock: function(obj) {
+          return `<poem title="${obj.title}" author="${obj.author}">${obj.content}</poem>`;
+        },
+        toPreview: function(obj) {
+          return `<div class="poem"><h3>${obj.title}</h3><p class="author">${obj.author}</p><div class="content">${obj.content}</div></div>`;
+        }
+      });
+
+      // 自定义预览样式
+      CMS.registerPreviewStyle('/css/custom.css');
+      
+      // 设置中文界面
+      CMS.registerLocale('zh', {
+        'app.header.title': '内容管理后台',
+        'app.header.logout': '退出登录',
+        'app.header.login': '登录',
+        'app.collection.top.publish': '发布',
+        'app.collection.top.new': '新建',
+        'app.collection.top.search': '搜索',
+        'collection.types.document': '文档',
+        'collection.types.files': '文件',
+        'collection.types.images': '图片',
+        'editor.editor.title': '标题',
+        'editor.editor.body': '内容',
+        'editor.editor.tags': '标签',
+        'editor.editor.categories': '分类',
+        'editor.editor.publish': '发布',
+        'editor.editor.save': '保存',
+        'editor.editor.delete': '删除',
+        'editor.editor.upload': '上传',
+        'editor.editor.uploading': '上传中...',
+        'editor.editor.heading': '标题',
+        'editor.editor.subheading': '副标题',
+        'editor.editor.bold': '粗体',
+        'editor.editor.italic': '斜体',
+        'editor.editor.quote': '引用',
+        'editor.editor.link': '链接',
+        'editor.editor.image': '图片',
+        'editor.editor.code': '代码',
+        'editor.editor.preformatted': '预格式化',
+        'editor.editor.unordered-list': '无序列表',
+        'editor.editor.ordered-list': '有序列表',
+        'ui.toast.onPublish': '已发布',
+        'ui.toast.onPublishWithErrors': '发布出错',
+        'ui.toast.onSave': '已保存',
+        'ui.toast.onDelete': '已删除',
+        'ui.toast.onDeleteUnpublishedChanges': '已删除未发布的更改',
+        'ui.toast.entryUpdated': '条目已更新',
+        'ui.toast.entryPublished': '条目已发布',
+        'ui.toast.entryUnpublished': '条目已取消发布',
+        'ui.toast.onFailToPublish': '发布失败',
+        'ui.toast.onFailToDelete': '删除失败',
+        'ui.toast.onFailToUpdateStatus': '状态更新失败',
+        'ui.toast.onFailToUnpublish': '取消发布失败'
+      });
+
+      // 使用中文界面
+      CMS.registerLocale('zh-cn', CMS.getLocale('zh'));
+      
+      // 设置默认语言为中文
+      CMS.init({
+        config: {
+          locale: 'zh'
+        }
+      });
+    </script>
+  </body>
+</html>

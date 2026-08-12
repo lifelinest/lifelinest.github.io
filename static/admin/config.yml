@@ -1,0 +1,38 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "source/images"
+public_folder: "/images"
+
+locale: 'zh'
+publish_mode: editorial_workflow
+
+site_url: https://lifelinest.github.io
+
+# 配置集合
+collections:
+  # 博客文章
+  - name: "posts"
+    label: "文章"
+    folder: "source/_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "发布日期", name: "date", widget: "datetime"}
+      - {label: "标签", name: "tags", widget: "list", required: false}
+      - {label: "分类", name: "categories", widget: "string", required: false}
+      - {label: "描述", name: "description", widget: "text", required: false}
+      - {label: "内容", name: "body", widget: "markdown"}
+
+  # 独立页面
+  - name: "pages"
+    label: "页面"
+    folder: "source"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "发布日期", name: "date", widget: "datetime"}
+      - {label: "内容", name: "body", widget: "markdown"}

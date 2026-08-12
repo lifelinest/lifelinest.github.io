@@ -2,12 +2,12 @@
 title: ChatLog 如何挖掘聊天关键信息？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - github
-categories: []
-cover: >-
-  https://img0.baidu.com/it/u=2567104365,679058213&fm=253&fmt=auto&app=120&f=JPEG?w=693&h=500
+  - 工具教程
+  - 开源项目
+  - 技术踩坑
+categories:
+  - 技术探索
+cover: /images/ChatLog如何挖掘聊天关键信息？.png
 abbrlink: '89472648'
 date: 2025-04-24 20:15:04
 ---

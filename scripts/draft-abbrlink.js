@@ -200,6 +200,12 @@ hexo.extend.filter.register('after_init', function () {
     const argv = process.argv;
     const isServerCommand = argv.includes('server') || argv.includes('s');
     const isWatchCommand = argv.includes('--watch') || argv.includes('-w');
+    const isCleanCommand = argv.includes('clean') || argv.includes('cl');
+    
+    // 对于 clean 命令，不启动文件监控
+    if (isCleanCommand) {
+        return;
+    }
     
     if (isServerCommand || isWatchCommand) {
         // 对于 server 命令，延迟启动文件监控但不设置超时
@@ -221,4 +227,4 @@ process.on('SIGINT', function () {
         console.log('[Auto Abbrlink] File watcher stopped');
     }
     process.exit();
-}); 
+});

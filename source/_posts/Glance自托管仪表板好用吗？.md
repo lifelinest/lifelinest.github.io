@@ -2,13 +2,12 @@
 title: Glance自托管仪表板好用吗？
 author: Lifeline
 tags:
-  - 工具
-  - 电脑软件
-  - github
-  - 实用工具
-categories: []
-cover: >-
-  https://pic1.zhimg.com/70/v2-1835a02718d056e6e358ee2b68bd6cc0_1440w.avis?source=172ae18b&biz_tag=Post
+  - 效率软件
+  - 资源分享
+  - 办公技巧
+categories:
+  - 工具分享
+cover: /images/Glance自托管仪表板好用吗.png
 abbrlink: ba9cc685
 date: 2025-04-30 23:00:20
 ---

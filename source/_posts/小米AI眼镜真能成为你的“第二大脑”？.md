@@ -3,10 +3,11 @@ title: 小米AI眼镜真能成为你的“第二大脑”？
 author: Lifeline
 cover: /images/未命名29.png
 tags:
-  - 工具
-  - 娱乐
-  - 个人安全
-categories: []
+  - 软件测评
+  - 技术踩坑
+  - 行业观察
+categories:
+  - 技术探索
 abbrlink: a9fc7482
 date: 2025-07-05 10:17:27
 ---

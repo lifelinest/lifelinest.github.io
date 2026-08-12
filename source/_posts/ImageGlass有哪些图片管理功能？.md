@@ -2,12 +2,12 @@
 title: ImageGlass有哪些图片管理功能？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - github
-categories: []
-cover: /images/5_副本.jpg.jpeg
+  - 效率软件
+  - 免费工具
+  - 资源分享
+categories:
+  - 工具分享
+cover: /images/ImageGlass有哪些图片管理功能？.png
 abbrlink: 909097d9
 date: 2025-05-07 20:04:08
 ---

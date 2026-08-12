@@ -3,11 +3,11 @@ title: Easyspider 如何解决我的日常数据抓取难题？
 author: Lifeline
 cover: /images/未命名44.png
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - github
-categories: []
+  - 免费工具
+  - 工具教程
+  - 软件测评
+categories:
+  - 工具分享
 abbrlink: c50d6270
 date: 2025-07-06 08:17:58
 ---

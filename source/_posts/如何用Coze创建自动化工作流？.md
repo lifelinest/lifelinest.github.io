@@ -2,10 +2,12 @@
 title: 如何用Coze创建自动化工作流？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-categories: []
-cover: /images/4_副本_1747832737284.webp
+  - 效率软件
+  - 工具教程
+  - 办公技巧
+categories:
+  - 工具分享
+cover: /images/如何用Coze创建自动化工作流？.png
 abbrlink: 68d350e2
 date: 2025-05-21 21:04:26
 ---

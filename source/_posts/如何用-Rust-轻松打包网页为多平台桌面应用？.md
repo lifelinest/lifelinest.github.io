@@ -2,12 +2,11 @@
 title: 如何用 Rust 轻松打包网页为多平台桌面应用？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - github
-  - 实用工具
-categories: []
+  - 工具教程
+  - 编程学习
+  - 开源项目
+categories:
+  - 技术探索
 cover: /images/e58783b1441761d10b6f5f746ea0e7e1_副本.png
 abbrlink: a51aefa7
 date: 2025-05-10 20:45:28

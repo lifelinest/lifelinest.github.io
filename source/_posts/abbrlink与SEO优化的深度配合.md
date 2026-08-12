@@ -2,10 +2,11 @@
 title: abbrlink与SEO优化的深度配合
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 个人博客
-categories: []
+  - 工具教程
+  - 技术踩坑
+  - 前端开发
+categories:
+  - 技术探索
 cover: /images/下载_副本11.jpg.jpeg
 abbrlink: a6aeac5e
 date: 2025-07-08 20:56:07

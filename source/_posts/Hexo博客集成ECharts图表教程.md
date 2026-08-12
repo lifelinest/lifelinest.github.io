@@ -2,19 +2,20 @@
 title: Hexo博客集成ECharts图表教程
 author: Lifeline
 tags:
-  - 学习
-  - 个人博客
-  - Markdown
-categories: []
+  - 工具教程
+  - 代码分享
+  - 技术踩坑
+categories:
+  - 技术探索
 cover: /images/2222.png
-abbrlink: cbddefb7
-date: 2025-09-01 22:38:42
+abbrlink: 8bb22cde
+date: 2025-09-02 19:27:20
 ---
 ## 一、ECharts简介
 
 ![333.png](/images/333.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;在现代博客中，可视化图表可以让数据展示更加直观、生动。ECharts作为一款功能强大的开源可视化库，提供了丰富的图表类型和交互功能。本文将详细介绍如何在Hexo博客中集成并使用ECharts图表。ECharts是百度开源的一个基于JavaScript的可视化图表库，具有以下特点：
+在现代博客中，可视化图表可以让数据展示更加直观、生动。ECharts作为一款功能强大的开源可视化库，提供了丰富的图表类型和交互功能。本文将详细介绍如何在Hexo博客中集成并使用ECharts图表。ECharts是百度开源的一个基于JavaScript的可视化图表库，具有以下特点：
 
 - **丰富的图表类型**：支持折线图、柱状图、饼图、散点图、地图等多种图表类型
 - **强大的交互功能**：支持缩放、平移、悬浮提示等交互操作
@@ -26,8 +27,7 @@ date: 2025-09-01 22:38:42
 
 ![444.png](/images/444.png)
 
-
-### 方法一：通过CDN引入ECharts（推荐）
+方法一：通过CDN引入ECharts（推荐）
 
 1. 编辑主题配置文件`_config.anzhiyu.yml`（根据你使用的主题不同，文件名可能不同）
 2. 在`inject`配置的`head`部分添加ECharts的CDN链接：
@@ -46,7 +46,7 @@ inject:
 > - 可以根据需要选择不同的CDN源
 > - 如需使用最新特性，可以尝试更高版本
 
-### 方法二：通过NPM安装ECharts
+方法二：通过NPM安装ECharts
 
 如果你的项目使用了前端构建工具，可以通过NPM安装ECharts：
 
@@ -64,8 +64,7 @@ import echarts from 'echarts';
 
 ![555.png](/images/555.png)
 
-
-### 1. 创建专门的图表页面
+1. 创建专门的图表页面
 
 在`source`目录下创建`charts`文件夹，并在其中创建`index.md`文件：
 
@@ -74,7 +73,7 @@ mkdir -p source/charts
 touch source/charts/index.md
 ```
 
-### 2. 编写图表页面内容
+2. 编写图表页面内容
 
 在`source/charts/index.md`文件中添加以下内容：
 
@@ -303,10 +302,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ![666.png](/images/666.png)
 
-
 如果你想在特定的博客文章中嵌入单个图表，可以按照以下步骤操作：
 
-### 1. 在文章中添加容器
+1. 在文章中添加容器
 
 在markdown文件中添加一个用于容纳图表的div容器：
 
@@ -314,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div id="myChart" class="chart" style="width: 100%; height: 400px;"></div>
 ```
 
-### 2. 添加初始化代码
+2. 添加初始化代码
 
 在文章末尾添加JavaScript代码来初始化图表：
 
@@ -353,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 ```
 
-（实际示例）
+图表实际示例
 
 下面是一个实际可运行的ECharts图表示例，展示博客文章分类占比：
 
@@ -424,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ## 五、进阶技巧
 
-### 1. 使用动态数据
+1. 使用动态数据
 
 你可以从外部API或JSON文件加载数据来动态生成图表：
 
@@ -448,7 +446,7 @@ fetch('/api/data.json')
   });
 ```
 
-### 2. 自定义主题
+2. 自定义主题
 
 ECharts支持自定义主题，可以通过以下方式应用：
 
@@ -465,7 +463,7 @@ const themeJson = {
 const chart = echarts.init(dom, 'myTheme');
 ```
 
-### 3. 添加交互功能
+3. 添加交互功能
 
 为图表添加交互事件，增强用户体验：
 
@@ -485,24 +483,24 @@ chart.on('legendselectchanged', function(params) {
 
 ## 六、常见问题与解决方案
 
-### 1. 图表不显示
+1. 图表不显示
 
 - 确保ECharts库已正确引入
 - 检查容器div的宽高是否已设置
 - 确认初始化代码在DOM加载完成后执行
 - 查看浏览器控制台是否有错误信息
 
-### 2. 图表大小不正确
+2. 图表大小不正确
 
 - 为容器设置明确的宽高
 - 添加resize事件监听器，在窗口大小改变时重新调整图表大小
 
-### 3. 移动端显示问题
+3. 移动端显示问题
 
 - 使用响应式设计，为不同屏幕尺寸设置不同的图表高度
 - 简化图表内容，在小屏幕上显示更精简的信息
 
-### 4. 加载速度优化
+4. 加载速度优化
 
 - 使用CDN加速ECharts库的加载
 - 对于较大的图表库，可以考虑按需引入模块

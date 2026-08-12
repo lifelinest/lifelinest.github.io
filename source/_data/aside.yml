@@ -46,3 +46,15 @@
     <div id="calendar-main">
     </div>
     </div>
+
+- name: history
+  title: 那年今日 
+  class: card-history
+  id:
+  icon: fas fa-clock
+  content_class:
+  content_id: history-baidu
+  content_css: 'height:80px;overflow:hidden'
+  content_html: '<div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%;margin-top: 6px">
+        <div id="history_container_wrapper" class="swiper-wrapper"></div>
+    </div>'

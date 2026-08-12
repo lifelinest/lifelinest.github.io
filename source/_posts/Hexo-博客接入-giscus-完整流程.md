@@ -3,9 +3,11 @@ title: Hexo 博客接入 giscus 完整流程
 author: Lifeline
 cover: /images/未命名11.png
 tags:
-  - 学习
-  - 个人博客
-categories: []
+  - 工具教程
+  - 技术踩坑
+  - 软件测评
+categories:
+  - 技术探索
 abbrlink: cab7a2a3
 date: 2025-07-07 07:31:58
 ---

@@ -1,12 +1,14 @@
 ---
 title: 谷歌SEO核心逻辑全解析
 author: Lifeline
-categories: []
+categories:
+  - 阅读思考
 cover: /images/33.webp
 abbrlink: a144abe9
 tags:
-  - 学习
-  - 个人博客
+  - 行业观察
+  - 认知升级
+  - 知识总结
 date: 2025-08-18 22:41:21
 ---
 ## 一、引言

@@ -1,0 +1,35 @@
+- class_name: 想做的项目
+  seat: left
+  todo_list:
+    - content: 个人主页
+      completed: false
+    - content: 公众号
+      completed: false
+- class_name: 想看的书
+  seat: left
+  todo_list:
+    - content: 《毛泽东选集》
+      completed: false
+    - content: 《86不存在的战区》
+      completed: false
+- class_name: 想买的东西
+  seat: left
+  todo_list:
+    - content: 小米平板5pro
+      completed: true
+    - content: 致态固态硬盘
+      completed: true
+- class_name: 想学的技术
+  seat: right
+  todo_list:
+    - content: Vue2/Vue3
+      completed: false
+    - content: Electron
+      completed: false
+- class_name: 想去的地方
+  seat: right
+  todo_list:
+    - content: 桂林
+      completed: true
+    - content: 杭州
+      completed: false

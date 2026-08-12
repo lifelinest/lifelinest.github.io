@@ -2,12 +2,12 @@
 title: GitDiagram 是如何将 GitHub 仓库架构可视化的？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - github
-categories: []
-cover: /images/1_副本_1748349263592.webp
+  - 效率软件
+  - 资源分享
+  - 免费工具
+categories:
+  - 工具分享
+cover: /images/GitDiagram如何将GitHub仓库架构可视化？.png
 abbrlink: '78e63314'
 date: 2025-05-27 20:25:23
 ---

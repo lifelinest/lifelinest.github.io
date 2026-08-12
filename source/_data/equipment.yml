@@ -9,13 +9,23 @@
         - name: RedmiBook Pro 15
           specification: 11th Gen Intel(R)Core(TM)i5-11300H 3.10GHz 3.11 GHz
           description: 萌萌哒小本本，超能干，等你抱！🤗
-          image: https://img0.baidu.com/it/u=3228030281,2632551677&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=550
+          image: https://cdn.cnbj1.fds.api.mi-img.com/nr-upload-outer/C100B73C5862454A9F0A7AF790316DCD_1776683473426.png
           link: https://www.mi.com/redmibook/pro15
         - name: 小米14
           specification: 岩石青 / 1TB
           description: 永远相信美好的事情即将发生🌸✨
-          image: https://img1.baidu.com/it/u=1758602235,2875105019&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=800
+          image: https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202310251934_a644b98586dc18c0b207d8055049b608.png
           link: https://www.mi.com/xiaomi-14
+        - name: xiaomi pad 8
+          specification: 蓝色 / 256GB
+          description: 轻薄又能装，追剧学习万能小可爱✨
+          image: https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202509191730_0afd9a6786b68312ed9bd03610a81d5e.png
+          link: https://www.mi.com/prod/xiaomi-pad-8
+        - name: REDMI Watch 6
+          specification: 46.45 × 40.03 × 9.94mm（不含心率凸台）
+          description: 轻薄大屏长续航，手腕上的贴心小管家✨
+          image: https://cdn.cnbj1.fds.api.mi-img.com/product-images/new-product-images/redmi-watch-6_7004/images/3926.png
+          link: https://www.mi.com/prod/redmi-watch-6/specs
     - title: 设备
       description: 记录美好生活
       equipment_list:
@@ -29,16 +39,36 @@
           description: 键盘小能手，敲击超带感，等你来撩哦！⌨️💖
           image: https://t15.baidu.com/it/u=1396341548,1360450263&fm=224&app=112&f=JPEG?w=500&h=500
           link: https://www.irok.cn/item/338
-    - title: 娱乐
-      description: 用来出行的实物及设备
-      equipment_list:
         - name: 哈趣Q1
           specification: 1080P高清画质、自动对焦、自动梯形校正、开机无广告、支持语音控制
           description: 萌宝投影仪，超会玩，快来抱！🤗✨
           image: https://img2.baidu.com/it/u=2974091033,4248514816&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500
           link: https://m.haqu.com/
+        - name: 米家电动剃须刀S200
+          specification: 智能感应启动
+          description: 差旅通勤随身带，清爽剃须超舒服🥰
+          image: https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202403251020_2bd53f3f9f330efa896fa3e4c9640815.png
+          link: https://www.mi.com/shop/buy/detail?product_id=19785&cfrom=search
+    - title: 娱乐
+      description: 用来出行的实物及设备
+      equipment_list:
         - name: 乐高-布加迪
           specification: 高度14cm、长度56cm、宽度25cm
           description: 乐高布加迪，超跑拼装梦！🚗✨
           image: https://img2.baidu.com/it/u=735427261,3860008506&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=500
           link: https://www.bilibili.com/video/BV1Vr4y1h7YU/
+        - name: Myethos 王者荣耀 Gift+系列 时之恋人 孙尚香
+          specification: 长186mm、宽134mm、高218mm
+          description: 时间是逆流长河✨于万千碎片里奔赴与你重逢
+          image: https://rfx.hpoi.net/gk/pic/n/2025/10/f8ee5c0654e744b6a23cf329231c68da.jpg
+          link: https://www.hpoi.net/hobby/115136
+        - name: 点翠凤冠
+          specification: 11cm×21cm×71/2(Pcs)+1014配件
+          description: 千片碎片拼凑独一份中式浪漫💌
+          image: https://www.piececool.com/d/file/Pxilie/2024-10-28/ca0662bd827f37d494b6cc97f323ce6c.jpg
+          link: https://www.piececool.com/showinfo-7-650-0.html
+        - name: HXD1D 电力机车
+          specification: 143mm×20mm×30mm
+          description: 方寸铁道，藏着奔赴远方的浪漫✨
+          image: https://gw.alicdn.com/imgextra/O1CN01q39ubH1r17CRqx96K_!!424275570.jpg_q95.jpg_.webp
+          link: https://item.taobao.com/item.htm?id=982877446330&mi_id=00003ATuX-mgsLEVnC-yZj699y7S8B369doJaMFC7HGI05M&spm=a21xtw.29978518.0.0&xxc=shop

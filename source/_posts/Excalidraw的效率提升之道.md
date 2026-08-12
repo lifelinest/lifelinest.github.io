@@ -6,6 +6,7 @@ tags:
   - 工具
   - 电脑软件
 categories: []
+cover: /images/Excalidraw的效率提升之道.png
 abbrlink: f1de5082
 date: 2025-04-18 22:28:13
 ---

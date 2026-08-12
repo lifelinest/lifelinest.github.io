@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /public/
+Disallow: /themes/
+Disallow: /_drafts/
+Disallow: /_posts/
+Disallow: /source/_data/
+
+Sitemap: https://lifelinest.github.io/sitemap.xml

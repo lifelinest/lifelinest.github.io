@@ -2,11 +2,12 @@
 title: 想让小爱触屏音箱 LX04 随意安装 APP？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 刷机
-categories: []
-cover: /images/3_副本_1747318628202.webp
+  - 工具教程
+  - 技术踩坑
+  - 代码分享
+categories:
+  - 技术探索
+cover: /images/想让小爱触屏音箱LX04随意安装APP？.png
 abbrlink: 2cbf2bcc
 date: 2025-05-15 22:15:33
 ---

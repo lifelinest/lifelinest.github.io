@@ -2,13 +2,12 @@
 title: AigcPanel数字人系统真的简单易用？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - github
-  - 实用工具
-categories: []
-cover: 'https://ms-assets.modstart.com/data/image/2025/03/23/48753_zfdx_3436.png'
+  - 软件测评
+  - 工具教程
+  - 技术踩坑
+categories:
+  - 技术探索
+cover: /images/AigcPanel数字人系统真的简单易用.png
 abbrlink: 481d113d
 date: 2025-04-27 21:00:59
 ---

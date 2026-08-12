@@ -2,13 +2,12 @@
 title: 使用Ventoy制作可启动U盘有多简单？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - github
-  - 实用工具
-categories: []
-cover: /images/01f5a3a2ddebcfcd99ede18614d4d19f_副本.jpg.jpeg
+  - 免费工具
+  - 效率软件
+  - 办公技巧
+categories:
+  - 工具分享
+cover: /images/使用Ventoy制作可启动U盘有多简单？.png
 abbrlink: d8b0d66
 date: 2025-05-14 22:44:32
 ---

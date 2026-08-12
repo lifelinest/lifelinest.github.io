@@ -1,9 +1,13 @@
 ---
 title: 红米K305G刷root
-author: 'Lifeline[生命线]'
+author: Lifeline[生命线]
 tags:
-  - 刷机
-categories: []
+  - 技术探索
+  - 技术踩坑
+  - 开源项目
+categories:
+  - 技术探索
+cover: /images/红米K305G刷root.png
 abbrlink: 6336ac44
 date: 2023-11-14 10:43:00
 ---

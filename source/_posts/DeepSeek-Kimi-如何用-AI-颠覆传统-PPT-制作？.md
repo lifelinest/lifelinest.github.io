@@ -1,9 +1,15 @@
 ---
 title: DeepSeek + Kimi 如何用 AI 颠覆传统 PPT 制作？
-author: 'Lifeline[生命线]'
+author: Lifeline[生命线]
+cover: /images/Kimi如何用AI颠覆传统 PPT制作？.png
 abbrlink: 66ea8cb4
-date: 2025-03-27 22:05:16
 tags:
+  - 效率软件
+  - 办公技巧
+  - 免费工具
+categories:
+  - 工具分享
+date: 2025-03-27 22:05:16
 ---
 ## 一、引言
 

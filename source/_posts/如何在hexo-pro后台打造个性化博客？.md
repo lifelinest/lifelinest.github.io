@@ -2,11 +2,12 @@
 title: 如何在hexo pro后台打造个性化博客？
 author: Lifeline
 tags:
-  - 学习
-  - 个人博客
-  - github
-categories: []
-cover: /images/5_副本.webp
+  - 博客搭建
+  - 办公技巧
+  - 资源分享
+categories:
+  - 工具分享
+cover: /images/如何在HexoPro后台打造个性化博客？.png
 abbrlink: 327a8d06
 date: 2025-05-06 20:14:12
 ---

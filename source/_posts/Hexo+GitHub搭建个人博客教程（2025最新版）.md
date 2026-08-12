@@ -1,9 +1,13 @@
 ---
 title: Hexo+GitHub搭建个人博客教程（2025最新版）
-author: 'Lifeline[生命线]'
+author: Lifeline[生命线]
 tags:
-  - 个人博客
-categories: []
+  - 工具教程
+  - 技术踩坑
+  - 开源项目
+categories:
+  - 技术探索
+cover: /images/Hexo+GitHub搭建个人博客教程.png
 abbrlink: 2d25e1d
 date: 2024-03-06 13:26:00
 ---

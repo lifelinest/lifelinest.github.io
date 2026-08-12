@@ -2,11 +2,11 @@
 title: RustDesk 快速部署，搭建自己的“向日葵”
 author: Lifeline
 tags:
-  - 学习
-  - 电脑软件
-  - github
-  - 实用工具
-categories: []
+  - 免费工具
+  - 效率软件
+  - 资源分享
+categories:
+  - 工具分享
 cover: /images/未命名26.png
 abbrlink: 9edf104d
 date: 2025-07-04 06:45:32

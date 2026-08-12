@@ -5,7 +5,7 @@ keywords: null
 author: Lifeline
 language: zh-CN
 timezone: Asia/Shanghai
-url: http://localhost:4000
+url: https://lifelinest.github.io
 root: /
 permalink: posts/:abbrlink/
 permalink_defaults: null
@@ -19,7 +19,9 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: ':lang'
-skip_render: null
+skip_render:
+  - googleae17ca249fa02438.html
+  - baidu_verify_codeva-dmPP1sPmLD.html
 new_post_name: ':title.md'
 default_layout: post
 titlecase: false
@@ -68,6 +70,12 @@ deploy:
   repo: git@github.com:lifelinest/lifelinest.github.io.git
   branch: main
   message: 'Site updated: {{ now("YYYY-MM-DD HH:mm:ss") }}'
+
+inject:
+  head: []
+  bottom: []
+
+# 已移除Netlify CMS配置
 symbols_count_time:
   symbols: true
   time: true
@@ -89,7 +97,7 @@ live2d:
   tagMode: false
   debug: false
   model:
-    use: live2d-widget-model-haruto
+    use: https://imuncle.github.io/live2d/model/dollsfrontline/golden/model1.json
   display:
     position: left
     width: 150
@@ -167,8 +175,7 @@ game:
   extra_options:
     key: value
   coverMirror: null
-hexo_pro:
-  username: admin
+
   password: Mfy20020801
   avatar: https:image for your own avata
   secret: super // jwt secret key
@@ -222,7 +229,7 @@ baidusitemap:
 post:
   comments:  # 开启评论
     enable: true
-    type: giscus # 选择评论插件类型
+    type: twikoo # 选择评论插件类型
 
 # abbrlink config
 abbrlink:

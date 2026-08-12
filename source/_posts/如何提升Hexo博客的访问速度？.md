@@ -2,11 +2,12 @@
 title: 如何提升Hexo博客的访问速度？
 author: Lifeline
 tags:
-  - 学习
-  - 个人博客
-categories: []
-cover: >-
-  https://img0.baidu.com/it/u=404481301,1503181081&fm=253&fmt=auto&app=138&f=JPEG?w=956&h=500
+  - 工具教程
+  - 技术踩坑
+  - 软件测评
+categories:
+  - 技术探索
+cover: /images/如何提升Hexo博客的访问速度？_1762427238896.png
 abbrlink: 538c1c99
 date: 2025-04-21 20:21:28
 ---

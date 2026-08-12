@@ -2,10 +2,11 @@
 title: 从 Typecho 到 Hexo 的博客迁移之路
 author: Lifeline
 tags:
-  - 学习
-  - 个人博客
-  - 碎碎念
-categories: []
+  - 工具教程
+  - 前端开发
+  - 技术踩坑
+categories:
+  - 技术探索
 cover: /images/11.png
 abbrlink: 7d5f095a
 date: 2025-08-18 22:37:06

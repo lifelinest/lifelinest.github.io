@@ -2,11 +2,12 @@
 title: ProcessOn思维导图和流程图怎么用？
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 实用工具
-categories: []
-cover: /images/1_副本_1747410002829.webp
+  - 效率软件
+  - 办公技巧
+  - 免费工具
+categories:
+  - 工具分享
+cover: /images/ProcessOn思维导图和流程图怎么用.png
 abbrlink: 9fc22798
 date: 2025-05-16 23:28:02
 ---

@@ -2,10 +2,12 @@
 title: 保姆级 ADB 实战教程：解锁安卓8大调试场景
 author: Lifeline
 tags:
-  - 学习
-  - 刷机
-categories: []
-cover: /images/1_副本.webp
+  - 工具教程
+  - 技术踩坑
+  - 编程学习
+categories:
+  - 技术探索
+cover: /images/保姆级ADB实战教程解锁安卓8大调试场景.png
 abbrlink: f56293ec
 date: 2025-05-12 20:03:29
 ---

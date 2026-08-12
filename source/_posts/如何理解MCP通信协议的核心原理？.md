@@ -2,8 +2,12 @@
 title: 如何理解MCP通信协议的核心原理？
 author: Lifeline
 tags:
-  - 学习
-categories: []
+  - 知识总结
+  - 工具教程
+  - 技术踩坑
+categories:
+  - 技术探索
+cover: /images/如何理解MCP通信协议的核心原理？.png
 abbrlink: 488b66fb
 date: 2025-04-16 20:13:17
 ---

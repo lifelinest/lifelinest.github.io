@@ -2,10 +2,12 @@
 title: V-POT：免费强大的文字转语音工具解析
 author: Lifeline
 tags:
-  - 工具
-  - 电脑软件
-categories: []
-cover: /images/2_副本.jpg_1748262652346.jpeg
+  - 免费工具
+  - 效率软件
+  - 资源分享
+categories:
+  - 工具分享
+cover: /images/V-POT免费强大的文字转语音工具解析.png
 abbrlink: 79b00bbf
 date: 2025-05-26 20:17:21
 ---

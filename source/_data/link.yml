@@ -12,15 +12,57 @@
       descr: 生活明朗，万物可爱
       siteshot: 
 
-- class_name: 推荐博客
+- class_name: 博客组织
   flink_style: telescopic
   hundredSuffix: ""
   link_list:
-    - name: 安知鱼
-      link: https://blog.anheyu.com/
-      avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
-      descr: 生活明朗，万物可爱
-      siteshot: https://npm.elemecdn.com/anzhiyu-theme-static@1.1.6/img/blog.anheyu.com.jpg
+    - name: 博客圈
+      link: https://www.boyouquan.com/home
+      avatar: https://www.boyouquan.com/assets/images/sites/logo/logo-small.svg
+      descr: 博友圈是博客人的专属朋友圈。我们的愿景是：将一个个散落在各处的孤岛连接成一片广袤无垠的新大陆！
+      siteshot: https://bu.dusays.com/2025/10/27/68ff6222c1c3a.webp
+      color: vip
+      tag: 技术
+    - name: 开往
+      link: https://www.travellings.cn/
+      avatar: https://bu.dusays.com/2025/10/27/68ff7361ef64c.png
+      descr: 让传统友链“活跃”，让网页相互接力，让流量相互流动，让网络开放起来。
+      siteshot: https://bu.dusays.com/2025/10/27/68ff622cd9e7f.webp
+      color: vip
+      tag: 技术
+    - name: 博客中心
+      link: https://bokehub.com/home
+      avatar: https://bokehub.com/assets/images/sites/logo/logo-small.png
+      descr: 每一个博客，都是一个独特的世界。我们不只是世界的中心，更是思想的回声谷。在这里，让每一次深度阅读都充满惊喜。
+      siteshot: https://bu.dusays.com/2025/10/27/68ff6236995d0.webp
+      color: vip
+      tag: 技术
+    - name: 博客我们
+      link: https://blogwe.com/
+      avatar: https://blogwe.com/img/logo200.png
+      descr: 博客路上不止你一个人，还有我们。2025，致敬还在写博客的我们！
+      siteshot: https://bu.dusays.com/2025/10/27/68ff796757cfc.webp
+      color: vip
+      tag: 技术
+    - name: 笔墨迹
+      link: https://blogscn.fun/
+      avatar: https://photo.xiangming.site/img/blogscn_icon.png
+      descr: 致敬还在写博客的我们
+      siteshot: https://bu.dusays.com/2025/10/27/68ff798a25bc0.webp
+      color: vip
+      tag: 技术
+    - name: BlogsClub
+      link: https://www.blogsclub.org/
+      avatar: https://bu.dusays.com/2025/10/27/68ff7ad5baa81.png
+      descr: 个人博客俱乐部
+      siteshot: https://bu.dusays.com/2025/10/27/68ff79947974c.webp
+      color: vip
+      tag: 技术
+    - name: 十年之约
+      link: https://www.foreverblog.cn/
+      avatar: https://bu.dusays.com/2025/11/03/6908b026cbc6e.png
+      descr: 一个人的寂寞，一群人的狂欢。
+      siteshot: https://bu.dusays.com/2025/11/03/6908b0107e95d.webp
       color: vip
       tag: 技术
 
@@ -44,55 +86,161 @@
       avatar: https://npm.elemecdn.com/opicture@1.0.0/main/avatar.webp
       descr: 妙不可言
       siteshot: https://npm.webcache.cn/opicture@1.1.2/blog/siteshot/siteshot.webp
+      recommend: true
     - name: Calyee
       link: https://blog.calyee.top/
       avatar: https://blog.calyee.top/img/avatar.jpg
       descr: 追求充实，分享快乐
       siteshot: https://blog.calyee.top/img/siteshot.webp
+      recommend: true
     - name: FrWalker
       link: https://blog.frwalker.top/
       avatar: http://blog.frwalker.top/favicon.ico
       descr: 听风雨，问星辰，随心归✨
       siteshot: https://blog.frwalker.top/siteshot.webp
+      recommend: true
     - name: Yeppioo
       link: https://blog.yeppioo.vip/
       avatar: https://blog.yeppioo.vip/static/img/avatar.png
       descr: 梦想成为庄稼地里的读书人.....
       siteshot: https://blog.yeppioo.vip/static/img/screenshot.png
+      recommend: true
     - name: 小赵の破宅
       link: https://www.ziyis.cn
       avatar: http://doc.ziyis.cn/avatar.jpg
       descr: 让美好持续发生.
       siteshot: 
+      recommend: true
     - name: 青桔气球
       link: https://blog.qjqq.cn/
       avatar: https://q2.qlogo.cn/headimg_dl?dst_uin=1645253&spec=640
       descr: 分享网络安全与科技生活
       siteshot: https://q2.qlogo.cn/headimg_dl?dst_uin=1645253&spec=640
+      recommend: true
     - name: 前尘小筑
       link: https://mnchen.cn/
       avatar: https://image.mnchen.cn/2023/12/mnochen.jpg
       descr: 虽多尘色染，犹见墨痕浓
       siteshot: 
+      recommend: true
     - name: Aurielの小破站
       link: https://www.auriel.top/
       avatar: https://blog.auriel.top/img/avatar.png
       descr: 生活的最佳状态，是冷冷清清的风风火火
       siteshot: 
+      recommend: true
     - name: 未央の童话镇
       link: https://forever97.top
       avatar: https://forever97-picture-bed.oss-cn-hangzhou.aliyuncs.com/img/avatar.png
       descr: 在人海里梦游
       siteshot: https://cdn.jsdelivr.net/gh/Akilarlxh/ScreenShot@gh-pages/forever97.top.jpg
+      recommend: true
     - name: 安小歪
       link: https://blog.anxy.top/
       avatar: https://imgse.koxiuqiu.cc/imgse/u/19/2025/02/20/67b737d854192.webp
       descr: 记住你！自己！
       siteshot: https://imgse.koxiuqiu.cc/imgse/u/19/2025/02/20/67b739bef3f9c.png
+      recommend: true
     - name: 幻雪的博客
       link: https://huanxueblog.top/
       avatar: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_avatar.webp
       descr: 腐烂于花海，致死于所爱
       siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
+      recommend: true
+    - name: Leonus
+      link: https://blog.leonus.cn/
+      avatar: https://q1.qlogo.cn/g?b=qq&nk=990320751&s=5
+      descr: 进一寸有进一寸的欢喜。
+      siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
+      recommend: true
+    - name: 葱苓小筑
+      link: https://blog.ciraos.top
+      avatar: https://blog.ciraos.top/api/f/RgeK/avatar1.avif
+      descr: Don't worry, be happy.
+      siteshot: https://blog.ciraos.top/api/f/AMss/siteshot.png
+      recommend: true
+    - name: mccsjs
+      link: https://seln.cn/
+      avatar: https://seln.cn/img/head.jpg
+      descr: 点一盏灯，等一个迷路的夜🍁🍁🍁
+      siteshot: https://seln.cn/img/a.jpg
+      recommend: true
+    - name: AirTouchの小站
+      link: https://www.xsl.im/
+      avatar: https://www.xsl.im/avatar.webp
+      descr: 岩间琉璃云间月
+      siteshot: https://www.xsl.im/screenshot.webp
+      recommend: true
+    - name: 泠泫凝的异次元空间
+      link: https://lxnchan.cn
+      avatar: https://lxnchan.cn/assets/logo-v2.webp
+      descr: 先空着2333
+      siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
+      recommend: true
+    - name: Xlenco
+      link: https://blog.xlenco.top/
+      avatar: https://q.qlogo.cn/headimg_dl?dst_uin=1043865083&spec=640
+      descr: 总有人间一两风，吹我十万八千梦
+      siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
+      recommend: true
+    - name: 未似风不息
+      link: https://www.weisifengbuxi.top/
+      avatar: https://s21.ax1x.com/2025/09/26/pVIFGXq.jpg
+      descr: 学习技术 分享生活
+      siteshot: https://s21.ax1x.com/2025/09/29/pVomdB9.png
+      recommend: true
+    - name: 無名小栈
+      desc: 分享技术与科技生活
+      url: https://blog.imsyy.top/
+      avatar: https://pic.imgdb.cn/item/65bc52b0871b83018a06699d.png
+      screenshot: https://pic.imgdb.cn/item/65dc47009f345e8d030b65ba.png
+      rss: https://blog.imsyy.top/rss.xml
+      recommend: true
+    - name: 小冰博客
+      link: https://zfe.one
+      avatar: https://zfe.space/images/headimage.png
+      descr: 做个有梦想的人！
+      recommend: true
+    - name: Adil
+      link: https://blog.adil.com.cn/
+      avatar: https://blog.adil.com.cn/img/icon.png
+      descr: 行胜于言 德胜于声
+      recommend: true
+    - name: ImQi1 / 棋
+      link: https://imqi1.com
+      avatar: https://imqi1.com/avatar.webp
+      descr: 做技术的分享者、生活的摄影师、时事的评论员。
+      recommend: true
+    - name: MoyuqLのBlog
+      link: https://blog.moyuql.top
+      avatar: https://bu.dusays.com/2023/07/29/64c4f45ee421b.jpg
+      descr: MoyquL与你同在~
+      recommend: true
+    - name: CC康纳百川
+      link: https://blog.ccknbc.cc
+      avatar: https://cdn.jsdmirror.com/gh/ccknbc-backup/cdn/logo/CC.png
+      descr: CC康纳百川的小窝
+      recommend: true
+    - name: 2BROEAR
+      link: https://blog.2broear.com
+      avatar: https://imgs.2broear.com/2broear.png
+      descr: 兴趣指引方向，会玩才会学
+      recommend: true
+    - name: Vian
+      link: https://www.vian.top/
+      avatar: https://www.vian.top/avatar.ico
+      descr: 想要的都拥有，得不到的都释怀...
+      recommend: true
+    - name: 探人间
+      link: https://www.hydsb0.com
+      avatar: https://s21.ax1x.com/2025/07/13/pVlsr8S.jpg
+      descr: 努力吃上更贵的雪糕！
+      recommend: true
+    - name: 回忆中的明天
+      link: https://ichochy.com/
+      avatar: https://avatars.githubusercontent.com/u/6365006?v=4
+      descr: 码农小站，写点Java、Swift和感悟
+      recommend: true
+
 
 

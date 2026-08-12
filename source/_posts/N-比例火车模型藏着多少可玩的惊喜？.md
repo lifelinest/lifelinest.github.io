@@ -2,10 +2,12 @@
 title: N 比例火车模型藏着多少可玩的惊喜？
 author: Lifeline
 tags:
-  - 娱乐
-categories: []
-cover: >-
-  https://img0.baidu.com/it/u=2796158651,922171459&fm=253&fmt=auto&app=120&f=JPEG?w=888&h=500
+  - 手工 DIY
+  - 游戏心得
+  - 摄影记录
+categories:
+  - 兴趣爱好
+cover: /images/N比例火车模型藏着多少可玩的惊喜？.png
 abbrlink: 122fb7ad
 date: 2025-04-22 19:33:35
 ---

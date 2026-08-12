@@ -2,13 +2,12 @@
 title: Napkin AI一款将文本转化为可视化内容的强大工具
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-  - 电脑软件
-  - github
-  - 实用工具
-categories: []
-cover: /images/2_副本_1746704486821.png
+  - 效率软件
+  - 免费工具
+  - 资源分享
+categories:
+  - 工具分享
+cover: /images/NapkinAI将文本转化为可视化内容的工具.png
 abbrlink: 1a2e622e
 date: 2025-05-08 19:40:13
 ---

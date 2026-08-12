@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>内容管理后台</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  
+  <!-- 自定义配置 -->
+  <script>
+    // 设置中文界面
+    if (window.CMS) {
+      window.CMS.registerEditorComponent({
+        id: 'netlify-cms-editor-component-zh-cn',
+        label: '中文界面',
+        fields: [],
+        pattern: /^zh-cn$/,
+        fromBlock: function(match) {
+          return {};
+        },
+        toBlock: function(obj) {
+          return 'zh-cn';
+        },
+        toPreview: function(obj) {
+          return '中文界面已启用';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

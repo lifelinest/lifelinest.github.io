@@ -2,9 +2,12 @@
 title: 云萌Windows 激活与切换真这么简单？
 author: Lifeline
 tags:
-  - 工具
-  - 电脑软件
-categories: []
+  - 免费工具
+  - 软件测评
+  - 资源分享
+categories:
+  - 工具分享
+cover: /images/云萌Windows 激活与切换真这么简单？.png
 abbrlink: 868d8faa
 date: 2025-04-13 11:33:07
 ---

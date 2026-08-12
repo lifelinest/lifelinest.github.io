@@ -1,0 +1,61 @@
+{
+  "timestamp": "2025-11-21T13:03:32.835Z",
+  "conflicts_detected": 2,
+  "conflicts_resolved": 2,
+  "conflicts": [
+    {
+      "type": "config_conflict",
+      "file": "_config.yml",
+      "severity": "medium",
+      "description": "配置文件包含hexo-pro相关设置",
+      "details": "需要清理hexo-pro相关配置"
+    },
+    {
+      "type": "route_conflict",
+      "path": "source/admin",
+      "severity": "high",
+      "description": "hexo-pro的admin路由与Netlify CMS冲突",
+      "details": "需要移除hexo-pro的admin目录"
+    }
+  ],
+  "resolutions": [
+    {
+      "conflict": {
+        "type": "config_conflict",
+        "file": "_config.yml",
+        "severity": "medium",
+        "description": "配置文件包含hexo-pro相关设置",
+        "details": "需要清理hexo-pro相关配置"
+      },
+      "success": true,
+      "action": "clean_config",
+      "backup_path": "_config.yml.backup-1763730212819"
+    },
+    {
+      "conflict": {
+        "type": "route_conflict",
+        "path": "source/admin",
+        "severity": "high",
+        "description": "hexo-pro的admin路由与Netlify CMS冲突",
+        "details": "需要移除hexo-pro的admin目录"
+      },
+      "success": true,
+      "action": "remove_route",
+      "backup_path": "backup\\pre-migration\\route-admin-1763730212832"
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "post_resolution",
+      "priority": "medium",
+      "description": "验证配置文件语法",
+      "action": "检查所有修改后的配置文件"
+    },
+    {
+      "type": "post_resolution",
+      "priority": "low",
+      "description": "测试Netlify CMS功能",
+      "action": "运行hexo generate并访问/admin/测试管理后台"
+    }
+  ]
+}

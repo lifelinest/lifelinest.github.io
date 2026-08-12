@@ -13,20 +13,20 @@ menu:
     音乐馆: /music/ || anzhiyu-icon-music
     追番页: /bangumis/ || anzhiyu-icon-bilibili
     相册集: /album/ || anzhiyu-icon-images
-    足迹地图: /FootprintMap/ || anzhiyu-icon-location-dot
     小空调: /air-conditioner/ || anzhiyu-icon-fan
+    待办清单: /todolist/ || anzhiyu-icon-calendar-days
 
   关于:
     关于本人: /about/ || anzhiyu-icon-paper-plane
     闲言碎语: /essay/ || anzhiyu-icon-lightbulb
     随便逛逛: javascript:toRandomPost() || anzhiyu-icon-shoe-prints1
-  我的装备: /equipment/ || anzhiyu-icon-dice-d20
+    我的装备: /equipment/ || anzhiyu-icon-dice-d20
 
 # nav相关配置
 nav:
   enable: true
   travelling: true
-  clock: true
+  clock: false
   menu:
     - title: 工具
       item:
@@ -89,7 +89,7 @@ social:
 author_status:
   enable: true
   # 可以是任何图片，建议放表情包或者emoji图片，效果都很好，[表情包速查](https://emotion.xiaokang.me/)
-  statusImg: "https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png"
+  statusImg: "/img/DT.png"
   skills:
     - 🤖️ 数码科技爱好者
     - 🔍 分享与热心帮助
@@ -278,15 +278,15 @@ post_copyright:
 
 # Sponsor/reward
 reward:
-  enable: false
+  enable: true
   coinAudio: https://npm.elemecdn.com/akilar-candyassets@1.0.36/audio/aowu.m4a
   QR_code:
-    - img: 
-      link: https://s21.ax1x.com/2025/03/29/pEspfq1.jpg
-      text: wechat
-    - img: 
-      link: https://s21.ax1x.com/2025/03/29/pEspRM9.jpg
-      text: alipay
+    - img: https://cloudflare-img-bzb.pages.dev/file/1764567966501_微信图片_20251201134319_3077_193.jpg
+      link:
+      text: 微信
+    - img: https://cloudflare-img-bzb.pages.dev/file/1764567890144_2.jpg
+      link:
+      text: 支付宝
 
 # Post edit
 # Easily browse and edit blog source code online.
@@ -349,7 +349,7 @@ addtoany:
 comments:
   # Up to two comments system, the first will be shown as default
   # Choose: Valine/Waline/Twikoo/Artalk
-  use: giscus # Twikoo/Waline
+  use: Twikoo # Twikoo/Waline
   text: true # Display the comment name next to the button
   # lazyload: The comment system will be load when comment element enters the browser's viewport.
   # If you set it to true, the comment count will be invalid
@@ -395,10 +395,17 @@ waline:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId: # https://twikooes.netlify.app/.netlify/functions/twikoo
+  envId: https://twikoo-6ucy.vercel.app
   region: 
   visitor: true
   option:
+    lang: zh-CN
+    placeholder: 欢迎留言，一起交流~
+    requiredFields:
+      - nick
+    commentOrder: 0
+    maxCommentSize: 5000
+    pageSize: 10
 
 # Artalk
 # https://artalk.js.org/guide/frontend/config.html
@@ -511,7 +518,7 @@ footer:
   # 徽标部分配置项 https://shields.io/
   # https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr
   bdageitem:
-    enable: false
+    enable: true
     list:
       - link: https://hexo.io/ #徽标指向网站链接
         shields: https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg #徽标API
@@ -519,15 +526,21 @@ footer:
       - link: https://blog.anheyu.com/
         shields: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg
         message: 本站使用AnZhiYu主题
-      - link: https://www.dogecloud.com/
-        shields: https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg
-        message: 本站使用多吉云为静态资源提供CDN加速
-      - link: https://github.com/
-        shields: https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg
-        message: 本站项目由Github托管
       - link: http://creativecommons.org/licenses/by-nc-sa/4.0/
         shields: https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg
         message: 本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可
+      - link: https://www.cloudflare.com/
+        shields: https://img.shields.io/badge/CDN-Cloudflare-F38020?logo=cloudflare&logoColor=white
+        message: 本站使用Cloudflare提供CDN加速与安全防护
+      - link: https://imuncle.github.io/live2d/
+        shields: https://img.shields.io/badge/Live2D-看板娘-FF6B6B
+        message: 本站使用Live2D看板娘模型，点击看板娘可与AI对话
+      - link: https://www.deepseek.com/
+        shields: https://img.shields.io/badge/AI-DeepSeek-4D6BFE
+        message: 本站看板娘对话由DeepSeek大模型驱动
+      - link: https://pages.github.com/
+        shields: https://img.shields.io/badge/Host-GitHub_Pages-181717?logo=github&logoColor=white
+        message: 本站由GitHub Pages提供免费托管
   socialBar:
     enable: true
     centerImg:
@@ -604,7 +617,7 @@ footer:
     linkList:
       - link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
         text: 主题
-      - link: https://github.com/Molunerfinn/PicGo
+      - link: https://cloudflare-img-bzb.pages.dev/
         text: 图床
     subTitle:
       enable: false
@@ -673,7 +686,7 @@ site_verification:
   - name: google-site-verification
     content: xxx
   - name: baidu-site-verification
-    content: code-xxx
+    content: codeva-dmPP1sPmLD
   - name: msvalidate.01
     content: xxx
 
@@ -821,8 +834,8 @@ font:
 # Font settings for the site title and site subtitle
 # 左上角网站名字 主页居中网站名字
 blog_title_font:
-  font_link:
-  font-family: PingFang SC, 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei', sans-serif
+    font_link:
+    font-family:
 
 # The setting of divider icon (水平分隔线图标设置)
 hr_icon:
@@ -878,7 +891,7 @@ aside:
     tag: true
     category: true
   home:
-    noSticky: "about,calendar,schedule"
+    noSticky: "about,calendar,schedule,history"
     Sticky: "allInfo"
   card_author:
     enable: true
@@ -1019,7 +1032,20 @@ darkmode:
 rightside_item_order:
   enable: true
   hide: readmode,translate,hideAside
-  show: darkmode,toc,chat,comment
+  show: darkmode,toc,chat,comment,chbg,mindmap
+
+# 背景切换功能配置 (chbg)
+chbg:
+  enable: true
+  presets:
+    - https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/1.webp
+    - https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/2.webp
+    - https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/3.webp
+    - https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/4.webp
+    - https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/5.webp
+    - https://cdn.jsdelivr.net/npm/hexo-theme-anzhiyu@1.0.0/source/img/background/6.webp
+  default_blur: 0
+  default_mask_opacity: 0.3
 
 # Lightbox (图片大图查看模式)
 # --------------------------------------
@@ -1168,9 +1194,9 @@ home_top:
     # categorygroup_css: https://cdn.cbd.int/hexo-butterfly-swiper-anzhiyu-pro/lib/categoryGroup.css
   banner:
     tips: 置顶
-    title: 奶思猫API
-    image: https://img0.baidu.com/it/u=1167194022,2363258544&fm=253&fmt=auto&app=120&f=PNG?w=750&h=500
-    link: https://api.nsmao.net/
+    title: 火山引擎
+    image: https://ms.bdimg.com/pacific/0/pic/666543138_1633287929.jpg?x=0&y=0&h=340&w=510&vh=340.00&vw=510.00&oh=340.00&ow=510.00
+    link: https://www.volcengine.com/
   
 
 # 朋友圈配置
@@ -1256,7 +1282,7 @@ console:
 # 时钟
 # see https://blog.anheyu.com/posts/fc18.html
 electric_clock:
-  enable: true # 开关
+  enable: false # 开关
   priority: 5 #过滤器优先权
   enable_page: all # 应用页面
   exclude:
@@ -1269,7 +1295,7 @@ electric_clock:
   loading: https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif #加载动画自定义
   clock_css: https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.css
   clock_js: https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.js
-  ip_api: https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0
+  ip_api: /js/qweather/he-simple-common.js?v=20260718
   qweather_key: 9d0c37912c4d49ddb29a7a14e1bf54cb
   gaud_map_key: dc1eaa8e383ff12ca596ba00fe2b2ed1
   default_rectangle: true # 开启后将一直显示rectangle位置的天气，否则将获取访问者的地理位置与天气
@@ -1417,12 +1443,17 @@ custom_js: /js/custom.js
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
   head:
+    - <script src="https://kit.fontawesome.com/7af8740427.js" crossorigin="anonymous"></script>
     - <script src="/js/update.js"></script>
-    - <link rel="stylesheet" href="/css/custom.css">
+    - <link rel="stylesheet" href="/css/custom.css?v=20260811e">
+    # Live2D 看板娘大模型对话面板样式
+    - <link rel="stylesheet" href="/css/live2d-chat.css?v=20260806g">
     - <link rel="stylesheet" href="/css/calendar-card.css">
     - <link rel="stylesheet" href="/css/progress-fix.css">
     - <link rel="stylesheet" href="/css/zhihu.css">
     - <link rel="stylesheet" href="/css/article-reading.css">
+    - <link rel="stylesheet" href="/css/home.css"> # 首页文章卡片擦亮效果
+    - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" />
     - <script src="https://open.lightxi.com/unpkg/chinese-lunar@0.1.4/lib/chinese-lunar.js"></script>
     # 诗词
     - <link rel="stylesheet" type="text/css" href="/css/heoMainColor.css">
@@ -1430,6 +1461,7 @@ inject:
     # 自定义css
     # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
     # - <link rel="stylesheet" href="/css/amap-footprint.css">
+    - <link rel="stylesheet" href="/css/font.css" media="defer" onload="this.media='all'">
 
     - <link rel="stylesheet" href="/css/style.css">
     # 更新日志页面CSS
@@ -1438,15 +1470,21 @@ inject:
     - <link rel="stylesheet" href="/css/privacy.css">
     # 相册页面CSS (已嵌入到模板中)
     # - <link rel="stylesheet" href="/css/album.css">
-    # 手动注入Typed.js兜底方案
-    - <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+    # 移除直接的CDN引用，使用主题配置的CDN提供商
+    # Typed.js会通过主题的CDN配置自动加载
     # 引入ECharts
     - <script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script>
 
     
   bottom:
+    # WinBox弹窗插件
+    - <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script>
     # 自定义js
     # - <script src="/js/xxx"></script>
+    - <script defer pjax src="/js/custom.js"></script>
+    # Live2D 看板娘大模型对话逻辑（点击看板娘唤起）
+    - <script defer pjax src="/js/live2d-chat.js?v=20260806h"></script>
+    - <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     - <script src="/js/update.js"></script>
     - <script src="/js/calendar-card.js"></script>
     - <script src="/js/zhihu.js"></script>

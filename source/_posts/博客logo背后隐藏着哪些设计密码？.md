@@ -4,10 +4,11 @@ author: Lifeline
 cover: /images/7.png
 abbrlink: afc9406a
 tags:
-  - 学习
-  - 个人博客
-  - 碎碎念
-categories: []
+  - 观点输出
+  - 思维方式
+  - 行业观察
+categories:
+  - 阅读思考
 date: 2025-08-04 23:16:27
 ---
 ## 一、引言

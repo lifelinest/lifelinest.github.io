@@ -2,10 +2,12 @@
 title: Skywork Super Agents智能代理技术的新篇章
 author: Lifeline
 tags:
-  - 学习
-  - 工具
-categories: []
-cover: /images/a9e44166-af9c-44d7-bdc2-f1571e4512ee_副本.jpg.jpeg
+  - 行业观察
+  - 观点输出
+  - 认知升级
+categories:
+  - 阅读思考
+cover: /images/Skywork Super Agents智能代理技术的新篇章.png
 abbrlink: d1874d21
 date: 2025-05-24 16:30:43
 ---

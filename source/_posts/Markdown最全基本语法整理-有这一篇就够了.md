@@ -1,14 +1,17 @@
 ---
 title: Markdown最全基本语法整理-有这一篇就够了
-author: 'Lifeline[生命线]'
+author: Lifeline[生命线]
 tags:
-  - Markdown
-categories: []
+  - 办公技巧
+  - 资源分享
+  - 效率软件
+categories:
+  - 工具分享
 abbrlink: a4b9adb4
-date: 2024-03-07 16:06:00
 encrypted: true
 password: markdown123
 hint: markdown
+date: 2024-03-07 16:06:00
 ---
 
 #### 《一》什么是Markdown<br>
