@@ -1,0 +1,444 @@
+/* ===== Live2D 看板娘大模型对话面板（云朵样式） ===== */
+
+/* L2Dwidget 默认把看板娘容器设为 pointer-events:none 导致点击穿透，
+   这里强制设为 auto，让点击看板娘能触发对话面板。
+   同时上移看板娘（bottom: 60px），避免遮挡左下角音乐播放按钮 */
+#live2d-widget,
+.live2d-widget-container {
+  pointer-events: auto !important;
+  bottom: 60px !important;
+}
+
+#live2dcanvas,
+canvas.live2d-canvas {
+  pointer-events: auto !important;
+}
+
+#live2d-chat-panel {
+  position: fixed;
+  left: 10px;
+  bottom: 300px;            /* 默认贴看看板娘顶部，openPanel 会动态精确对齐 */
+  width: 420px;
+  max-width: calc(100vw - 20px);
+  height: 236px;            /* 16:9 比例（420 × 236 ≈ 1.78） */
+  max-height: calc(100vh - 310px);
+  background: var(--anzhiyu-background, #fff);
+  border-radius: 28px 32px 30px 26px;   /* 不规则圆角，更贴近云朵轮廓 */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14), 0 2px 10px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  z-index: 99999;
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  transform-origin: bottom left;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* 云朵顶部凸起：用伪元素 + box-shadow 创建多个圆形绒毛 */
+#live2d-chat-panel::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 36px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--anzhiyu-background, #fff);
+  box-shadow:
+    88px 5px 0 -4px var(--anzhiyu-background, #fff),
+    176px -3px 0 -7px var(--anzhiyu-background, #fff),
+    264px 4px 0 -3px var(--anzhiyu-background, #fff),
+    340px 2px 0 -6px var(--anzhiyu-background, #fff);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 气泡尾巴：指向下方看板娘 */
+#live2d-chat-panel::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--anzhiyu-background, #fff);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+  pointer-events: none;
+}
+
+#live2d-chat-panel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* 标题栏（紧凑型，白色统一云朵风格） */
+#live2d-chat-panel .lc-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--anzhiyu-fontcolor, #333);
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#live2d-chat-panel .lc-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--anzhiyu-card-bg, #f1f3f7);
+}
+
+#live2d-chat-panel .lc-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+#live2d-chat-panel .lc-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--anzhiyu-fontcolor, #333);
+}
+
+#live2d-chat-panel .lc-status {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--anzhiyu-secondtext, #888);
+}
+
+#live2d-chat-panel .lc-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 4px #4ade80;
+}
+
+/* 消息区 */
+#live2d-chat-panel .lc-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: transparent;
+  scroll-behavior: smooth;
+}
+
+#live2d-chat-panel .lc-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+#live2d-chat-panel .lc-body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+/* 气泡 */
+#live2d-chat-panel .lc-msg {
+  display: flex;
+  max-width: 88%;
+}
+
+#live2d-chat-panel .lc-msg.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+#live2d-chat-panel .lc-bubble {
+  padding: 9px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+  white-space: normal;
+}
+
+#live2d-chat-panel .lc-msg.assistant .lc-bubble {
+  background: var(--anzhiyu-card-bg, #f1f3f7);
+  color: var(--anzhiyu-fontcolor, #333);
+  border-top-left-radius: 4px;
+}
+
+#live2d-chat-panel .lc-msg.user .lc-bubble {
+  background: linear-gradient(135deg, #6a8dff 0%, #8a6aff 100%);
+  color: #fff;
+  border-top-right-radius: 4px;
+}
+
+#live2d-chat-panel .lc-bubble a {
+  color: #5b7cff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(91, 124, 255, 0.4);
+  word-break: break-all;
+}
+
+#live2d-chat-panel .lc-bubble a:hover {
+  opacity: 0.8;
+}
+
+#live2d-chat-panel .lc-msg.user .lc-bubble a {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+
+/* 思考中动画（三个跳动点） */
+#live2d-chat-panel .lc-thinking {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 2px;
+}
+
+#live2d-chat-panel .lc-thinking span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--anzhiyu-secondtext, #999);
+  animation: lc-bounce 1.2s infinite ease-in-out;
+}
+
+#live2d-chat-panel .lc-thinking span:nth-child(2) { animation-delay: 0.15s; }
+#live2d-chat-panel .lc-thinking span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes lc-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* 打字光标 */
+#live2d-chat-panel .lc-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: var(--anzhiyu-main, #5b7cff);
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: lc-blink 1s steps(2) infinite;
+}
+
+@keyframes lc-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* 错误气泡 */
+#live2d-chat-panel .lc-msg.error .lc-bubble {
+  background: #fff1f0;
+  color: #cf1322;
+  border: 1px solid #ffccc7;
+}
+
+/* 输入区：输入框 + 新对话按钮 + 发送按钮 */
+#live2d-chat-panel .lc-input-wrap {
+  flex-shrink: 0;
+  padding: 8px 12px 10px;
+  background: transparent;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+#live2d-chat-panel .lc-input {
+  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 9px 11px;
+  font-size: 13px;
+  resize: none;
+  max-height: 80px;
+  min-height: 38px;
+  line-height: 1.5;
+  background: var(--anzhiyu-card-bg, #f7f8fa);
+  color: var(--anzhiyu-fontcolor, #333);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#live2d-chat-panel .lc-input:focus {
+  border-color: #6a8dff;
+}
+
+#live2d-chat-panel .lc-input::placeholder {
+  color: var(--anzhiyu-secondtext, #999);
+}
+
+/* 新对话按钮 & 发送按钮：统一 UI 风格 */
+#live2d-chat-panel .lc-new,
+#live2d-chat-panel .lc-send {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, transform 0.15s;
+  color: #fff;
+}
+
+#live2d-chat-panel .lc-send {
+  background: linear-gradient(135deg, #6a8dff 0%, #8a6aff 100%);
+}
+
+#live2d-chat-panel .lc-new {
+  background: linear-gradient(135deg, #8a96a8 0%, #6a7488 100%);
+}
+
+/* 新对话图标：hover 时旋转，与按钮 scale 互不冲突 */
+#live2d-chat-panel .lc-new .lc-new-icon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+#live2d-chat-panel .lc-new:hover {
+  opacity: 0.88;
+}
+
+#live2d-chat-panel .lc-new:hover .lc-new-icon {
+  transform: rotate(-180deg);
+}
+
+/* 发送图标：hover 时向右轻移暗示发送方向，active 时进一步右移模拟"发射" */
+#live2d-chat-panel .lc-send .lc-send-icon {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+#live2d-chat-panel .lc-send:hover { opacity: 0.9; }
+#live2d-chat-panel .lc-send:hover .lc-send-icon {
+  transform: translateX(3px);
+}
+
+#live2d-chat-panel .lc-send:active { transform: scale(0.92); }
+#live2d-chat-panel .lc-send:active .lc-send-icon {
+  transform: translateX(6px);
+}
+#live2d-chat-panel .lc-new:active { transform: scale(0.92); }
+#live2d-chat-panel .lc-send:disabled,
+#live2d-chat-panel .lc-new:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  /* 移动端看板娘上移 + 缩小（保持宽高比），避免遮挡音乐按钮并节省屏幕空间 */
+  #live2d-widget,
+  .live2d-widget-container {
+    bottom: 50px !important;
+    transform: scale(0.72);
+    transform-origin: bottom left;
+  }
+
+  #live2d-chat-panel {
+    left: 8px;
+    right: auto;
+    bottom: 250px;                          /* 兜底值，openPanel 会动态精确对齐看板娘顶部 */
+    width: min(280px, calc(100vw - 16px));
+    max-width: min(280px, calc(100vw - 16px));
+    height: min(260px, 45vh);               /* 移动端不用 16:9，保证可用且不超出屏幕 */
+    min-height: 180px;
+    border-radius: 22px 26px 24px 20px;
+  }
+  /* 移动端简化云朵凸起，适配较窄面板 */
+  #live2d-chat-panel::before {
+    left: 18px;
+    width: 24px;
+    height: 24px;
+    box-shadow:
+      60px 4px 0 -4px var(--anzhiyu-background, #fff),
+      120px -2px 0 -6px var(--anzhiyu-background, #fff),
+      180px 3px 0 -3px var(--anzhiyu-background, #fff);
+  }
+  #live2d-chat-panel .lc-input {
+    min-height: 40px;
+    font-size: 14px;                        /* 移动端字体稍大，防 iOS 缩放 */
+  }
+  #live2d-chat-panel .lc-bubble {
+    font-size: 13px;
+  }
+  #live2d-chat-panel .lc-new,
+  #live2d-chat-panel .lc-send {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* 超小屏（<375px）进一步压缩 */
+@media (max-width: 374px) {
+  #live2d-chat-panel {
+    left: 4px;
+    width: calc(100vw - 8px);
+    max-width: calc(100vw - 8px);
+    height: min(240px, 50vh);
+  }
+  #live2d-chat-panel::before {
+    left: 12px;
+    box-shadow:
+      50px 3px 0 -4px var(--anzhiyu-background, #fff),
+      100px -2px 0 -6px var(--anzhiyu-background, #fff),
+      150px 2px 0 -3px var(--anzhiyu-background, #fff);
+  }
+}
+
+/* 暗色模式跟随 anzhiyu 主题变量 */
+[data-theme="dark"] #live2d-chat-panel {
+  background: var(--anzhiyu-background, #1f1f1f);
+}
+
+[data-theme="dark"] #live2d-chat-panel::before {
+  background: var(--anzhiyu-background, #1f1f1f);
+  box-shadow:
+    88px 5px 0 -4px var(--anzhiyu-background, #1f1f1f),
+    176px -3px 0 -7px var(--anzhiyu-background, #1f1f1f),
+    264px 4px 0 -3px var(--anzhiyu-background, #1f1f1f),
+    340px 2px 0 -6px var(--anzhiyu-background, #1f1f1f);
+}
+
+[data-theme="dark"] #live2d-chat-panel::after {
+  border-top-color: var(--anzhiyu-background, #1f1f1f);
+}
+
+[data-theme="dark"] #live2d-chat-panel .lc-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] #live2d-chat-panel .lc-msg.assistant .lc-bubble {
+  background: var(--anzhiyu-card-bg, #2a2a2a);
+  color: var(--anzhiyu-fontcolor, #eee);
+}
+
+[data-theme="dark"] #live2d-chat-panel .lc-input {
+  background: var(--anzhiyu-card-bg, #2a2a2a);
+  color: var(--anzhiyu-fontcolor, #eee);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] #live2d-chat-panel .lc-title {
+  color: var(--anzhiyu-fontcolor, #eee);
+}
+
+[data-theme="dark"] #live2d-chat-panel .lc-status {
+  color: var(--anzhiyu-secondtext, #aaa);
+}

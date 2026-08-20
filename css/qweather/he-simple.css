@@ -1,0 +1,95 @@
+#he-plugin-simple {
+  z-index: 92;
+  transition: 0.3s;
+  position: fixed !important;
+  top: 7.1%;
+  left: 20px;
+}
+
+#he-plugin-simple.shown {
+  opacity: 0.5;
+  pointer-events: unset;
+}
+
+#he-plugin-simple .weather-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 15px 20px;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+}
+
+[data-theme="dark"] #he-plugin-simple .weather-card {
+  background: rgba(30, 30, 30, 0.9);
+  color: #fff;
+}
+
+#he-plugin-simple .weather-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#he-plugin-simple .weather-icon {
+  font-size: 32px;
+}
+
+#he-plugin-simple .weather-temp {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+#he-plugin-simple .weather-city {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+[data-theme="dark"] #he-plugin-simple .weather-city {
+  color: #aaa;
+}
+
+#he-plugin-simple .weather-desc {
+  font-size: 13px;
+  color: #888;
+}
+
+[data-theme="dark"] #he-plugin-simple .weather-desc {
+  color: #ccc;
+}
+
+#he-plugin-simple .weather-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+[data-theme="dark"] #he-plugin-simple .weather-details {
+  color: #aaa;
+}
+
+body:has(#sidebar-menus.open) #he-plugin-simple {
+  z-index: 104;
+  left: 95px !important;
+  opacity: 1;
+  display: block;
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 1400px) {
+  #he-plugin-simple {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1690px) {
+  #he-plugin-simple {
+    left: 262px !important;
+  }
+}
