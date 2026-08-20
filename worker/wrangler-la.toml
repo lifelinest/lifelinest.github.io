@@ -1,0 +1,29 @@
+name = "blog-la-stats-proxy"
+main = "la-stats-proxy.js"
+compatibility_date = "2024-09-01"
+
+# KV 命名空间：
+#   RATE_LIMIT_KV —— 限流（可复用 ai-proxy 的同名 KV）
+#   LA_STATS_KV   —— 数据缓存 + 异常日志
+#
+# 部署前请先创建：
+#   npx wrangler kv namespace create LA_STATS_KV
+# RATE_LIMIT_KV 如已创建（用于 ai-proxy 或 baidu-stats-proxy）可填相同 id 复用
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "55094d4fe3454537a844239bcd1ce14d"
+
+[[kv_namespaces]]
+binding = "LA_STATS_KV"
+# 部署后用 wrangler kv namespace create LA_STATS_KV 返回的 id 替换下面的占位
+id = "9adc061e6b514280ab5b7c77ed783989"
+
+# 敏感密钥请勿写在此处，使用 wrangler secret 注入：
+#   npx wrangler secret put LA_ACCESS_KEY   # 51.la accessKey（用户标识）
+#   npx wrangler secret put LA_SECRET_KEY    # 51.la secretKey（密钥）
+#   npx wrangler secret put LA_MASK_ID       # 51.la 站点 maskId
+
+# 部署命令：
+#   npx wrangler deploy -c worker/wrangler-la.toml
+# 或在 worker 目录下：
+#   cd worker && npx wrangler deploy -c wrangler-la.toml

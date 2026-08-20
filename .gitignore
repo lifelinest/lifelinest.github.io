@@ -10,3 +10,11 @@ backup/
 mp4/
 source/starrynight.mp4
 *.mp4
+worker/.wrangler/
+worker/.dev.vars
+worker/ai-proxy.js
+worker/baidu-stats-proxy.js
+worker/deploy-baidu-stats.ps1
+worker/deploy-la-stats.ps1
+worker/wrangler-baidu.toml
+worker/wrangler.toml

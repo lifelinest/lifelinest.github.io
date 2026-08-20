@@ -1,0 +1,312 @@
+// 思维导图模态框样式
+.mindmap-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.show {
+    opacity: 1;
+  }
+
+  &.fullscreen {
+    .mindmap-content {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
+
+.mindmap-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+}
+
+.mindmap-content {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  background-color: var(--anzhiyu-card-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  max-width: 1200px;
+  max-height: 800px;
+}
+
+.mindmap-header {
+  padding: 16px 24px;
+  background-color: var(--anzhiyu-card-bg);
+  border-bottom: 1px solid var(--anzhiyu-border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px 12px 0 0;
+
+  .mindmap-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--anzhiyu-font-color);
+  }
+
+  .mindmap-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--anzhiyu-font-color);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.mindmap-toolbar {
+  padding: 12px 24px;
+  background-color: var(--anzhiyu-card-bg);
+  border-bottom: 1px solid var(--anzhiyu-border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  .mindmap-toolbar-btn {
+    background: none;
+    border: 1px solid var(--anzhiyu-border-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--anzhiyu-font-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--anzhiyu-hover-bg);
+      border-color: var(--anzhiyu-main);
+    }
+  }
+
+  .mindmap-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+    flex-shrink: 0;
+
+    & + span {
+      vertical-align: middle;
+    }
+  }
+}
+
+.mindmap-svg-container {
+  flex: 1;
+  padding: 32px;
+  overflow: auto;
+  position: relative;
+  min-height: 400px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+  }
+  
+  .markmap {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .markmap-node {
+    cursor: pointer;
+  }
+  
+  .markmap-foreign {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .markmap-link {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.mindmap-empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--anzhiyu-font-color);
+  opacity: 0.5;
+
+  i {
+    font-size: 48px;
+  }
+
+  span {
+    font-size: 16px;
+  }
+}
+
+.mindmap-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--anzhiyu-font-color);
+
+  i {
+    font-size: 32px;
+    animation: spin 1s linear infinite;
+  }
+
+  p {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// 暗色模式优化
+[data-theme="dark"] {
+  .mindmap-overlay {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+// 移动端适配
+@media (max-width: 768px) {
+  .mindmap-content {
+    width: 95%;
+    height: 90%;
+    max-width: none;
+    max-height: none;
+  }
+
+  .mindmap-header,
+  .mindmap-toolbar {
+    padding: 12px 16px;
+  }
+
+  .mindmap-svg-container {
+    padding: 16px;
+  }
+}
+
+// 按钮样式：继承 rightside.styl 中统一的侧边栏按钮样式
+// 仅保留思维导图按钮特有的隐藏控制，颜色/背景等与其它侧边栏按钮一致
+#mindmap-btn {
+  &[data-mindmap-enabled="false"] {
+    display: none;
+  }
+}
+
+// 内联思维导图样式
+.mindmap-container {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: var(--anzhiyu-card-bg);
+  border-radius: 12px;
+  box-shadow: var(--anzhiyu-shadow-border);
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: var(--anzhiyu-shadow-hover);
+  }
+}
+
+.mindmap-container .mindmap-content {
+  display: none;
+}
+
+.mindmap-svg {
+  width: 100%;
+  min-height: 400px;
+  overflow: auto;
+  padding: 20px 0;
+
+  svg {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+  }
+
+  /* 节点样式优化 */
+  .markmap-node {
+    font-family: var(--anzhiyu-font);
+  }
+
+  .markmap-node--root > circle {
+    fill: var(--anzhiyu-main) !important;
+  }
+
+  /* 连线样式 */
+  .markmap-link {
+    stroke: var(--anzhiyu-border-color) !important;
+  }
+}
+
+// 暗色模式优化
+[data-theme="dark"] {
+  .mindmap-svg {
+    .markmap-node text {
+      fill: var(--anzhiyu-font-color) !important;
+    }
+
+    .markmap-link {
+      stroke: var(--anzhiyu-border-color) !important;
+    }
+  }
+}
+
+// 移动端适配
+@media (max-width: 768px) {
+  .mindmap-container {
+    padding: 10px;
+    margin: 15px 0;
+  }
+
+  .mindmap-svg {
+    min-height: 300px;
+    padding: 10px 0;
+
+    svg {
+      min-height: 300px;
+    }
+  }
+}

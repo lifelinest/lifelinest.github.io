@@ -1,0 +1,36 @@
+#page
+  head
+    link(rel="stylesheet", href="/css/update.css")
+  .update-header
+    video(autoplay muted loop playsinline style="pointer-events: none;")
+      source(src="/starrynight.mp4" type="video/mp4")
+    h1.page-title
+      .heart-container
+        span.heart-icon(style="color:#b388ff;font-size:2.5rem;margin:0 5px;animation:heartbeat 1.5s ease-in-out infinite 0.2s;") ❤
+        .heart-shadow(style="animation:shadow-beat 1.5s ease-in-out infinite 0.2s;")
+      .heart-container
+        span.heart-icon(style="color:#ff7eb3;font-size:2.5rem;margin:0 5px;animation:heartbeat 1.5s ease-in-out infinite;") ❤
+        .heart-shadow(style="animation:shadow-beat 1.5s ease-in-out infinite;")
+      .heart-container
+        span.heart-icon(style="color:#4a9ff5;font-size:2.5rem;margin:0 5px;animation:heartbeat 1.5s ease-in-out infinite 0.5s;") ❤
+        .heart-shadow(style="animation:shadow-beat 1.5s ease-in-out infinite 0.5s;")
+    p.update-subtitle 每一次心跳都是进步的见证，记录博客成长轨迹
+    .development-notice
+      span.development-text 正在开发中...
+  #article-container
+    .timeline-container
+      .timeline
+        each item in site.data.update.updates
+          .timeline-item
+            .timeline-content
+              .date= item.date
+              h3
+                i(class=item.icon)
+                = item.title
+              p.content= item.content
+              ul.updates
+                each detail in item.details
+                  li= detail
+              .tags
+                each tag in item.tags
+                  span.tag= tag

@@ -1,0 +1,429 @@
+/* 确保页眉不被覆盖 */
+#page-header {
+    z-index: 1000 !important;
+    position: relative;
+}
+
+#post {
+    position: relative;
+    z-index: 1;
+}
+
+/* 确保文章容器有相对定位 */
+#article-container {
+    position: relative;
+}
+
+/* 文章加密遮罩样式 */
+.article-encryption-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #F7F7F9;
+    border: 1px solid #E3E8F7;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 12px;
+    /* 确保不超出文章容器 */
+    overflow: hidden;
+}
+
+/* 目录遮罩特殊样式 */
+.toc-encryption-mask {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 1;
+    padding: 0;
+}
+
+.encryption-modal {
+    background: var(--anzhiyu-card-bg);
+    border: 1px solid var(--anzhiyu-border);
+    border-radius: 12px;
+    padding: 32px 24px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--anzhiyu-shadow-border);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* 目录遮罩弹窗样式 */
+.toc-encryption-mask .encryption-modal {
+    padding: 20px;
+    max-width: none;
+    width: 100%;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.encryption-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.encryption-icon {
+    color: #f59e0b;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.encryption-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--anzhiyu-fontcolor);
+}
+
+.encryption-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--anzhiyu-secondtext);
+    font-size: 14px;
+}
+
+.hint-icon {
+    color: #fbbf24;
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.encryption-input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.password-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--anzhiyu-card-bg);
+    color: var(--anzhiyu-fontcolor);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.password-input:focus {
+    outline: none;
+    border-color: var(--anzhiyu-main);
+    box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.1);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--anzhiyu-secondtext);
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    user-select: none;
+}
+
+.password-toggle:hover {
+    color: var(--anzhiyu-fontcolor);
+}
+
+.unlock-button {
+    width: 100%;
+    padding: 12px 20px;
+    background: var(--anzhiyu-main);
+    color: var(--anzhiyu-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.unlock-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(64, 158, 255, 0.3);
+}
+
+.unlock-button:active {
+    transform: translateY(0);
+}
+
+.unlock-button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.password-input:disabled {
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.button-icon {
+    font-size: 16px;
+}
+
+.error-message {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 8px;
+    color: #dc2626;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    animation: errorShake 0.5s ease-in-out;
+    text-align: center;
+    line-height: 1.5;
+}
+
+@keyframes errorShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes successBounce {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.error-icon {
+    font-size: 14px;
+    color: #dc2626;
+}
+
+/* 重新加锁按钮 */
+.relock-button {
+    position: relative;
+    margin: 20px auto;
+    padding: 8px 16px;
+    background: var(--anzhiyu-main);
+    color: var(--anzhiyu-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: var(--anzhiyu-shadow-border);
+    width: fit-content;
+}
+
+/* 返回主页按钮 */
+.return-home-button {
+    width: 100%;
+    padding: 12px 20px;
+    background: #6b7280;
+    color: var(--anzhiyu-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.return-home-button:hover {
+    background: #4b5563;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+}
+
+.return-home-button:active {
+    transform: translateY(0);
+}
+
+.relock-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(64, 158, 255, 0.3);
+}
+
+.relock-button:active {
+    transform: translateY(0);
+}
+
+/* 文章内容隐藏样式 */
+.article-content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.article-content.show {
+    opacity: 1;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .encryption-modal {
+        padding: 24px 20px;
+        margin: 20px;
+        max-width: calc(100% - 40px);
+    }
+
+    .encryption-title {
+        font-size: 16px;
+    }
+
+    .encryption-hint {
+        font-size: 13px;
+    }
+
+    .password-input {
+        font-size: 16px;
+        /* 防止iOS缩放 */
+    }
+
+    .relock-button {
+        margin: 20px auto;
+        padding: 6px 12px;
+        font-size: 11px;
+        width: fit-content;
+    }
+
+    /* 移动端::after伪元素固定定位 */
+    #page-header::after,
+    #post-top-cover::after {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 999 !important;
+        transform: none !important;
+        will-change: auto !important;
+        bottom: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 确保父元素不影响::after的定位 */
+    #page-header,
+    #post-top-cover {
+        position: relative !important;
+        z-index: auto !important;
+    }
+
+    /* 更强的固定定位规则 */
+    body::after,
+    html::after {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 999 !important;
+        pointer-events: none !important;
+    }
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] .encryption-modal {
+    background: var(--anzhiyu-card-bg);
+    border-color: var(--anzhiyu-border);
+}
+
+[data-theme="dark"] .password-input {
+    background: var(--anzhiyu-card-bg);
+    color: var(--anzhiyu-fontcolor);
+    border-color: var(--anzhiyu-border);
+}
+
+[data-theme="dark"] .password-input:focus {
+    border-color: var(--anzhiyu-main);
+}
+
+[data-theme="dark"] .article-encryption-mask {
+    background: rgba(33, 35, 42, 0.2);
+    border-color: #3D3D3F;
+    position: relative;
+}
+
+/* 全局暗黑模式图标样式 */
+[data-theme="dark"] .anzhiyufont {
+    color: var(--anzhiyu-white) !important;
+}
+
+/* 暗黑模式下emoji图标样式 */
+[data-theme="dark"] .password-toggle {
+    color: #ffffff !important;
+}
+
+/* 确保加密遮罩在文章容器内正确显示 */
+#article-container .article-encryption-mask {
+    position: relative;
+    z-index: 1000;
+}
+
+/* 隐藏原始文章内容 */
+#article-container .article-encryption-mask+.article-content {
+    display: none;
+}
+
+#article-container .article-encryption-mask+.article-content.show {
+    display: block;
+}

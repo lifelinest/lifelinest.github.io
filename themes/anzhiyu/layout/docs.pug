@@ -1,0 +1,48 @@
+doctype html
+html(lang="zh-CN")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= site.data.docs.title || "安知鱼文档中心"
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css")
+    //- 使用绝对路径引入样式
+    link(rel="stylesheet", href=url_for('/css/docs.css'))
+    
+  body
+    #docs-page
+      .docs-container
+        .header-image
+          .header-content
+            h1.docs-title= site.data.docs.title || "安知鱼文档中心"
+            p.docs-description= site.data.docs.description || "全面的安装、配置和使用指南，助您轻松搭建专业博客"
+        
+        .search-container
+          .docs-search-container
+            .search-box
+              input(type="text", placeholder="搜索文档内容、配置选项、常见问题...", id="docs-search-input")
+              button.search-btn
+                span 搜索
+                i.fas.fa-arrow-right
+        
+        section.feature-modules
+          .module-grid
+            each module in site.data.docs.modules
+              .module-container
+                .module-content
+                  .feature-card
+                    .card-icon
+                      i(class=`fas fa-${module.icon}`)
+                    h3.card-title= module.title
+                    p.card-subtitle= module.subtitle
+                    .section-divider
+                    .card-content
+                      ul.feature-list
+                        each feature in module.features
+                          li= feature
+                    .card-footer
+                      a.action-btn(href=module.button.link || "#")
+                        span= module.button.text
+                        i(class=`fas fa-${module.button.icon}`)
+    
+    //- 使用绝对路径引入脚本
+    script(src=url_for('/js/docs.js'))

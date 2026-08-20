@@ -1,24 +1,20 @@
 /*!
- * Live2D 看板娘大模型对话
+ * Live2D 看板娘大模型对话（安全版）
  * 点击左下角 Live2D 看板娘即可唤起对话面板
- * 接入 DeepSeek，基于站点索引回答访客提问并附上相关页面链接
+ * 通过 Cloudflare Worker 代理调用 DeepSeek，密钥不暴露于客户端
  *
  * ============================================================
- *  ⚠️  配置说明  ⚠️
- *  请在下方 CONFIG.apiKey 填入你的 DeepSeek API Key
- *  获取地址：https://platform.deepseek.com/
- *  ⚠️ 安全提醒：前端硬编码 Key 会暴露在浏览器源码中，任何人可查看盗用！
- *     建议在 DeepSeek 后台为该 Key 设置【额度上限 / 仅限调用 chat 接口】，
- *     并定期检查用量。如需更高安全性，请改为自建中转接口。
+ *  配置说明
+ *  将 CONFIG.proxyEndpoint 改为你部署的 Worker 地址即可
+ *  密钥由 Worker 在服务端持有，前端零密钥
  * ============================================================
  */
 (function () {
   'use strict';
 
   var CONFIG = {
-    apiKey: 'sk-ddd1e34fc7cf49d59586ce6707daee3c',
-    endpoint: 'https://api.deepseek.com/v1/chat/completions',
-    model: 'deepseek-chat',
+    // 调用自有 Cloudflare Worker 代理（密钥存于 Worker 端，浏览器零接触）
+    proxyEndpoint: 'https://blog-ai-proxy.2rh50aqpuyunweiloginmh3.workers.dev/',
     indexUrl: '/site-index.json',
     temperature: 0.6,
     maxHistory: 8,                               // 保留最近 N 轮对话（用户+助手各算 1 条）
@@ -214,11 +210,6 @@
     var text = (inputEl.value || '').trim();
     if (!text) return;
 
-    if (!CONFIG.apiKey) {
-      appendMessage('error', '尚未配置 DeepSeek API Key。请博客主人在 /js/live2d-chat.js 顶部的 CONFIG.apiKey 中填入 Key 后重新部署。');
-      return;
-    }
-
     appendMessage('user', text);
     history.push({ role: 'user', content: text });
     inputEl.value = '';
@@ -238,7 +229,7 @@
     inputEl.disabled = v;
   }
 
-  // ---------- 调用 DeepSeek（流式） ----------
+  // ---------- 调用 Worker 代理（流式，密钥由 Worker 持有） ----------
   function streamChat(assistantEl) {
     var bubble = assistantEl.querySelector('.lc-bubble');
     var reqMessages = [{ role: 'system', content: systemPrompt }];
@@ -249,16 +240,13 @@
     var full = '';
     var reader = null;
 
-    fetch(CONFIG.endpoint, {
+    fetch(CONFIG.proxyEndpoint, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + CONFIG.apiKey
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: CONFIG.model,
         messages: reqMessages,
-        stream: true,
         temperature: CONFIG.temperature
       })
     }).then(function (resp) {
@@ -318,10 +306,11 @@
     var msg = '请求失败（HTTP ' + status + '）';
     try {
       var j = JSON.parse(body);
-      if (j.error && j.error.message) msg = j.error.message;
+      if (j.error) msg = j.error.message || j.error;
     } catch (e) {}
-    if (status === 401) msg = 'API Key 无效或未授权（401），请检查 /js/live2d-chat.js 中的 Key 配置。';
-    if (status === 429) msg = '请求过于频繁或额度已用尽（429），请稍后再试。';
+    if (status === 401) msg = '请求未授权（401），请通过博客页面使用此功能。';
+    if (status === 403) msg = '来源域名不被允许（403）。';
+    if (status === 429) msg = '请求过于频繁或今日额度已用尽（429），请稍后再试。';
     return msg;
   }
 

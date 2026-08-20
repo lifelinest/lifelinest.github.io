@@ -1,0 +1,10 @@
+if theme.aside.card_zhihu.enable
+  .card-widget.card-zhihu
+    .card-content
+      .hot-tabs(style="display: flex; justify-content: center;")
+        .hot-tab.active(data-platform="weibo") 微博
+        .hot-tab(data-platform="pengpai") 澎湃
+        .hot-tab(data-platform="juejin") 掘金
+        .hot-tab(data-platform="douyin") 抖音
+      #zhihu-container
+        .zhihu-list

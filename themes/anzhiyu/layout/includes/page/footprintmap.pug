@@ -1,0 +1,160 @@
+// 足迹地图页面
+// 引用外部CSS文件
+link(rel='stylesheet', href='/css/footprintmap.css')
+
+// 保留一些基本的CSS变量定义以确保样式正常
+style.
+  :root {
+    --anzhiyu-card-bg: #fff;
+    --anzhiyu-border-radius: 8px;
+    --anzhiyu-shadow-border: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --anzhiyu-border: #eaeaea;
+    --anzhiyu-font-color: #333;
+    --anzhiyu-hover-bg: #f8f8f8;
+    --anzhiyu-second-bg: #f5f5f5;
+    --anzhiyu-font-color-secondary: #666;
+    --anzhiyu-theme: #007bff;
+    --anzhiyu-theme-light: #0056b3;
+    --anzhiyu-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --anzhiyu-shadow-large: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 所有样式已移至外部CSS文件 /css/footprintmap.css */
+
+#footprint-map-container
+  .map-header
+    h3 我的足迹地图 <span class="map-developing">正在开发</span>
+  
+  // 侧边栏 - 移除内部嵌套，直接放入外层容器
+  .sidebar#footprint-sidebar
+    .sidebar-fixed-header
+      .sidebar-header
+        h4 足迹列表
+      .filter-container
+        input#footprint-filter.filter-input(type="text" placeholder="搜索足迹...")
+        select#type-filter.filter-input
+          option(value="all") 所有类型
+          option(value="城市") 城市
+          option(value="景点") 景点
+          option(value="地标") 地标
+      .stat-info
+        .stat-item
+          .stat-number#total-count 0
+          .stat-label 总足迹
+        .stat-item
+          .stat-number#city-count 0
+          .stat-label 城市数
+        .stat-item
+          .stat-number#type-count 0
+          .stat-label 类型数
+    .footprint-list
+  
+  // 地图容器 - 移除内部嵌套，直接放入外层容器
+  .map-wrapper
+    #footprint-map
+  
+
+
+
+#footprint-modal
+  .modal-content
+    .modal-header
+      h3#modal-title 足迹详情
+      button.modal-close#close-modal &times;
+    .modal-body
+      p#modal-address
+      p#modal-type
+      p#modal-time
+    .modal-footer
+      button#modal-close-btn 关闭
+
+// 注入足迹数据
+script.
+  // 首先设置默认数据结构
+  window.footprintsData = {
+    footprints: []
+  };
+  
+  // 尝试加载实际数据 - 确保正确注入site.data.footprints
+  try {
+    const actualFootprints = !{JSON.stringify(site.data.footprints || [])};
+    if (Array.isArray(actualFootprints) && actualFootprints.length > 0) {
+      window.footprintsData.footprints = actualFootprints;
+      console.log('成功加载实际足迹数据:', window.footprintsData.footprints.length, '个地点');
+    } else {
+      // 如果没有实际数据，使用模拟数据
+      window.footprintsData.footprints = [
+        {
+          id: 'fp-001',
+          name: '北京故宫',
+          description: '北京故宫是中国明清两代的皇家宫殿，旧称紫禁城，位于北京中轴线的中心。',
+          longitude: 116.3974,
+          latitude: 39.9163,
+          address: '北京市东城区景山前街4号',
+          footprintType: '旅游',
+          image: 'https://picsum.photos/400/300?random=1',
+          article: '',
+          createTime: '2023-08-10T09:15:00Z'
+        },
+        {
+          id: 'fp-002',
+          name: '上海外滩',
+          description: '外滩，位于上海市黄浦区中山东一路，地处上海市黄浦江畔，是上海的地标之一。',
+          longitude: 121.4908,
+          latitude: 31.2404,
+          address: '上海市黄浦区中山东一路',
+          footprintType: '旅游',
+          image: 'https://picsum.photos/400/300?random=2',
+          article: '',
+          createTime: '2023-06-20T14:30:00Z'
+        },
+        {
+          id: 'fp-003',
+          name: '杭州西湖',
+          description: '西湖，位于浙江省杭州市西湖区龙井路1号，杭州市区西部，景区总面积49平方千米。',
+          longitude: 120.1395,
+          latitude: 30.2428,
+          address: '浙江省杭州市西湖区龙井路1号',
+          footprintType: '旅游',
+          image: 'https://picsum.photos/400/300?random=3',
+          article: '',
+          createTime: '2023-05-15T08:00:00Z'
+        }
+      ];
+      console.log('使用模拟数据进行地图显示');
+    }
+  } catch (error) {
+    console.error('数据加载过程中出错:', error);
+    // 出错时使用模拟数据作为后备
+    window.footprintsData.footprints = [
+      {
+        id: 'fp-default',
+        name: '默认位置',
+        description: '地图初始化位置',
+        longitude: 116.3974,
+        latitude: 39.9163,
+        address: '北京市',
+        footprintType: '默认',
+        image: 'https://picsum.photos/400/300?random=default',
+        article: '',
+        createTime: new Date().toISOString()
+      }
+    ];
+  }
+  
+  // 地图配置项
+  const mapConfig = {
+    container: 'footprint-map',
+    style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL',
+    center: [104.07, 30.67],
+    zoom: 2,
+    hash: true,
+  };
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    // 侧边栏现在固定显示，无需切换功能
+    // 所有侧边栏切换和遮罩层相关代码已移除
+    // 初始化地图和足迹列表功能
+
+// 加载足迹地图JavaScript文件
+script(src="/js/footprintmap.js")

@@ -1,0 +1,59 @@
+- loading_img = theme.preloader.avatar ? theme.preloader.avatar : theme.avatar.img
+#loading-box(onclick='document.getElementById("loading-box").classList.add("loaded")')
+  .loading-bg
+    img.loading-img(alt="加载头像" class='nolazyload' src=url_for(loading_img))
+    .loading-image-dot
+    .spinner-box
+
+    #loadingtxt
+      ul#con1
+        li.li-style 阐述清楚问题就解决了一半
+        li.li-style 一致的体验是更好的体验
+        li.li-style 创造允许犯错，设计要知道保留哪些
+        li.li-style 想让用户爱上你的设计，先爱上你的用户
+        li.li-style 好的设计是我们与竞争对手保持差距最重要的方式
+        li.li-style 如果你觉得好的设计是昂贵的，你应该看看坏设计的成本
+        li.li-style 像其他设计一样，视觉设计也是解决问题，不是个人喜好
+        li.li-style 因为每个人都知道自己喜欢什么，所以每个人都觉得自己是用户界面专家
+        li.li-style 易用性也许不可见，但却不可缺席
+        li.li-style 如果我有1000个想法，即使最终只有一个实现了，我也会非常满意
+        li.li-style 如果你发现你界面中某个元素需要说明，你需要重新设计
+        li.li-style 简化意味着去掉不必要的元素，让必要元素凸显
+        li.li-style 天才就是将复杂问题简单化的人
+        li.li-style 不用盯着空白太久，勇敢的跨出第一步，其他的自然而然就会发生
+        li.li-style 有些人认为设计就是看起来长什么样。 但是如果你深入挖掘就会发现设计更关乎如何运作
+      ul#con2
+    script(type='text/javascript').
+      var area = document.getElementById('loadingtxt');
+      var con1 = document.getElementById('con1');
+      var con2 = document.getElementById('con2');
+      var mytimer1 = null;
+      var mytimer = null;
+      var time = 1000 / 60;
+      con2.innerHTML = con1.innerHTML;
+      function scrollUp () {
+      if (area.scrollTop >= con1.offsetHeight) {
+      area.scrollTop = 0;
+      } else {
+      if (area.scrollTop % 25 == 0) {
+      clearInterval(mytimer);
+      clearInterval(mytimer1);
+      mytimer1 = setTimeout(function () {
+      mytimer = setInterval(scrollUp, time);
+      }, 1000);
+      }
+      area.scrollTop++;
+      }
+      }
+      mytimer = setInterval(scrollUp, time);
+script.
+  const preloader = {
+    endLoading: () => {
+      document.getElementById('loading-box').classList.add("loaded");
+    },
+    initLoading: () => {
+      document.getElementById('loading-box').classList.remove("loaded")
+    }
+  }
+  window.addEventListener('load',()=> { preloader.endLoading() })
+  setTimeout(function(){preloader.endLoading();},10000)

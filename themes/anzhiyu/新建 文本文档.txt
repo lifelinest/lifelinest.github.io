@@ -1,0 +1,243 @@
+博客背景切换-弹窗版
+发表2022-08-15更新2023-02-10
+字数总计:1.9k阅读时长:8分钟阅读量:3279评论数:69
+点击我可以查看本文摘要哦~
+更新
+2023-02-10: 修复最小化切换页面会弹窗且变白的bug。
+
+最大化时隐藏掉body的滚动条。
+
+前言
+昨天更新了一下切换背景页面的文章，然后在群里得到@Chuckle的建议：创建一个窗口方便切换。
+决定采纳。
+由于昨晚开始的比较晚，主要就看了看winbox的文档，今天早上起了个大早给肝出来了。
+
+本来我是想自己写窗口的，但是写出来之后发现开关窗口啦，适配窗口啦之类的还要写很多，想起来就头疼。
+于是就百度现成的插件，看上了这个GitHub项目：winbox
+你也可以参考GitHub项目内的参数和api自行配制更多有趣的功能。
+
+教程
+其实这个教程和之前的那个创建页面的几乎一样，无非就是把代码写在了窗口里面。
+为了让你方便阅读，我会在这里再详细的说一遍，已标注哪里是新增内容，方便老用户进行修改。
+页面版：给Hexo博客添加一个切换壁纸功能
+
+创建按钮
+此方法是在右下角的按钮区增加一个按钮，不过我已经把按钮挪到了顶部，更方便点击。
+可以自行选择在哪里添加，只需要调用toggleWinbox函数就可以了
+
+修改butterfly\layout\includes\rightside.pug
+在众多when下面新增：
+
+when 'comment'
+    if commentsJsLoad
+        a#to_comment(href="#post-comment" title=_p("rightside.scroll_to_comment"))
+        i.fas.fa-comments
++ when 'bg'
++     button(type="button" title='切换背景' onclick="toggleWinbox()")
++         i.fas.fa-display
+然后修改：
+
+#rightside
+  - const { enable, hide, show } = theme.rightside_item_order
+  - const hideArray = enable ? hide && hide.split(',') : ['readmode','translate','darkmode','hideAside']
+-  - const showArray = enable ? show && show.split(',') : ['toc','chat','comment']
++  - const showArray = enable ? show && show.split(',') : ['toc','chat','comment','bg']
+引入js
+在主题配置文件里的inject下的bottom引入文件：
+
+inject:
+  head:
+
+  bottom:
+    #winbox
+    - <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script> # 添加此行
+    - <script src="xxx.js"></script> # 这个代表自定义js，放在最下面
+添加js
+在自定义文件内添加如下代码：
+如果你已经有了自己的js文件,直接在里面添加即可,没有的话参考这篇文章进行创建: Hexo博客添加自定义css和js文件
+
+// 存数据
+// name：命名 data：数据
+function saveData(name, data) {
+    localStorage.setItem(name, JSON.stringify({ 'time': Date.now(), 'data': data }))
+}
+
+// 取数据
+// name：命名 time：过期时长,单位分钟,如传入30,即加载数据时如果超出30分钟返回0,否则返回数据
+function loadData(name, time) {
+    let d = JSON.parse(localStorage.getItem(name));
+    // 过期或有错误返回 0 否则返回数据
+    if (d) {
+        let t = Date.now() - d.time
+        if (t < (time * 60 * 1000) && t > -1) return d.data;
+    }
+    return 0;
+}
+
+// 上面两个函数如果你有其他需要存取数据的功能，也可以直接使用
+
+// 读取背景
+try {
+    let data = loadData('blogbg', 1440)
+    if (data) changeBg(data, 1)
+    else localStorage.removeItem('blogbg');
+} catch (error) { localStorage.removeItem('blogbg'); }
+
+// 切换背景函数
+// 此处的flag是为了每次读取时都重新存储一次,导致过期时间不稳定
+// 如果flag为0则存储,即设置背景. 为1则不存储,即每次加载自动读取背景.
+function changeBg(s, flag) {
+    let bg = document.getElementById('web_bg')
+    if (s.charAt(0) == '#') {
+        bg.style.backgroundColor = s
+        bg.style.backgroundImage = 'none'
+    } else bg.style.backgroundImage = s
+    if (!flag) { saveData('blogbg', s) }
+}
+
+// 以下为2.0新增内容
+
+// 创建窗口
+var winbox = ''
+
+function createWinbox() {
+    let div = document.createElement('div')
+    document.body.appendChild(div)
+    winbox = WinBox({
+        id: 'changeBgBox',
+        index: 999,
+        title: "切换背景",
+        x: "center",
+        y: "center",
+        minwidth: '300px',
+        height: "60%",
+        background: '#49b1f5',
+        onmaximize: () => { div.innerHTML = `<style>body::-webkit-scrollbar {display: none;}div#changeBgBox {width: 100% !important;}</style>` },
+        onrestore: () => { div.innerHTML = '' }
+    });
+    winResize();
+    window.addEventListener('resize', winResize)
+
+    // 每一类我放了一个演示，直接往下复制粘贴 a标签 就可以，需要注意的是 函数里面的链接 冒号前面需要添加反斜杠\进行转义
+    winbox.body.innerHTML = `
+    <div id="article-container" style="padding:10px;">
+    
+    <p><button onclick="localStorage.removeItem('blogbg');location.reload();" style="background:#5fcdff;display:block;width:100%;padding: 15px 0;border-radius:6px;color:white;"><i class="fa-solid fa-arrows-rotate"></i> 点我恢复默认背景</button></p>
+    <h2 id="图片（手机）"><a href="#图片（手机）" class="headerlink" title="图片（手机）"></a>图片（手机）</h2>
+    <div class="bgbox">
+    <a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://img.vm.laomishuo.com/image/2021/12/2021122715170589.jpeg)" class="pimgbox" onclick="changeBg('url(https\://img.vm.laomishuo.com/image/2021/12/2021122715170589.jpeg)')"></a>
+    </div>
+    
+    <h2 id="图片（电脑）"><a href="#图片（电脑）" class="headerlink" title="图片（电脑）"></a>图片（电脑）</h2>
+    <div class="bgbox">
+    <a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://cn.bing.com/th?id=OHR.GBRTurtle_ZH-CN6069093254_1920x1080.jpg)" class="imgbox" onclick="changeBg('url(https\://cn.bing.com/th?id=OHR.GBRTurtle_ZH-CN6069093254_1920x1080.jpg)')"></a>
+    </div>
+    
+    
+    
+    <h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2>
+    <div class="bgbox">
+    <a href="javascript:;" rel="noopener external nofollow" class="box" style="background: linear-gradient(to right, #eecda3, #ef629f)" onclick="changeBg('linear-gradient(to right, #eecda3, #ef629f)')"></a>
+    </div>
+    
+    <h2 id="纯色"><a href="#纯色" class="headerlink" title="纯色"></a>纯色</h2>
+    <div class="bgbox">
+    <a href="javascript:;" rel="noopener external nofollow" class="box" style="background: #7D9D9C" onclick="changeBg('#7D9D9C')"></a> 
+    </div>
+`;
+}
+
+// 适应窗口大小
+function winResize() {
+    let box = document.querySelector('#changeBgBox')
+    if (!box || box.classList.contains('min') || box.classList.contains('max')) return // 2023-02-10更新
+    var offsetWid = document.documentElement.clientWidth;
+    if (offsetWid <= 768) {
+        winbox.resize(offsetWid * 0.95 + "px", "90%").move("center", "center");
+    } else {
+        winbox.resize(offsetWid * 0.6 + "px", "70%").move("center", "center");
+    }
+}
+
+// 切换状态，窗口已创建则控制窗口显示和隐藏，没窗口则创建窗口
+function toggleWinbox() {
+    if (document.querySelector('#changeBgBox')) winbox.toggleClass('hide');
+    else createWinbox();
+}
+添加css
+如果你已经有了自己的css文件,直接在里面添加即可,没有的话参考这篇文章进行创建: Hexo博客添加自定义css和js文件
+
+/* 由于全屏会出bug，所以直接给他隐藏 */
+
+.winbox {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.wb-full {
+    display: none;
+}
+
+.wb-min {
+    background-position: center;
+}
+
+[data-theme='dark'] .wb-body,
+[data-theme='dark'] #changeBgBox {
+    background: #333 !important;
+}
+
+.bgbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pimgbox,
+.imgbox,
+.box {
+    width: 166px;
+    margin: 10px;
+    background-size: cover
+}
+
+.pimgbox,
+.imgbox {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pimgbox {
+    height: 240px;
+}
+
+.imgbox {
+    height: 95px;
+}
+
+.box {
+    height: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    /* 背景 */
+    .pimgbox,
+    .imgbox,
+    .box {
+        height: 73px;
+        width: 135px;
+    }
+    .pimgbox {
+        height: 205px;
+    }
+    /* 2.0新增内容 */    
+    .wb-min {
+        display: none;
+    }
+    #changeBgBox .wb-body::-webkit-scrollbar {
+        display: none;
+    }
+}
+文章作者: Leonus
+文章链接: https://blog.leonus.cn/2022/bg2.html
+版权声明: 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明来自 Leonus！

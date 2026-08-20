@@ -1,0 +1,86 @@
+#aside-content.aside-content
+  //- post
+  if is_post()
+    - const tocStyle = page.toc_style_simple
+    - const tocStyleVal = tocStyle === true || tocStyle === false ? tocStyle : theme.toc.style_simple
+    if showToc && tocStyleVal
+      .sticky_layout
+        include ./card_post_toc.pug
+    else
+      !=partial('includes/widget/card_author', {}, {cache: true})
+      //- !=partial('includes/widget/card_announcement', {}, {cache: true})
+      !=partial('includes/widget/card_weixin', {}, {cache: true})
+      !=partial('includes/widget/card_top_self', {}, {cache: true})
+      !=partial('includes/widget/card_poem', {}, {cache: true})
+      .sticky_layout
+        if showToc
+          include ./card_post_toc.pug
+        !=partial('includes/widget/card_recent_post', {}, {cache: true})
+        !=partial('includes/widget/card_ad', {}, {cache: true})
+  else
+    //- page
+    !=partial('includes/widget/card_author', {}, {cache: true})
+    //- !=partial('includes/widget/card_announcement', {}, {cache: true})
+    !=partial('includes/widget/card_poem', {}, {cache: true})
+    !=partial('includes/widget/card_weixin', {}, {cache: true})
+    !=partial('includes/widget/card_top_self', {}, {cache: true})
+    !=partial('includes/widget/card_categories', {}, {cache: true})
+    
+    //- 日历组件（已隐藏但保留DOM结构以支持进度条组件）
+    if theme.aside && theme.aside.home && theme.aside.home.noSticky && theme.aside.home.noSticky.includes('calendar')
+      .card-widget#card-widget-calendar(style="display: none;")
+        .card-content
+          .item-content
+            #calendar-area-left
+              #calendar-week
+              #calendar-date(style="font-size: 48px;")
+              #calendar-solar
+              #calendar-lunar
+            #calendar-area-right
+              #calendar-main
+    
+    !=partial('includes/widget/card_zhihu', {}, {cache: true})
+    
+    if theme.aside && theme.aside.home && theme.aside.home.noSticky && theme.aside.home.noSticky.includes('schedule')
+      .card-widget#card-widget-schedule
+        .card-content
+          .item-content
+            #schedule-area-left
+              #schedule-title 距离目标日期
+              #schedule-days
+              #schedule-date 2027-02-05
+            #schedule-area-right
+              .schedule-r0
+                .schedule-d0 本年
+                .schedule-d1
+                  span#p_span_year.aside-span1
+                  span.aside-span2 还剩
+                    a
+                    | 天
+                  progress#pBar_year(max="365")
+              .schedule-r1
+                .schedule-d0 本月
+                .schedule-d1
+                  span#p_span_month.aside-span1
+                  span.aside-span2 还剩
+                    a
+                    | 天
+                  progress#pBar_month(max="30")
+              .schedule-r2
+                .schedule-d0 本周
+                .schedule-d1
+                  span#p_span_week.aside-span1
+                  span.aside-span2 还剩
+                    a
+                    | 天
+                  progress#pBar_week(max="7")
+
+    .sticky_layout
+      if showToc
+        include ./card_post_toc.pug
+      .card-widget
+        !=partial('includes/widget/card_ad', {}, {cache: true})
+        !=partial('includes/widget/card_tags', {}, {cache: true})
+        !=partial('includes/widget/card_archives', {}, {cache: true})
+        !=partial('includes/widget/card_webinfo', {}, {cache: true})
+      !=partial('includes/widget/card_bottom_self', {}, {cache: true})

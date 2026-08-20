@@ -1,0 +1,241 @@
+if theme.aside.card_tags.enable
+  if site.tags.length
+    .card-tags
+      .item-headline
+      - let tagLimit = theme.aside.card_tags.limit === 0 ? 0 : theme.aside.card_tags.limit || 40
+      //- 分页标签容器
+      .tag-pagination-container
+        .card-tag-cloud#tag-container
+          //- 标签将通过JavaScript动态生成
+        .pagination-controls
+          button#prev-page.btn-pagination(type='button', disabled='disabled', title='上一页')
+            i.anzhiyufont.anzhiyu-icon-chevron-left
+          span#page-info
+          button#next-page.btn-pagination(type='button', title='下一页')
+            i.anzhiyufont.anzhiyu-icon-chevron-right
+    hr
+    //- 标签数据用于JavaScript
+    script#tags-data(type='application/json')!=JSON.stringify(site.tags.map(function(tag) { return { name: tag.name, path: tag.path, length: tag.length }; }))
+    
+    //- 分页控件CSS样式
+    style.
+      .tag-pagination-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .card-tag-cloud#tag-container {
+        min-height: 60px; /* 确保即使没有标签也有足够空间 */
+        height: 180px; /* 设置固定高度，确保所有页面高度一致 */
+        padding: 0 11px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center; /* 水平居中显示标签 */
+        align-content: flex-start; /* 内容从顶部开始排列 */
+        margin-bottom: 40px; /* 根据用户反馈，将间距从60px调整为40px，更适合视觉效果 */
+        transition: all 0.3s ease;
+      }
+      
+      .pagination-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 8px 0;
+        gap: 30px; /* 将按钮间距从10px增加到30px，约为原来的3倍 */
+      }
+      
+      /* 响应式设计：在不同屏幕尺寸下保持一致的间距比例 */
+      @media (max-width: 768px) {
+        .pagination-controls {
+          gap: 20px; /* 平板设备下按钮间距保持适中 */
+        }
+        .card-tag-cloud#tag-container {
+          margin-bottom: 30px; /* 平板设备下标签与切换模块间距相应调整为30px */
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .pagination-controls {
+          gap: 15px; /* 手机设备下按钮间距保持紧凑 */
+        }
+        .card-tag-cloud#tag-container {
+          margin-bottom: 25px; /* 手机设备下标签与切换模块间距相应调整为25px */
+        }
+      }
+      
+      .btn-pagination {
+        background: var(--anzhiyu-card-bg);
+        border: var(--style-border);
+        color: var(--anzhiyu-fontcolor);
+        width: 32px;
+        height: 32px;
+        border-radius: var(--anzhiyu-border-radius);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+      
+      /* 确保图标正确显示 */
+      .btn-pagination i {
+        display: inline-block;
+        font-size: 12px;
+      }
+      
+      .btn-pagination:hover:not(:disabled) {
+        background: var(--anzhiyu-theme);
+        color: var(--anzhiyu-white);
+        box-shadow: var(--anzhiyu-shadow-theme);
+        transform: translateY(-1px);
+        position: relative;
+      }
+      
+      /* 自定义悬停提示样式 */
+      .btn-pagination[title] {
+        position: relative;
+        cursor: help;
+      }
+      
+      /* 添加一个简单的动画效果 */
+      .btn-pagination {
+        transition: all 0.3s ease, transform 0.2s ease; /* 添加transform动画 */
+      }
+      
+      .btn-pagination:active:not(:disabled) {
+        transform: translateY(0);
+      }
+      
+      .btn-pagination:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: var(--anzhiyu-background);
+      }
+      
+      #page-info {
+        color: var(--anzhiyu-secondtext);
+        font-size: 13px;
+        min-width: 50px;
+        text-align: center;
+      }
+      
+      /* 确保标签样式与主题一致 */
+      #tag-container a {
+        color: var(--anzhiyu-fontcolor);
+        padding: 2px 8px 2px 12px;
+        margin: 4px;
+        border-radius: 8px;
+        border: var(--style-border-always);
+        background: var(--anzhiyu-card-bg);
+        transition: all 0.3s ease;
+      }
+      
+      #tag-container a:hover {
+        background: var(--anzhiyu-theme);
+        color: var(--anzhiyu-white) !important;
+        box-shadow: var(--anzhiyu-shadow-theme);
+        transform: translateY(-1px);
+      }
+      
+      @media screen and (min-width: 1200px) {
+        #tag-container a:active {
+          transform: scale(0.97);
+        }
+      }
+      
+      #tag-container a sup {
+        opacity: 0.6;
+        margin-left: 4px;
+      }
+    
+    //- 标签分页JavaScript逻辑
+    script(data-pjax).
+      document.addEventListener('DOMContentLoaded', function() {
+        // 初始化变量
+        const tagsContainer = document.getElementById('tag-container');
+        const prevPageBtn = document.getElementById('prev-page');
+        const nextPageBtn = document.getElementById('next-page');
+        const pageInfo = document.getElementById('page-info');
+        const tagsData = JSON.parse(document.getElementById('tags-data').textContent);
+        
+        // 配置参数
+        const itemsPerPage = 10; // 每页显示10个标签
+        let currentPage = 1;
+        const totalPages = Math.ceil(tagsData.length / itemsPerPage);
+        
+        // 渲染当前页的标签
+        function renderCurrentPage() {
+          tagsContainer.innerHTML = '';
+          
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const endIndex = Math.min(startIndex + itemsPerPage, tagsData.length);
+          
+          const fragment = document.createDocumentFragment();
+          
+          for (let i = startIndex; i < endIndex; i++) {
+            const tag = tagsData[i];
+            const tagElement = document.createElement('a');
+            tagElement.href = tag.path;
+            tagElement.textContent = tag.name;
+            
+            // 添加文章数量标签
+            const supElement = document.createElement('sup');
+            supElement.textContent = tag.length;
+            tagElement.appendChild(supElement);
+            
+            fragment.appendChild(tagElement);
+          }
+          
+          tagsContainer.appendChild(fragment);
+          updatePaginationInfo();
+        }
+        
+        // 更新分页信息
+        function updatePaginationInfo() {
+          pageInfo.textContent = `${currentPage} / ${totalPages}`;
+          prevPageBtn.disabled = currentPage === 1;
+          nextPageBtn.disabled = currentPage === totalPages;
+        }
+        
+        // 事件监听器
+        prevPageBtn.addEventListener('click', function() {
+          if (currentPage > 1) {
+            currentPage--;
+            renderCurrentPage();
+          }
+        });
+        
+        nextPageBtn.addEventListener('click', function() {
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderCurrentPage();
+          }
+        });
+        
+        // 键盘导航支持
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'ArrowLeft' && currentPage > 1) {
+            currentPage--;
+            renderCurrentPage();
+          } else if (e.key === 'ArrowRight' && currentPage < totalPages) {
+            currentPage++;
+            renderCurrentPage();
+          }
+        });
+        
+        // 初始化渲染
+        renderCurrentPage();
+        
+        // 响应式处理：窗口大小改变时调整显示
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(function() {
+            // 重新渲染当前页以适应新的布局
+            renderCurrentPage();
+          }, 200);
+        });
+      });

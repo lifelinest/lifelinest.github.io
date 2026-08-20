@@ -1,0 +1,37 @@
+if theme.friends_vue.enable
+  .fcircle_page
+    .author-content.author-content-item.fcirclePage.single(style='position: relative; overflow: hidden;')
+      video(autoplay muted loop playsinline style='pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;')
+        source(src=url_for('/starrynight.mp4'), type='video/mp4')
+      .card-content(style='position: relative; z-index: 1;')
+        span.author-content-item-title 🗺️ 足迹地图
+        .content-bottom
+          .tips(style='text-align: left; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 10px; padding: 15px;')
+            span(style='font-size: 20px; font-weight: bold; background-image: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); -webkit-background-clip: text; background-clip: text; color: transparent;') 迹遇
+            br
+            span(style='font-size: 16px;') 山河落笔化长卷，日月为灯照客途。
+            br
+            span(style='font-size: 16px;') 纵揽云程千万里，行则将至画卷中。
+        .banner-button-group
+          a.banner-button(onclick='pjax.loadUrl("/about")')
+            i.anzhiyufont.anzhiyu-icon-arrow-circle-right(style='font-size: 22px; margin-right: 0.25rem')
+            span.banner-button-text 关于本人
+    
+    
+
+    
+    .map-container
+      #footprint-container
+
+  if (theme.friends_vue.apiurl)
+    script(defer data-pjax src=url_for(theme.asset.random_friends_post_js))
+  script(defer data-pjax src=url_for(theme.friends_vue.vue_js))
+  
+  //- 高德地图API和足迹地图JS
+  script(src="https://webapi.amap.com/maps?v=2.0&key=a3e72d2dfc9f9b32c02b70d541b48f26")
+  link(rel='stylesheet' href=url_for('/css/amap-footprint.css'))
+  link(rel='stylesheet' href=url_for('/css/stats-module.css'))
+  script(defer data-pjax src=url_for('/js/amap-footprint.js'))
+  script(defer data-pjax src=url_for('/js/footprint-poem.js'))
+  script(defer data-pjax src=url_for('/js/stats-module.js'))
+

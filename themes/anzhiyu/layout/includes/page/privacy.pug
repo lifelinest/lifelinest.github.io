@@ -1,0 +1,147 @@
+#privacy-page
+  .privacy-progress
+    .privacy-progress-bar#privacyProgressBar
+  
+  .privacy-header
+    .privacy-logo
+      .logo-icon
+        img.no-lightbox(src=url_for('/img/siteicon/favicon.png') alt='favicon')
+    h1.privacy-title= page.title
+    p.privacy-subtitle 我们非常重视您的隐私安全，请仔细阅读以下协议以了解我们如何收集、使用和保护您的个人信息
+    .privacy-meta
+      span.last-updated 最后更新：2025年08月10日
+  
+  .privacy-content#privacyContent
+    .privacy-section
+      h2.section-title 引言
+      p.section-content 欢迎使用 Lifeline 生命线博客服务。我们深知个人信息对您的重要性，并会尽全力保护您的个人信息安全。我们致力于维持您对我们的信任，恪守以下原则保护您的个人信息：权责一致原则、目的明确原则、选择同意原则、最少够用原则、确保安全原则、主体参与原则、公开透明原则等。
+    
+    .privacy-section
+      h2.section-title 我们收集的信息
+      p.section-content 在您使用我们的服务过程中，我们可能会收集以下类型的信息：
+      
+      h3.section-subtitle 1. 您提供的信息
+      ul.section-list
+        li.section-item 账户信息：当您注册账户时，我们会收集您的用户名、电子邮箱地址和密码。
+        li.section-item 个人资料：您可以选择添加个人资料信息，如头像、昵称、个人简介等。
+        li.section-item 内容信息：您发布的内容，包括博客文章、评论、图片等。
+      
+      h3.section-subtitle 2. 自动收集的信息
+      ul.section-list
+        li.section-item 设备信息：我们会收集设备相关信息，如设备型号、操作系统版本、唯一设备标识符等。
+        li.section-item 日志信息：当您使用我们的服务时，系统会自动收集某些日志信息，包括您的IP地址、浏览器类型、访问时间和日期等。
+        li.section-item 使用数据：我们收集关于您如何使用我们服务的数据，如访问的页面、点击的链接、搜索查询等。
+    
+    .privacy-section
+      h2.section-title 我们如何使用您的信息
+      p.section-content 我们可能将收集的信息用于以下目的：
+      ul.section-list
+        li.section-item 提供、维护和改进我们的服务
+        li.section-item 开发新功能和服务
+        li.section-item 提供个性化的用户体验
+        li.section-item 与您沟通服务更新或安全通知
+        li.section-item 保障账户安全，防止欺诈行为
+        li.section-item 遵守法律法规要求
+    
+    .privacy-section
+      h2.section-title 信息共享与披露
+      p.section-content 我们不会向任何公司、组织和个人分享您的个人信息，但以下情况除外：
+      ul.section-list
+        li.section-item 在获得您明确同意的情况下
+        li.section-item 根据法律法规或强制性政府要求
+        li.section-item 为保护Lifeline、用户或公众的合法权益免遭损害
+        li.section-item 在涉及合并、收购或破产清算时
+    
+    .privacy-section
+      h2.section-title 信息安全
+      p.section-content 我们采取各种安全技术和程序，以防信息的丢失、不当使用、未经授权阅览或披露。例如：
+      ul.section-list
+        li.section-item 使用加密技术确保数据在传输和存储过程中的安全
+        li.section-item 定期审查信息收集、存储和处理实践
+        li.section-item 限制员工访问用户信息的权限
+    
+    .privacy-section
+      h2.section-title 您的权利
+      p.section-content 根据适用法律，您可能享有以下权利：
+      ul.section-list
+        li.section-item 访问、更正或删除您的个人信息
+        li.section-item 限制或反对处理您的个人信息
+        li.section-item 数据可携带权
+        li.section-item 撤回同意的权利
+    
+    .privacy-section
+      h2.section-title 未成年人保护
+      p.section-content 我们的服务不面向未满14周岁的未成年人。如果我们发现自己在未获得法定监护人同意的情况下收集了未成年人的个人信息，我们会设法尽快删除相关数据。
+    
+    .privacy-section
+      h2.section-title 协议更新
+      p.section-content 我们可能会不定期更新本隐私协议。更新后的协议将在本页面发布，并更新顶部的"最后更新"日期。我们建议您定期查看本页面以了解最新变化。
+    
+    .privacy-section
+      h2.section-title 联系我们
+      p.section-content 如果您对本隐私协议有任何疑问或建议，请通过以下方式联系我们：
+      .contact-details
+        p.contact-item
+          i.anzhiyufont.anzhiyu-icon-envelope
+          span 邮箱: 3424848843@qq.com
+        p.contact-item
+          i.anzhiyufont.anzhiyu-icon-phone
+          span 电话: 132-XXXX-8707
+        p.contact-item
+          i.anzhiyufont.anzhiyu-icon-map-marker-alt
+          span 地址:河南省新乡市卫辉市
+
+  .privacy-footer
+    .privacy-actions
+      button.privacy-btn.privacy-btn-outline(onclick="window.print()")
+        i.anzhiyufont.anzhiyu-icon-printer
+        span 打印
+
+script.
+  document.addEventListener('DOMContentLoaded', function() {
+    const privacyContent = document.getElementById('privacyContent');
+    const progressBar = document.getElementById('privacyProgressBar');
+    
+    if (privacyContent && progressBar) {
+      function updateProgress() {
+        const scrollTop = privacyContent.scrollTop;
+        const scrollHeight = privacyContent.scrollHeight - privacyContent.clientHeight;
+        const scrolled = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
+        const percent = Math.round(scrolled * 100);
+        
+        progressBar.style.width = percent + '%';
+      }
+      
+      privacyContent.addEventListener('scroll', updateProgress);
+      updateProgress();
+      
+      window.scrollToPrivacyTop = function() {
+        privacyContent.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      };
+      
+      window.addEventListener('beforeprint', function() {
+        privacyContent.style.maxHeight = 'none';
+        privacyContent.style.overflow = 'visible';
+      });
+      
+      window.addEventListener('afterprint', function() {
+        privacyContent.style.maxHeight = '500px';
+        privacyContent.style.overflow = 'auto';
+      });
+    }
+    
+    const privacyBtns = document.querySelectorAll('.privacy-btn');
+    privacyBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.classList.add('pulse');
+        setTimeout(() => {
+          this.classList.remove('pulse');
+        }, 1000);
+      });
+    });
+  });
+
+

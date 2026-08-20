@@ -1,0 +1,107 @@
+extends includes/layout.pug
+
+block content
+  #post
+    if top_img === false || page.bilibili_bg
+      include includes/header/post-info.pug
+    if theme.post_head_ai_description
+      include includes/anzhiyu/ai-info.pug
+    - let url = page.copyright_url || page.permalink
+    article#article-container.post-content(itemscope itemtype=url_for(url))
+      header
+        if (theme.post_meta.post.categories && page.categories && page.categories.data.length > 0)
+          each item, index in page.categories.data
+            a(href=url_for(item.path) itemprop="url").post-meta-categories #[=item.name]
+        if (theme.post_meta.page.tags && page.tags && page.tags.data && page.tags.data.length > 0)
+          each item, index in page.tags.data
+            a(href=url_for(item.path) tabindex="-1" itemprop="url")=item.name
+        h1#CrawlerTitle(itemprop="name headline")= page.title || _p('no_title')
+        - let author = page.copyright_author || config.author
+        span(itemprop="author" itemscope itemtype="http://schema.org/Person")=author
+        if (theme.post_meta.post.date_type)
+          if (theme.post_meta.post.date_type === 'both')
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page.date) title=_p('post.created') + ' ' + full_date(page.date))=date(page.date, config.date_format)
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page.updated) title=_p('post.updated') + ' ' + full_date(page.updated))=date(page.updated, config.date_format)
+          else
+            - let data_type_update = theme.post_meta.post.date_type === 'updated'
+            - let date_type = data_type_update ? 'updated' : 'date'
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page[date_type]) title=date_title + ' ' + full_date(page[date_type]))=date(page[date_type], config.date_format)
+      
+      //- 检查是否为加密文章
+      if page.encrypted
+        //- 密码和提示数据，供JavaScript获取
+        script.
+          window.articlePassword = '#{page.password}';
+          window.articleHint = '#{page.hint || "请输入密码"}';
+        
+        //- 正文遮罩
+        .article-encryption-mask#article-encryption-mask
+          .encryption-modal
+            .encryption-header
+              i.anzhiyufont.anzhiyu-icon-lock.encryption-icon
+              span.encryption-title 文章已加密
+            .encryption-hint
+              i.anzhiyufont.anzhiyu-icon-lightbulb.hint-icon
+              span 这是一篇需要密码才能阅读的文章哦~
+            .encryption-input-group
+              input(type="password" id="password-input" class="password-input" placeholder="请输入密码")
+              span.password-toggle#password-toggle 🙈
+            button.unlock-button#unlock-button
+              i.anzhiyufont.anzhiyu-icon-lock.button-icon
+              span 解锁文章
+            .error-message#error-message(style="display: none;")
+              i.anzhiyufont.anzhiyu-icon-exclamation-triangle.error-icon
+              span#error-text 密码错误！小提示：请输入密码解锁这篇Markdown语法整理文章
+        
+        //- 正文内容容器，初始隐藏
+        .article-content#article-content(style="display: none;")
+          !=page.content
+          //- 重新加锁按钮，解锁后显示
+          button.relock-button#relock-button(style="display: none;")
+            i.anzhiyufont.anzhiyu-icon-lock.button-icon
+            span 重新加锁
+      else
+        !=page.content
+
+    include includes/post/post-copyright.pug
+
+    //- ad
+    if theme.ad && theme.ad.post
+      .ads-wrap!=theme.ad.post
+
+    if theme.post_pagination
+      include includes/pagination.pug
+    if theme.related_post && theme.related_post.enable
+      != related_posts(page,site.posts)
+
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})
+
+    //- 思维导图模态框
+    if theme.mindmap && theme.mindmap.enable
+      #mindmap-modal.mindmap-modal
+        .mindmap-overlay
+        .mindmap-content
+          .mindmap-header
+            h3.mindmap-title 文章思维导图
+            button.mindmap-btn#mindmap-btn-close
+              i.anzhiyufont.anzhiyu-icon-close
+          .mindmap-toolbar
+            button.mindmap-toolbar-btn#mindmap-btn-fullscreen
+              svg.mindmap-icon(width="16", height="16", viewBox="0 0 24 24", fill="currentColor")
+                path(d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z")
+              span= theme.mindmap.fullscreen.button_text || '全屏查看'
+            button.mindmap-toolbar-btn#mindmap-btn-export
+              i.anzhiyufont.anzhiyu-icon-download
+              span 导出SVG
+          .mindmap-svg-container#mindmap-svg-container
+            .mindmap-empty-state
+              i.anzhiyufont.anzhiyu-icon-lightbulb
+              span 未检测到文章结构，无法生成思维导图
+
+    //- 思维导图触发按钮
+    if theme.mindmap && theme.mindmap.enable
+      button#mindmap-btn(aria-label='查看思维导图')
+        i.anzhiyufont.anzhiyu-icon-lightbulb
+        span= _p('post.mindmap') || '思维导图'

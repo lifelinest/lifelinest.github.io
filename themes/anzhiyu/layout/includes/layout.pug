@@ -1,0 +1,112 @@
+- var htmlClassHideAside = theme.aside.enable && theme.aside.hide ? 'hide-aside' : ''
+- page.aside = is_archive() ? theme.aside.display.archive: is_category() ? theme.aside.display.category : is_tag() ? theme.aside.display.tag : page.aside
+- var hideAside = !theme.aside.enable || page.aside === false ? 'hide-aside' : ''
+- var pageType = is_post() ? 'post' : 'page'
+
+doctype html
+html(lang=config.language data-theme=theme.display_mode class=htmlClassHideAside)
+  head
+    include ./head.pug
+    link(rel="stylesheet", type="text/css", href="/css/poem.css")
+  body(data-type="anzhiyu")
+    #web_bg
+    #an_music_bg
+    if theme.preloader.enable
+      !=partial('includes/loading/index', {}, {cache: true})
+    if (theme.mourn.enable && is_home_first_page())
+      include ./mourn.pug
+    if page.type !== '404'
+      #body-wrap(class=pageType)
+        include ./header/index.pug
+        main#blog-container
+          if (is_home())
+            include ./bbTimeList.pug
+          if is_current("/")
+            include ./top/top.pug
+          if page.top_single
+            - let background = page.top_single_background
+            - let tip = page.top_single_tip
+            - let subTitle = page.top_single_subtitle
+            - let btn_link = page.top_single_btn_link
+            - let btn_text = page.top_single_btn_text
+            #single_top
+              .author-content.author-content-item.single(style=`${background ? `background: url(${background}) top / cover no-repeat;` : ""}`)
+                .card-content
+                  .author-content-item-tips=subTitle
+                  span.author-content-item-title=page.title
+                  .content-bottom
+                    .tips=tip
+                  .banner-button-group
+                    a.banner-button(onclick=`pjax.loadUrl("${url_for(btn_link ? btn_link : '/about')}")`)
+                      i.anzhiyufont.anzhiyu-icon-arrow-circle-right(style='font-size: 1.5rem')
+                      span.banner-button-text=btn_text ? btn_text : "关于我"
+
+          #content-inner.layout(class=hideAside)
+            if body
+              div!= body
+            else
+              block content
+              if theme.aside.enable && page.aside !== false
+                include widget/index.pug
+
+        - var footerBg = theme.footer_bg
+        if (footerBg)
+          if (footerBg === true)
+            - var footer_bg = bg_img
+          else
+            - var footer_bg = theme.footer_bg.indexOf('/') !== -1 ? `background-image: url('${url_for(footerBg)}')` : `background: ${footerBg}`
+        else
+          - var footer_bg = ''
+
+        footer#footer(style=footer_bg)
+          !=partial('includes/footer', {}, {cache: true})
+        
+        if (theme.agreementPopup && theme.agreementPopup.enable && is_home_first_page())
+          - let agreementPopupUrl = theme.agreementPopup.url
+          script(defer).
+            var hasShownPopup = sessionStorage.getItem('sessionNegotiatePopupShown');
+
+            if (!hasShownPopup) {
+              setTimeout(() => {
+                anzhiyuPopupManager && anzhiyuPopupManager.enqueuePopup('协议提醒助手', '查看本站为你的个人隐私做出的努力', '#{agreementPopupUrl}', 4000);
+                sessionStorage.setItem('sessionNegotiatePopupShown', 'true');
+              }, 1000);
+            }
+
+    else
+      include ./404.pug
+
+    !=partial('includes/sidebar', {}, {cache: true})
+
+    if theme.shortcutKey.enable
+      !=partial('includes/shortcutKey', {}, {cache: true})
+    include ./rightside.pug
+
+    if (theme.nav_music.enable || theme.nav_music.console_widescreen_music)
+      include ./music.pug
+    !=partial('includes/third-party/search/index', {}, {cache: true})
+    !=partial('includes/anzhiyu/rightmenu', {}, {cache:true})
+    include ./additional-js.pug
+
+    //- 思维导图模态框 - 只在文章页面显示
+    if is_post()
+      div#mindmap-modal.mindmap-modal
+        div.mindmap-overlay
+        div.mindmap-content
+          div.mindmap-header
+            span.mindmap-title 文章思维导图
+            button#mindmap-btn-close.mindmap-btn
+              i.anzhiyufont.anzhiyu-icon-close
+          div.mindmap-toolbar
+            button#mindmap-btn-fullscreen.mindmap-toolbar-btn
+              svg.mindmap-icon(width="16", height="16", viewBox="0 0 24 24", fill="currentColor")
+                path(d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z")
+            button#mindmap-btn-export.mindmap-toolbar-btn
+              i.anzhiyufont.anzhiyu-icon-download
+          div#mindmap-svg-container.mindmap-svg-container
+          div.mindmap-empty-state
+            i.anzhiyufont.anzhiyu-icon-file-text
+            span 本文暂无目录结构
+
+    //- 弹窗通知
+    !=partial('includes/popup/index', {}, {cache: true})

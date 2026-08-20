@@ -1,0 +1,107 @@
+footer#footer
+  #footer-wrap
+    #footer_deal
+      a.deal_link(href=`mailto:${theme.footer.owner.email}` title="email")
+        i.anzhiyufont.anzhiyu-icon-envelope
+      a.deal_link(target="_blank" rel="noopener" href=theme.footer.owner.weibo title="微博")
+        i.anzhiyufont.anzhiyu-icon-weibo
+      a.deal_link(target="_blank" rel="noopener" href=theme.footer.owner.facebook title="facebook")
+        i.anzhiyufont.anzhiyu-icon-facebook1
+      a.deal_link(href="/atom.xml" title="RSS")
+        i.anzhiyufont.anzhiyu-icon-rss
+      img.footer_mini_logo(title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src=theme.footer.owner.avatar)
+      a.deal_link(target="_blank" rel="noopener" href=theme.footer.owner.github title="Github")
+        i.anzhiyufont.anzhiyu-icon-github
+      a.deal_link(target="_blank" rel="noopener" href=theme.footer.owner.bilibili title="Bilibili")
+        i.anzhiyufont.anzhiyu-icon-bilibili
+      a.deal_link(target="_blank" rel="noopener" href=theme.footer.owner.douyin title="抖音")
+        i.anzhiyufont.anzhiyu-icon-tiktok
+      a.deal_link(href="/copyright" title="CC")
+        i.anzhiyufont.anzhiyu-icon-copyright-line
+
+    if theme.footer.bdageitem && theme.footer.bdageitem.enable
+      #footer-badges
+        each item in theme.footer.bdageitem.list
+          a.footer-badge-link(target="_blank" rel="noopener" href=item.link title=item.message)
+            img.footer-badge(src=item.shields alt=item.message loading="lazy")
+
+    #anzhiyu-footer
+      .footer-group
+        .footer-title 服务
+        .footer-links
+          a.footer-item(title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/") 51la统计
+          a.footer-item(title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/") 十年之约
+          a.footer-item(title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings") 开往
+      .footer-group
+        .footer-title 主题
+        .footer-links
+          a.footer-item(title="文档中心" href="/docs/") 文档中心
+          a.footer-item(title="博客插件" target="_blank" rel="noopener" href="https://hexo.io/plugins/") 博客插件
+          a.footer-item(title="更新日志" href="/update/") 更新日志
+      .footer-group
+        .footer-title 导航
+        .footer-links
+          a.footer-item(title="即刻短文" href="/essay/") 即刻短文
+          a.footer-item(title="导航网站" href="https://www.mfy-lifeline.top/#/") 导航网站
+          a.footer-item(title="留言板" href="/comments/") 留言板
+      .footer-group
+        .footer-title 作品集
+        .footer-links
+          a.footer-item(title="设计图仓" href="/design/") 设计图仓
+          a.footer-item(title="微码仓库" href="/code/") 微码仓库
+          a.footer-item(title="智造工坊" href="/Workshop/") 智造工坊
+      .footer-group
+        .footer-title-group
+          .footer-title 友链
+          a.random-friends-btn#footer-random-friends-btn(href="javascript:addFriendLinksInFooter();" title="换一批友情链接")
+            i.anzhiyufont.anzhiyu-icon-arrow-rotate-right
+        .footer-links#friend-links-in-footer
+
+    #footer-animal
+      .animal-wall
+      img.animal(src="/img/photo.avif" alt="动物" onerror="this.onerror=null;this.src='/img/404.jpg'")
+
+    #footer-bar
+      .footer-bar-links
+        .footer-bar-left
+          .copyright
+            if theme.footer.owner.enable
+              - var nowYear = new Date().getFullYear()
+              - let authorLink = theme.footer.footerBar.authorLink ? theme.footer.footerBar.authorLink : config.url
+              if theme.footer.owner.since && theme.footer.owner.since != nowYear
+                | ©#{theme.footer.owner.since} - #{nowYear} By 
+                a.footer-bar-link(href=url_for(authorLink) title=config.author target="_blank")=config.author
+              else
+                | ©#{nowYear} By 
+                a.footer-bar-link(href=url_for(authorLink) title=config.author target="_blank")=config.author
+          .footer-bar-subtitle(style="display: flex; align-items: center; gap: 0.3em;")
+            #footer-type-tips
+            span.typed-cursor
+        .footer-bar-right
+          - let linkIndex = 0;
+          each item in theme.footer.footerBar.linkList
+            a.footer-bar-link(target="_blank" rel="noopener" href=item.link title=item.text)=item.text
+            - linkIndex++;
+            - if (linkIndex === 1) {
+            .love-heart
+              .heart-shape
+                | ❤️
+            - }
+          
+
+script(src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js")
+script.
+  if (typeof Typed === 'function') {
+    // 先清空内容，防止被其他JS写入
+    document.querySelector('#footer-type-tips').innerText = '';
+    new Typed("#footer-type-tips", {
+      strings: ["心墙开扇窗，微风递糖霜。"],
+      startDelay: 300,
+      typeSpeed: 150,
+      backSpeed: 50,
+      loop: true,
+      showCursor: true,
+      cursorChar: '|'
+    });
+  }
+      

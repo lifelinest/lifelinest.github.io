@@ -1304,8 +1304,8 @@ electric_clock:
 
 # 51a统计配置
 LA:
-  enable: false
-  ck:
+  enable: true
+  ck: 3QwSZ9Z73TkmWmKS
   LingQueMonitorID:
 
 # 标签卖萌
@@ -1472,18 +1472,18 @@ inject:
     # - <link rel="stylesheet" href="/css/album.css">
     # 移除直接的CDN引用，使用主题配置的CDN提供商
     # Typed.js会通过主题的CDN配置自动加载
-    # 引入ECharts
-    - <script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script>
+    # 百度统计跟踪代码（站点已认证，PJAX 兼容，等 PV>100 后可启用百度 API）
+    - <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?b32c11b75638967a611ce92181c15e63";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();document.addEventListener('pjax:complete',function(){try{if(window._hmt){window._hmt.push(['_trackPageview',location.pathname+location.search])}}catch(e){}});</script>
 
-    
+
   bottom:
     # WinBox弹窗插件
     - <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script>
     # 自定义js
     # - <script src="/js/xxx"></script>
     - <script defer pjax src="/js/custom.js"></script>
-    # Live2D 看板娘大模型对话逻辑（点击看板娘唤起）
-    - <script defer pjax src="/js/live2d-chat.js?v=20260806h"></script>
+    # Live2D 看板娘大模型对话逻辑（点击看板娘唤起，安全版经 Worker 代理）
+    - <script defer pjax src="/js/live2d-chat.js?v=20260819sec"></script>
     - <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     - <script src="/js/update.js"></script>
     - <script src="/js/calendar-card.js"></script>

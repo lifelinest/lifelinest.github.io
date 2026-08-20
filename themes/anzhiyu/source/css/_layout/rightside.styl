@@ -1,0 +1,74 @@
+#rightside
+  position: fixed
+  right: -48px
+  bottom: $rightside-bottom
+  z-index: 100
+  opacity: 0
+  transition: all .5s
+  +maxWidth768()
+    #switch-commentBarrage
+      display: none
+
+  i
+    font-size: 1rem
+
+  #rightside-config-hide
+    height: 0
+    opacity: 0
+    transition: transform .4s
+    transform: translate(45px, 0)
+
+    &.show
+      height: auto
+      opacity: 1
+      transform: translate(0, 0)
+
+    &.status
+      height: auto
+      opacity: 1
+
+  /* 确保所有右侧边栏按钮和链接具有统一宽度 */
+  #rightside-config-show,
+  #rightside-config-hide
+    & > button,
+    & > a
+      display: flex
+      justify-content: center
+      align-items: center
+      margin-bottom: 5px
+      width: 35px
+      height: 35px
+      border-radius: 5px
+      background-color: var(--btn-bg)
+      color: var(--btn-color)
+      font-size: 16px
+      line-height: 1
+      /* 确保没有额外的内边距影响宽度 */
+      padding: 0
+      box-sizing: border-box
+      /* 移除默认按钮样式 */
+      border: none
+      cursor: pointer
+      text-decoration: none
+
+      &:hover
+        background-color: var(--btn-hover-color)
+      
+      i.anzhiyufont
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100%
+        height: 100%
+        /* 确保图标居中且大小一致 */
+        font-size: 16px !important
+
+  #mobile-toc-button
+    display: none
+
+    +maxWidth900()
+      display: block
+
+  +maxWidth900()
+    #hide-aside-btn
+      display: none

@@ -1,0 +1,72 @@
+#card-poem.card-widget
+  #poem_sentence 加载中...
+  #poem_info
+    #poem_dynasty 加载中...
+    .poem-title-scroll
+      #poem_author 加载中...
+script(type='text/javascript').
+  // 本地诗词备选
+  var localPoems = [
+    {
+      content: "床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+      dynasty: "唐代",
+      author: "李白",
+      title: "静夜思"
+    },
+    {
+      content: "人生自是有情痴，此恨不关风与月。",
+      dynasty: "宋代",
+      author: "欧阳修",
+      title: "玉楼春"
+    },
+    {
+      content: "大漠孤烟直，长河落日圆。",
+      dynasty: "唐代",
+      author: "王维",
+      title: "使至塞上"
+    },
+    {
+      content: "会当凌绝顶，一览众山小。",
+      dynasty: "唐代",
+      author: "杜甫",
+      title: "望岳"
+    }
+  ];
+  function renderPoem(poem) {
+    var sentence = document.querySelector("#poem_sentence");
+    var author = document.querySelector("#poem_author");
+    var dynasty = document.querySelector("#poem_dynasty");
+    var lines = poem.content.match(/[^，。！？；]+[，。！？；]?/g) || [poem.content];
+    sentence.innerHTML = lines.map(l => `<div class='poem-line'>${l.trim()}</div>`).join('');
+    dynasty.innerHTML = poem.dynasty || '无';
+    author.innerHTML = (poem.author || '') + '《' + (poem.title || '') + '》';
+  }
+  // 尝试API
+  function tryApi() {
+    if (window.jinrishici) {
+      jinrishici.load(function(result) {
+        try {
+          var data = result.data;
+          renderPoem({
+            content: data.content,
+            dynasty: data.origin.dynasty,
+            author: data.origin.author,
+            title: data.origin.title
+          });
+        } catch(e) {
+          renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+        }
+      });
+    } else {
+      renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);
+    }
+  }
+  // 加载API脚本
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js';
+  script.charset = 'utf-8';
+  script.onload = tryApi;
+  script.onerror = function(){renderPoem(localPoems[Math.floor(Math.random()*localPoems.length)]);}
+  document.head.appendChild(script);
+
+  
