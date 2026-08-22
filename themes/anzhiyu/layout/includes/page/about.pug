@@ -254,14 +254,8 @@ if site.data.about
 
 
     script(src=url_for(theme.asset.countup_js))
-    - const ck = theme.LA.ck
     script(defer).
       function initAboutPage() {
-        const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-        const workerBase = isLocal ? 'http://127.0.0.1:8787' : 'https://blog-la-stats-proxy.2rh50aqpuyunweiloginmh3.workers.dev';
-        const workerStatsUrl = workerBase + '/stats';
-        const widgetUrl = 'https://v6-widget.51.la/v6/' + '#{ck}' + '/quote.js';
-
         function renderStats(dataArray) {
           const title = ['最近活跃', '今日人数', '今日访问', '昨日人数', '昨日访问', '本月访问', '总访问量'];
           const statisticEl = document.getElementById('statistic');
@@ -312,31 +306,6 @@ if site.data.about
           observer.observe(statisticElement);
         }
 
-        function fetchFromWorker() {
-          return fetch(workerStatsUrl, { cache: 'no-store' })
-            .then(res => {
-              if (!res.ok) throw new Error('Worker ' + res.status);
-              return res.json();
-            })
-            .then(json => {
-              if (json.code !== 0 || !json.data) throw new Error('Worker no data');
-              const d = json.data;
-              return [0, d.todayUV, d.todayPV, d.yesterdayUV, d.yesterdayPV, d.monthPV, d.totalPV];
-            });
-        }
-
-        function fetchFromWidget() {
-          return fetch(widgetUrl)
-            .then(res => res.text())
-            .then(data => {
-              const num = data.match(/(<\/span><span>).*?(\/span><\/p>)/g);
-              if (!num || !num.length) throw new Error('Widget no data');
-              return num.map(el => {
-                return parseInt(el.replace(/(<\/span><span>|<\/span><\/p>)/g, ''), 10) || 0;
-              });
-            });
-        }
-
         const selfInfoContentYear = new CountUp('selfInfo-content-year', 0, #{selfInfoContentYear}, 0, 2, {
           useEasing: true,
           useGrouping: false,
@@ -360,15 +329,37 @@ if site.data.about
             .observe(selfInfoContentYearElement);
         }
 
-        fetchFromWorker()
-          .catch(() => fetchFromWidget())
-          .catch(() => {
-            document.getElementById('statistic').innerHTML =
-              '<div class="hot-loading" style="text-align:center;padding:20px;">暂无统计数据</div>';
-          })
-          .then(data => {
-            if (data) renderStats(data);
-          });
+        // 复用公共 51.la 统计模块，确保与侧边栏显示同一数据源（同一缓存 Promise）
+        function startStatsFetch() {
+          const LA = window.anzhiyu || {};
+          const fetchFn = LA.fetchLaStatsAboutArray;
+          if (typeof fetchFn !== 'function') {
+            // la-stats-common.js 加载失败（例如 async 尚未执行完），重试
+            console.info('[About] LA common module not ready, retry in 200ms');
+            setTimeout(startStatsFetch, 200);
+            return;
+          }
+          fetchFn()
+            .catch(function () {
+              document.getElementById('statistic').innerHTML =
+                '<div class="hot-loading" style="text-align:center;padding:20px;">暂无统计数据</div>';
+              // 失败后同时刷新侧边栏状态，保持一致
+              if (typeof LA.fillLaSidebar === 'function') LA.fillLaSidebar();
+              return null;
+            })
+            .then(function (data) {
+              if (data) renderStats(data);
+            });
+        }
+
+        if (
+          document.readyState === 'complete' ||
+          document.readyState === 'interactive'
+        ) {
+          startStatsFetch();
+        } else {
+          document.addEventListener('DOMContentLoaded', startStatsFetch);
+        }
 
         var pursuitInterval = null;
         pursuitInterval = setInterval(function () {

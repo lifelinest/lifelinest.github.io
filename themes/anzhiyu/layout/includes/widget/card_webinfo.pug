@@ -23,19 +23,18 @@ if theme.aside.card_webinfo.enable
             i.anzhiyufont.anzhiyu-icon-font
             .item-name=_p('aside.card_webinfo.site_wordcount') + " :"
           .item-count=totalcount(site)
-      if theme.busuanzi.site_uv
+      if theme.LA && theme.LA.enable
         .webinfo-item
           .webinfo-item-title
             i.anzhiyufont.anzhiyu-icon-universal-access
             .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
-          .item-count#busuanzi_value_site_uv
+          .item-count#la-site-uv
             i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
-      if theme.busuanzi.site_pv
         .webinfo-item
           .webinfo-item-title
             i.anzhiyufont.anzhiyu-icon-square-poll-vertical
             .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
-          .item-count#busuanzi_value_site_pv
+          .item-count#la-site-pv
             i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
       if theme.aside.card_webinfo.last_push_date
         .webinfo-item
