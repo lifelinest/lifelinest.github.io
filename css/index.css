@@ -5716,6 +5716,39 @@ body[data-type='about'] #web_bg {
 }
 .author-content-item.personalities {
   width: 59%;
+  background-image: -webkit-linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), var(--personality-bg);
+  background-image: -moz-linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), var(--personality-bg);
+  background-image: -o-linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), var(--personality-bg);
+  background-image: -ms-linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), var(--personality-bg);
+  background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), var(--personality-bg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  color: #6c5e79;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.95), 0 4px 24px rgba(0,0,0,0.9);
+}
+.author-content-item.personalities .title2 {
+  color: #6c5e79 !important;
+}
+.author-content-item.personalities .image img {
+  filter: drop-shadow(0 4px 16px rgba(108,94,121,0.6));
+}
+.author-content-item.personalities::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.author-content-item.personalities .author-content-item-tips,
+.author-content-item.personalities .author-content-item-title,
+.author-content-item.personalities .title2 {
+  position: relative;
+  z-index: 1;
+}
+.author-content-item.personalities .post-tips,
+.author-content-item.personalities .image {
+  z-index: 1;
 }
 .author-content-item.personalities .image {
   position: absolute;
@@ -6682,6 +6715,16 @@ body[data-type='about'] #web_bg {
   -ms-transition: 0.6s;
   transition: 0.6s;
   z-index: -1;
+}
+.author-content-item.careers .author-content-video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
 }
 :root {
   --loadingbar-background-color: #2c2b30;
