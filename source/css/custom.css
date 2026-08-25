@@ -439,3 +439,34 @@
 .topGroup .todayCard .todayCard-cover {
     display: none !important;
 }
+
+/* ===== 关于页追番模块：去掉斜切，图片正着显示 ===== */
+.author-content-item.comic-content .comic-item {
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+.author-content-item.comic-content .comic-item .comic-item-cover {
+  left: 0;
+  width: 100%;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+.author-content-item.comic-content .comic-item:hover .comic-item-cover {
+  left: 0;
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.author-content-item.comic-content .comic-item .comic-item-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

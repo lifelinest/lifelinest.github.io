@@ -37,7 +37,8 @@ html(lang=config.language data-theme=theme.display_mode class=htmlClassHideAside
                   .content-bottom
                     .tips=tip
                   .banner-button-group
-                    a.banner-button(onclick=`pjax.loadUrl("${url_for(btn_link ? btn_link : '/about')}")`)
+                    - let top_single_btn_url = url_for(btn_link ? btn_link : '/about')
+                    a.banner-button(href=top_single_btn_url onclick=`if (window.pjax) { event.preventDefault(); pjax.loadUrl("${top_single_btn_url}") }`)
                       i.anzhiyufont.anzhiyu-icon-arrow-circle-right(style='font-size: 1.5rem')
                       span.banner-button-text=btn_text ? btn_text : "关于我"
 

@@ -13,7 +13,8 @@
           .content-bottom
             .tips=i.description
           .banner-button-group
-            a.banner-button(onclick=`pjax.loadUrl("${url_for(album_detail_top_link ? album_detail_top_link : '/about')}")`, data-pjax-state)
+            - let album_top_url = url_for(album_detail_top_link ? album_detail_top_link : '/about')
+            a.banner-button(href=album_top_url onclick=`if (window.pjax) { event.preventDefault(); pjax.loadUrl("${album_top_url}") }`, data-pjax-state)
               i.anzhiyufont.anzhiyu-icon-arrow-circle-right(style='font-size: 1.5rem')
               span.banner-button-text=album_detail_top_btn_text ? album_detail_top_btn_text : "关于我"
       section.timeline.page-1

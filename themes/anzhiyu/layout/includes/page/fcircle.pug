@@ -13,7 +13,7 @@ if theme.friends_vue.enable
             br
             span(style='font-size: 16px;') 纵揽云程千万里，行则将至画卷中。
         .banner-button-group
-          a.banner-button(onclick='pjax.loadUrl("/about")')
+          a.banner-button(href='/about' onclick='if (window.pjax) { event.preventDefault(); pjax.loadUrl("/about") }')
             i.anzhiyufont.anzhiyu-icon-arrow-circle-right(style='font-size: 22px; margin-right: 0.25rem')
             span.banner-button-text 关于本人
     

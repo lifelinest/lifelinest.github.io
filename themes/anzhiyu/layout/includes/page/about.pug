@@ -85,8 +85,9 @@ if site.data.about
                     .name=career.desc
               else
                 .careers-none
-            if careers.img
-              img.author-content-img.no-lightbox(alt=careers.tips, src=url_for(careers.img) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'`)
+            if careers.video
+              video.author-content-video.no-lightbox(autoplay, loop, muted, playsinline, poster=url_for(theme.error_img.flink), alt=careers.tips)
+                source(src=url_for(careers.video) type="video/mp4")
       
       .author-content
         if theme.LA.enable
@@ -102,7 +103,7 @@ if site.data.about
               .banner-button-group
                 - let link = item.statistic.link
                 - let text = item.statistic.text
-                a.banner-button(onclick=`pjax.loadUrl("${link}")`)
+                a.banner-button(href=link onclick=`if (window.pjax) { event.preventDefault(); pjax.loadUrl("${link}") }`)
                   i.anzhiyufont.anzhiyu-icon-arrow-circle-right
                   |  
                   span.banner-button-text=text
@@ -137,8 +138,8 @@ if site.data.about
               span.selfInfo-content(style='color:#b04fe6')=selfInfoContent3
       
       .author-content
-        .author-content-item.personalities
-          - let {author_name, personality_type, photo_url, personality_img, name_url, personality_type_color} = item.personalities
+        - let {author_name, personality_type, photo_url, personality_img, name_url, personality_type_color, personality_bg} = item.personalities
+        .author-content-item.personalities(style=`--personality-bg: url(${personality_bg});`)
           .author-content-item-tips 性格
           span.author-content-item-title= author_name
           .title2(style=`color:${personality_type_color ? personality_type_color : "#ac899c"}`)= personality_type
@@ -209,7 +210,7 @@ if site.data.about
             .content-bottom
               .tips=`跟 ${aboutName} 一起欣赏更多音乐`
             .banner-button-group
-              a.banner-button(onclick=`pjax.loadUrl("${music_link}")`)
+              a.banner-button(href=music_link onclick=`if (window.pjax) { event.preventDefault(); pjax.loadUrl("${music_link}") }`)
                 i.anzhiyufont.anzhiyu-icon-arrow-circle-right
                 |  
                 span.banner-button-text 更多推荐

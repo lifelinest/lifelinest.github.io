@@ -82,7 +82,7 @@
     list:
       - desc: EDU,大数据专业
         color: "#357ef5"
-    img: https://img0.baidu.com/it/u=3623976101,2901550310&fm=253&fmt=auto&app=138&f=JPG?w=760&h=500
+    video: /mp4/career-bg.mp4
   statistic:
     link: /archives
     text: 文章隧道
@@ -102,8 +102,9 @@
   personalities:
     author_name: 建筑师
     personality_type: INTJ-A型
+    personality_bg: /images/性格背景.jpg
     photo_url: https://p5.itc.cn/q_70/images03/20220120/90ced7dba4b7405f862b555a566d5a96.png
-    personality_img: https://www.16personalities.com/static/images/personality-types/famous/analysts_INTJ_jay_gatsby.svg?v=6
+    personality_img: /images/INTJ.png
     name_url: https://www.16personalities.com/ch/esfj-%E4%BA%BA%E6%A0%BC
   maxim:
     maxim_tips: 座右铭
@@ -124,19 +125,19 @@
     comic_list:
       - name: 你的名字
         href: https://www.ikanbot.com/play/384246
-        cover: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F815a030d-9634-4d22-a4dc-1c8129baf7fc%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1701756579&t=8467dfc600b990366415e35a5eb294fe
+        cover: https://img0.baidu.com/it/u=1531430272,2471598467&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=892
       - name: 声之形
         href: https://www.ikanbot.com/play/396011
-        cover: https://img2.baidu.com/it/u=3211045469,2924306231&fm=253&fmt=auto&app=138&f=JPEG?w=948&h=500
+        cover: https://img0.baidu.com/it/u=735036369,3606332817&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=887
       - name: 昨日青空
         href: https://www.ikanbot.com/play/587904
-        cover: https://img2.baidu.com/it/u=2452371598,1535539893&fm=253&fmt=auto&app=138&f=JPEG?w=1073&h=500
+        cover: https://img1.baidu.com/it/u=3166491926,2813366408&fm=253&fmt=auto?w=708&h=1189
       - name: 大鱼海棠
         href: https://www.ikanbot.com/play/378784
-        cover: https://img0.baidu.com/it/u=3208284426,4247796056&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=708
+        cover: https://img1.baidu.com/it/u=1334287335,3709047419&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=736
       - name: 铃芽之旅
         href: https://www.ikanbot.com/play/783539
-        cover: https://img1.baidu.com/it/u=2538527633,2725943768&fm=253&fmt=auto&app=138&f=JPEG?w=950&h=398
+        cover: https://img0.baidu.com/it/u=2968382761,2070104770&fm=253&fmt=auto&app=120&f=JPEG?w=708&h=500
   like:
     like_tips: 关注偏好
     like_title: 数码科技

@@ -1445,7 +1445,7 @@ inject:
   head:
     - <script src="https://kit.fontawesome.com/7af8740427.js" crossorigin="anonymous"></script>
     - <script src="/js/update.js"></script>
-    - <link rel="stylesheet" href="/css/custom.css?v=20260811e">
+    - <link rel="stylesheet" href="/css/custom.css?v=20260824">
     # Live2D 看板娘大模型对话面板样式
     - <link rel="stylesheet" href="/css/live2d-chat.css?v=20260806g">
     - <link rel="stylesheet" href="/css/calendar-card.css">
