@@ -13,8 +13,8 @@
   'use strict';
 
   var CONFIG = {
-    // 调用自有 Cloudflare Worker 代理（密钥存于 Worker 端，浏览器零接触）
-    proxyEndpoint: 'https://blog-ai-proxy.2rh50aqpuyunweiloginmh3.workers.dev/',
+    // 调用自有 AI 代理（阿里云 FC Web 函数，密钥存于服务端环境变量，浏览器零接触）
+    proxyEndpoint: 'https://hexo-ipffziysha.cn-hangzhou.fcapp.run',
     indexUrl: '/site-index.json',
     temperature: 0.6,
     maxHistory: 8,                               // 保留最近 N 轮对话（用户+助手各算 1 条）

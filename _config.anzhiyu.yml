@@ -1482,8 +1482,8 @@ inject:
     # 自定义js
     # - <script src="/js/xxx"></script>
     - <script defer pjax src="/js/custom.js"></script>
-    # Live2D 看板娘大模型对话逻辑（点击看板娘唤起，安全版经 Worker 代理）
-    - <script defer pjax src="/js/live2d-chat.js?v=20260819sec"></script>
+    # Live2D 看板娘大模型对话逻辑（点击看板娘唤起，安全版经阿里云 FC 代理）
+    - <script defer pjax src="/js/live2d-chat.js?v=20260830fc"></script>
     - <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     - <script src="/js/update.js"></script>
     - <script src="/js/calendar-card.js"></script>
