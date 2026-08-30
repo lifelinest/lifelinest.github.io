@@ -1,0 +1,615 @@
+/* Privacy Policy Page Styles - 隐私政策页面样式 */
+
+/* CSS变量定义 */
+:root {
+    --privacy-primary: #667af2;
+    --privacy-primary-dark: #5568d9;
+    --privacy-primary-light: rgba(102, 122, 242, 0.1);
+    --privacy-text: #333;
+    --privacy-text-light: #666;
+    --privacy-text-lighter: #888;
+    --privacy-bg: #ffffff;
+    --privacy-card-bg: rgba(255, 255, 255, 0.92);
+    --privacy-border: #e0e5f8;
+    --privacy-success: #4caf50;
+    --privacy-error: #f44336;
+    --privacy-warning: #ff9800;
+    --privacy-shadow: 0 8px 32px rgba(102, 122, 242, 0.15);
+    --privacy-transition: all 0.3s ease;
+    --privacy-blur: 20px;
+}
+
+/* 强制隐藏左上角 logo 文字（冗余保护） */
+.privacy-logo .logo-text {
+    display: none !important;
+}
+
+/* 主容器样式 */
+#privacy-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--privacy-card-bg);
+    border-radius: 20px;
+    box-shadow: var(--privacy-shadow);
+    backdrop-filter: blur(var(--privacy-blur));
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* 装饰背景元素 */
+#privacy-page::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(120deg, rgba(102, 122, 242, 0.1), rgba(102, 122, 242, 0.05));
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+}
+
+#privacy-page::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(120deg, rgba(102, 122, 242, 0.08), rgba(102, 122, 242, 0.03));
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: -1;
+}
+
+/* 头部样式 */
+.privacy-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.privacy-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--privacy-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    box-shadow: 0 5px 15px rgba(102, 122, 242, 0.3);
+    backdrop-filter: blur(var(--privacy-blur));
+}
+
+.logo-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--privacy-primary);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(102, 122, 242, 0.15);
+}
+
+.privacy-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #667AF2 !important;
+    text-align: center;
+}
+
+.privacy-subtitle {
+    font-size: 18px;
+    color: var(--privacy-text-light);
+    max-width: 600px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+}
+
+.privacy-meta {
+    margin-top: 15px;
+}
+
+.last-updated {
+    font-size: 14px;
+    color: var(--privacy-text-lighter);
+    background: rgba(102, 122, 242, 0.1);
+    padding: 5px 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(102, 122, 242, 0.2);
+}
+
+/* 内容区域样式 */
+.privacy-content {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+/* 模块样式 - 添加虚线边框 */
+.privacy-section {
+    padding: 25px 30px;
+    border: 2px dashed rgba(102, 122, 242, 0.3);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    transition: var(--privacy-transition);
+    position: relative;
+}
+
+.privacy-section:hover {
+    border-color: rgba(102, 122, 242, 0.5);
+    background: rgba(255, 255, 255, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 122, 242, 0.1);
+}
+
+.privacy-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    color: var(--privacy-primary);
+    margin: 0 0 15px;
+    font-size: 22px;
+    padding-bottom: 8px;
+    border-bottom: 2px dashed var(--privacy-primary-light);
+    font-weight: 600;
+    position: relative;
+}
+
+.section-title::before {
+    content: '▌';
+    color: var(--privacy-primary);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.section-subtitle {
+    color: var(--privacy-text);
+    margin: 20px 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    padding-left: 15px;
+}
+
+.section-subtitle::before {
+    content: '▸';
+    color: var(--privacy-primary);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+.section-content {
+    margin-bottom: 15px;
+    color: var(--privacy-text-light);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.section-list {
+    padding-left: 0;
+    margin: 15px 0;
+    list-style: none;
+}
+
+.section-item {
+    margin-bottom: 12px;
+    color: var(--privacy-text-light);
+    position: relative;
+    padding-left: 25px;
+    line-height: 1.6;
+    transition: var(--privacy-transition);
+}
+
+.section-item:hover {
+    color: var(--privacy-text);
+    transform: translateX(5px);
+}
+
+.section-item::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--privacy-primary);
+    font-size: 14px;
+    transform: scale(0.8);
+}
+
+/* 联系方式样式 */
+.contact-details {
+    background: rgba(102, 122, 242, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 15px;
+    border: 1px solid rgba(102, 122, 242, 0.1);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: var(--privacy-text);
+    font-size: 16px;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-item i {
+    margin-right: 12px;
+    color: var(--privacy-primary);
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+/* 底部操作区域 - 增强样式 */
+.privacy-footer {
+    padding: 30px 2rem;
+    border-top: 2px dashed rgba(102, 122, 242, 0.3);
+    background: linear-gradient(135deg, rgba(245, 247, 255, 0.9), rgba(240, 243, 255, 0.8));
+    border-radius: 0 0 20px 20px;
+    margin: 20px -2rem -2rem;
+    position: relative;
+}
+
+.privacy-footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--privacy-primary);
+    border-radius: 2px;
+}
+
+.privacy-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center !important;
+    flex-wrap: wrap;
+}
+
+/* 当仅保留一个按钮时确保居中 */
+.privacy-footer .privacy-actions .privacy-btn {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 按钮增强样式 */
+.privacy-btn {
+    padding: 16px 35px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 17px;
+    cursor: pointer;
+    transition: var(--privacy-transition);
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 3px solid transparent;
+}
+
+.privacy-btn i {
+    margin-right: 10px;
+    font-size: 16px;
+    transition: var(--privacy-transition);
+}
+
+.privacy-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* 主要按钮样式 */
+.privacy-btn-primary {
+    background: linear-gradient(135deg, var(--privacy-primary), var(--privacy-primary-dark));
+    color: white;
+    box-shadow: 0 6px 20px rgba(102, 122, 242, 0.4);
+    border: 3px solid rgba(102, 122, 242, 0.2);
+}
+
+.privacy-btn-primary:hover {
+    background: linear-gradient(135deg, var(--privacy-primary-dark), #4a56c7);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 122, 242, 0.6);
+    border-color: var(--privacy-primary);
+}
+
+/* 次要按钮样式 */
+.privacy-btn-outline {
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--privacy-primary);
+    border: 3px solid var(--privacy-primary);
+    box-shadow: 0 4px 15px rgba(102, 122, 242, 0.2);
+}
+
+.privacy-btn-outline:hover {
+    background: rgba(102, 122, 242, 0.1);
+    transform: translateY(-3px);
+    border-color: var(--privacy-primary-dark);
+    color: var(--privacy-primary-dark);
+    box-shadow: 0 8px 25px rgba(102, 122, 242, 0.3);
+}
+
+.privacy-btn:active {
+    transform: translateY(0);
+}
+
+/* 水波纹效果 */
+.privacy-btn::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.5s, opacity 1s;
+}
+
+.privacy-btn:active::after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+}
+
+/* 自定义滚动条 */
+.privacy-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.privacy-content::-webkit-scrollbar-track {
+    background: rgba(224, 229, 248, 0.3);
+    border-radius: 4px;
+}
+
+.privacy-content::-webkit-scrollbar-thumb {
+    background: rgba(102, 122, 242, 0.5);
+    border-radius: 4px;
+}
+
+.privacy-content::-webkit-scrollbar-thumb:hover {
+    background: var(--privacy-primary);
+}
+
+/* 进度指示器 */
+.privacy-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(102, 122, 242, 0.2);
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+}
+
+.privacy-progress-bar {
+    height: 100%;
+    background: var(--privacy-primary);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #privacy-page {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .privacy-title {
+        font-size: 26px;
+    }
+
+    .privacy-subtitle {
+        font-size: 16px;
+    }
+
+    .logo-text {
+        font-size: 24px;
+    }
+
+    .privacy-content {
+        max-height: 60vh;
+    }
+
+    .privacy-section {
+        padding: 20px;
+    }
+
+    .privacy-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .privacy-btn {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #privacy-page {
+        padding: 1rem;
+        border-radius: 15px;
+    }
+
+    .privacy-header {
+        padding: 0 10px;
+    }
+
+    .privacy-logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo-icon {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .privacy-section {
+        padding: 15px;
+    }
+
+    .section-item {
+        padding-left: 20px;
+    }
+
+    .contact-details {
+        padding: 15px;
+    }
+
+    .privacy-footer {
+        padding: 20px 1rem;
+        margin: 0 -1rem -1rem;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(102, 122, 242, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(102, 122, 242, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(102, 122, 242, 0);
+    }
+}
+
+.pulse {
+    animation: pulse 1s infinite;
+}
+
+/* 深色模式适配 */
+[data-theme='dark'] #privacy-page {
+    --privacy-text: #e0e0e0;
+    --privacy-text-light: #b0b0b0;
+    --privacy-text-lighter: #888;
+    --privacy-card-bg: rgba(40, 44, 52, 0.95);
+    --privacy-border: #3a3f4a;
+    background: var(--privacy-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .privacy-content {
+    background: rgba(30, 34, 40, 0.6);
+}
+
+[data-theme='dark'] .contact-details {
+    background: rgba(102, 122, 242, 0.1);
+    border: 1px solid rgba(102, 122, 242, 0.2);
+}
+
+[data-theme='dark'] .privacy-footer {
+    background: rgba(25, 29, 35, 0.7);
+}
+
+[data-theme='dark'] .last-updated {
+    background: rgba(102, 122, 242, 0.2);
+}
+
+[data-theme='dark'] .privacy-section {
+    border-color: rgba(102, 122, 242, 0.4);
+    background: rgba(40, 44, 52, 0.6);
+}
+
+[data-theme='dark'] .privacy-section:hover {
+    border-color: rgba(102, 122, 242, 0.6);
+    background: rgba(40, 44, 52, 0.8);
+}
+
+[data-theme='dark'] .privacy-footer {
+    background: linear-gradient(135deg, rgba(30, 34, 40, 0.9), rgba(25, 29, 35, 0.8));
+    border-top-color: rgba(102, 122, 242, 0.4);
+}
+
+/* 打印样式 */
+@media print {
+    #privacy-page {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        background: white;
+        max-width: none;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .privacy-footer {
+        display: none;
+    }
+
+    .privacy-content {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .privacy-section {
+        break-inside: avoid;
+    }
+}
