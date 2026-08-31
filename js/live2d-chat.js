@@ -13,8 +13,8 @@
   'use strict';
 
   var CONFIG = {
-    // 调用自有 AI 代理（阿里云 FC Web 函数，密钥存于服务端环境变量，浏览器零接触）
-    proxyEndpoint: 'https://hexo-ipffziysha.cn-hangzhou.fcapp.run',
+    // 调用自有 AI 代理（Cloudflare Worker，绑定 lifeline.cc.cd 自定义域名，密钥存于服务端，浏览器零接触）
+    proxyEndpoint: 'https://ai.lifeline.cc.cd',
     indexUrl: '/site-index.json',
     temperature: 0.6,
     maxHistory: 8,                               // 保留最近 N 轮对话（用户+助手各算 1 条）
