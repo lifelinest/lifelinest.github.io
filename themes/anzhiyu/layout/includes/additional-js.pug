@@ -146,7 +146,7 @@ div
   if theme.LA && theme.LA.enable
     script.
       window.__LA_CK__ = '!{theme.LA.ck}';
-    script(async data-pjax src=url_for('/js/la-stats-common.js'))
+    script(async data-pjax src=url_for('/js/la-stats-common.js?v=20260903b'))
 
   if theme.accesskey.enable
     script(charset="UTF-8" src=url_for(theme.asset.accesskey_js))

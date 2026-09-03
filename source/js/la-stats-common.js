@@ -10,12 +10,8 @@
   const LA = window.anzhiyu;
 
   // ========= 配置 =========
-  const IS_LOCAL =
-    location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-  const WORKER_BASE = IS_LOCAL
-    ? 'http://127.0.0.1:8787'
-    : 'https://blog-la-stats-proxy.2rh50aqpuyunweiloginmh3.workers.dev';
-  const WORKER_STATS_URL = WORKER_BASE + '/stats';
+  // 数据来源：51.la 官方数据挂件 quote.js（与 51.la 后台口径完全一致）。
+  // 挂件托管在阿里云 OSS 且开放 CORS，浏览器可直接读取，不依赖 Worker。
   const WIDGET_BASE = 'https://v6-widget.51.la/v6/';
   // ck 在模板注入后会写到 window.__LA_CK__
   const CK =
@@ -25,32 +21,9 @@
   // 缓存：同一次页面生命周期内只请求一次
   let cachedPromise = null;
 
-  // ========= 内部：Worker 请求 =========
-  function fetchFromWorker() {
-    return fetch(WORKER_STATS_URL, { cache: 'no-store' })
-      .then(function (res) {
-        if (!res.ok) throw new Error('Worker HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function (json) {
-        if (json.code !== 0 || !json.data) throw new Error('Worker no data');
-        const d = json.data;
-        // 返回顺序：[最近活跃占位, 今日UV, 今日PV, 昨日UV, 昨日PV, 本月PV, 总PV]
-        // 注意：51.la /stats 目前没有返回 总UV 字段，这里做映射
-        return {
-          todayUV: d.todayUV || 0,
-          todayPV: d.todayPV || 0,
-          yesterdayUV: d.yesterdayUV || 0,
-          yesterdayPV: d.yesterdayPV || 0,
-          monthPV: d.monthPV || 0,
-          totalPV: d.totalPV || 0,
-          // Worker 暂未提供 totalUV，用 0 占位（UI 需要的话后续补）
-          totalUV: 0,
-        };
-      });
-  }
-
-  // ========= 内部：Widget 降级（quote.js） =========
+  // ========= 内部：Widget（官方数据挂件 quote.js） =========
+  // 挂件数据块按行内嵌 7 组「索引:数值」：
+  //   0=最近活跃, 1=今日UV, 2=今日PV, 3=昨日UV, 4=昨日PV, 5=本月PV, 6=总PV
   function fetchFromWidget() {
     if (!WIDGET_URL) return Promise.reject(new Error('No LA ck'));
     return fetch(WIDGET_URL)
@@ -59,25 +32,19 @@
         return res.text();
       })
       .then(function (data) {
-        const matches = data.match(/(<\/span><span>).*?(<\/span><\/p>)/g);
-        if (!matches || !matches.length) throw new Error('Widget parse error');
-        const nums = matches.map(function (el) {
-          return (
-            parseInt(
-              el.replace(/(<\/span><span>|<\/span><\/p>)/g, ''),
-              10
-            ) || 0
-          );
+        const rows = data.match(/<span>(\d+)<\/span><span>(\d+)<\/span><\/p>/g);
+        if (!rows || rows.length < 7) throw new Error('Widget parse error');
+        const values = rows.map(function (row) {
+          const m = row.match(/<span>(\d+)<\/span><span>(\d+)<\/span><\/p>/);
+          return m ? parseInt(m[2], 10) || 0 : 0;
         });
-        // quote.js 顺序：[今日UV, 今日PV, 昨日UV, 昨日PV, 本月PV, 总PV]
         return {
-          todayUV: nums[0] || 0,
-          todayPV: nums[1] || 0,
-          yesterdayUV: nums[2] || 0,
-          yesterdayPV: nums[3] || 0,
-          monthPV: nums[4] || 0,
-          totalPV: nums[5] || 0,
-          totalUV: 0,
+          todayUV: values[1] || 0,
+          todayPV: values[2] || 0,
+          yesterdayUV: values[3] || 0,
+          yesterdayPV: values[4] || 0,
+          monthPV: values[5] || 0,
+          totalPV: values[6] || 0,
         };
       });
   }
@@ -85,16 +52,11 @@
   // ========= 公共：获取全站统计对象（带缓存） =========
   function fetchSiteStats() {
     if (cachedPromise) return cachedPromise;
-    cachedPromise = fetchFromWorker()
-      .catch(function (e) {
-        console.info('[LA Stats] Worker failed, fallback to widget:', e && e.message);
-        return fetchFromWidget();
-      })
-      .catch(function (e) {
-        console.info('[LA Stats] Widget also failed:', e && e.message);
-        cachedPromise = null; // 失败不缓存，下次可重试
-        throw e;
-      });
+    cachedPromise = fetchFromWidget().catch(function (e) {
+      console.info('[LA Stats] Widget failed:', e && e.message);
+      cachedPromise = null; // 失败不缓存，下次可重试
+      throw e;
+    });
     return cachedPromise;
   }
 
@@ -104,32 +66,27 @@
     return n.toLocaleString ? n.toLocaleString('zh-CN') : String(n);
   }
 
-  // ========= 公共：填充侧边栏（#la-site-uv / #la-site-pv） =========
+  // ========= 公共：填充侧边栏（#la-site-month-pv 当月访问量 / #la-site-total-pv 总访问量） =========
   // 重要：严格按 51.la 实际返回的数据显示，不做任何伪造/叠加，确保与后台一致
   function fillSidebar() {
-    const uvEl = document.getElementById('la-site-uv');
-    const pvEl = document.getElementById('la-site-pv');
-    if (!uvEl && !pvEl) return;
+    const monthEl = document.getElementById('la-site-month-pv');
+    const totalEl = document.getElementById('la-site-total-pv');
+    if (!monthEl && !totalEl) return;
 
     return fetchSiteStats()
       .then(function (s) {
-        // 总UV：51.la OpenAPI 与 数据挂件(quote.js)均未提供累计总UV，真实显示为 --
-        // 以后若 /stats 接口补齐 totalUV 字段，会自动生效（已在 fetchSiteStats 中预留）
-        if (uvEl) {
-          if (s.totalUV && s.totalUV > 0) {
-            uvEl.innerHTML = formatNumber(s.totalUV);
-          } else {
-            uvEl.innerHTML = '<span title="51.la暂未开放累计总UV" style="opacity:.6;cursor:help">--</span>';
-          }
+        // 当月访问量：51.la 提供本月 PV，真实显示（与关于页“本月访问”同源）
+        if (monthEl) {
+          monthEl.innerHTML = formatNumber(s.monthPV);
         }
-        // 总PV：51.la 提供 totalPV，真实显示
-        if (pvEl) {
-          pvEl.innerHTML = formatNumber(s.totalPV);
+        // 总访问量：51.la 提供累计 PV，真实显示
+        if (totalEl) {
+          totalEl.innerHTML = formatNumber(s.totalPV);
         }
       })
       .catch(function () {
-        if (uvEl) uvEl.innerHTML = '<span style="opacity:.6">--</span>';
-        if (pvEl) pvEl.innerHTML = '<span style="opacity:.6">--</span>';
+        if (monthEl) monthEl.innerHTML = '<span style="opacity:.6">--</span>';
+        if (totalEl) totalEl.innerHTML = '<span style="opacity:.6">--</span>';
       });
   }
 

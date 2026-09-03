@@ -26,15 +26,15 @@ if theme.aside.card_webinfo.enable
       if theme.LA && theme.LA.enable
         .webinfo-item
           .webinfo-item-title
-            i.anzhiyufont.anzhiyu-icon-universal-access
-            .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
-          .item-count#la-site-uv
+            i.anzhiyufont.anzhiyu-icon-calendar-days
+            .item-name= _p('aside.card_webinfo.site_month_visit_name') + " :"
+          .item-count#la-site-month-pv
             i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
         .webinfo-item
           .webinfo-item-title
             i.anzhiyufont.anzhiyu-icon-square-poll-vertical
-            .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
-          .item-count#la-site-pv
+            .item-name= _p('aside.card_webinfo.site_total_visit_name') + " :"
+          .item-count#la-site-total-pv
             i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
       if theme.aside.card_webinfo.last_push_date
         .webinfo-item
