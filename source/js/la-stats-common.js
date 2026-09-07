@@ -98,6 +98,32 @@
     });
   }
 
+  // ========= 公共：全站访问足迹记录（成就墙「访客成就」的数据源） =========
+  // 仅在本机 localStorage 里记录"到访过某类页面"，无任何网络上报。
+  // 键名约定：lifeAch.<成就key> = 解锁时间戳(ms)，成就墙页面（/life/）读取展示
+  const ACH_KEY_PREFIX = 'lifeAch.';
+  const ACH_PATH_RULES = [
+    // [成就key, 页面路径特征]
+    ['archives', /^\/archives/], // 考古学家：逛过文章隧道
+    ['comments', /^\/comments/], // 会客使者：到访过留言板
+    ['post', /^\/posts\//],      // 博览群书：读过任意一篇文章
+  ];
+  function markAchievement(key) {
+    try {
+      if (!localStorage.getItem(ACH_KEY_PREFIX + key)) {
+        localStorage.setItem(ACH_KEY_PREFIX + key, String(Date.now()));
+      }
+    } catch (e) { /* localStorage 不可用时静默跳过 */ }
+  }
+  function trackVisitFlags() {
+    const path = decodeURIComponent(location.pathname || '/');
+    ACH_PATH_RULES.forEach(function (rule) {
+      if (rule[1].test(path)) markAchievement(rule[0]);
+    });
+  }
+  // 供其他页面脚本（工具箱/技能树）记录自定义成就
+  LA.markAchievement = markAchievement;
+
   // ========= 暴露到全局 =========
   LA.fetchLaStats = fetchSiteStats;
   LA.fetchLaStatsAboutArray = fetchAboutStatsArray;
@@ -105,6 +131,7 @@
 
   // ========= 自动执行：页面加载 + PJAX 完成 =========
   function autoRun() {
+    trackVisitFlags();
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', fillSidebar);
     } else {
@@ -113,6 +140,7 @@
     // PJAX：切页后侧边栏会重新渲染，需要重新填充
     document.addEventListener('pjax:complete', function () {
       cachedPromise = null;
+      trackVisitFlags();
       fillSidebar();
     });
   }

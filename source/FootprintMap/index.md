@@ -1,5 +1,5 @@
 ---
-title: 足迹地图
+title: 足迹
 date: 2023-08-01 00:00:00
 type: FootprintMap
 comments: false

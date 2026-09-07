@@ -7,14 +7,14 @@ menu:
   友链:
     友人帐: /link/ || anzhiyu-icon-link
     留言板: /comments/ || anzhiyu-icon-envelope
-    聊天室: /comments/ || anzhiyu-icon-comments
+    心愿墙: /wish/ || anzhiyu-icon-hand-heart-fill
 
   我的:
     音乐馆: /music/ || anzhiyu-icon-music
     追番页: /bangumis/ || anzhiyu-icon-bilibili
     相册集: /album/ || anzhiyu-icon-images
     小空调: /air-conditioner/ || anzhiyu-icon-fan
-    待办清单: /todolist/ || anzhiyu-icon-calendar-days
+    足迹: /FootprintMap/ || anzhiyu-icon-location-dot
 
   关于:
     关于本人: /about/ || anzhiyu-icon-paper-plane
@@ -1165,21 +1165,21 @@ home_top:
   subTitle: 未来可期
   siteText: 逐梦云程启新篇🚀 未来可期展宏图🌈
   category:
-    - name: 前端
-      path: /categories/前端开发/
+    - name: 工具箱
+      path: /frontend/
       shadow: var(--anzhiyu-shadow-blue)
       class: blue
-      icon: anzhiyu-icon-dove
-    - name: 大学
-      path: /categories/大学生涯/
+      icon: anzhiyu-icon-cube
+    - name: 技能树
+      path: /campus/
       shadow: var(--anzhiyu-shadow-red)
       class: red
-      icon: anzhiyu-icon-fire
-    - name: 生活
-      path: /categories/生活日常/
+      icon: anzhiyu-icon-plant-fill
+    - name: 成就墙
+      path: /life/
       shadow: var(--anzhiyu-shadow-green)
       class: green
-      icon: anzhiyu-icon-book
+      icon: anzhiyu-icon-dice-d20
   default_descr: 再怎么看我也不知道怎么描述它的啦！
   swiper:
     enable: false # 是否启用swiper轮播

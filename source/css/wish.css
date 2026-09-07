@@ -1,0 +1,207 @@
+/* ============ 心愿墙 wish.css v=20260907a ============ */
+/* 统计条 */
+.wb-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;padding:18px 22px}
+.wb-stat{display:flex;align-items:center;gap:10px;flex:1;min-width:140px;justify-content:center}
+.wb-stat i{font-size:22px;color:var(--anzhiyu-theme)}
+.wb-stat b{font-size:24px;font-family:var(--anzhiyu-font-num,'monospace');color:var(--anzhiyu-fontcolor)}
+.wb-stat span{font-size:13px;color:var(--anzhiyu-secondtext)}
+/* 投稿区 */
+.wb-compose{margin-top:16px;padding:16px 22px}
+.wb-compose-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:12px;border:1.5px dashed var(--anzhiyu-theme);background:transparent;color:var(--anzhiyu-theme);font-size:15px;cursor:pointer;transition:.3s}
+.wb-compose-btn:hover{background:var(--anzhiyu-theme);color:#fff;box-shadow:var(--anzhiyu-shadow-blue)}
+.wb-form{margin-top:14px;border-top:1px dashed var(--anzhiyu-shadow-border);padding-top:14px}
+.wb-form-row{margin-bottom:12px}
+.wb-types{display:inline-flex;gap:8px}
+.wb-type{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;border:1px solid var(--anzhiyu-card-border);background:var(--anzhiyu-secondbg);color:var(--anzhiyu-secondtext);font-size:14px;cursor:pointer;transition:.25s}
+.wb-type.active{background:var(--anzhiyu-theme);border-color:var(--anzhiyu-theme);color:#fff;box-shadow:var(--anzhiyu-shadow-blue)}
+.wb-form-tip{margin-left:12px;font-size:12.5px;color:var(--anzhiyu-secondtext)}
+.wb-colors{display:flex;gap:10px;flex-wrap:wrap}
+.wb-color{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;outline:2px solid transparent;transition:.2s;position:relative}
+.wb-color:hover{transform:scale(1.15)}
+.wb-color.active{outline-color:var(--anzhiyu-fontcolor);outline-offset:2px}
+.wb-form-inputs{display:flex;flex-direction:column;gap:10px}
+.wb-input{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--anzhiyu-card-border);background:var(--anzhiyu-secondbg);color:var(--anzhiyu-fontcolor);font-size:14.5px;outline:none;transition:.25s;box-sizing:border-box}
+.wb-input:focus{border-color:var(--anzhiyu-theme);box-shadow:var(--anzhiyu-shadow-blue)}
+.wb-textarea{resize:vertical;min-height:84px;font-family:inherit;line-height:1.7}
+.wb-form-foot{display:flex;align-items:center;justify-content:flex-end;gap:14px}
+.wb-counter{font-size:12.5px;color:var(--anzhiyu-secondtext);font-family:var(--anzhiyu-font-num,'monospace')}
+.wb-counter.over{color:var(--anzhiyu-red)}
+.wb-submit{display:inline-flex;align-items:center;gap:7px;padding:9px 26px;border-radius:999px;border:none;background:var(--anzhiyu-theme);color:#fff;font-size:14.5px;cursor:pointer;transition:.3s}
+.wb-submit:hover{transform:translateY(-2px);box-shadow:var(--anzhiyu-shadow-blue)}
+.wb-submit:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.wb-submit.sending i{animation:wbSpin 1s linear infinite}
+@keyframes wbSpin{to{transform:rotate(360deg)}}
+/* 墙头 */
+.wb-wall-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:26px 0 14px}
+.wb-filters{display:flex;gap:8px;flex-wrap:wrap}
+.wb-filter{padding:6px 16px;border-radius:999px;border:1px solid var(--anzhiyu-card-border);background:var(--anzhiyu-card-bg);color:var(--anzhiyu-secondtext);font-size:13.5px;cursor:pointer;transition:.25s}
+.wb-filter:hover{border-color:var(--anzhiyu-theme);color:var(--anzhiyu-theme)}
+.wb-filter.active{background:var(--anzhiyu-theme);border-color:var(--anzhiyu-theme);color:#fff}
+/* 便签墙 - 多列瀑布流 */
+.wb-wall{columns:4 240px;column-gap:16px}
+.wb-note{break-inside:avoid;display:inline-block;width:100%;margin:0 0 16px;border-radius:4px 4px 10px 4px;padding:26px 16px 14px;position:relative;box-shadow:0 4px 14px rgba(0,0,0,.09);transition:transform .3s,box-shadow .3s;animation:noteIn .5s cubic-bezier(.22,1.2,.36,1) both}
+.wb-note:hover{transform:translateY(-4px) rotate(0deg)!important;box-shadow:0 10px 26px rgba(0,0,0,.16)}
+.wb-note::before{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%) rotate(-3deg);width:74px;height:18px;background:rgba(255,255,255,.55);border:1px solid rgba(0,0,0,.06);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.wb-note.wb-newly{animation:notePop .55s cubic-bezier(.22,1.4,.36,1) both}
+.wb-note.wb-newly::after{content:'NEW';position:absolute;top:4px;right:8px;font-size:10px;font-weight:700;color:#fff;background:var(--anzhiyu-red);padding:2px 7px;border-radius:999px;letter-spacing:.5px}
+@keyframes noteIn{from{opacity:0;transform:translateY(22px) scale(.92)}to{opacity:1}}
+@keyframes notePop{0%{opacity:0;transform:scale(.5) rotate(-6deg)}100%{opacity:1;transform:scale(1) rotate(var(--wb-tilt,0deg))}}
+.wb-note-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.wb-tag{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;padding:2.5px 9px;border-radius:999px;font-weight:600}
+.wb-tag.t-wish{background:rgba(61,145,90,.15);color:#2e7d4f}
+.wb-tag.t-hole{background:rgba(108,92,180,.15);color:#6c5cb4}
+.wb-tag.t-owner{background:rgba(66,90,239,.14);color:var(--anzhiyu-theme)}
+.wb-tag.t-review{background:rgba(214,69,96,.14);color:#d64560}
+[data-theme="dark"] .wb-tag.t-review{background:rgba(214,69,96,.22);color:#f08a9b}
+/* 显示更多 */
+.wb-more{display:block;margin:6px auto 0;padding:10px 34px;border-radius:999px;border:1.5px dashed var(--anzhiyu-theme);background:transparent;color:var(--anzhiyu-theme);font-size:14px;cursor:pointer;transition:.3s}
+.wb-more:hover{background:var(--anzhiyu-theme);color:#fff;box-shadow:var(--anzhiyu-shadow-blue)}
+/* 便签编辑器 */
+.wb-edit-box{margin-top:4px}
+.wb-edit-box .wb-textarea{min-height:70px;font-size:13.5px}
+.wb-edit-bar{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+.wb-reply-cancel{flex-shrink:0;border:1px solid rgba(0,0,0,.15);border-radius:8px;padding:0 12px;background:none;color:rgba(76,70,56,.7);font-size:12.5px;cursor:pointer;transition:.25s}
+.wb-reply-cancel:hover{border-color:var(--anzhiyu-theme);color:var(--anzhiyu-theme)}
+[data-theme="dark"] .wb-reply-cancel{border-color:rgba(255,255,255,.2);color:rgba(230,223,204,.75)}
+.wb-tag.t-mine{background:rgba(230,162,60,.18);color:#b07a1a;margin-left:auto}
+.wb-note-content{font-size:14.5px;line-height:1.8;color:#4c4638;word-break:break-word;white-space:pre-wrap}
+.wb-note-foot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:9px;border-top:1px dashed rgba(0,0,0,.1)}
+.wb-note-meta{font-size:12px;color:rgba(76,70,56,.62);display:flex;flex-direction:column;gap:1px}
+.wb-note-nick{font-weight:600;color:rgba(76,70,56,.85)}
+.wb-like{display:inline-flex;align-items:center;gap:5px;background:none;border:none;cursor:pointer;font-size:12.5px;color:rgba(76,70,56,.6);padding:3px 6px;border-radius:8px;transition:.2s}
+.wb-like i{font-size:14px;transition:.25s}
+.wb-like:hover{color:#d64560;background:rgba(214,69,96,.1)}
+.wb-like.liked{color:#d64560}
+.wb-like.liked i{animation:likeBeat .45s ease}
+@keyframes likeBeat{0%{transform:scale(1)}40%{transform:scale(1.45)}100%{transform:scale(1)}}
+/* 状态徽章（仅心愿） */
+.wb-status{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:2.5px 9px;border-radius:999px;font-weight:600;margin-top:8px;cursor:default;border:none}
+.wb-status.s-pending{background:rgba(120,120,120,.14);color:#757575}
+.wb-status.s-doing{background:rgba(52,120,190,.15);color:#3478be}
+.wb-status.s-done{background:rgba(61,145,90,.18);color:#2e7d4f}
+.wb-status.clickable{cursor:pointer;transition:.2s}
+.wb-status.clickable:hover{filter:brightness(.92);transform:scale(1.05)}
+/* 便签 8 色（纸质感，亮色） */
+.wb-note.c0{background:#fff8d6;--wb-tilt:-.6deg;transform:rotate(-.6deg)}
+.wb-note.c1{background:#e3f7e8;--wb-tilt:.5deg;transform:rotate(.5deg)}
+.wb-note.c2{background:#e3f1fd;--wb-tilt:-.4deg;transform:rotate(-.4deg)}
+.wb-note.c3{background:#fde9ef;--wb-tilt:.6deg;transform:rotate(.6deg)}
+.wb-note.c4{background:#efe9fd;--wb-tilt:-.5deg;transform:rotate(-.5deg)}
+.wb-note.c5{background:#ffeedd;--wb-tilt:.4deg;transform:rotate(.4deg)}
+.wb-note.c6{background:#f4f4f0;--wb-tilt:-.4deg;transform:rotate(-.4deg)}
+.wb-note.c7{background:#e2f6f4;--wb-tilt:.5deg;transform:rotate(.5deg)}
+.wb-note.c0::before{background:rgba(255,236,150,.8)}
+.wb-note.c3::before{background:rgba(255,183,205,.65)}
+.wb-note.c4::before{background:rgba(206,190,255,.6)}
+/* 空状态 */
+.wb-empty{text-align:center;padding:52px 20px;border:2px dashed var(--anzhiyu-shadow-border);border-radius:16px;color:var(--anzhiyu-secondtext)}
+.wb-empty-note{display:inline-flex;width:64px;height:64px;border-radius:16px;background:var(--anzhiyu-secondbg);align-items:center;justify-content:center;margin-bottom:14px;transform:rotate(-4deg);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.wb-empty-note i{font-size:26px;color:var(--anzhiyu-theme)}
+.wb-empty p{font-size:16px;color:var(--anzhiyu-fontcolor);margin:0 0 6px;font-weight:600}
+.wb-empty span{font-size:13px}
+/* 底部说明 */
+.wb-foot{margin-top:22px;padding:14px 22px;font-size:13px;color:var(--anzhiyu-secondtext)}
+.wb-foot p{margin:4px 0;display:flex;align-items:center;gap:7px}
+.wb-foot i{color:var(--anzhiyu-green)}
+/* 提示条（离线/在线模式说明） */
+.wb-banner{display:flex;align-items:center;gap:8px;margin-top:12px;padding:10px 16px;border-radius:10px;font-size:13px;background:rgba(230,162,60,.12);color:#9a6b12;border:1px solid rgba(230,162,60,.3)}
+[data-theme="dark"] .wb-banner{background:rgba(230,162,60,.14);color:#e0b45c}
+.wb-banner i{flex-shrink:0}
+/* 暗色模式便签纸色 */
+[data-theme="dark"] .wb-note{box-shadow:0 4px 14px rgba(0,0,0,.4)}
+[data-theme="dark"] .wb-note.c0{background:#4a4430}
+[data-theme="dark"] .wb-note.c1{background:#33473a}
+[data-theme="dark"] .wb-note.c2{background:#333f58}
+[data-theme="dark"] .wb-note.c3{background:#4a3642}
+[data-theme="dark"] .wb-note.c4{background:#3e3954}
+[data-theme="dark"] .wb-note.c5{background:#4c3c2c}
+[data-theme="dark"] .wb-note.c6{background:#3a3a3a}
+[data-theme="dark"] .wb-note.c7{background:#2f4a48}
+[data-theme="dark"] .wb-note-content{color:#e6dfcc}
+[data-theme="dark"] .wb-note-meta{color:rgba(230,223,204,.6)}
+[data-theme="dark"] .wb-note-nick{color:rgba(230,223,204,.85)}
+[data-theme="dark"] .wb-note-foot{border-top-color:rgba(255,255,255,.12)}
+[data-theme="dark"] .wb-like{color:rgba(230,223,204,.6)}
+[data-theme="dark"] .wb-tag.t-wish{background:rgba(102,187,136,.2);color:#8fd4ab}
+[data-theme="dark"] .wb-tag.t-hole{background:rgba(150,132,230,.2);color:#b3a4f0}
+[data-theme="dark"] .wb-tag.t-owner{background:rgba(120,140,255,.2);color:#93a4ff}
+[data-theme="dark"] .wb-tag.t-mine{background:rgba(230,162,60,.22);color:#e8b45c}
+[data-theme="dark"] .wb-status.s-pending{background:rgba(160,160,160,.18);color:#a8a8a8}
+[data-theme="dark"] .wb-status.s-doing{background:rgba(90,150,210,.2);color:#84b7e8}
+[data-theme="dark"] .wb-status.s-done{background:rgba(90,180,120,.2);color:#95d9ae}
+[data-theme="dark"] .wb-note::before{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.08)}
+/* 移动端 */
+@media screen and (max-width:768px){
+  .wb-wall{columns:2 150px;column-gap:12px}
+  .wb-note{padding:22px 12px 12px;margin-bottom:12px}
+  .wb-note-content{font-size:13.5px}
+  .wb-stats{gap:6px;padding:14px}
+  .wb-stat{min-width:calc(50% - 6px)}
+  .wb-stat b{font-size:20px}
+  .wb-form-tip{display:block;margin:6px 0 0}
+  .wb-wall-head{margin-top:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .wb-note,.wb-note.wb-newly{animation:none}
+  .wb-like.liked i{animation:none}
+}
+/* ============ v2 增补：搜索/排序/倒计时/留言/删除/审核 ============ */
+/* 墙头工具行 */
+.wb-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wb-searchbox{display:flex;align-items:center;gap:8px;padding:0 12px;border-radius:10px;border:1px solid var(--anzhiyu-card-border);background:var(--anzhiyu-card-bg);transition:.25s}
+.wb-searchbox:focus-within{border-color:var(--anzhiyu-theme);box-shadow:var(--anzhiyu-shadow-blue)}
+.wb-searchbox i{color:var(--anzhiyu-secondtext);font-size:14px;flex-shrink:0}
+.wb-searchbox .wb-input{border:none;background:none;box-shadow:none;padding:8px 0;width:180px}
+.wb-searchbox .wb-input:focus{box-shadow:none;border:none}
+.wb-search-clear{background:none;border:none;cursor:pointer;color:var(--anzhiyu-secondtext);padding:4px}
+.wb-search-clear:hover{color:var(--anzhiyu-red)}
+.wb-sort{width:auto;padding:8px 12px;cursor:pointer}
+.wb-searchbox .wb-input{width:180px}
+@media screen and (max-width:768px){.wb-searchbox .wb-input{width:120px}}
+/* 目标日期行 */
+#wb-target-row{margin:0}
+/* 倒计时徽章 */
+.wb-target{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:2.5px 9px;border-radius:999px;font-weight:600;margin-top:8px;margin-left:6px}
+.wb-target.s-run{background:rgba(52,120,190,.12);color:#3478be}
+.wb-target.s-over{background:rgba(214,69,96,.12);color:#d64560}
+.wb-target.s-hit{background:rgba(230,162,60,.16);color:#b07a1a}
+/* 便签删除按钮（自己的 / 审核模式） */
+.wb-del{margin-left:auto;background:none;border:none;cursor:pointer;color:rgba(76,70,56,.45);font-size:14px;padding:2px 5px;border-radius:6px;transition:.2s;line-height:1}
+.wb-del:hover{color:#d64560;background:rgba(214,69,96,.1)}
+.wb-del.admin{color:rgba(214,69,96,.55)}
+.wb-del.admin:hover{background:rgba(214,69,96,.16)}
+.wb-tag.t-mine + .wb-del{margin-left:6px}
+[data-theme="dark"] .wb-del{color:rgba(230,223,204,.5)}
+/* 共鸣留言 */
+.wb-reply-btn{background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:rgba(76,70,56,.6);padding:3px 6px;border-radius:8px;transition:.2s}
+.wb-reply-btn:hover{color:var(--anzhiyu-theme);background:rgba(66,90,239,.08)}
+[data-theme="dark"] .wb-reply-btn{color:rgba(230,223,204,.6)}
+.wb-replies{margin-top:10px;border-top:1px dashed rgba(0,0,0,.1);padding-top:9px}
+[data-theme="dark"] .wb-replies{border-top-color:rgba(255,255,255,.12)}
+.wb-reply-item{font-size:12.8px;line-height:1.65;padding:5px 0;color:#4c4638;word-break:break-word}
+[data-theme="dark"] .wb-reply-item{color:#ddd6c4}
+.wb-reply-item b{font-weight:600;color:var(--anzhiyu-theme)}
+.wb-reply-item .wb-reply-time{color:rgba(76,70,56,.5);font-size:11px;margin-left:6px}
+[data-theme="dark"] .wb-reply-item .wb-reply-time{color:rgba(230,223,204,.45)}
+.wb-reply-form{display:flex;gap:6px;margin-top:7px}
+.wb-reply-form .wb-input{padding:6px 10px;font-size:12.5px;border-radius:8px}
+.wb-reply-nick{width:86px;flex-shrink:0}
+.wb-reply-text{flex:1;min-width:0}
+.wb-reply-send{flex-shrink:0;border:none;border-radius:8px;padding:0 12px;background:var(--anzhiyu-theme);color:#fff;font-size:12.5px;cursor:pointer;transition:.25s}
+.wb-reply-send:hover{filter:brightness(1.1)}
+.wb-reply-empty{font-size:12px;color:rgba(76,70,56,.5);padding:2px 0 4px}
+[data-theme="dark"] .wb-reply-empty{color:rgba(230,223,204,.45)}
+/* 树洞渐隐揭示 */
+.wb-note-content.wb-secret{filter:blur(5px);cursor:pointer;transition:filter .35s;user-select:none}
+.wb-note-content.wb-secret:hover{filter:blur(3px)}
+.wb-note-content.wb-secret.wb-revealed{filter:none;cursor:auto;user-select:auto}
+/* 迁移按钮 */
+.wb-migrate{margin-left:auto;border:none;border-radius:8px;padding:6px 14px;background:var(--anzhiyu-theme);color:#fff;font-size:12.5px;cursor:pointer;transition:.25s;flex-shrink:0}
+.wb-migrate:hover{filter:brightness(1.1);box-shadow:var(--anzhiyu-shadow-blue)}
+/* 站长审核 */
+.wb-admin-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px dashed var(--anzhiyu-card-border);border-radius:8px;padding:5px 14px;color:var(--anzhiyu-secondtext);font-size:12.5px;cursor:pointer;transition:.25s}
+.wb-admin-btn:hover{border-color:var(--anzhiyu-theme);color:var(--anzhiyu-theme)}
+.wb-admin-btn.on{border-style:solid;border-color:var(--anzhiyu-red);color:var(--anzhiyu-red);background:rgba(214,69,96,.06)}
+/* 排序筛选下的空搜索结果提示 */
+.wb-nohit{text-align:center;padding:36px 0;color:var(--anzhiyu-secondtext);font-size:14px}
+.wb-nohit i{display:block;font-size:28px;margin-bottom:10px;color:var(--anzhiyu-theme)}
