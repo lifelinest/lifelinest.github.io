@@ -20,6 +20,18 @@
   --fp-track: rgba(255, 255, 255, 0.07);
   --fp-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
   --fp-radius: 18px;
+
+  /* 迹遇 hero 主题变量（浅色默认） */
+  --fp-hero-bg: linear-gradient(168deg, #f6f1fc 0%, #ece4f7 48%, #e7ecf8 100%);
+  --fp-hero-title: #7d5e16;
+  --fp-hero-lyric: #5b5570;
+  --fp-hero-song: #9a7320;
+  --fp-map-line: rgba(90, 70, 140, 0.14);
+  --fp-arc-1: #C9A24B;
+  --fp-arc-2: #E2C06A;
+  --fp-arc-3: #F0D98C;
+  --fp-hero-fade: rgba(231, 236, 248, 1);
+  --fp-frame-bg: #ffffff;
 }
 
 [data-theme="dark"] #footprint-map-page {
@@ -30,40 +42,44 @@
   --fp-border: rgba(255, 215, 122, 0.16);
   --fp-track: rgba(255, 255, 255, 0.09);
   --fp-shadow: 0 12px 44px rgba(0, 0, 0, 0.55);
+
+  /* 迹遇 hero 暗色：参考图深蓝紫夜景 */
+  --fp-hero-bg: linear-gradient(180deg, #090d20 0%, #0f1533 16%, #15204a 34%, #252b63 58%, #5a4e83 82%, #b7a9d8 100%);
+  --fp-hero-title: #F7F1E1;
+  --fp-hero-lyric: #E8EAF6;
+  --fp-hero-song: #EAD9A0;
+  --fp-map-line: rgba(255, 255, 255, 0.10);
+  --fp-arc-1: #FFD77A;
+  --fp-arc-2: #FFE5A8;
+  --fp-arc-3: #FFF4D6;
+  --fp-hero-fade: rgba(183, 169, 216, 1);
+  --fp-frame-bg: linear-gradient(180deg, rgba(12, 14, 30, 0.98), rgba(6, 8, 18, 0.98));
 }
 
 /* ---------- 2. 顶部 Hero：按图片 1:1 还原 ---------- */
 .fp-jiyu-hero {
   position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  min-height: 92vh;
+  width: 100%;
+  flex-shrink: 0;
+  height: clamp(300px, 36vh, 400px);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    180deg,
-    #090d20 0%,
-    #0f1533 16%,
-    #15204a 34%,
-    #252b63 58%,
-    #5a4e83 82%,
-    #b7a9d8 100%
-  );
-  color: #F7F1E1;
+  background: var(--fp-hero-bg);
+  color: var(--fp-hero-title);
   isolation: isolate;
 }
 
-/* 底部过渡：自然融入下方地图卡片 */
+/* 底部过渡：自然融入下方地图区 */
 .fp-jiyu-hero::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 140px;
-  background: linear-gradient(to top, rgba(183, 169, 216, 1), rgba(183, 169, 216, 0));
+  height: 120px;
+  background: linear-gradient(to top, var(--fp-hero-fade), transparent);
   z-index: 4;
   pointer-events: none;
 }
@@ -75,7 +91,7 @@
   width: 110%;
   height: 110%;
   z-index: 1;
-  color: rgba(255, 255, 255, 0.10);
+  color: var(--fp-map-line);
   opacity: 0;
   transform: scale(1.03);
   transition: opacity 0.9s ease 0.15s, transform 1.4s ease 0.15s;
@@ -98,6 +114,11 @@
   overflow: visible;
 }
 
+/* 金色弧线渐变跟随主题 */
+.fp-jiyu-arc stop.fp-arc-stop-1 { stop-color: var(--fp-arc-1); }
+.fp-jiyu-arc stop.fp-arc-stop-2 { stop-color: var(--fp-arc-2); }
+.fp-jiyu-arc stop.fp-arc-stop-3 { stop-color: var(--fp-arc-3); }
+
 /* 金色弧线绘制动画 */
 .fp-jiyu-arc-path {
   stroke-dasharray: 1800;
@@ -118,6 +139,8 @@
 }
 
 /* 星光 */
+.fp-jiyu-stars-dots { fill: var(--fp-arc-3); }
+.fp-jiyu-stars-cross { stroke: var(--fp-arc-3); }
 .fp-jiyu-stars-dots circle,
 .fp-jiyu-stars-cross g {
   opacity: 0;
@@ -184,30 +207,39 @@
 .fp-jiyu-footprints g:nth-child(8)  { transition-delay: 1.70s; --fp-rotate: -14deg; }
 .fp-jiyu-footprints g:nth-child(9)  { transition-delay: 1.85s; --fp-rotate: 8deg; }
 
-/* 内容层 */
+/* 内容层：居中单列，右对齐落款 */
 .fp-jiyu-content {
   position: relative;
   z-index: 3;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   text-align: center;
-  padding: 8vh 20px 0;
-  max-width: 720px;
 }
 
 .fp-jiyu-title {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 0.14em;
   align-items: center;
-  margin: 0 0 22px;
+  justify-content: center;
+  margin: 0 0 18px;
   font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
-  font-size: clamp(52px, 11vw, 100px);
+  font-size: clamp(44px, 9vw, 84px);
   font-weight: 500;
   line-height: 1.02;
   letter-spacing: 0.08em;
-  color: #F7F1E1;
+  color: var(--fp-hero-title);
   text-shadow:
-    0 0 24px rgba(255, 215, 122, 0.32),
-    0 0 64px rgba(255, 215, 122, 0.16),
-    0 2px 10px rgba(0, 0, 0, 0.25);
+    0 0 24px rgba(255, 215, 122, 0.30),
+    0 0 64px rgba(255, 215, 122, 0.14),
+    0 2px 10px rgba(0, 0, 0, 0.18);
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 1.05s,
@@ -225,8 +257,8 @@
   font-size: clamp(15px, 2vw, 22px);
   line-height: 1.95;
   letter-spacing: 0.12em;
-  color: #E8EAF6;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+  color: var(--fp-hero-lyric);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.65s ease 1.45s, transform 0.65s ease 1.45s;
@@ -238,13 +270,12 @@
 }
 
 .fp-jiyu-song {
-  position: absolute;
-  right: 0;
-  bottom: -6vh;
+  align-self: flex-end;
+  margin-top: 16px;
   font-family: "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: clamp(13px, 1.5vw, 18px);
   letter-spacing: 0.1em;
-  color: #EAD9A0;
+  color: var(--fp-hero-song);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.55s ease 1.85s, transform 0.55s ease 1.85s;
@@ -255,16 +286,18 @@
   transform: translateY(0);
 }
 
-/* ---------- 3. 地图卡片：深色金色主题 ---------- */
+/* ---------- 3. 统一框：上方迹遇 hero + 下方地图 ---------- */
 #footprint-map-container {
   position: relative;
   width: 100%;
   max-width: 100%;
   height: var(--fp-h, 720px);
   min-height: 460px;
-  margin: -24px 0 40px;
+  margin: 24px 0 40px;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(16, 19, 40, 0.96), rgba(8, 10, 22, 0.98));
+  display: flex;
+  flex-direction: column;
+  background: var(--fp-frame-bg);
   border: 1px solid var(--fp-border);
   border-radius: 18px;
   box-shadow:
@@ -275,7 +308,15 @@
 }
 
 [data-theme="dark"] #footprint-map-container {
-  background: linear-gradient(180deg, rgba(12, 14, 30, 0.98), rgba(6, 8, 18, 0.98));
+  background: var(--fp-frame-bg);
+}
+
+/* 地图区：占满框内剩余高度，承载地图/面板/控制栏 */
+.fp-map-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* 地图铺满 */
@@ -992,16 +1033,16 @@
 /* ---------- 9. 响应式：手机 ---------- */
 @media screen and (max-width: 768px) {
   .fp-jiyu-hero {
-    min-height: 100svh;
-    min-height: 620px;
+    height: clamp(260px, 50vh, 340px);
+    min-height: 0;
   }
 
   .fp-jiyu-content {
-    padding-top: 10vh;
+    padding-top: 0;
   }
 
   .fp-jiyu-title {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
 
   .fp-jiyu-lyric {
@@ -1010,18 +1051,12 @@
   }
 
   .fp-jiyu-song {
-    bottom: -4vh;
-    right: 50%;
-    transform: translateX(50%) translateY(8px);
-  }
-
-  #footprint-map-page.is-show .fp-jiyu-song {
-    transform: translateX(50%) translateY(0);
+    margin-top: 12px;
   }
 
   #footprint-map-container {
     min-height: 380px;
-    margin-top: -18px;
+    margin-top: 14px;
   }
 
   /* 列表面板 → 底部抽屉 */
