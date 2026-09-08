@@ -537,6 +537,15 @@
   function start() {
     container = document.getElementById(CONTAINER_ID);
     if (!container) return;
+
+    // 「迹遇」hero 在页面就绪即揭示，不依赖地图加载（避免地图 key 失效/慢导致标题永久隐藏）
+    var page = document.getElementById('footprint-map-page');
+    if (page) {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { page.classList.add('is-show'); });
+      });
+    }
+
     // 移动端默认收起列表面板，优先保证地图视野
     if (window.innerWidth <= 768) {
       var panel = document.getElementById('fp-panel');
