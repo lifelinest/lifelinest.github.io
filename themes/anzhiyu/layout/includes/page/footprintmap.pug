@@ -1,85 +1,94 @@
-// 足迹地图页面
-// 结构对齐示例插件 halo-plugin-footprint：地图 + 底部胶囊控制栏 + 圆头像 marker + 贴纸式 InfoWindow
-// 并结合安知鱼主题实际做了：导航栏高度自适应、亮/暗双主题、三段式响应式
-// 页头（足迹2026 + 标语）为独立区域，位于地图上方、内容框内
-link(rel='stylesheet', href='/css/footprintmap.css?v=20260908b')
+// 足迹地图页面 —— 迹遇主题（按用户图片还原）
+// 结构：地图【上方】独立「迹遇」卡片（单独圆角框，不占地图框）
+//       + 地图【下方】真实高德地图（独立卡片，保持原样）
+// 浅/暗主题联动：迹遇卡片背景、地图底图均跟随站点主题切换
+link(rel='stylesheet', href='/css/footprintmap.css?v=20260908i')
 
 #footprint-map-page
-  // 页头：足迹标题 + 标语（单独区域，位于地图上方，内容框内）
-  .fp-page-header
-    h1.fp-page-title
-      | 足迹
-      span.fp-page-version 2026
-    p.fp-page-slogan 每一处足迹都充满了故事，那是对人生的思考和无限的风光。
+  // ========== 独立「迹遇」卡片（地图上方，单独框，仅文字 + 背景）==========
+  .fp-jiyu-card
+    section.fp-jiyu-hero(aria-label='迹遇')
+      // 内容层：仅标题、歌词、落款（去除地图线稿/弧线/星光等杂乱装饰）
+      .fp-jiyu-content
+        h1.fp-jiyu-title(aria-label='迹遇')
+          span 迹
+          span 遇
+        p.fp-jiyu-lyric
+          | 总有些惊奇的际遇，
+          br
+          | 比方说当我遇见你，
+        span.fp-jiyu-song ——《小宇》
 
-  // 地图卡片：嵌入页面默认内容框，作为圆角卡片呈现
+  // ========== 地图框（独立卡片，保持原样）==========
   #footprint-map-container
-    // 地图本体：铺满整个容器
-    #footprint-map
+    // 地图区：占满框内高度
+    .fp-map-wrap
+      // 地图本体：铺满地图区
+      #footprint-map
 
-    // 足迹列表面板：桌面端悬浮玻璃卡片可折叠，移动端底部抽屉
-    aside#fp-panel.fp-panel
-      button#fp-panel-toggle.fp-panel-toggle(type="button" aria-label="收起或展开足迹列表")
-        svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-          polyline(points="15 18 9 12 15 6")
-      .fp-panel-inner
-        .fp-panel-head
-          h4 足迹列表
-          span#fp-count.fp-count 0
-        .fp-search
-          i.anzhiyufont.anzhiyu-icon-magnifying-glass
-          input#footprint-search(type="text" placeholder="搜索足迹…" autocomplete="off")
-        select#footprint-type-filter
-          option(value="all") 所有类型
-        .fp-stats
-          .fp-stat
-            span#total-footprints 0
-            em 总足迹
-          .fp-stat
-            span#total-cities 0
-            em 城市数
-          .fp-stat
-            span#total-types 0
-            em 类型数
-        #fp-list.fp-list
+      // 足迹列表面板：桌面端悬浮玻璃卡片可折叠，移动端底部抽屉
+      aside#fp-panel.fp-panel
+        button#fp-panel-toggle.fp-panel-toggle(type='button' aria-label='收起或展开足迹列表')
+          svg(viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2')
+            polyline(points='15 18 9 12 15 6')
+        .fp-panel-inner
+          .fp-panel-head
+            h4 足迹列表
+            span#fp-count.fp-count 0
+          .fp-search
+            i.anzhiyufont.anzhiyu-icon-magnifying-glass
+            input#footprint-search(type='text' placeholder='搜索足迹…' autocomplete='off')
+          select#footprint-type-filter
+            option(value='all') 所有类型
+          .fp-stats
+            .fp-stat
+              span#total-footprints 0
+              em 总足迹
+            .fp-stat
+              span#total-cities 0
+              em 城市数
+            .fp-stat
+              span#total-types 0
+              em 类型数
+          #fp-list.fp-list
 
-    // 底部胶囊控制栏（示例插件 .map-controls）
-    .fp-controls
-      .fp-layer-selector
-        button.fp-layer-btn.active(type="button" data-type="normal")
-          svg.fp-ic(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-            rect(x="3" y="3" width="18" height="18" rx="2" ry="2")
-            path(d="M9 9h6v6H9z")
-          span 标准图
-        button.fp-layer-btn(type="button" data-type="satellite")
-          svg.fp-ic(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-            circle(cx="12" cy="12" r="10")
-            path(d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z")
-          span 卫星图
-      .fp-feature-toggles
-        label.fp-toggle-item
-          input#fp-road(type="checkbox" data-type="road")
-          span.fp-toggle-track
-          span.fp-toggle-label 路网
-        label.fp-toggle-item
-          input#fp-traffic(type="checkbox" data-type="traffic")
-          span.fp-toggle-track
-          span.fp-toggle-label 路况
-      .fp-zoom-controls
-        button#fp-zoom-out.fp-zoom-btn(type="button" aria-label="缩小")
-          svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-            circle(cx="11" cy="11" r="8")
-            path(d="M21 21l-4.35-4.35")
-            line(x1="8" y1="11" x2="14" y2="11")
-        button#fp-zoom-in.fp-zoom-btn(type="button" aria-label="放大")
-          svg(viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-            circle(cx="11" cy="11" r="8")
-            path(d="M21 21l-4.35-4.35")
-            line(x1="11" y1="8" x2="11" y2="14")
-            line(x1="8" y1="11" x2="14" y2="11")
-      .fp-scale-display
-        .fp-scale-bar
-        span#fp-scale-text 1000 公里
+      // 底部胶囊控制栏
+      .fp-controls
+        .fp-layer-selector
+          button.fp-layer-btn.active(type='button' data-type='normal')
+            svg.fp-ic(viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2')
+              rect(x='3' y='3' width='18' height='18' rx='2' ry='2')
+              path(d='M9 9h6v6H9z')
+            span 标准图
+          button.fp-layer-btn(type='button' data-type='satellite')
+            svg.fp-ic(viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2')
+              circle(cx='12' cy='12' r='10')
+              path(d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z')
+            span 卫星图
+        .fp-feature-toggles
+          label.fp-toggle-item
+            input#fp-road(type='checkbox' data-type='road')
+            span.fp-toggle-track
+            span.fp-toggle-label 路网
+          label.fp-toggle-item
+            input#fp-traffic(type='checkbox' data-type='traffic')
+            span.fp-toggle-track
+            span.fp-toggle-label 路况
+        .fp-zoom-controls
+          button#fp-zoom-out.fp-zoom-btn(type='button' aria-label='缩小')
+            svg(viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2')
+              circle(cx='11' cy='11' r='8')
+              path(d='M21 21l-4.35-4.35')
+              line(x1='8' y1='11' x2='14' y2='11')
+          button#fp-zoom-in.fp-zoom-btn(type='button' aria-label='放大')
+            svg(viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2')
+              circle(cx='11' cy='11' r='8')
+              path(d='M21 21l-4.35-4.35')
+              line(x1='11' y1='8' x2='11' y2='14')
+              line(x1='8' y1='11' x2='14' y2='11')
+        .fp-scale-display
+          .fp-scale-bar
+          span#fp-scale-text 1000 公里
 
 // 注入足迹数据（兼容 {footprints:[…]} 与 […] 两种结构）
 script.
@@ -87,11 +96,12 @@ script.
   window.FOOTPRINT_CONFIG = {
     amapKey: 'dc1eaa8e383ff12ca596ba00fe2b2ed1',
     securityJsCode: 'dc1eaa8e383ff12ca596ba00fe2b2ed1',
-    title: '足迹',
-    logoName: '足迹',
-    describe: '每一处足迹都充满了故事，那是对人生的思考和无限的风光。',
+    title: '迹遇',
+    logoName: '迹遇',
+    describe: '总有些惊奇的际遇，比方说当我遇见你。',
+    // 浅色用标准底图，暗色用 dark 底图 —— 恢复主题联动
     mapStyle: 'amap://styles/normal',
     mapStyleDark: 'amap://styles/dark'
   };
 
-script(src="/js/footprintmap.js?v=20260908b")
+script(src='/js/footprintmap.js?v=20260908i')

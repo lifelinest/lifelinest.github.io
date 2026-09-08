@@ -1,54 +1,256 @@
 /* =========================================================
-   足迹地图 FootprintMap
-   结构对齐示例插件 halo-plugin-footprint：
-     全屏地图 + 左下 Logo/标语 + 底部胶囊控制栏 + 圆头像 marker + 贴纸式 InfoWindow
-   并结合安知鱼主题实际做了：破容器全宽、导航栏高度自适应、亮/暗双主题、三段式响应式
+   足迹地图 FootprintMap —— 迹遇主题
+   顶部 hero 按用户图片 1:1 还原：
+     深蓝紫渐变 + 世界地图线稿 + 金色发光弧线 + 星光脚印
+     + 标题「迹遇」+ 歌词 + 右下角「——《小宇》」
+   下方保留真实高德地图模块，整体改为深色金色主题。
+   已适配桌面 / 平板 / 手机及 AnZhiYu 暗色模式。
    ========================================================= */
 
-/* ---------- 1. 变量（上移到父级 #footprint-map-page，页头与地图卡片共享） ---------- */
+/* ---------- 1. 变量：金色主题 + 深色玻璃表面 ---------- */
 #footprint-map-page {
+  /* —— 浅色（默认）UI 控件变量：跟随明主题 ——
+     修复 BUG：此前控件表面被写死为深色，导致浅色模式下仍是暗色主题。
+     现改为浅色表面 + 深色文字，暗色模式仍由下方 [data-theme="dark"] 覆盖。
+     主色使用 AnZhiYu 主题色（蓝色），明亮模式下所有控件/标记/胶囊显示蓝色而非金色。 */
   --fp-primary: var(--anzhiyu-theme, #425aef);
-  --fp-text: #2b2f36;
-  --fp-text-sub: #5c6470;
-  --fp-surface: rgba(255, 255, 255, 0.94);
-  --fp-surface-solid: #fff;
-  --fp-border: rgba(0, 0, 0, 0.08);
-  --fp-track: rgba(0, 0, 0, 0.06);
-  --fp-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  --fp-primary-glow: color-mix(in srgb, var(--anzhiyu-theme, #425aef) 32%, transparent);
+  --fp-primary-soft: color-mix(in srgb, var(--anzhiyu-theme, #425aef) 16%, transparent);
+  --fp-text: #2c2b3a;
+  --fp-text-sub: #6f6c84;
+  --fp-surface: rgba(255, 255, 255, 0.86);
+  --fp-surface-solid: #ffffff;
+  --fp-border: rgba(110, 100, 140, 0.16);
+  --fp-track: rgba(28, 26, 50, 0.10);
+  --fp-shadow: 0 14px 44px rgba(70, 60, 100, 0.16);
   --fp-radius: 18px;
+
+  /* 迹遇 hero 主题变量（浅色默认）— 仍按参考图保持金色文字
+     拆分为 light / dark 两套，dark 用伪元素叠加并做 opacity 过渡，
+     实现明暗切换时的“渐变过渡”而非硬切（CSS 渐变本身无法 transition） */
+  --fp-hero-bg-light: linear-gradient(168deg, #f6f1fc 0%, #ece4f7 48%, #e7ecf8 100%);
+  --fp-hero-bg-dark: linear-gradient(180deg, #090d20 0%, #0f1533 16%, #15204a 34%, #252b63 58%, #5a4e83 82%, #b7a9d8 100%);
+  --fp-hero-title: #7d5e16;
+  --fp-hero-lyric: #5b5570;
+  --fp-hero-song: #9a7320;
+  --fp-frame-bg: #ffffff;
 }
 
 [data-theme="dark"] #footprint-map-page {
-  --fp-text: #e8e8ea;
-  --fp-text-sub: #a8a8b0;
-  --fp-surface: rgba(28, 28, 33, 0.92);
-  --fp-surface-solid: #1d1d21;
-  --fp-border: rgba(255, 255, 255, 0.1);
+  --fp-text: #F7F1E1;
+  --fp-text-sub: #A8A5B8;
+  --fp-surface: rgba(18, 20, 38, 0.86);
+  --fp-surface-solid: #121426;
+  --fp-border: rgba(255, 215, 122, 0.16);
   --fp-track: rgba(255, 255, 255, 0.09);
-  --fp-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --fp-shadow: 0 12px 44px rgba(0, 0, 0, 0.55);
+
+  /* 暗色下恢复金色氛围主色 */
+  --fp-primary: #FFD77A;
+  --fp-primary-glow: rgba(255, 215, 122, 0.35);
+  --fp-primary-soft: rgba(255, 215, 122, 0.12);
+
+  /* 迹遇 hero 暗色：参考图深蓝紫夜景 */
+  --fp-hero-bg-dark: linear-gradient(180deg, #090d20 0%, #0f1533 16%, #15204a 34%, #252b63 58%, #5a4e83 82%, #b7a9d8 100%);
+  --fp-hero-title: #F7F1E1;
+  --fp-hero-lyric: #E8EAF6;
+  --fp-hero-song: #EAD9A0;
+  --fp-map-line: rgba(255, 255, 255, 0.10);
+  --fp-arc-1: #FFD77A;
+  --fp-arc-2: #FFE5A8;
+  --fp-arc-3: #FFF4D6;
+  --fp-hero-fade: rgba(183, 169, 216, 1);
+  --fp-frame-bg: linear-gradient(180deg, rgba(12, 14, 30, 0.98), rgba(6, 8, 18, 0.98));
 }
 
-/* ---------- 2. 容器：嵌入页面默认内容框，作为圆角卡片呈现 ---------- */
-/* 地图嵌入页面默认内容框（不再破容器全屏），作为圆角卡片呈现 */
+/* 暗色：迹遇卡片的暗色渐变遮罩淡入 */
+[data-theme="dark"] #footprint-map-page .fp-jiyu-card::before { opacity: 1; }
+
+/* ---------- 1b. 跟随系统：主题若未显式设置 data-theme（仅随系统切换），
+   则通过 prefers-color-scheme 兜底，确保 OS 切换明暗时本页同步 ----------
+   注意 :root:not([data-theme="light"]) —— 用户手动选了“浅色”时（data-theme=light）
+   不覆盖，尊重手动选择；其余情况（data-theme=dark 或 未设置）都跟随系统。 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #footprint-map-page {
+    --fp-text: #F7F1E1;
+    --fp-text-sub: #A8A5B8;
+    --fp-surface: rgba(18, 20, 38, 0.86);
+    --fp-surface-solid: #121426;
+    --fp-border: rgba(255, 215, 122, 0.16);
+    --fp-track: rgba(255, 255, 255, 0.09);
+    --fp-shadow: 0 12px 44px rgba(0, 0, 0, 0.55);
+
+    /* 暗色下恢复金色氛围主色 */
+    --fp-primary: #FFD77A;
+    --fp-primary-glow: rgba(255, 215, 122, 0.35);
+    --fp-primary-soft: rgba(255, 215, 122, 0.12);
+
+    --fp-hero-bg-dark: linear-gradient(180deg, #090d20 0%, #0f1533 16%, #15204a 34%, #252b63 58%, #5a4e83 82%, #b7a9d8 100%);
+    --fp-hero-title: #F7F1E1;
+    --fp-hero-lyric: #E8EAF6;
+    --fp-hero-song: #EAD9A0;
+    --fp-map-line: rgba(255, 255, 255, 0.10);
+    --fp-arc-1: #FFD77A;
+    --fp-arc-2: #FFE5A8;
+    --fp-arc-3: #FFF4D6;
+    --fp-hero-fade: rgba(183, 169, 216, 1);
+    --fp-frame-bg: linear-gradient(180deg, rgba(12, 14, 30, 0.98), rgba(6, 8, 18, 0.98));
+  }
+
+  /* 随系统切深时，迹遇卡片的暗色渐变遮罩淡入 */
+  :root:not([data-theme="light"]) #footprint-map-page .fp-jiyu-card::before { opacity: 1; }
+}
+
+/* ---------- 2. 独立「迹遇」卡片（地图上方，单独框，仅占 20% 高度） ---------- */
+.fp-jiyu-card {
+  position: relative;
+  width: 100%;
+  /* 高度由 JS 计算（= 可用高度 1/5，即与地图 2:8 占比），此处给最小保底 */
+  height: var(--fp-card-h, 200px);
+  min-height: 142px;
+  margin: 18px 0 14px;
+  border: 1px solid var(--fp-border);
+  border-radius: 18px;
+  box-shadow: var(--fp-shadow);
+  background: var(--fp-hero-bg-light);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* 暗色渐变遮罩：默认透明，暗色主题淡入，opacity 过渡形成“渐变过渡”效果 */
+.fp-jiyu-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--fp-hero-bg-dark);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.fp-jiyu-hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fp-hero-title);
+}
+
+/* 内容层：居中单列，右对齐落款 */
+.fp-jiyu-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  /* 上下留白：文字与卡片边缘保持间距，避免贴边 */
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.fp-jiyu-title {
+  display: flex;
+  flex-direction: row;
+  gap: 0.14em;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 8px;
+  font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  font-size: clamp(26px, 4.4vw, 42px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  color: var(--fp-hero-title);
+  text-shadow:
+    0 0 18px rgba(201, 162, 75, 0.28),
+    0 1px 8px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.9s,
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.9s;
+}
+
+#footprint-map-page.is-show .fp-jiyu-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fp-jiyu-lyric {
+  margin: 0 0 0;
+  font-family: "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(12.5px, 1.5vw, 15px);
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+  color: var(--fp-hero-lyric);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease 1.2s, transform 0.6s ease 1.2s;
+}
+
+#footprint-map-page.is-show .fp-jiyu-lyric {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fp-jiyu-song {
+  align-self: flex-end;
+  margin-top: 8px;
+  font-family: "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(11px, 1.2vw, 13.5px);
+  letter-spacing: 0.1em;
+  color: var(--fp-hero-song);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease 1.5s, transform 0.5s ease 1.5s;
+}
+
+#footprint-map-page.is-show .fp-jiyu-song {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+/* ---------- 3. 地图框：独立卡片，迹遇卡片已移至其上方 ---------- */
 #footprint-map-container {
   position: relative;
   width: 100%;
   max-width: 100%;
   height: var(--fp-h, 720px);
   min-height: 460px;
-  margin: 4px 0 40px;
+  margin: 0 0 40px;
   overflow: hidden;
-  background: #eef1f6;
+  display: flex;
+  flex-direction: column;
+  background: var(--fp-frame-bg);
   border: 1px solid var(--fp-border);
   border-radius: 18px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    var(--fp-shadow),
+    0 0 0 1px rgba(255, 215, 122, 0.05),
+    inset 0 0 50px rgba(255, 215, 122, 0.02);
+  z-index: 10;
 }
 
-[data-theme="dark"] #footprint-map-container {
-  background: #16161a;
+/* 地图区：占满框内剩余高度，承载地图/面板/控制栏 */
+.fp-map-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
 }
 
-/* ---------- 3. 地图铺满 ---------- */
+/* 地图铺满 */
 #footprint-map-container #footprint-map {
   position: absolute;
   inset: 0;
@@ -57,104 +259,37 @@
   background: transparent;
 }
 
-/* 隐藏高德默认控件，改用我们自己的控制栏（保留版权信息） */
+/* 隐藏高德默认 UI 控件，统一使用我们自己的控制栏。
+   注意：高德 JS API 2.0 默认控件真实类名是 .amap-zoom（不是 .amap-zoomcontrol）、
+   .amap-scale / .amap-tool / .amap-maptype / .amap-luopan(或 .amap-control-luopan) 等，
+   此前用错类名导致原生缩放控件以浅色默认样式残留、明暗切换后“依旧是原样”。
+   这里同时关闭 JS 构造里的默认控件（zoomControl:false）并隐藏这些类名作为双保险。 */
 #footprint-map-container .amap-logo,
-#footprint-map-container .amap-scalecontrol,
-#footprint-map-container .amap-toolbar,
+#footprint-map-container .amap-zoom,
+#footprint-map-container .amap-zoom-touch,
+#footprint-map-container .amap-scale,
+#footprint-map-container .amap-tool,
 #footprint-map-container .amap-maptype,
-#footprint-map-container .amap-zoomcontrol,
 #footprint-map-container .amap-luopan,
-#footprint-map-container .amap-controlbar {
+#footprint-map-container .amap-control-luopan,
+#footprint-map-container .amap-control-bar,
+#footprint-map-container .amap-indoormap-control,
+#footprint-map-container .amap-control-feature {
   display: none !important;
 }
 
+/* 版权信息：浅色地图用深色字，暗色地图用浅色字（保留，不隐藏，遵守高德条款） */
 #footprint-map-container .amap-copyright {
+  opacity: 0.6 !important;
+  color: rgba(40, 40, 60, 0.65) !important;
+}
+
+[data-theme="dark"] #footprint-map-container .amap-copyright {
   opacity: 0.55 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
 }
 
-/* ---------- 4. 页头：足迹标题 + 标语（位于地图上方、内容框内，独立区域） ---------- */
-.fp-page-header {
-  margin: 10px 0 16px;
-  padding: 4px 2px 0;
-}
-
-.fp-page-title {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin: 0;
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  color: var(--fp-text);
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.fp-page-version {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--fp-primary);
-  background: color-mix(in srgb, var(--fp-primary) 12%, transparent);
-  padding: 3px 11px;
-  border-radius: 999px;
-  letter-spacing: 0;
-  transform: translateY(-2px);
-  white-space: nowrap;
-}
-
-.fp-page-slogan {
-  position: relative;
-  margin: 10px 0 0;
-  padding-left: 14px;
-  max-width: 560px;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--fp-text-sub);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;
-}
-
-.fp-page-slogan::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 3px;
-  bottom: 3px;
-  width: 3px;
-  border-radius: 2px;
-  background: linear-gradient(to bottom, var(--fp-primary), rgba(0, 0, 0, 0.15));
-}
-
-#footprint-map-page.is-show .fp-page-title,
-#footprint-map-page.is-show .fp-page-slogan {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-[data-theme="dark"] .fp-page-slogan::before {
-  background: linear-gradient(to bottom, var(--fp-primary), rgba(255, 255, 255, 0.25));
-}
-
-/* 移动端：页头字号收紧，标语全宽 */
-@media (max-width: 768px) {
-  .fp-page-header {
-    margin: 6px 0 12px;
-  }
-  .fp-page-title {
-    font-size: 24px;
-    gap: 9px;
-  }
-  .fp-page-slogan {
-    max-width: 100%;
-    font-size: 13.5px;
-  }
-}
-
-/* ---------- 5. 底部胶囊控制栏（示例插件 .map-controls） ---------- */
+/* ---------- 4. 底部胶囊控制栏 ---------- */
 .fp-controls {
   position: absolute;
   left: 50%;
@@ -169,7 +304,7 @@
   border-radius: 40px;
   background: var(--fp-surface);
   border: 1px solid var(--fp-border);
-  box-shadow: var(--fp-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  box-shadow: var(--fp-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   opacity: 0;
@@ -217,8 +352,8 @@
 
 .fp-layer-btn.active {
   background: var(--fp-primary);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  color: #121426;
+  box-shadow: 0 2px 10px var(--fp-primary-glow);
 }
 
 .fp-feature-toggles {
@@ -253,12 +388,8 @@
   height: 18px;
   flex-shrink: 0;
   border-radius: 20px;
-  background: rgba(0, 0, 0, 0.18);
+  background: var(--fp-track);
   transition: background 0.28s ease;
-}
-
-[data-theme="dark"] .fp-toggle-track {
-  background: rgba(255, 255, 255, 0.22);
 }
 
 .fp-toggle-track::after {
@@ -313,7 +444,7 @@
 
 .fp-zoom-btn:hover {
   background: var(--fp-primary);
-  color: #fff;
+  color: #121426;
 }
 
 .fp-zoom-btn:active {
@@ -333,11 +464,7 @@
   width: 40px;
   height: 3px;
   border-radius: 2px;
-  background: linear-gradient(to right, var(--fp-primary), rgba(0, 0, 0, 0.28));
-}
-
-[data-theme="dark"] .fp-scale-bar {
-  background: linear-gradient(to right, var(--fp-primary), rgba(255, 255, 255, 0.3));
+  background: linear-gradient(to right, var(--fp-primary), rgba(255, 255, 255, 0.28));
 }
 
 #fp-scale-text {
@@ -347,8 +474,7 @@
   white-space: nowrap;
 }
 
-/* ---------- 6. 足迹列表面板：桌面悬浮卡片，可折叠 ---------- */
-/* 面板放在右侧，把左下角让给 Logo（示例插件的 Logo 固定在左下） */
+/* ---------- 5. 足迹列表面板 ---------- */
 .fp-panel {
   position: absolute;
   top: 18px;
@@ -378,7 +504,6 @@
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
-/* 收起时整块右移，只把折叠按钮留在边缘 */
 .fp-panel.is-collapsed {
   transform: translateX(calc(100% - 14px));
 }
@@ -402,7 +527,7 @@
   border-radius: 50%;
   background: var(--fp-surface-solid);
   color: var(--fp-text-sub);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
   cursor: pointer;
   pointer-events: auto;
   transition: transform 0.35s ease, color 0.25s ease;
@@ -441,8 +566,9 @@
   font-size: 12px;
   padding: 2px 9px;
   border-radius: 999px;
-  color: #fff;
+  color: #121426;
   background: var(--fp-primary);
+  font-weight: 600;
 }
 
 .fp-search {
@@ -535,7 +661,7 @@
 
 .fp-list::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background: rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .fp-item {
@@ -561,7 +687,7 @@
 .fp-item.is-active .fp-item-name,
 .fp-item.is-active .fp-item-addr,
 .fp-item.is-active .fp-item-time {
-  color: #fff;
+  color: #121426;
 }
 
 .fp-item-top {
@@ -587,12 +713,12 @@
   border-radius: 999px;
   font-size: 11px;
   color: var(--fp-primary);
-  background: rgba(66, 90, 239, 0.12);
+  background: var(--fp-primary-soft);
 }
 
 .fp-item.is-active .fp-item-type {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.24);
+  color: #121426;
+  background: rgba(18, 20, 38, 0.25);
 }
 
 .fp-item-addr {
@@ -618,7 +744,7 @@
   color: var(--fp-text-sub);
 }
 
-/* ---------- 7. 圆头像 marker（示例插件 .custom-marker / .marker-image） ---------- */
+/* ---------- 6. 圆头像 marker ---------- */
 .fp-marker {
   width: 38px;
   height: 38px;
@@ -662,7 +788,7 @@
   height: 44px;
   border-radius: 50%;
   background: var(--fp-primary);
-  color: #fff;
+  color: #121426;
   font-size: 14px;
   font-weight: 700;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
@@ -685,14 +811,14 @@
   border-top: 8px solid var(--fp-primary);
 }
 
-/* ---------- 8. InfoWindow：贴纸卡片（示例插件 .info-window，硬阴影） ---------- */
+/* ---------- 7. InfoWindow：贴纸卡片 ---------- */
 .fp-iw {
   width: 218px;
   height: 280px;
   border-radius: 18px;
   overflow: hidden;
   background: var(--fp-surface-solid);
-  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.13);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.18);
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -733,7 +859,7 @@
   justify-content: center;
   gap: 8px;
   color: #fff;
-  background: linear-gradient(135deg, var(--fp-primary), rgba(122, 140, 240, 0.85));
+  background: linear-gradient(135deg, var(--fp-primary), var(--fp-primary-soft));
 }
 
 .fp-iw-noimg i {
@@ -842,38 +968,38 @@
   display: none !important;
 }
 
-/* ---------- 9. 响应式：平板 ---------- */
+/* ---------- 8. 响应式：平板 ---------- */
 @media screen and (max-width: 1200px) {
   .fp-panel {
     width: 262px;
   }
-  .fp-logo-container {
-    left: 20px;
-    bottom: 24px;
-  }
 }
 
-/* ---------- 10. 响应式：手机（示例插件在此直接隐藏控制栏，这里做真正的适配） ---------- */
+/* ---------- 9. 响应式：手机 ---------- */
 @media screen and (max-width: 768px) {
-  /* 高度仍由 JS 的 --fp-h 统一控制，此处只调整最小高度 */
-  #footprint-map-container {
-    min-height: 380px;
+  /* 注意：卡片高度由 JS 按视口计算（与地图 2:8），
+     此处【不要】再写死 .fp-jiyu-hero 高度，否则会撑破卡片被裁切 */
+
+  .fp-jiyu-content {
+    padding: 14px 16px;
   }
 
-  /* Logo 移到左上角，避开底部控制栏 */
-  .fp-logo-container {
-    left: 16px;
-    right: 16px;
-    top: 14px;
-    bottom: auto;
-    max-width: none;
-    z-index: 32;
+  .fp-jiyu-title {
+    margin-bottom: 12px;
   }
-  .fp-logo {
-    font-size: 22px;
+
+  .fp-jiyu-lyric {
+    line-height: 1.85;
+    letter-spacing: 0.1em;
   }
-  .fp-slogan {
-    display: none;
+
+  .fp-jiyu-song {
+    margin-top: 12px;
+  }
+
+  #footprint-map-container {
+    min-height: 380px;
+    margin-top: 0;
   }
 
   /* 列表面板 → 底部抽屉 */
@@ -910,7 +1036,7 @@
     max-height: 40vh;
   }
 
-  /* 控制栏：贴底通栏，精简元素 */
+  /* 控制栏：贴底通栏 */
   .fp-controls {
     left: 8px;
     right: 8px;
@@ -954,15 +1080,35 @@
   .fp-layer-btn {
     padding: 6px 9px;
   }
+  /* 超小屏隐藏比例尺，给控制栏腾出空间，避免横向溢出 */
   .fp-scale-display {
-    padding: 5px 7px;
+    display: none;
   }
-  .fp-scale-bar {
-    width: 28px;
+  .fp-controls {
+    gap: 4px;
+    padding: 6px 7px;
   }
 }
 
-/* ---------- 11. 错误/加载态 ---------- */
+/* 横屏矮屏（如手机横放）：卡片本就很小，进一步压缩文字与间距 */
+@media screen and (max-height: 520px) and (orientation: landscape) {
+  .fp-jiyu-content {
+    padding: 8px 16px;
+  }
+  .fp-jiyu-title {
+    font-size: clamp(22px, 5vw, 30px);
+    margin-bottom: 6px;
+  }
+  .fp-jiyu-lyric {
+    font-size: clamp(11px, 2.4vw, 13px);
+    line-height: 1.5;
+  }
+  .fp-jiyu-song {
+    margin-top: 5px;
+  }
+}
+
+/* ---------- 10. 错误/加载态 ---------- */
 .fp-error {
   position: absolute;
   inset: 0;
