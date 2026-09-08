@@ -41,7 +41,14 @@
   }
 
   function isDark() {
-    return document.documentElement.getAttribute('data-theme') === 'dark';
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    // 未显式设置（数据主题未定）→ 直接跟随系统配色偏好
+    if (window.matchMedia) {
+      try { return window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) {}
+    }
+    return false;
   }
 
   function currentMapStyle() {
@@ -49,15 +56,26 @@
     return isDark() ? (cfg.mapStyleDark || 'amap://styles/dark') : (cfg.mapStyle || 'amap://styles/normal');
   }
 
-  /* 容器高度：嵌入页面内容框，留出顶部导航与底部页脚空间，并设上下限 */
+  /* 容器/卡片高度：卡片 : 地图 = 2 : 8，铺满可用视口高度（底部留 40px 页脚） */
   function syncHeight() {
-    if (!container) return;
-    var docTop = container.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
-    var h = window.innerHeight - docTop - 40; // 底部给页脚留 40px 余量
-    if (!isFinite(h)) h = 720;
-    if (h > 820) h = 820;   // 上限：避免卡片过高
-    if (h < 460) h = 460;   // 下限：保证可操作
-    container.style.setProperty('--fp-h', Math.round(h) + 'px');
+    var page = document.getElementById('footprint-map-page');
+    if (!container || !page) return;
+    var pageTop = page.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+    var available = window.innerHeight - pageTop - 40; // 给页脚留 40px 余量
+    if (!isFinite(available)) available = 760;
+
+    // 卡片上下外边距（与 CSS 中 .fp-jiyu-card margin 对应）从可分配空间里扣除
+    var cardMarginTop = 18, cardMarginBottom = 14;
+    var share = available - cardMarginTop - cardMarginBottom;
+    if (share < 200) share = 200;
+
+    var cardH = Math.round(share / 5);   // 20%
+    var mapH = Math.round(share * 4 / 5); // 80%
+    if (mapH > 820) mapH = 820;   // 上限：避免地图过高
+    if (mapH < 460) mapH = 460;   // 下限：保证可操作
+
+    page.style.setProperty('--fp-card-h', cardH + 'px');
+    container.style.setProperty('--fp-h', mapH + 'px');
     if (map) setTimeout(function () { map.resize && map.resize(); }, 60);
   }
 
@@ -409,13 +427,40 @@
 
   /* ---------------- 主题联动 ---------------- */
 
+  function applyThemeStyle() {
+    if (!map) return;
+    try { map.setMapStyle(currentMapStyle()); } catch (e) {}
+    syncHeight();
+  }
+
   function watchTheme() {
+    // 1) 兜底：监听 <html data-theme> 属性变化（手动切换 / 主题自动模式设 data-theme 时）
     if (observer) observer.disconnect();
-    observer = new MutationObserver(function () {
-      if (map) map.setMapStyle(currentMapStyle());
-      syncHeight();
-    });
+    observer = new MutationObserver(applyThemeStyle);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    // 2) 主通道：接入 AnZhiYu 官方主题切换回调
+    //    handleThemeChange 在每次明暗切换时遍历 window.globalFn.themeChange 并调用，
+    //    比 MutationObserver 更可靠（pjax 场景也不会漏触发）
+    try {
+      var g = window.globalFn || (window.globalFn = {});
+      g.themeChange = g.themeChange || {};
+      g.themeChange.footprint = function () { applyThemeStyle(); };
+    } catch (e) {}
+
+    // 3) 跟随系统：主题“自动随系统”可能只改系统媒体查询而不触发上面两条路径，
+    //    故直接监听 prefers-color-scheme 变化，确保 OS 切换明暗时地图底图也同步
+    try {
+      if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var onSys = function () { applyThemeStyle(); };
+        if (mq.addEventListener) mq.addEventListener('change', onSys);
+        else if (mq.addListener) mq.addListener(onSys); // 旧版兼容
+      }
+    } catch (e) {}
+
+    // 4) 初始化即按当前（含系统）明暗渲染一次
+    applyThemeStyle();
   }
 
   /* ---------------- 初始化 ---------------- */
@@ -484,6 +529,9 @@
       dragEnable: true,
       zoomEnable: true,
       resizeEnable: true,
+      // 关闭高德默认缩放/工具条等控件，统一使用我们自己的胶囊控制栏
+      // （否则原生 .amap-zoom 会以浅色默认样式残留，明暗切换后仍“依旧是原样”）
+      zoomControl: false,
       features: ['bg', 'road', 'building', 'point']
     });
     window.__fpMapInstance = map;
@@ -505,6 +553,8 @@
     });
 
     map.on('complete', function () {
+      // 地图就绪后再确保一次底图样式（避免初始样式在地图未就绪时被忽略）
+      try { map.setMapStyle(currentMapStyle()); } catch (e) {}
       syncHeight();
       updateScale();
       var page = document.querySelector('#footprint-map-page');
@@ -512,6 +562,12 @@
       if (page) page.classList.add('is-show');
       if (ctr) ctr.classList.add('is-show');
     });
+
+    // 兜底：若地图 complete 事件迟迟不触发（网络 / Key 异常），也确保控制栏可见
+    setTimeout(function () {
+      var ctr = document.querySelector('.fp-controls');
+      if (ctr) ctr.classList.add('is-show');
+    }, 2600);
 
     map.on('click', function () {
       if (currentMarker) closeInfoWindow();
