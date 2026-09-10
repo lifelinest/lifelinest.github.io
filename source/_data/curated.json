@@ -1,0 +1,17 @@
+[
+  {
+    "full_name": "__selftest__/gh-monitor",
+    "url": "https://github.com/",
+    "description": "selftest - 可安全删除",
+    "language": "JavaScript",
+    "stars": 1,
+    "stars_period": 1,
+    "period": "daily",
+    "tags": [
+      "selftest"
+    ],
+    "note": "自动化验证",
+    "featured": false,
+    "addedAt": 1790000000000
+  }
+]
