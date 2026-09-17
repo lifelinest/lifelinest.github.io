@@ -2,7 +2,7 @@
    卡片外壳（背景 / 边框 / 圆角 / 阴影 / 内边距）直接沿用主题
    #aside-content .card-widget 的默认样式，这里只负责卡片内部（标签页 / 表单 / RSS）与配色，
    全部使用主题变量（--anzhiyu-*），亮暗模式自动适配。
-   已接入 MailerLite（action 端点 + fields[email]），提交走 fetch，不引入其自带样式/JS。
+   已接入 follow.it（原生表单 POST 到 api.follow.it，target=_blank），不引入其自带样式/JS。
    结构：单卡片内「邮件订阅 / RSS 订阅」两个标签页切换，一次只显示一组，避免竖向堆叠占空间。
 */
 
@@ -130,28 +130,6 @@
 
 #card-subscribe .subscribe-btn:active {
   transform: translateY(0);
-}
-
-#card-subscribe .subscribe-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-/* 提交中：纯 CSS 旋转圈（不依赖图标字体） */
-#card-subscribe .subscribe-spin {
-  flex: none;
-  width: 14px;
-  height: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.45);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: subscribe-spin 0.7s linear infinite;
-}
-
-@keyframes subscribe-spin {
-  to { transform: rotate(360deg); }
 }
 
 #card-subscribe .subscribe-note {

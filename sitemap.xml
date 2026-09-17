@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+    <loc>https://lifelinest.github.io/posts/82e329c9/</loc>
+    
+    <lastmod>2026-09-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<url>
     <loc>https://lifelinest.github.io/design/</loc>
     
     <lastmod>2026-09-09</lastmod>
@@ -1648,6 +1656,12 @@
   </url>
 <url>
     <loc>https://lifelinest.github.io/tags/%E5%A8%B1%E4%B9%90/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+<url>
+    <loc>https://lifelinest.github.io/tags/%E7%83%AD%E7%82%B9%E6%9D%82%E8%B0%88/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

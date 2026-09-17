@@ -2707,6 +2707,21 @@
     </image:image>
   </url>
   <url>
+    <loc>https://lifelinest.github.io/posts/82e329c9/index.html</loc>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/404.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/DT.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/friend_404.gif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/photo.avif</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://lifelinest.github.io/posts/83dd532c/index.html</loc>
     <image:image>
       <image:loc>https://lifelinest.github.io/img/404.jpg</image:loc>
@@ -4910,6 +4925,24 @@
   </url>
   <url>
     <loc>https://lifelinest.github.io/tags/游戏心得/index.html</loc>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/404.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/DT.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/friend_404.gif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/og-default.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://lifelinest.github.io/img/photo.avif</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lifelinest.github.io/tags/热点杂谈/index.html</loc>
     <image:image>
       <image:loc>https://lifelinest.github.io/img/404.jpg</image:loc>
     </image:image>
