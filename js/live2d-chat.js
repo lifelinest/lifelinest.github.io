@@ -55,7 +55,7 @@
     panel.id = 'live2d-chat-panel';
     panel.innerHTML =
       '<div class="lc-header">' +
-        '<img class="lc-avatar" src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" alt="博客小助手" onerror="this.style.display=\'none\'" />' +
+        '<img class="lc-avatar" src="https://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" alt="博客小助手" onerror="this.style.display=\'none\'" />' +
         '<div class="lc-title-wrap">' +
           '<div class="lc-title">博客小助手</div>' +
           '<div class="lc-status">在线</div>' +

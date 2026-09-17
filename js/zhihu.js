@@ -1,113 +1,211 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const zhihuContainer = document.getElementById('zhihu-container');
-  if (!zhihuContainer) return;
+/**
+ * 侧边栏「热搜榜」—— 实时拉取（微博 / 抖音 / 知乎 / 百度）
+ *
+ * 数据源（均为国内可达 + 支持跨域）：
+ *   - codelife.cc  → 微博 / 知乎 / 百度
+ *   - xxapi.cn     → 抖音 / 微博 / 百度（备用）
+ *
+ * 策略：主源失败自动切备源 → 本地缓存（10 分钟）→ 失败友好提示。
+ * 不再使用任何写死的过时数据。
+ *
+ * 仅在 #zhihu-container 存在时执行（首页 / 文章页侧边栏）。
+ */
+(function () {
+  'use strict';
 
-  // 奶思喵API已下线，vvhan API存在SSL证书问题，使用静态数据
-  const platforms = {
+  var CACHE_TTL = 10 * 60 * 1000;      // 缓存有效期：10 分钟
+  var CACHE_PREFIX = 'pf_hot_';        // localStorage 键前缀
+  var MAX_ITEMS = 20;                  // 每榜最多展示条数
+
+  // ---------- 各源字段适配 ----------
+  // codelife: { index, title, hotValue, link }
+  function pickCodelife(d) {
+    return { title: d.title, url: d.link, hot: d.hotValue || '' };
+  }
+  // xxapi 通用: { index, title, hot, url }
+  function pickXxapi(d) {
+    return { title: d.title, url: d.url, hot: d.hot || '' };
+  }
+  // 抖音热点榜: { word, hot_value, group_id, ... }
+  function pickDouyin(d) {
+    var w = d.word || d.title || '';
+    return {
+      title: w,
+      url: 'https://www.douyin.com/search/' + encodeURIComponent(w),
+      hot: fmtHotNum(d.hot_value)
+    };
+  }
+  function fmtHotNum(v) {
+    v = parseInt(v, 10) || 0;
+    if (v >= 100000000) return (v / 100000000).toFixed(1) + '亿';
+    if (v >= 10000) return (v / 10000).toFixed(1) + '万';
+    return String(v);
+  }
+
+  // ---------- 平台配置（sources 按优先级排列） ----------
+  var SOURCES = {
     weibo: {
       name: '微博',
-      data: [
-        { title: "#中国女排3-0横扫多米尼加#", url: "https://s.weibo.com/weibo?q=%23中国女排3-0横扫多米尼加%23", hot: "3.2亿" },
-        { title: "#奥运冠军全红婵回应成团#", url: "https://s.weibo.com/weibo?q=%23奥运冠军全红婵回应成团%23", hot: "2.8亿" },
-        { title: "#中国队金牌总数已超越东京奥运会#", url: "https://s.weibo.com/weibo?q=%23中国队金牌总数已超越东京奥运会%23", hot: "2.5亿" },
-        { title: "#巴黎奥运会中国队已获得35枚金牌#", url: "https://s.weibo.com/weibo?q=%23巴黎奥运会中国队已获得35枚金牌%23", hot: "2.1亿" },
-        { title: "#张雨霏说这是我最后一届奥运会#", url: "https://s.weibo.com/weibo?q=%23张雨霏说这是我最后一届奥运会%23", hot: "1.9亿" },
-        { title: "#多地出台新政支持住房消费#", url: "https://s.weibo.com/weibo?q=%23多地出台新政支持住房消费%23", hot: "1.7亿" },
-        { title: "#暑期旅游攻略#", url: "https://s.weibo.com/weibo?q=%23暑期旅游攻略%23", hot: "1.5亿" },
-        { title: "#这些美食太治愈了#", url: "https://s.weibo.com/weibo?q=%23这些美食太治愈了%23", hot: "1.3亿" },
-        { title: "#多部门部署防汛救灾工作#", url: "https://s.weibo.com/weibo?q=%23多部门部署防汛救灾工作%23", hot: "1.1亿" },
-        { title: "#专家解读7月经济数据#", url: "https://s.weibo.com/weibo?q=%23专家解读7月经济数据%23", hot: "9800万" }
-      ]
-    },
-    pengpai: {
-      name: '澎湃',
-      data: [
-        { title: "国家统计局：7月份CPI同比上涨0.5%", url: "https://www.thepaper.cn/newsDetail_forward_23971234", hot: "热度 98" },
-        { title: "多地出台新政支持住房消费", url: "https://www.thepaper.cn/newsDetail_forward_23970156", hot: "热度 95" },
-        { title: "专家解读7月经济数据：经济回升向好态势没有改变", url: "https://www.thepaper.cn/newsDetail_forward_23969078", hot: "热度 92" },
-        { title: "中国女排3-0完胜多米尼加晋级四强", url: "https://www.thepaper.cn/newsDetail_forward_23968123", hot: "热度 90" },
-        { title: "多部门部署防汛救灾工作", url: "https://www.thepaper.cn/newsDetail_forward_23967045", hot: "热度 87" },
-        { title: "人工智能赋能制造业转型", url: "https://www.thepaper.cn/newsDetail_forward_23966001", hot: "热度 85" },
-        { title: "新能源汽车销量创新高", url: "https://www.thepaper.cn/newsDetail_forward_23965002", hot: "热度 82" },
-        { title: "乡村振兴战略取得新成效", url: "https://www.thepaper.cn/newsDetail_forward_23964003", hot: "热度 80" },
-        { title: "高校毕业生就业政策解读", url: "https://www.thepaper.cn/newsDetail_forward_23963004", hot: "热度 78" },
-        { title: "数字经济发展势头强劲", url: "https://www.thepaper.cn/newsDetail_forward_23962005", hot: "热度 76" }
-      ]
-    },
-    juejin: {
-      name: '掘金',
-      data: [
-        { title: "Vue3 + TypeScript 最佳实践", url: "https://juejin.cn/post/7123456789", hot: "5421" },
-        { title: "React 18 新特性详解", url: "https://juejin.cn/post/7123456788", hot: "4832" },
-        { title: "前端性能优化实战指南", url: "https://juejin.cn/post/7123456787", hot: "4215" },
-        { title: "深入浅出 WebAssembly", url: "https://juejin.cn/post/7123456786", hot: "3987" },
-        { title: "Node.js 微服务架构设计", url: "https://juejin.cn/post/7123456785", hot: "3654" },
-        { title: "Rust 入门指南与实践", url: "https://juejin.cn/post/7123456784", hot: "3421" },
-        { title: "Kubernetes 从入门到精通", url: "https://juejin.cn/post/7123456783", hot: "3187" },
-        { title: "Flutter 跨平台开发实战", url: "https://juejin.cn/post/7123456782", hot: "2976" },
-        { title: "Python 数据分析与可视化", url: "https://juejin.cn/post/7123456781", hot: "2754" },
-        { title: "GraphQL 完整教程", url: "https://juejin.cn/post/7123456780", hot: "2532" }
+      sources: [
+        { url: 'https://api.codelife.cc/api/top/list?lang=cn&id=KqndgxeLl9', pick: pickCodelife },
+        { url: 'https://v2.xxapi.cn/api/weibohot', pick: pickXxapi }
       ]
     },
     douyin: {
       name: '抖音',
-      data: [
-        { title: "#奥运冠军回国花絮#", url: "https://www.douyin.com/search?keyword=奥运冠军回国花絮", hot: "1.8亿" },
-        { title: "#这才是真正的中国式浪漫#", url: "https://www.douyin.com/search?keyword=这才是真正的中国式浪漫", hot: "1.5亿" },
-        { title: "#暑期旅游攻略#", url: "https://www.douyin.com/search?keyword=暑期旅游攻略", hot: "1.2亿" },
-        { title: "#这些美食太治愈了#", url: "https://www.douyin.com/search?keyword=这些美食太治愈了", hot: "9800万" },
-        { title: "#当代年轻人的生活日常#", url: "https://www.douyin.com/search?keyword=当代年轻人的生活日常", hot: "8500万" },
-        { title: "#猫咪的日常#", url: "https://www.douyin.com/search?keyword=猫咪的日常", hot: "7200万" },
-        { title: "#健身打卡挑战#", url: "https://www.douyin.com/search?keyword=健身打卡挑战", hot: "6800万" },
-        { title: "#手工DIY教程#", url: "https://www.douyin.com/search?keyword=手工DIY教程", hot: "5500万" },
-        { title: "#智能家居好物推荐#", url: "https://www.douyin.com/search?keyword=智能家居好物推荐", hot: "4200万" },
-        { title: "#旅行Vlog分享#", url: "https://www.douyin.com/search?keyword=旅行Vlog分享", hot: "3800万" }
+      sources: [
+        { url: 'https://v2.xxapi.cn/api/douyinhot', pick: pickDouyin }
+      ]
+    },
+    zhihu: {
+      name: '知乎',
+      sources: [
+        { url: 'https://api.codelife.cc/api/top/list?lang=cn&id=mproPpoq6O', pick: pickCodelife }
+      ]
+    },
+    baidu: {
+      name: '百度',
+      sources: [
+        { url: 'https://api.codelife.cc/api/top/list?lang=cn&id=Jb0vmloB1G', pick: pickCodelife },
+        { url: 'https://v2.xxapi.cn/api/baiduhot', pick: pickXxapi }
       ]
     }
   };
 
-  // 默认加载微博热搜
-  let currentPlatform = 'weibo';
-  renderData(platforms[currentPlatform].data, currentPlatform);
-
-  // 添加标签点击事件
-  const tabs = document.querySelectorAll('.hot-tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-      const platform = this.getAttribute('data-platform');
-      if (platform === currentPlatform) return;
-      
-      tabs.forEach(t => t.classList.remove('active'));
-      this.classList.add('active');
-      
-      currentPlatform = platform;
-      renderData(platforms[platform].data, platform);
-    });
-  });
-
-  // 渲染数据函数
-  function renderData(data, platform) {
-    let html = '';
-    html += '<div class="zhihu-list">';
-    let i = 1;
-    for (let item of data) {
-      if (item && item.title && item.url) {
-        html += `<div class="zhihu-list-item">
-                  <div class="zhihu-hotness">${i}</div>
-                  <span class="zhihu-title">
-                    <a title="${item.title}" href="${item.url}" target="_blank" rel="external nofollow noreferrer">
-                      ${item.title}
-                    </a>
-                  </span>
-                  <div class="zhihu-hot">
-                    <span>${item.hot || ''}</span>
-                  </div>
-                </div>`;
-        i++;
-        if (i > 20) break;
-      }
-    }
-    html += '</div>';
-    zhihuContainer.innerHTML = html;
+  // ---------- 工具 ----------
+  function esc(s) {
+    if (s == null) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
-});
+
+  // ================= 入口 =================
+  function initHotList() {
+    var container = document.getElementById('zhihu-container');
+    if (!container) return;
+
+    var currentPlatform = 'weibo';
+    var loading = {};
+
+    function readCache(p) {
+      try {
+        var raw = localStorage.getItem(CACHE_PREFIX + p);
+        if (!raw) return null;
+        var obj = JSON.parse(raw);
+        if (!obj || !obj.list || !obj.list.length) return null;
+        return obj; // { t, list }
+      } catch (e) { return null; }
+    }
+    function writeCache(p, list) {
+      try { localStorage.setItem(CACHE_PREFIX + p, JSON.stringify({ t: Date.now(), list: list })); } catch (e) {}
+    }
+
+    function showMsg(text) {
+      container.innerHTML =
+        '<div class="zhihu-list">' +
+        '<div style="padding:14px 8px;text-align:center;color:#999;font-size:13px;">' + esc(text) + '</div>' +
+        '</div>';
+    }
+
+    function render(list) {
+      if (!list || !list.length) { showMsg('暂时获取不到热搜，请稍后再试'); return; }
+      var html = '<div class="zhihu-list">';
+      for (var i = 0; i < list.length && i < MAX_ITEMS; i++) {
+        var it = list[i];
+        html +=
+          '<div class="zhihu-list-item">' +
+          '<div class="zhihu-hotness">' + (i + 1) + '</div>' +
+          '<span class="zhihu-title">' +
+          '<a title="' + esc(it.title) + '" href="' + esc(it.url) + '" target="_blank" rel="external nofollow noreferrer">' + esc(it.title) + '</a>' +
+          '</span>' +
+          '<div class="zhihu-hot"><span>' + esc(it.hot || '') + '</span></div>' +
+          '</div>';
+      }
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    // 顺序尝试各源，任一成功即回调 list；全失败回调 null
+    function fetchPlatform(p, cb) {
+      var srcs = SOURCES[p].sources.slice();
+      (function tryNext(i) {
+        if (i >= srcs.length) { cb(null); return; }
+        var s = srcs[i];
+        fetch(s.url, { cache: 'no-store' })
+          .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+          .then(function (j) {
+            var arr = j && Array.isArray(j.data) ? j.data : null;
+            if (!arr || !arr.length) throw new Error('空数据');
+            var list = [];
+            for (var k = 0; k < arr.length && list.length < MAX_ITEMS; k++) {
+              var item = s.pick(arr[k]);
+              if (item && item.title && item.url) list.push(item);
+            }
+            if (!list.length) throw new Error('解析为空');
+            cb(list);
+          })
+          .catch(function () { tryNext(i + 1); });
+      })(0);
+    }
+
+    // 刷新（后台静默）：命中即写缓存，且当前仍在该平台才重绘
+    function refresh(p) {
+      if (loading[p]) return;
+      loading[p] = true;
+      fetchPlatform(p, function (list) {
+        loading[p] = false;
+        if (list && list.length) {
+          writeCache(p, list);
+          if (currentPlatform === p) render(list);
+        }
+      });
+    }
+
+    function load(p) {
+      var cached = readCache(p);
+      if (cached) {
+        if (currentPlatform === p) render(cached.list);
+        if (Date.now() - cached.t > CACHE_TTL) refresh(p); // 过期则后台静默刷新
+        return;
+      }
+      if (loading[p]) return;
+      loading[p] = true;
+      showMsg('加载中…');
+      fetchPlatform(p, function (list) {
+        loading[p] = false;
+        if (list && list.length) {
+          writeCache(p, list);
+          if (currentPlatform === p) render(list);
+        } else if (currentPlatform === p) {
+          showMsg('暂时获取不到热搜，请稍后再试');
+        }
+      });
+    }
+
+    // 初始加载
+    load(currentPlatform);
+
+    // tab 切换
+    var tabs = document.querySelectorAll('.hot-tab');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].addEventListener('click', function () {
+        var p = this.getAttribute('data-platform');
+        if (!SOURCES[p] || p === currentPlatform) return;
+        for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+        this.classList.add('active');
+        currentPlatform = p;
+        load(p);
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHotList);
+  } else {
+    initHotList();
+  }
+})();

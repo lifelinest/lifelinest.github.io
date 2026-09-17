@@ -1,0 +1,274 @@
+/* ====== 「订阅更新」侧边栏卡片 ======
+   卡片外壳（背景 / 边框 / 圆角 / 阴影 / 内边距）直接沿用主题
+   #aside-content .card-widget 的默认样式，这里只负责卡片内部（标签页 / 表单 / RSS）与配色，
+   全部使用主题变量（--anzhiyu-*），亮暗模式自动适配。
+   已接入 MailerLite（action 端点 + fields[email]），提交走 fetch，不引入其自带样式/JS。
+   结构：单卡片内「邮件订阅 / RSS 订阅」两个标签页切换，一次只显示一组，避免竖向堆叠占空间。
+*/
+
+/* ====== 标签页（分段控件） ====== */
+#card-subscribe .subscribe-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  margin: 0 0 0.95rem;
+  background: var(--anzhiyu-secondbg, #f2f3f7);
+  border-radius: 10px;
+}
+
+#card-subscribe .subscribe-tab {
+  flex: 1;
+  padding: 0.45rem 0.4rem;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+#card-subscribe .subscribe-tab:hover {
+  color: var(--anzhiyu-theme, #425aef);
+}
+
+#card-subscribe .subscribe-tab.is-active {
+  background: var(--anzhiyu-card-bg, #fff);
+  color: var(--anzhiyu-theme, #425aef);
+  box-shadow: var(--anzhiyu-shadow-border, 0 2px 8px rgba(0, 0, 0, 0.08));
+}
+
+/* ====== 面板显隐 ====== */
+#card-subscribe .subscribe-panel {
+  display: none;
+}
+
+#card-subscribe .subscribe-panel.is-active {
+  display: block;
+}
+
+/* ====== 邮件订阅 ====== */
+#card-subscribe .subscribe-desc {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+}
+
+#card-subscribe .subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+#card-subscribe .subscribe-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  background: var(--anzhiyu-secondbg, #f7f7f9);
+  border: 1px solid var(--anzhiyu-card-border, #e3e8f7);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#card-subscribe .subscribe-field:focus-within {
+  border-color: var(--anzhiyu-theme, #425aef);
+  box-shadow: 0 0 0 3px var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.137));
+}
+
+#card-subscribe .subscribe-field-icon {
+  flex: none;
+  font-size: 0.9rem;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+}
+
+#card-subscribe .subscribe-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--anzhiyu-fontcolor, #363636);
+}
+
+#card-subscribe .subscribe-input::placeholder {
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+  opacity: 0.75;
+}
+
+#card-subscribe .subscribe-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.55rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--anzhiyu-theme, #425aef);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#card-subscribe .subscribe-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.137));
+}
+
+#card-subscribe .subscribe-btn:active {
+  transform: translateY(0);
+}
+
+#card-subscribe .subscribe-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 提交中：纯 CSS 旋转圈（不依赖图标字体） */
+#card-subscribe .subscribe-spin {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: subscribe-spin 0.7s linear infinite;
+}
+
+@keyframes subscribe-spin {
+  to { transform: rotate(360deg); }
+}
+
+#card-subscribe .subscribe-note {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.7rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+  opacity: 0.85;
+}
+
+#card-subscribe .subscribe-tip {
+  margin: 0.6rem 0 0;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+#card-subscribe .subscribe-tip.is-ok {
+  color: var(--anzhiyu-theme, #425aef);
+  background: var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.137));
+}
+
+#card-subscribe .subscribe-tip.is-err {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.12);
+}
+
+/* ====== RSS 阅读器面板 ====== */
+/* RSS 是什么：常驻信息卡（左侧主题色强调条 + 浅底），不折叠不展开 */
+#card-subscribe .subscribe-rss-info {
+  margin: 0 0 0.85rem;
+  padding: 0.6rem 0.75rem;
+  border-left: 3px solid var(--anzhiyu-theme, #425aef);
+  border-radius: 6px;
+  background: var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.1));
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+}
+
+#card-subscribe .subscribe-rss-info p {
+  margin: 0;
+}
+
+#card-subscribe .subscribe-rss-info strong {
+  color: var(--anzhiyu-fontcolor, #363636);
+}
+
+#card-subscribe .subscribe-rss-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#card-subscribe .subscribe-rss-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.78rem;
+  color: var(--anzhiyu-fontcolor, #363636);
+  background: var(--anzhiyu-secondbg, #f7f7f9);
+  border: 1px solid var(--anzhiyu-card-border, #e3e8f7);
+  border-radius: 8px;
+  outline: none;
+}
+
+#card-subscribe .subscribe-rss-input:focus {
+  border-color: var(--anzhiyu-theme, #425aef);
+}
+
+#card-subscribe .subscribe-rss-copy {
+  flex: none;
+  padding: 0 0.85rem;
+  border: 1px solid var(--anzhiyu-theme, #425aef);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--anzhiyu-theme, #425aef);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+#card-subscribe .subscribe-rss-copy:hover {
+  background: var(--anzhiyu-theme, #425aef);
+  color: #fff;
+}
+
+#card-subscribe .subscribe-rss-copy.is-copied {
+  background: var(--anzhiyu-theme, #425aef);
+  color: #fff;
+  border-color: var(--anzhiyu-theme, #425aef);
+}
+
+#card-subscribe .subscribe-rss-readers {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+}
+
+#card-subscribe .subscribe-rss-reader {
+  flex: 1;
+  text-align: center;
+  padding: 0.45rem 0.4rem;
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: var(--anzhiyu-fontcolor, #363636);
+  background: var(--anzhiyu-secondbg, #f7f7f9);
+  border: 1px solid var(--anzhiyu-card-border, #e3e8f7);
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+#card-subscribe .subscribe-rss-reader:hover {
+  border-color: var(--anzhiyu-theme, #425aef);
+  color: var(--anzhiyu-theme, #425aef);
+}

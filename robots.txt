@@ -7,4 +7,53 @@ Disallow: /_drafts/
 Disallow: /_posts/
 Disallow: /source/_data/
 
+# ---- AI 爬虫：显式放行 ----
+# 目标之一是「成为 AI 信源」，所以这里明确列出各家 AI 抓取器并允许。
+# 注意：Google-Extended 只控制 Gemini/AI Overviews 的「训练与引用」，不影响普通搜索收录；
+#       OAI-SearchBot 是 ChatGPT 的搜索抓取（引用来源），GPTBot 是训练抓取。
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
 Sitemap: https://lifelinest.github.io/sitemap.xml
+Sitemap: https://lifelinest.github.io/baidusitemap.xml
+Sitemap: https://lifelinest.github.io/image-sitemap.xml
+# llms.txt（GEO 标准）位于站点根 /llms.txt，供 AI 爬虫自动读取，无需 Sitemap 声明

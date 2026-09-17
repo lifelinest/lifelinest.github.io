@@ -24,6 +24,33 @@
   opacity: 0.8;
 }
 
+/* 页脚徽标：加一层底色，与页面背景区分（亮/暗各一套色调） */
+#footer-badges .footer-badge {
+  border-radius: 6px;
+  padding: 3px 5px;
+  box-sizing: content-box;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+[data-theme='dark'] #footer-badges .footer-badge {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* 页脚圆形社交图标（#footer_deal .deal_link）
+   暗色下底色原本取 --anzhiyu-fontcolor=#f7f7fa（纯白）→ 刺眼。
+   改为柔和深色底 + 浅色图标：底色与图标不同色，保证图标可见。 */
+[data-theme='dark'] #footer-wrap #footer_deal .deal_link {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e6e6e9;
+}
+[data-theme='dark'] #footer-wrap #footer_deal .deal_link:hover {
+  background: var(--anzhiyu-main);
+  border-color: var(--anzhiyu-main);
+  color: var(--anzhiyu-white);
+}
+
 /* ===== 滚动选择器样式 - 左右布局单项目滚动版 ===== */
 
 /* 位置选择器容器 - 显示相邻项目预览的滚动设计 */
@@ -301,8 +328,12 @@
     width: 100%;
     height: 36px;
     max-width: none;
-    background: #bcb0a4 url(https://p.qjqq.cn/cover/202410191400532.png/color) repeat center;
-    background-size: auto 100%;
+    /* 原第三方纹理图（p.qjqq.cn）整域已下线 404，改为零请求的 CSS 纹理，
+       避免每页产生一条失败请求，同时不会再随图床失效而变白 */
+    background-color: #bcb0a4;
+    background-image:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(0, 0, 0, 0.10)),
+        repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.035) 0 3px, transparent 3px 7px);
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.15);
 }
 
@@ -469,4 +500,79 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* ===== SEO: 文章内 FAQ 区块（配合 FAQPage 结构化数据，GEO 提升 AI 问答引用） ===== */
+.seo-faq-block {
+  margin: 28px 0 8px;
+  padding: 18px 20px;
+  background: #f7f9fe;
+  border: 1px solid #e3e8f3;
+  border-radius: 12px;
+}
+.seo-faq-title {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #2b3245;
+}
+.seo-faq-item {
+  border-top: 1px solid #e3e8f3;
+  padding: 10px 0;
+}
+.seo-faq-item:first-of-type {
+  border-top: none;
+}
+.seo-faq-q {
+  cursor: pointer;
+  font-weight: 600;
+  color: #425aef;
+  list-style: none;
+  position: relative;
+  padding-left: 20px;
+}
+.seo-faq-q::-webkit-details-marker {
+  display: none;
+}
+.seo-faq-q::before {
+  content: "Q";
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+  color: #425aef;
+}
+.seo-faq-a {
+  margin: 8px 0 0 20px;
+  color: #4a5169;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+html[data-theme="dark"] .seo-faq-block {
+  background: #1c1f2b;
+  border-color: #2b3040;
+}
+html[data-theme="dark"] .seo-faq-title {
+  color: #e6e8ef;
+}
+html[data-theme="dark"] .seo-faq-item {
+  border-top-color: #2b3040;
+}
+html[data-theme="dark"] .seo-faq-a {
+  color: #c3c8d6;
+}
+/* ===== 正文内链（scripts/lib/internal-links.js 自动注入的锚文本） =====
+   设计意图：点得动、但不过分抢戏——正文里用「虚线下划线」提示可跳转，悬停才变主题色。
+   注意：主题对正文链接用的是
+   `#article-container a:not(...)...:not(...)`（6 个 :not，特异性 1,6,1），
+   普通写法 `a.ilink`（1,1,1）会被它压掉 —— 所以这里必须拼出同等特异性再加 .ilink。 */
+#article-container a:not([data-fancybox="gallery"]):not(.headerlink):not(.cf-friends-link):not(.tag-Link):not(.btn-anzhiyu):not(.no-text-decoration).ilink {
+  color: inherit;
+  padding: 0;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--anzhiyu-secondtext, #9a9a9a);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+#article-container a:not([data-fancybox="gallery"]):not(.headerlink):not(.cf-friends-link):not(.tag-Link):not(.btn-anzhiyu):not(.no-text-decoration).ilink:hover {
+  color: var(--anzhiyu-main, #49b1f5);
+  border-bottom: 1px solid var(--anzhiyu-main, #49b1f5);
 }

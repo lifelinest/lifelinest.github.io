@@ -4,58 +4,183 @@
 
     // 从主题配置中获取博主位置信息
     const BLOGGER_LOCATION = window.BLOGGER_LOCATION || {
-        lon: 112.93886, // 博主经度
-        lat: 31.089290  // 博主纬度
+        lon: 117.6556, // 博主经度（福建·漳州）
+        lat: 24.5133   // 博主纬度（福建·漳州）
     };
-    
-    // 确保所有城市标语数据文件都已加载 - 优化版
-    function waitForCitySlogansLoaded(callback, maxWaitTime = 2000) {
-        // 如果已经有标记表示数据库已加载，直接调用回调
-        if (window.CITY_SLOGANS_LOADED === true) {
-            console.log('城市标语数据已加载完成（快速检测）');
-            callback();
-            return;
-        }
-        
-        const startTime = Date.now();
-        const checkInterval = 50; // 减少检查间隔到50毫秒，提高响应速度
-        
-        function check() {
-            // 首先检查是否有全局标记表示数据库已加载
-            if (window.CITY_SLOGANS_LOADED === true) {
-                console.log('城市标语数据已加载完成（通过标记检测）');
-                callback();
-                return;
-            }
-            
-            // 检查主数据库是否已加载
-            const mainLoaded = typeof window.CHINA_CITY_SLOGANS !== 'undefined' && 
-                              typeof window.getCitySlogan === 'function' && 
-                              typeof window.getSloganByLocation === 'function';
-            
-            if (mainLoaded) {
-                console.log('城市标语主数据库已加载完成');
-                callback();
-                return;
-            }
-            
-            // 检查是否超时
-            if (Date.now() - startTime > maxWaitTime) {
-                console.warn('等待城市标语数据加载超时，将使用默认数据');
-                // 超时后尝试主动加载数据库
-                ensureCitySloganData(true);
-                callback();
-                return;
-            }
-            
-            // 继续等待
-            setTimeout(check, checkInterval);
-        }
-        
-        // 开始检查
-        check();
-    }
 
+    // ===== 地理位置中文化归一化：把接口返回的英文/代码转成中文，修复显示成 "China" 等问题 =====
+    const COUNTRY_CN = {
+        'cn': '中国', 'china': '中国', 'chn': '中国',
+        'hk': '中国香港', 'hongkong': '中国香港', 'hong kong': '中国香港', 'xianggang': '中国香港',
+        'mo': '中国澳门', 'macau': '中国澳门', 'macao': '中国澳门', 'aomen': '中国澳门',
+        'tw': '中国台湾', 'taiwan': '中国台湾',
+        'jp': '日本', 'japan': '日本',
+        'kr': '韩国', 'korea': '韩国', 'south korea': '韩国',
+        'kp': '朝鲜', 'north korea': '朝鲜',
+        'mn': '蒙古', 'mongolia': '蒙古',
+        'vn': '越南', 'vietnam': '越南',
+        'la': '老挝', 'laos': '老挝',
+        'kh': '柬埔寨', 'cambodia': '柬埔寨',
+        'th': '泰国', 'thailand': '泰国',
+        'mm': '缅甸', 'myanmar': '缅甸', 'burma': '缅甸',
+        'my': '马来西亚', 'malaysia': '马来西亚',
+        'sg': '新加坡', 'singapore': '新加坡',
+        'id': '印度尼西亚', 'indonesia': '印度尼西亚',
+        'ph': '菲律宾', 'philippines': '菲律宾',
+        'in': '印度', 'india': '印度',
+        'pk': '巴基斯坦', 'pakistan': '巴基斯坦',
+        'bd': '孟加拉国', 'bangladesh': '孟加拉国',
+        'np': '尼泊尔', 'nepal': '尼泊尔',
+        'lk': '斯里兰卡', 'sri lanka': '斯里兰卡',
+        'af': '阿富汗', 'afghanistan': '阿富汗',
+        'ir': '伊朗', 'iran': '伊朗',
+        'iq': '伊拉克', 'iraq': '伊拉克',
+        'sy': '叙利亚', 'syria': '叙利亚',
+        'jo': '约旦', 'jordan': '约旦',
+        'lb': '黎巴嫩', 'lebanon': '黎巴嫩',
+        'il': '以色列', 'israel': '以色列',
+        'sa': '沙特阿拉伯', 'saudi arabia': '沙特阿拉伯',
+        'ae': '阿联酋', 'united arab emirates': '阿联酋', 'uae': '阿联酋',
+        'qa': '卡塔尔', 'qatar': '卡塔尔',
+        'kw': '科威特', 'kuwait': '科威特',
+        'om': '阿曼', 'oman': '阿曼',
+        'tr': '土耳其', 'turkey': '土耳其', 'türkiye': '土耳其',
+        'gb': '英国', 'uk': '英国', 'united kingdom': '英国', 'england': '英国',
+        'fr': '法国', 'france': '法国',
+        'de': '德国', 'germany': '德国',
+        'it': '意大利', 'italy': '意大利',
+        'es': '西班牙', 'spain': '西班牙',
+        'pt': '葡萄牙', 'portugal': '葡萄牙',
+        'gr': '希腊', 'greece': '希腊',
+        'nl': '荷兰', 'netherlands': '荷兰', 'holland': '荷兰',
+        'be': '比利时', 'belgium': '比利时',
+        'lu': '卢森堡', 'luxembourg': '卢森堡',
+        'ch': '瑞士', 'switzerland': '瑞士',
+        'at': '奥地利', 'austria': '奥地利',
+        'dk': '丹麦', 'denmark': '丹麦',
+        'se': '瑞典', 'sweden': '瑞典',
+        'no': '挪威', 'norway': '挪威',
+        'fi': '芬兰', 'finland': '芬兰',
+        'is': '冰岛', 'iceland': '冰岛',
+        'ie': '爱尔兰', 'ireland': '爱尔兰',
+        'pl': '波兰', 'poland': '波兰',
+        'cz': '捷克', 'czechia': '捷克', 'czech republic': '捷克',
+        'sk': '斯洛伐克', 'slovakia': '斯洛伐克',
+        'hu': '匈牙利', 'hungary': '匈牙利',
+        'ro': '罗马尼亚', 'romania': '罗马尼亚',
+        'bg': '保加利亚', 'bulgaria': '保加利亚',
+        'rs': '塞尔维亚', 'serbia': '塞尔维亚',
+        'hr': '克罗地亚', 'croatia': '克罗地亚',
+        'si': '斯洛文尼亚', 'slovenia': '斯洛文尼亚',
+        'ua': '乌克兰', 'ukraine': '乌克兰',
+        'by': '白俄罗斯', 'belarus': '白俄罗斯',
+        'ru': '俄罗斯', 'russia': '俄罗斯',
+        'lt': '立陶宛', 'lithuania': '立陶宛',
+        'lv': '拉脱维亚', 'latvia': '拉脱维亚',
+        'ee': '爱沙尼亚', 'estonia': '爱沙尼亚',
+        'md': '摩尔多瓦', 'moldova': '摩尔多瓦',
+        'mt': '马耳他', 'malta': '马耳他',
+        'cy': '塞浦路斯', 'cyprus': '塞浦路斯',
+        'us': '美国', 'usa': '美国', 'united states': '美国', 'america': '美国',
+        'ca': '加拿大', 'canada': '加拿大',
+        'mx': '墨西哥', 'mexico': '墨西哥',
+        'br': '巴西', 'brazil': '巴西',
+        'ar': '阿根廷', 'argentina': '阿根廷',
+        'cl': '智利', 'chile': '智利',
+        'pe': '秘鲁', 'peru': '秘鲁',
+        'co': '哥伦比亚', 'colombia': '哥伦比亚',
+        've': '委内瑞拉', 'venezuela': '委内瑞拉',
+        'ec': '厄瓜多尔', 'ecuador': '厄瓜多尔',
+        'bo': '玻利维亚', 'bolivia': '玻利维亚',
+        'py': '巴拉圭', 'paraguay': '巴拉圭',
+        'uy': '乌拉圭', 'uruguay': '乌拉圭',
+        'cu': '古巴', 'cuba': '古巴',
+        'jm': '牙买加', 'jamaica': '牙买加',
+        'ht': '海地', 'haiti': '海地',
+        'do': '多米尼加', 'dominican republic': '多米尼加',
+        'bs': '巴哈马', 'bahamas': '巴哈马',
+        'eg': '埃及', 'egypt': '埃及',
+        'ma': '摩洛哥', 'morocco': '摩洛哥',
+        'za': '南非', 'south africa': '南非',
+        'ke': '肯尼亚', 'kenya': '肯尼亚',
+        'tz': '坦桑尼亚', 'tanzania': '坦桑尼亚',
+        'et': '埃塞俄比亚', 'ethiopia': '埃塞俄比亚',
+        'ng': '尼日利亚', 'nigeria': '尼日利亚',
+        'gh': '加纳', 'ghana': '加纳',
+        'dz': '阿尔及利亚', 'algeria': '阿尔及利亚',
+        'tn': '突尼斯', 'tunisia': '突尼斯',
+        'ly': '利比亚', 'libya': '利比亚',
+        'sd': '苏丹', 'sudan': '苏丹',
+        'mg': '马达加斯加', 'madagascar': '马达加斯加',
+        'mu': '毛里求斯', 'mauritius': '毛里求斯',
+        'sc': '塞舌尔', 'seychelles': '塞舌尔',
+        'au': '澳大利亚', 'australia': '澳大利亚',
+        'nz': '新西兰', 'new zealand': '新西兰',
+        'pg': '巴布亚新几内亚', 'papua new guinea': '巴布亚新几内亚',
+        'fj': '斐济', 'fiji': '斐济',
+        'ws': '萨摩亚', 'samoa': '萨摩亚'
+    };
+
+    // ===== 降级兜底映射（非主路径）=====
+    // 主路径：高德 IP 定位直接返回中文省/市（向外求）。
+    // 仅当「高德不可达、回退 ipwho」且为国内访客时，下面两张表把 ipwho 的英文省/市转中文，
+    // 避免退化成「China / Fujian Sheng」中英混排（即此前嫌的显示问题复发）。
+    // 高德返回已是中文，不会被此表改动；海外访客英文省/市透传（按国名匹配标语，可接受）。
+    // 覆盖主要省市即可，无需无限维护——冷门城市最多回落省级/通用标语。
+    const PROVINCE_CN = {
+        'beijing': '北京市', 'shanghai': '上海市', 'tianjin': '天津市', 'chongqing': '重庆市',
+        'hebei': '河北省', 'shanxi': '山西省', 'neimenggu': '内蒙古自治区', 'inner mongolia': '内蒙古自治区', 'innermongolia': '内蒙古自治区',
+        'liaoning': '辽宁省', 'jilin': '吉林省', 'heilongjiang': '黑龙江省',
+        'jiangsu': '江苏省', 'zhejiang': '浙江省', 'anhui': '安徽省', 'fujian': '福建省', 'jiangxi': '江西省', 'shandong': '山东省',
+        'henan': '河南省', 'hubei': '湖北省', 'hunan': '湖南省', 'guangdong': '广东省', 'guangxi': '广西壮族自治区',
+        'hainan': '海南省', 'sichuan': '四川省', 'guizhou': '贵州省', 'yunnan': '云南省', 'xizang': '西藏自治区', 'tibet': '西藏自治区',
+        'shaanxi': '陕西省', 'gansu': '甘肃省', 'qinghai': '青海省', 'ningxia': '宁夏回族自治区', 'xinjiang': '新疆维吾尔自治区',
+        'taiwan': '台湾省', 'xianggang': '香港特别行政区', 'hongkong': '香港特别行政区', 'hong kong': '香港特别行政区',
+        'aomen': '澳门特别行政区', 'macau': '澳门特别行政区', 'macao': '澳门特别行政区'
+    };
+    const CITY_CN = {
+        'beijing': '北京市', 'shanghai': '上海市', 'tianjin': '天津市', 'chongqing': '重庆市',
+        'shijiazhuang': '石家庄市', 'taiyuan': '太原市', 'huhehaote': '呼和浩特市', 'shenyang': '沈阳市', 'changchun': '长春市', 'haerbin': '哈尔滨市',
+        'nanjing': '南京市', 'hangzhou': '杭州市', 'hefei': '合肥市', 'fuzhou': '福州市', 'nanchang': '南昌市', 'jinan': '济南市',
+        'zhengzhou': '郑州市', 'wuhan': '武汉市', 'changsha': '长沙市', 'guangzhou': '广州市', 'nanning': '南宁市', 'haikou': '海口市',
+        'chengdu': '成都市', 'guiyang': '贵阳市', 'kunming': '昆明市', 'lhasa': '拉萨市', 'xian': '西安市', 'lanzhou': '兰州市',
+        'xining': '西宁市', 'yinchuan': '银川市', 'wulumuqi': '乌鲁木齐市', 'xianggang': '香港特别行政区', 'aomen': '澳门特别行政区', 'taibei': '台北市',
+        'xiamen': '厦门市', 'putian': '莆田市', 'sanming': '三明市', 'quanzhou': '泉州市', 'zhangzhou': '漳州市', 'nanping': '南平市', 'longyan': '龙岩市', 'ningde': '宁德市',
+        'shenzhen': '深圳市', 'suzhou': '苏州市', 'qingdao': '青岛市', 'dalian': '大连市', 'ningbo': '宁波市', 'wenzhou': '温州市', 'dongguan': '东莞市'
+    };
+
+    // 国名 + 省/市中文化：高德已给中文则不改动；ipwho 英文降级转中文
+    function normalizeLocation(raw) {
+        if (!raw) return raw;
+        let country = (raw.country || '').toString().trim();
+        let prov = (raw.prov || '').toString().trim();
+        let city = (raw.city || '').toString().trim();
+
+        const cKey = country.toLowerCase();
+        if (COUNTRY_CN[cKey]) country = COUNTRY_CN[cKey];
+
+        // 省：英文(含 Sheng/Province 等后缀) -> 中文；已是中文则保留
+        if (prov) {
+            const pk = prov.toLowerCase()
+                .replace(/\s*(sheng|province|prov|autonomous region|region|zizhiqu|zizhizhou)\s*$/, '')
+                .replace(/\s+/g, '').trim();
+            if (PROVINCE_CN[pk]) prov = PROVINCE_CN[pk];
+        }
+        // 市：英文(含 Shi/City 后缀) -> 中文；已是中文则保留
+        if (city) {
+            const ck = city.toLowerCase()
+                .replace(/\s*(shi|city|county)\s*$/, '')
+                .replace(/\s+/g, '').trim();
+            if (CITY_CN[ck]) city = CITY_CN[ck];
+        }
+        return {
+            country: country,
+            prov: prov,
+            city: city,
+            district: raw.district || ''
+        };
+    }
+    
     function selectAsideTarget() {
         const asideContent = document.querySelector('#aside-content');
         if (asideContent) {
@@ -156,6 +281,7 @@
     const IP_LOCATION_CACHE_KEY = 'ip_location_cache';
     const LOCATION_CACHE_TIMESTAMP_KEY = 'location_cache_timestamp';
     const CACHE_VALID_TIME = 10 * 60 * 1000; // 缓存有效期：10分钟
+    const LOCATION_CACHE_VERSION = 3; // 定位逻辑变更时自增，旧缓存自动失效（本次切换高德优先 + 删映射表）
     
     // 获取用户修正的位置
     function getUserCorrectedLocation() {
@@ -189,11 +315,18 @@
             if (timestamp && cached) {
                 const now = Date.now();
                 const cacheTime = parseInt(timestamp);
+                const parsed = JSON.parse(cached);
+                
+                // 版本不一致（定位逻辑已更新）则视为失效
+                if (parsed && parsed._v !== LOCATION_CACHE_VERSION) {
+                    console.log('位置缓存版本过旧，重新获取');
+                    return null;
+                }
                 
                 // 检查缓存是否过期
                 if (now - cacheTime < CACHE_VALID_TIME) {
                     console.log('使用缓存的位置信息，缓存时间:', new Date(cacheTime).toLocaleString());
-                    return JSON.parse(cached);
+                    return parsed;
                 } else {
                     console.log('位置信息缓存已过期，需要重新获取');
                 }
@@ -207,6 +340,7 @@
     // 保存IP位置信息到缓存
     function cacheIpLocation(locationData) {
         try {
+            locationData._v = LOCATION_CACHE_VERSION;
             localStorage.setItem(IP_LOCATION_CACHE_KEY, JSON.stringify(locationData));
             localStorage.setItem(LOCATION_CACHE_TIMESTAMP_KEY, Date.now().toString());
             console.log('已缓存位置信息:', locationData);
@@ -890,7 +1024,7 @@
 
         // 强制使用我的城市标语数据库获取标语
         if (data.country === '中国') {
-            pos = `${data.prov || ''} ${data.city || ''} ${data.district || ''}`.trim();
+            pos = `${data.prov || ''} ${data.city || ''} ${data.district || ''}`.trim() || '中国';
             
             // 确保使用我的城市标语数据库
             console.log('使用我的城市标语数据库...');
@@ -970,7 +1104,7 @@
                     console.log('未找到匹配的城市标语，使用默认描述');
                 }
             } else {
-                console.warn('城市标语数据库未加载，尝试手动加载...');
+                console.log('[城市标语] 数据库尚未就绪，主动加载一次…');
                 // 尝试手动加载数据库
                 ensureCitySloganData();
                 // 延迟重试
@@ -986,7 +1120,7 @@
                                 const el = document.getElementById('welcome-info');
                                 if (el) {
         const greeting = timeGreeting();
-        el.innerHTML = `欢迎来自 <b><span style="color: var(--anzhiyu-main)">${pos}</span></b> 的小友💖<br>当前位置距博主约 <b><span style="color: var(--anzhiyu-main)">${dist.toFixed(2)}</span></b> 公里！<br>${greeting}<br>Tip：<b><span style="font-size: 15px;">${posdesc}</span></b>`;
+        el.innerHTML = `欢迎来自 <b><span style="color: var(--anzhiyu-main)">${pos}</span></b> 的小友💖<br>当前位置距博主约 <b><span style="color: var(--anzhiyu-main)">${distText}</span></b> 公里！<br>${greeting}<br>Tip：<b><span style="font-size: 15px;">${posdesc}</span></b>`;
         
         // 不再添加位置修正按钮
                                 }
@@ -1202,14 +1336,19 @@
 
         // 计算距离
         let dist = 0;
-        if (typeof data.lng === 'number' && typeof data.lat === 'number') {
+        let distText;
+        if (data && data.fallback) {
+            distText = '—'; // 定位失败回退，不显示虚假公里数
+        } else if (typeof data.lng === 'number' && typeof data.lat === 'number') {
             dist = getDistance(BLOGGER_LOCATION.lon, BLOGGER_LOCATION.lat, data.lng, data.lat);
+            distText = dist.toFixed(2);
         } else {
+            distText = '—';
             console.log('无法计算距离，缺少经纬度信息');
         }
 
         const greeting = timeGreeting();
-        el.innerHTML = `欢迎来自 <b><span style="color: var(--anzhiyu-main)">${pos}</span></b> 的小友💖<br>当前位置距博主约 <b><span style="color: var(--anzhiyu-main)">${dist.toFixed(2)}</span></b> 公里！<br>${greeting}<br>Tip：<b><span style="font-size: 15px;">${posdesc}</span></b>`;
+        el.innerHTML = `欢迎来自 <b><span style="color: var(--anzhiyu-main)">${pos}</span></b> 的小友💖<br>当前位置距博主约 <b><span style="color: var(--anzhiyu-main)">${distText}</span></b> 公里！<br>${greeting}<br>Tip：<b><span style="font-size: 15px;">${posdesc}</span></b>`;
     }
 
     function isHomePage() {
@@ -1250,154 +1389,78 @@
         // 显示正在获取定位的提示
         el.innerHTML = '正在获取你的定位...';
         
-        // 直接使用配置的密钥
-        const key = "XPYdG7ccICDW47apDHcLzCVHiH";
+        // 高德 key 见下方 fetchAmap()，复用 FootprintMap 同款 key（建议在高德控制台锁域名白名单）
 
         try {
             // 使用Promise.race同时请求多个API，使用最快返回的有效结果
-            const apis = [
-                // IP.SB API - 免费IP地理位置查询
-                {
-                    name: 'ip-sb',
-                    fetch: () => fetch(`https://api.ip.sb/geoip`, { 
-                        cache: 'no-store',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
-                        signal: AbortSignal.timeout(3000)
-                    }).then(resp => {
-                        if (!resp.ok) throw new Error(`API请求失败: ${resp.status}`);
-                        return resp.json();
-                    }).then(data => {
-                        if (!data || !data.code) throw new Error('数据格式不正确');
-                        return {
-                            ip: data.ip || '',
-                            data: {
-                                country: data.country || '',
-                                prov: data.province || '',
-                                city: data.city || '',
-                                district: data.areacode || '',
-                                lng: data.longitude || 0,
-                                lat: data.latitude || 0,
-                                source: 'ip-sb'
-                            }
-                        };
-                    })
-                },
-                // IPWho.is API - 另一个免费IP查询
-                {
-                    name: 'ipwho',
-                    fetch: () => fetch(`https://ipwho.is/`, { 
-                        cache: 'no-store',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
-                        signal: AbortSignal.timeout(3000)
-                    }).then(resp => {
-                        if (!resp.ok) throw new Error(`API请求失败: ${resp.status}`);
-                        return resp.json();
-                    }).then(data => {
-                        if (!data || data.success === false) throw new Error('数据格式不正确');
-                        return {
-                            ip: data.ip || '',
-                            data: {
-                                country: data.country || '',
-                                prov: data.region || '',
-                                city: data.city || '',
-                                district: '',
-                                lng: data.longitude || 0,
-                                lat: data.latitude || 0,
-                                source: 'ipwho'
-                            }
-                        };
-                    })
-                },
-                // ipinfo.io 备用
-                {
-                    name: 'ipinfo',
-                    fetch: () => fetch('https://ipinfo.io/json', { 
-                        cache: 'no-store',
-                        headers: {
-                            'Accept': 'application/json'
-                        },
-                        signal: AbortSignal.timeout(3000)
-                    }).then(resp => {
-                        if (!resp.ok) throw new Error(`API请求失败: ${resp.status}`);
-                        return resp.json();
-                    }).then(data => {
-                        if (!data) throw new Error('数据格式不正确');
-                        return {
-                            ip: data.ip || '',
-                            data: {
-                                country: data.country || '',
-                                prov: data.region || '',
-                                city: data.city || '',
-                                district: '',
-                                lng: data.loc ? parseFloat(data.loc.split(',')[1]) : 0,
-                                lat: data.loc ? parseFloat(data.loc.split(',')[0]) : 0,
-                                source: 'ipinfo'
-                            }
-                        };
-                    })
-                }
-            ];
-            
-            // 同时发起所有请求，使用最快返回的有效结果
-            const apiPromises = apis.map(api => 
-                api.fetch()
-                .then(processed => {
-                    // 验证数据有效性
-                    if (processed && processed.data && 
-                        processed.data.country && 
-                        processed.data.prov && 
-                        processed.data.city) {
-                        
-                        // 修正城市名称，确保精确到市级
-                        if (processed.data.city && !processed.data.city.endsWith('市') && 
-                            processed.data.city !== '北京' && 
-                            processed.data.city !== '上海' && 
-                            processed.data.city !== '天津' && 
-                            processed.data.city !== '重庆') {
-                            processed.data.city = processed.data.city + '市';
+        // ===== 向外求：定位源（高德优先 + 海外 ipwho 兜底）=====
+        // 高德 IP 定位（JSONP 方式，直接返回中文省/市，省去手写映射表）
+        const fetchAmap = () => {
+            const amapKey = window.AMAP_WELCOME_KEY || 'dc1eaa8e383ff12ca596ba00fe2b2ed1';
+            return new Promise((resolve, reject) => {
+                const cb = 'amap_welcome_' + Math.random().toString(36).slice(2);
+                let done = false;
+                let script;
+                const cleanup = () => {
+                    try { delete window[cb]; } catch (e) {}
+                    if (script && script.parentNode) script.parentNode.removeChild(script);
+                };
+                window[cb] = (data) => {
+                    if (done) return; done = true; cleanup();
+                    if (data && data.status === '1' && data.province && data.city) {
+                        let lng = 0, lat = 0;
+                        if (data.rectangle && data.rectangle.indexOf(';') > -1) {
+                            const a = data.rectangle.split(';')[0].split(',').map(Number);
+                            const b = data.rectangle.split(';')[1].split(',').map(Number);
+                            lng = (a[0] + b[0]) / 2;
+                            lat = (a[1] + b[1]) / 2;
                         }
-                        
-                        console.log(`成功获取位置数据，来源: ${processed.data.source}`);
-                        return processed;
+                        resolve({
+                            ip: '',
+                            data: { country: '中国', prov: data.province, city: data.city, district: '', lng: lng, lat: lat, source: 'amap' }
+                        });
                     } else {
-                        throw new Error('数据不完整或无效');
+                        reject(new Error('高德未返回有效国内位置: ' + (data && data.info)));
                     }
-                })
-                .catch(err => {
-                    console.error(`API ${api.name} 请求失败:`, err);
-                    return null; // 返回null表示此API失败
-                })
-            );
+                };
+                script = document.createElement('script');
+                script.onerror = () => { if (done) return; done = true; cleanup(); reject(new Error('高德脚本加载失败')); };
+                script.src = 'https://restapi.amap.com/v3/ip?key=' + encodeURIComponent(amapKey) + '&callback=' + encodeURIComponent(cb);
+                document.head.appendChild(script);
+                setTimeout(() => { if (done) return; done = true; cleanup(); reject(new Error('高德超时')); }, 8000);
+            });
+        };
+
+        // 海外兜底（ipwho.is，返回英文，仅做国名中文化）
+        const fetchIpwho = () => {
+            return fetch('https://ipwho.is/', {
+                cache: 'no-store',
+                headers: { 'Accept': 'application/json' },
+                signal: AbortSignal.timeout(4000)
+            }).then(resp => resp.ok ? resp.json() : Promise.reject(new Error('ipwho HTTP ' + resp.status)))
+              .then(data => {
+                  if (!data || data.success === false || !data.country) throw new Error('ipwho 数据无效');
+                  const lng = parseFloat(data.longitude), lat = parseFloat(data.latitude);
+                  if (!isFinite(lng) || !isFinite(lat)) throw new Error('ipwho 缺坐标');
+                  const raw = { country: data.country, prov: data.region || '', city: data.city || '', district: '', lng: lng, lat: lat, source: 'ipwho' };
+                  const n = normalizeLocation(raw);
+                  return { ip: data.ip || '', data: n };
+              });
+        };
             
-            // 使用Promise.any获取第一个成功的结果
+            // 向外求：高德优先（直接中文省/市），海外回退 ipwho.is
             let locationData = null;
             try {
-                // 尝试使用Promise.any (如果浏览器支持)
-                if (typeof Promise.any === 'function') {
-                    locationData = await Promise.any(apiPromises.filter(p => p !== null));
-                } else {
-                    // 回退到手动实现类似Promise.any的功能
-                    locationData = await new Promise((resolve, reject) => {
-                        let rejected = 0;
-                        apiPromises.forEach(p => {
-                            p.then(result => {
-                                if (result) resolve(result);
-                            }).catch(() => {
-                                rejected++;
-                                if (rejected === apiPromises.length) {
-                                    reject(new Error('所有API请求都失败'));
-                                }
-                            });
-                        });
-                    });
+                locationData = await fetchAmap();
+                console.log('成功获取位置数据，来源: amap（高德）');
+            } catch (amapErr) {
+                console.warn('高德定位失败，回退 ipwho.is:', amapErr && amapErr.message);
+                try {
+                    locationData = await fetchIpwho();
+                    console.log('成功获取位置数据，来源: ipwho（海外兜底）');
+                } catch (ipwhoErr) {
+                    console.warn('ipwho.is 也失败:', ipwhoErr && ipwhoErr.message);
                 }
-            } catch (err) {
-                console.warn('所有API请求都失败:', err);
-                locationData = null;
             }
             
             // 如果API请求都失败，尝试使用HTML5地理定位
@@ -1435,19 +1498,20 @@
                 }
             }
             
-            // 如果仍然没有位置数据，使用默认数据
+            // 如果仍然没有位置数据，回退到博主坐标（距离约 0），并标记 fallback 避免显示虚假公里数
             if (!locationData) {
-                console.warn('无法获取位置数据，使用默认位置');
+                console.warn('无法获取位置数据，回退到博主坐标');
                 locationData = {
                     ip: '默认',
                     data: {
                         country: '中国',
-                        prov: '北京市',
-                        city: '北京市',
+                        prov: '',
+                        city: '',
                         district: '',
-                        lng: 116.4074,
-                        lat: 39.9042,
-                        source: 'default'
+                        lng: BLOGGER_LOCATION.lon,
+                        lat: BLOGGER_LOCATION.lat,
+                        source: 'default',
+                        fallback: true
                     }
                 };
             }
@@ -1532,7 +1596,7 @@
             return true;
         }
         
-        console.warn('城市标语数据库未完整加载，尝试动态加载...');
+        console.log('[城市标语] 首次加载，动态拉取区域数据…');
         
         // 区域文件映射
         const regionFiles = {
@@ -1660,8 +1724,9 @@
             // 后台预加载城市标语数据
             preloadCitySlogans();
         } else {
-            // 如果没有缓存的位置信息，则等待城市标语数据加载
-            waitForCitySlogansLoaded(function() {
+            // 如果没有缓存的位置信息，则直接加载城市标语数据并初始化
+            ensureCitySloganData(true);
+            (function() {
                 // 数据加载完成后，继续初始化
                 tryRelocate(20);
                 
@@ -1689,14 +1754,12 @@
                 console.log('- CHINA_CITY_SLOGANS:', typeof window.CHINA_CITY_SLOGANS);
                 console.log('- getCitySlogan函数:', typeof window.getCitySlogan);
                 console.log('- getSloganByLocation函数:', typeof window.getSloganByLocation);
-            });
+            })();
             
             // 2秒后检查是否仍在加载
             setTimeout(() => {
                 const el = document.getElementById('welcome-info');
                 if (el && (el.innerHTML === '正在获取你的定位...' || el.innerHTML === '正在加载欢迎信息...')) {
-                    console.warn('2秒后仍在获取定位，使用默认数据');
-                    
             // 显示获取位置超时的提示
             const el = document.getElementById('welcome-info');
             if (el) {

@@ -267,8 +267,12 @@
   var chinaMapLoading = false;
   var chinaMapCallbacks = [];
 
-  // ECharts 中国地图 GeoJSON 注册数据 URL（与主题已加载的 echarts@4.9.0 配套）
-  var CHINA_MAP_URL = 'https://npm.elemecdn.com/echarts@4.9.0/map/js/china.js';
+  // 中国地图边界 GeoJSON（合规）
+  // 说明：原实现引用 echarts@4.9.0/map/js/china.js（已废弃的旧版地图数据），该数据缺失南海诸岛与九段线，
+  //      不符合《地图管理条例》对国界线表示的要求。现改为拉取自带南海诸岛/九段线的标准中国边界 GeoJSON，
+  //      经 echarts.registerMap 注册后渲染，确保领土表示完整、合规。
+  // 如需严格采用白名单地图服务商（腾讯/高德/百度/天地图），可改用高德 AMap 渲染（本站 FootprintMap 已用高德）。
+  var CHINA_MAP_URL = 'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json';
 
   /**
    * 异步加载 ECharts 中国地图数据（仅首次调用时加载，避免拖累其他页面）
@@ -283,25 +287,29 @@
     if (chinaMapLoading) return;
     chinaMapLoading = true;
 
-    // 兼容老的 echarts@4 map 数据文件（它会调用 echarts.registerMap('china', {...})）
-    var script = document.createElement('script');
-    script.src = CHINA_MAP_URL;
-    script.onerror = function () {
-      console.info('[about-stats] china map load failed');
-      chinaMapLoading = false;
-      // 失败也执行回调，让上层降级
-      var cbs = chinaMapCallbacks.slice();
-      chinaMapCallbacks = [];
-      cbs.forEach(function (cb) { cb(false); });
-    };
-    script.onload = function () {
-      chinaMapLoaded = true;
-      chinaMapLoading = false;
-      var cbs = chinaMapCallbacks.slice();
-      chinaMapCallbacks = [];
-      cbs.forEach(function (cb) { cb(true); });
-    };
-    document.head.appendChild(script);
+    // 拉取标准中国边界 GeoJSON 并注册到 echarts（含南海诸岛/九段线）
+    fetch(CHINA_MAP_URL, { credentials: 'omit' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (geoJson) {
+        if (typeof echarts === 'undefined') throw new Error('echarts not ready');
+        echarts.registerMap('china', geoJson);
+        chinaMapLoaded = true;
+        chinaMapLoading = false;
+        var cbs = chinaMapCallbacks.slice();
+        chinaMapCallbacks = [];
+        cbs.forEach(function (cb) { cb(true); });
+      })
+      .catch(function (err) {
+        console.info('[about-stats] china map load failed:', err && err.message);
+        chinaMapLoading = false;
+        // 失败也执行回调，让上层降级
+        var cbs = chinaMapCallbacks.slice();
+        chinaMapCallbacks = [];
+        cbs.forEach(function (cb) { cb(false); });
+      });
   }
 
   function ensureMapChart(el) {
