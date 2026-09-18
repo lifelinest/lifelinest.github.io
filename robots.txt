@@ -53,7 +53,7 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
-Sitemap: https://lifelinest.github.io/sitemap.xml
-Sitemap: https://lifelinest.github.io/baidusitemap.xml
-Sitemap: https://lifelinest.github.io/image-sitemap.xml
+Sitemap: https://mfy-lifeline.com/sitemap.xml
+Sitemap: https://mfy-lifeline.com/baidusitemap.xml
+Sitemap: https://mfy-lifeline.com/image-sitemap.xml
 # llms.txt（GEO 标准）位于站点根 /llms.txt，供 AI 爬虫自动读取，无需 Sitemap 声明

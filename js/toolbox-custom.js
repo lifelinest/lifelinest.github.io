@@ -62,7 +62,7 @@
       };
       q(root, '.jf-clear').onclick = function () { input.value = ''; output.textContent = '等待输入…'; err.textContent = ''; };
       q(root, '.jf-sample').onclick = function () {
-        input.value = JSON.stringify({ name: 'Lifeline', site: 'lifelinest.github.io', tags: ['前端', '学生'], nested: { ok: true, count: 2 } });
+        input.value = JSON.stringify({ name: 'Lifeline', site: 'mfy-lifeline.com', tags: ['前端', '学生'], nested: { ok: true, count: 2 } });
         run(false);
       };
       let t = null;
@@ -76,7 +76,7 @@
       const presets = [
         ['手机号', '1[3-9]\\d{9}', '联系电话 13812345678，备用 15987654321。'],
         ['邮箱', '[\\w.+-]+@[\\w-]+\\.[\\w.]+', '邮箱：foo.bar@example.com 与 bad-email#no。'],
-        ['URL', 'https?://[^\\s]+', '访问 https://lifelinest.github.io/ 或 http://a.b/c。'],
+        ['URL', 'https?://[^\\s]+', '访问 https://mfy-lifeline.com/ 或 http://a.b/c。'],
         ['IPv4', '(\\d{1,3}\\.){3}\\d{1,3}', '服务器 IP：192.168.1.1 和 10.0.0.255。'],
         ['日期', '\\d{4}-\\d{2}-\\d{2}', '截止日期 2026-09-06，发布于 2025-01-01。'],
         ['中文', '[\\u4e00-\\u9fa5]+', 'mix 中文字符 and English words。'],
@@ -451,7 +451,7 @@
     render: function () {
       return '<div class="fp-card">' +
         '<div class="ft-field"><label>二维码内容（文字或链接）</label>' +
-        '<textarea class="fp-textarea qr-text" style="min-height:80px" placeholder="https://lifelinest.github.io/"></textarea></div>' +
+        '<textarea class="fp-textarea qr-text" style="min-height:80px" placeholder="https://mfy-lifeline.com/"></textarea></div>' +
         '<div class="fp-row" style="margin-bottom:12px">' +
         '<select class="fp-select qr-size" style="width:130px"><option value="200">尺寸 200</option><option value="300" selected>尺寸 300</option><option value="400">尺寸 400</option></select>' +
         '<select class="fp-select qr-level" style="width:150px"><option value="L">容错 L (7%)</option><option value="M" selected>容错 M (15%)</option><option value="Q">容错 Q (25%)</option><option value="H">容错 H (30%)</option></select>' +
