@@ -1,19 +1,21 @@
 ---
 title: 如何搭建 Cursor Skill 标准化目录结构与部署环境
+description: "绝大多数新手遇到的 Skill 失效、无法触发、执行错乱等问题，90% 源于路径错误、目录不标准、命名不规范。本文手把手教你搭建 Cursor Skill 的标准化运行环境，深入拆解用户级与项目级两种部署模式、官方目录结构、SKILL.md 核心文件规范，并汇总新手高频踩坑点，夯实 AI 技能创作与调试的基础。"
 author: Lifeline
 tags:
   - 人工智能
   - 技术踩坑
   - 开发工具
 categories:
-  - 技术探索
-cover: /images/doubao_image_5.jpg
+  - 博客建站与前端
+cover: https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%20Cursor%20Skill%20%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/1789100101588_doubao_image_5.jpg
 abbrlink: f2b68b74
 date: 2026-06-19 15:29:11
+ai: "搭建Cursor Skill需严格遵循官方路径与目录规范, 90%的失效问题源于路径错误和命名不规范, 通用技能放全局、项目专属放本地, 核心文件必须命名为SKILL.md并采用UTF-8编码, 新手优先使用最简结构, 避免中文路径、Tab缩进和Word编辑等技术踩坑, 掌握这些开发工具规范后即可独立搭建合规的Skill运行环境, 为后续人工智能技能创作与博客建站与前端开发奠定基础"
 ---
 ## 前言
 
-![doubao_image_4_1781854367116.png](/images/doubao_image_4_1781854367116.png)
+![doubao_image_4_1781854367116.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%20Cursor%20Skill%20%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/1789100074331_doubao_image_4_1781854367116.png)
 
 
 上一讲我们系统吃透了**Skill、Rule、Token**三大核心基础概念，完成了零基础理论认知铺垫。从本篇开始，我们正式进入**Skill实操落地阶段**，从零搭建可直接使用的AI技能运行环境。
@@ -24,7 +26,7 @@ date: 2026-06-19 15:29:11
 
 ## 一、Skill 部署核心逻辑：生效范围决定部署方式
 
-![doubao_image_9_1781854379370.png](/images/doubao_image_9_1781854379370.png)
+![doubao_image_9_1781854379370.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%20Cursor%20Skill%20%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/1789100241483_doubao_image_9_1781854379370.png)
 
 目前主流AI编程助手（[Claude Code](https://claude.ai/code)、[CodeBuddy](https://codebuddy.bytedance.com/)、[Cursor](https://www.cursor.com/)）统一提供两套Skill部署方案，分为**用户级（全局生效）**和**项目级（局部生效）**。两种模式的核心差异集中在生效范围、存储路径、适用场景，大家可根据自身使用需求灵活选用。
 
@@ -65,7 +67,7 @@ date: 2026-06-19 15:29:11
 
 ## 二、Skill 标准目录结构（官方规范）
 
-![doubao_image_3_1781854394605.png](/images/doubao_image_3_1781854394605.png)
+![doubao_image_3_1781854394605.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%20Cursor%20Skill%20%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/1789100029924_doubao_image_3_1781854394605.png)
 
 Skill有一条**强制官方规范**：**一个技能对应一个独立专属文件夹**，严禁多个不同Skill共用同一个文件夹，避免AI加载错乱、规则冲突。官方提供两套标准目录结构，分别适配新手入门简单场景、企业级复杂商用场景。
 
@@ -101,7 +103,7 @@ Skill有一条**强制官方规范**：**一个技能对应一个独立专属文
 
 ## 三、核心文件 SKILL\.md 硬性规范要求
 
-![doubao_image_2_1781854427550.png](/images/doubao_image_2_1781854427550.png)
+![doubao_image_2_1781854427550.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%20Cursor%20Skill%20%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/1789099995248_doubao_image_2_1781854427550.png)
 
 `SKILL.md` 是AI识别、加载、执行Skill的**唯一核心文件**，拥有**严格的官方硬性规范，无任何容错空间**，新手必须严格遵守，避免技能直接失效。
 
@@ -122,7 +124,7 @@ Skill有一条**强制官方规范**：**一个技能对应一个独立专属文
 
 ## 四、零基础编辑器选型与基础使用
 
-![doubao_image_15_1781854450292.png](/images/doubao_image_15_1781854450292.png)
+![doubao_image_15_1781854450292.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%20Cursor%20Skill%20%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/1789099907494_doubao_image_15_1781854450292.png)
 
 编写SKILL\.md无需复杂专业工具，仅需要支持[Markdown](https://www.markdownguide.org/)渲染、[YAML](https://yaml.org/)语法高亮、纯文本编辑的软件。这里精选3款零基础友好工具，大家可按需选择使用。
 
@@ -139,7 +141,7 @@ Skill有一条**强制官方规范**：**一个技能对应一个独立专属文
 
 ## 五、新手致命避坑：命名、路径、格式禁忌
 
-![doubao_image_14_1781854462679.png](/images/doubao_image_14_1781854462679.png)
+![doubao_image_14_1781854462679.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%20Cursor%20Skill%20%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/1789099815865_doubao_image_14_1781854462679.png)
 
 本节汇总新手**99%会踩的前期****致命****坑点**，均为官方硬性禁忌规范，严格遵守即可规避绝大多数Skill失效、无法触发、解析报错等问题。
 
@@ -169,7 +171,7 @@ Skill有一条**强制官方规范**：**一个技能对应一个独立专属文
 
 ## 六、本篇总结 \& 学习目标
 
-![doubao_image_11_1781854500647.png](/images/doubao_image_11_1781854500647.png)
+![doubao_image_11_1781854500647.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%20Cursor%20Skill%20%E6%A0%87%E5%87%86%E5%8C%96%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83/1789099723480_doubao_image_11_1781854500647.png)
 
 ### 6\.1 核心知识点总结
 
