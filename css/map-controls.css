@@ -1,0 +1,16 @@
+.map-controls-separator {
+    position: absolute;
+    right: 15px;
+    width: 30px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .map-controls-separator {
+        right: 10px;
+        width: 24px;
+    }
+}

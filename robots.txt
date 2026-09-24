@@ -1,0 +1,69 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /public/
+Disallow: /themes/
+Disallow: /_drafts/
+Disallow: /_posts/
+Disallow: /source/_data/
+
+# ---- 非内容/资源文件：禁止抓取，省抓取预算、避免进索引 ----
+# 这些是被前端 JS / 后台 widget 暴露的数据与配置文件，对搜索引擎无价值，
+# 反而会稀释抓取预算、挤掉真实文章的收录名额（即 GSC「已发现-尚未编入索引」里的垃圾来源）。
+Disallow: /json/             # FootprintMap / music 等前端数据
+Disallow: /admin/            # 后台配置（config.json 等）
+Disallow: /pf-index.json
+Disallow: /reward-admin.html
+Disallow: /manifest.json     # PWA 清单，非内容页
+Disallow: /css/docs.css
+
+# ---- AI 爬虫：显式放行 ----
+# 目标之一是「成为 AI 信源」，所以这里明确列出各家 AI 抓取器并允许。
+# 注意：Google-Extended 只控制 Gemini/AI Overviews 的「训练与引用」，不影响普通搜索收录；
+#       OAI-SearchBot 是 ChatGPT 的搜索抓取（引用来源），GPTBot 是训练抓取。
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+Sitemap: https://mfy-lifeline.com/sitemap.xml
+Sitemap: https://mfy-lifeline.com/baidusitemap.xml
+Sitemap: https://mfy-lifeline.com/image-sitemap.xml
+# llms.txt（GEO 标准）位于站点根 /llms.txt，供 AI 爬虫自动读取，无需 Sitemap 声明

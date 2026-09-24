@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2c3e50"/>
+      <stop offset="1" stop-color="#5d8fb3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1">
+    <circle cx="1312" cy="240" r="220"/>
+    <circle cx="1312" cy="240" r="130"/>
+    <path d="M0 740 L480 560 L896.0000000000001 700 L1600 420"/>
+  </g>
+  <text x="96" y="500" fill="#ffffff" fill-opacity="0.96"
+    font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
+    font-size="75" font-weight="600">电子 DIY</text>
+  <text x="96" y="601.25" fill="#ffffff" fill-opacity="0.62"
+    font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
+    font-size="39">桌面氛围灯 · ESP32</text>
+</svg>
