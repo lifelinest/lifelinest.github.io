@@ -62,7 +62,7 @@
     <id>https://mfy-lifeline.com/posts/82e329c9/</id>
     <link href="https://mfy-lifeline.com/posts/82e329c9/"/>
     <published>2026-09-17T06:04:52.000Z</published>
-    <summary>中秋博饼是发源于福建厦门、流行于闽南（厦门/泉州/漳州）、台湾、东南亚闽南社群的传统中秋民俗，2008年入选国家级非物质文化遗产。博饼以6颗骰子+状元碗为道具，通过轮流掷骰博取科举对应奖项，核心作用是中秋团圆祈福、社群联谊、团建娱乐。</summary>
+    <summary>2026闽南厦门博饼完整规则教程：详解博饼起源、六大奖项寓意、状元等级大小排序、玩法流程与本地民俗禁忌，并对比厦门、漳州、泉州三地规则差异，适合公司团建与家庭中秋游玩参考。</summary>
     <title>博饼的乐趣，不止拿奖品：闽南非遗里的骰子与科举趣俗</title>
     <updated>2026-09-17T06:04:52.000Z</updated>
   </entry>
@@ -99,7 +99,7 @@
     <link href="https://mfy-lifeline.com/posts/2514c491/"/>
     <published>2026-08-31T14:31:11.000Z</published>
     <summary>很多搭建 Hexo 博客的博主，都会为站点接入Live2D 看板娘 交互组件，并搭配 DeepSeek 大模型 实现智能对话功能。流式问答的效果，能够极大提升个人博客的趣味性与页面互动性，也是目前 Hexo 博客热门的进阶美化方案。</summary>
-    <title>Hexo Live2D AI零成本部署教程｜解决Cloudflare Worker被墙与报错</title>
+    <title>Hexo Live2D 零成本部署与报错解决</title>
     <updated>2026-08-31T14:31:11.000Z</updated>
   </entry>
   <entry>
@@ -423,7 +423,7 @@
     <link href="https://mfy-lifeline.com/posts/7be0899e/"/>
     <published>2026-06-19T07:40:51.000Z</published>
     <summary>本篇是 AI Skill 全套教程的核心奠基章节。YAML 头部是每一个 Skill 的唯一身份标识，也是 AI 识别、加载、触发技能的核心依据，直接决定 Skill 是否生效、触发是否精准、运行是否稳定。新手遇到的技能不触发、乱触发</summary>
-    <title>如何编写 Claude Skill 规范的 YAML 头部配置内容</title>
+    <title>Claude Skill 规范的 YAML 头部配置写法</title>
     <updated>2026-06-19T07:40:51.000Z</updated>
   </entry>
   <entry>
