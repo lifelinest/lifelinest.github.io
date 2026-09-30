@@ -188,7 +188,7 @@
     <id>https://mfy-lifeline.com/posts/e0822f31/</id>
     <link href="https://mfy-lifeline.com/posts/e0822f31/"/>
     <published>2026-08-11T14:00:23.000Z</published>
-    <summary>前言：GitHub 开源项目数量庞大、良莠不齐，大量小众优质项目被海量内容淹没。本文为长期持续更新的GitHub优质开源项目索引库，严格筛选高 Star、持续维护、实用性强、落地性高的开源项目，划分10大技术方向分类，覆盖全场景开发需求。</summary>
+    <summary>长期持续更新的 GitHub 优质开源项目索引库：严格筛选高 Star、持续维护、实用性强、落地性高的项目，划分 10 大技术方向分类，覆盖全场景开发需求，帮你在良莠不齐的海量仓库里快速定位真正值得收藏的那一个。</summary>
     <title>GitHub优质开源项目合集</title>
     <updated>2026-08-11T14:00:23.000Z</updated>
   </entry>
@@ -296,7 +296,7 @@
     <id>https://mfy-lifeline.com/posts/fe9f2465/</id>
     <link href="https://mfy-lifeline.com/posts/fe9f2465/"/>
     <published>2026-06-19T08:25:46.000Z</published>
-    <summary>本文是《AI编程助手 Skill 从入门到精通 全体系教程》系列的收官终章，承担整套教程的知识闭环、能力固化、商用落地收尾作用。 通过前9篇的循序渐进学习，我们已完整掌握 Skill 核心认知、环境搭建、语法规则、实操落地、模块化架构</summary>
+    <summary>AI 编程助手 Skill 写完了却失效、乱触发？本文作为系列收官，系统梳理故障排查思路与规范安全上线流程，帮你把前 9 篇的认知、环境、语法与模块化能力，固化成一套可商用的闭环。附高频问题速查表，可直接对照。</summary>
     <title>如何排查 AI 编程助手 Skill 故障并规范安全上线</title>
     <updated>2026-06-19T08:25:46.000Z</updated>
   </entry>
@@ -422,7 +422,7 @@
     <id>https://mfy-lifeline.com/posts/7be0899e/</id>
     <link href="https://mfy-lifeline.com/posts/7be0899e/"/>
     <published>2026-06-19T07:40:51.000Z</published>
-    <summary>本篇是 AI Skill 全套教程的核心奠基章节。YAML 头部是每一个 Skill 的唯一身份标识，也是 AI 识别、加载、触发技能的核心依据，直接决定 Skill 是否生效、触发是否精准、运行是否稳定。新手遇到的技能不触发、乱触发</summary>
+    <summary>YAML 头部是 Claude Skill 的唯一身份标识，直接决定技能是否生效、触发是否精准、运行是否稳定。本文拆解 YAML 头部的规范写法与核心字段，对症解决新手常遇的「不触发、乱触发」问题，并给出可直接套用的模板。</summary>
     <title>Claude Skill 规范的 YAML 头部配置写法</title>
     <updated>2026-06-19T07:40:51.000Z</updated>
   </entry>
@@ -440,7 +440,7 @@
     <id>https://mfy-lifeline.com/posts/f2b68b74/</id>
     <link href="https://mfy-lifeline.com/posts/f2b68b74/"/>
     <published>2026-06-19T07:29:11.000Z</published>
-    <summary>绝大多数新手遇到的 Skill 失效、无法触发、执行错乱等问题，90% 源于路径错误、目录不标准、命名不规范。本文手把手教你搭建 Cursor Skill 的标准化运行环境，深入拆解用户级与项目级两种部署模式、官方目录结构、SKILL.md 核心文件规范，并汇总新手高频踩坑点，夯实 AI 技能创作与调试的基础。</summary>
+    <summary>新手遇到的 Skill 失效、无法触发、执行错乱，90% 源于路径错误、目录不标准、命名不规范。本文手把手教你搭建 Cursor Skill 标准化运行环境，拆解用户级与项目级部署、官方目录结构与 SKILL.md 规范，汇总高频踩坑点。</summary>
     <title>如何搭建 Cursor Skill 标准化目录结构与部署环境</title>
     <updated>2026-06-19T07:29:11.000Z</updated>
   </entry>
@@ -458,7 +458,7 @@
     <id>https://mfy-lifeline.com/posts/e57cb390/</id>
     <link href="https://mfy-lifeline.com/posts/e57cb390/"/>
     <published>2026-06-19T07:13:51.000Z</published>
-    <summary>本文是《AI编程助手 Skill 从入门到精通 全体系教程》系列的零基础启蒙开篇，是整套教程的认知基石。 全篇无代码、无实操、无复杂配置，专注底层认知扫盲与专业名词拆解。核心解决新手四大痛点：专业术语看不懂、核心概念分不清</summary>
+    <summary>零基础入门 AI 编程助手 Skill：全篇无代码、无实操，专注底层认知扫盲与专业名词拆解，帮你搞懂术语含义、分清核心概念，为后续环境搭建、语法学习与实操打好认知基石。本文是系列教程的零基础启蒙开篇。</summary>
     <title>如何入门 AI 编程助手 Skill 核心运行原理与专业名词</title>
     <updated>2026-06-19T07:13:51.000Z</updated>
   </entry>
@@ -566,7 +566,7 @@
     <id>https://mfy-lifeline.com/posts/41e03a2b/</id>
     <link href="https://mfy-lifeline.com/posts/41e03a2b/"/>
     <published>2026-04-01T11:46:46.000Z</published>
-    <summary>315 晚会如期曝光相关问题，GEO（AI 搜索结果优化/AI 答案占位）行业虽被波及，但无需恐慌——此次晚会释放的信号极为明确：“算法操纵 + 虚假内容 + 黑灰营销”将成为后续监管重点打击对象（可查看央视网 3·15 晚会专题了解详情…</summary>
+    <summary>315 晚会曝光「算法操纵+虚假内容+黑灰营销」后，GEO（AI 搜索结果优化/AI 答案占位）行业无需恐慌，但必须守住可信底线。本文明确划清「可做、灰区、高危」三条边界，帮你在合规框架内稳妥推进 AI 答案占位与内容优化，避开监管红线。</summary>
     <title>315后GEO坚守可信底线，明确可做/灰区/高危边界</title>
     <updated>2026-04-01T11:46:46.000Z</updated>
   </entry>

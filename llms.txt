@@ -37,29 +37,29 @@
 ### AI内容增长
 - [AI写文章必备WordPress插件安装](https://mfy-lifeline.com/posts/9641524/): 适用场景：AI生成内容缺乏SEO布局、网站收录慢、搜索排名靠后，需提升文章曝光量的用户。
 - [AigcPanel数字人系统真的简单易用？](https://mfy-lifeline.com/posts/481d113d/): 数字人热潮来袭，技术门槛却让不少新手望而却步。AigcPanel 以简单易用破圈，它到底是真好用还是徒有其表？
-- [DeepSeek + Kimi 做 PPT：AI 提效实测](https://mfy-lifeline.com/posts/66ea8cb4/): 在信息爆炸的时代，PPT 演示已成为我们工作中不可或缺的一部分。然而，传统 PPT 制作流程的繁琐和低效，常常让人倍感头疼。
+- [DeepSeek + Kimi 做 PPT：AI 提效实测](https://mfy-lifeline.com/posts/66ea8cb4/): 用 DeepSeek 生成大纲、Kimi 补全内容与排版，AI 把传统 PPT 制作从「构思+设计+图表」的几小时压缩到十几分钟。
 - [为什么AI生成的图像文字常常出现乱码？](https://mfy-lifeline.com/posts/95094afd/): 人工智能在图像生成领域取得了显著进展，但生成的图像中文字常常出现乱码，这严重限制了其应用价值。
 - [如何借助 Claude Skill 脚本实现批量自动化操作](https://mfy-lifeline.com/posts/24c9c254/): 本节课将突破纯文本Skill的能力瓶颈，重点讲解「Skill\+本地脚本」联动核心方案。
 - [外贸人用 AI，这 5 类数据别直接喂](https://mfy-lifeline.com/posts/a0627e97/): 客户名单、报价单、供应商底价——这些外贸日常里最值钱的东西，正在被一不留神粘进 AI 对话框。
 - [如何用AI撰写符合谷歌SEO的高质量文章](https://mfy-lifeline.com/posts/84168663/): 深耕谷歌 SEO 垂直个人博客两年来，我先后试水纯人工撰稿、一键 AI 生成、AI+ 人工协同三种内容模式，历经多次踩坑与迭代后得出核心结论。
-- [Claude Skill 规范的 YAML 头部配置写法](https://mfy-lifeline.com/posts/7be0899e/): 本篇是 AI Skill 全套教程的核心奠基章节。
+- [Claude Skill 规范的 YAML 头部配置写法](https://mfy-lifeline.com/posts/7be0899e/): YAML 头部是 Claude Skill 的唯一身份标识，直接决定技能是否生效、触发是否精准、运行是否稳定。
 - [如何管理 Claude Skill 版本迭代与团队协作配置](https://mfy-lifeline.com/posts/6cae7b2c/): 通过前 8 篇系列教程，我们已掌握 AI Skill 的从零搭建、语法编写、实战落地与模块化架构，能独立开发可自动化运行的技能工具包。
 
 ### SEO与Google Ads
 - [abbrlink与SEO优化的深度配合](https://mfy-lifeline.com/posts/a6aeac5e/): abbrlink作为Hexo的核心插件，通过生成永久性短链接彻底解决路径变动导致的SEO损失。
 - [哪些SEO因素影响收录？](https://mfy-lifeline.com/posts/6f70ce5/): 网站内容能否被搜索引擎收录是SEO成功的首要前提。收录意味着您的网页进入了搜索引擎的数据库，拥有了参与排名展示的资格。
-- [谷歌SEO核心逻辑全解析](https://mfy-lifeline.com/posts/a144abe9/): 在信息爆炸的时代，大家获取信息的第一步几乎都通过搜索引擎完成，而谷歌掌握了全球超过九成的市场份额，几乎决定了企业在互联网上的曝光权，谁排在前面谁就拿到更多流量和客户。
+- [谷歌SEO核心逻辑全解析](https://mfy-lifeline.com/posts/a144abe9/): 谷歌掌握全球九成以上搜索份额，几乎决定网站曝光权。
 
 ### 效率工具与软件
 - [Tor 浏览器与匿名通信技术科普：原理、合法隐私场景与风险](https://mfy-lifeline.com/posts/e6cd93cd/): Tor 是一款免费开源的匿名通信软件，核心是洋葱路由的多层加密与随机中继。
 - [Cherry Studio：提升创作效率的 AI 客户端](https://mfy-lifeline.com/posts/a0f90707/): 在快节奏的现代社会，创作不再是少数人的专利，而是越来越多人的日常。
-- [315后GEO坚守可信底线，明确可做/灰区/高危边界](https://mfy-lifeline.com/posts/41e03a2b/): 315 晚会如期曝光相关问题，GEO（AI 搜索结果优化/AI 答案占位）行业虽被波及，但无需恐慌——此次晚会释放的信号极为明确。
+- [315后GEO坚守可信底线，明确可做/灰区/高危边界](https://mfy-lifeline.com/posts/41e03a2b/): 315 晚会曝光「算法操纵+虚假内容+黑灰营销」后，GEO（AI 搜索结果优化/AI 答案占位）行业无需恐慌，但必须守住可信底线。
 - [ChatLog 如何挖掘聊天关键信息？](https://mfy-lifeline.com/posts/89472648/): 即时通讯普及的今天，聊天记录里藏着大量有价值的信息。如何高效挖掘这些关键信息、洞察用户意图，成了许多人的课题。
 - [11 款轻量内网穿透工具测评：远程办公与调试](https://mfy-lifeline.com/posts/985f9bfd/): 在家搭的网站想让同事看一眼、本地写的 Webhook 想接收回调、出差时想访问家里的 NAS——这些需求都指向同一个技术：内网穿透。
 - [Easyspider 如何解决我的日常数据抓取难题？](https://mfy-lifeline.com/posts/c50d6270/): 数据抓取需求在工作和研究中日益普遍，但技术门槛常成为拦路虎。Easyspider作为可视化爬虫工具，通过图形化操作降低使用难度。
 - [Excalidraw的效率提升之道](https://mfy-lifeline.com/posts/f1de5082/): 高效的信息可视化是现代知识工作的核心竞争力。传统工具操作复杂，学习成本高昂。
 - [Glance自托管仪表板好用吗？](https://mfy-lifeline.com/posts/ba9cc685/): 信息过载的当下，如何把关键数据整合到一个页面成了难题。Glance 这款自托管仪表板功能丰富、兼容性强，能实时显示 RSS 订阅、Reddit 帖子等众多内容，还可多平台运行。
-- [GitHub优质开源项目合集](https://mfy-lifeline.com/posts/e0822f31/): 前言：GitHub 开源项目数量庞大、良莠不齐，大量小众优质项目被海量内容淹没。
+- [GitHub优质开源项目合集](https://mfy-lifeline.com/posts/e0822f31/): 长期持续更新的 GitHub 优质开源项目索引库：严格筛选高 Star、持续维护、实用性强、落地性高的项目，划分 10 大技术方向分类，覆盖全场景开发需求。
 - [HXD1D在N比例世界中的完美复刻](https://mfy-lifeline.com/posts/ac008fca/): HXD1D 型电力机车是中国电气化铁路的主力车型，凭借圆润流畅的外观和稳定可靠的运行表现，一直是火车爱好者心中的 “经典款”。
 - [ImageGlass有哪些图片管理功能？](https://mfy-lifeline.com/posts/909097d9/): ImageGlass 是一款轻量免费的图像查看器，在图片管理上兼顾日常浏览与基础操作。
 - [Markdown最全基本语法整理-有这一篇就够了](https://mfy-lifeline.com/posts/a4b9adb4/): Markdown是一种轻量级的标记语言，它允许人们使用易读易写的纯文本格式编写文档，借助可实现快速排版且转换成格式丰富的HTML页面。
@@ -68,10 +68,10 @@
 - [Napkin AI一款将文本转化为可视化内容的强大工具](https://mfy-lifeline.com/posts/1a2e622e/): 信息时代，文本数据蕴藏巨大价值，但其复杂性常阻碍高效理解与决策。
 - [NotebookLM 如何将你的零散信息系统化？](https://mfy-lifeline.com/posts/d923f1bb/): _%E5%89%AF%E6%9C%AC.webp) 在信息碎片化的时代，我们常常被零散的知识和数据淹没，难以高效地管理和利用这些宝贵资源。
 - [ProcessOn思维导图和流程图怎么用？](https://mfy-lifeline.com/posts/9fc22798/): 高效的可视化沟通是现代工作的关键。ProcessOn作为在线平台，集成思维导图与流程图两大核心工具。
-- [QuickLook：一款值得拥有的预览软件？](https://mfy-lifeline.com/posts/b25123cd/): 在日常工作中，频繁打开文件查看内容，不仅耗时，还容易让人感到疲惫。有没有一款软件，能在瞬间预览文件，提升我们的工作效率呢？
+- [QuickLook：一款值得拥有的预览软件？](https://mfy-lifeline.com/posts/b25123cd/): QuickLook 让你在文件管理器里按空格即可瞬时预览图片、文档、视频与压缩包，省去频繁打开软件的麻烦。
 - [Robots.txt防止网站内容误删](https://mfy-lifeline.com/posts/98bdfbb4/): 网站管理员常因robots.txt配置不当导致重要页面被搜索引擎误删，造成流量严重损失。
 - [Skywork Super Agents智能代理技术的新篇章](https://mfy-lifeline.com/posts/d1874d21/): 人工智能的迅猛发展正在颠覆传统工作方式，智能代理作为大模型的前沿应用形态，展现出前所未有的生产力变革潜能。
-- [V-POT：免费强大的文字转语音工具解析](https://mfy-lifeline.com/posts/79b00bbf/): 在数字化内容爆发式增长的今天，文字转语音（TTS）技术成为提升信息传播效率的关键工具。
+- [V-POT：免费强大的文字转语音工具解析](https://mfy-lifeline.com/posts/79b00bbf/): V-POT 以免费开放的特性，为个人与小型团队提供高质量语音合成，支持多语言与自然语音风格，覆盖教育与内容创作场景。
 - [GitDiagram：把 GitHub 仓库架构可视化](https://mfy-lifeline.com/posts/78e63314/): 对于开发者而言，理解一个复杂的 GitHub 仓库的架构往往是一项挑战。
 - [日常重复任务自动化：方案选型与合规边界](https://mfy-lifeline.com/posts/de68b87d/): 签到、打卡、周期性同步这类每日重复操作，是效率的隐形杀手。
 - [uTools 能否一键开启无限能力？](https://mfy-lifeline.com/posts/f2555b7f/): 高效工作是大众的追求，各类工具层出不穷。uTools 以 AI 超级助手之姿登场，声称能一键开启无限能力，这不禁引发了我们的思考。
@@ -91,7 +91,7 @@
 - [博客logo背后隐藏着哪些设计密码？](https://mfy-lifeline.com/posts/afc9406a/): 品牌视觉符号承载着超越表象的精神内核。博客logo的曲线缠绕与双色渐变绝非偶然装饰，而是创作者思想轨迹的视觉投射。
 - [厦门·金鸡·我:一场光影之约](https://mfy-lifeline.com/posts/b2bf9bb6/): 在漳州工作的好处之一，是去厦门足够方便。
 - [企业跨境组网与合规 VPN 方案：海外业务互联互通](https://mfy-lifeline.com/posts/cd7681cc/): 做外贸和出海业务，远程办公、海外仓/工厂与国内总部互联、合规访问海外 SaaS，都离不开稳定安全的网络通道。
-- [哪些插件能让你的上网效率翻倍？](https://mfy-lifeline.com/posts/1e3fd2c9/): 在数字时代，浏览器是我们获取信息最重要的工具，而插件能让它强上不少。
+- [哪些插件能让你的上网效率翻倍？](https://mfy-lifeline.com/posts/1e3fd2c9/): 按广告拦截、标签页管理、稍后读与一键截图等高频场景，分类盘点真正实用高效的浏览器插件，并附安装建议与避坑提醒。
 - [在闽南捡拾一片海的初心](https://mfy-lifeline.com/posts/daa5a7f5/): 在闽南的金色海岸线上，散落着如同浯屿这般未被喧嚣侵扰的秘境。它仿佛被时光温柔遗忘，依旧保持着渔村最本真的样貌，海风里都夹杂着纯粹的气息。
 - [城市立交：从钢铁迷宫到流动艺术的进化史](https://mfy-lifeline.com/posts/57986b0a/): 现代城市的天际线早已不只是摩天大楼的竞赛，而是向垂直空间要答案的命题。
 - [从“万国造”到“中国心”](https://mfy-lifeline.com/posts/bd6e33cb/): 2025年9月3日，天安门广场隆重举行了纪念中国人民抗日战争暨世界反法西斯战争胜利80周年阅兵。
@@ -100,18 +100,18 @@
 - [在AI狂奔的时代，守住人的刻度](https://mfy-lifeline.com/posts/8058905f/): 这段时间，我先是关注到网易 AI 替代外包的舆论热议，又围观了身边创业者的日常闲聊——有人因一句高管发言感慨职场分寸感，有人遭遇AI 音乐版权碰瓷索赔。
 - [如何从零开发 AI 编程助手 Skill 可运行自定义技能](https://mfy-lifeline.com/posts/5daa7ae4/): 本章是整套 Skill 系列教程的首个落地实战章节，承接前三篇所有理论基础（核心概念、目录规范、YAML 语法规则），摒弃空洞理论，全程采用手把手实操教学。
 - [如何借助流行脚本管理器让浏览器更智能？](https://mfy-lifeline.com/posts/6161e3e8/): 在数字化浪潮的推动下，浏览器早已成为我们日常生活中不可或缺的工具。
-- [如何入门 AI 编程助手 Skill 核心运行原理与专业名词](https://mfy-lifeline.com/posts/e57cb390/): 本文是《AI编程助手 Skill 从入门到精通 全体系教程》系列的零基础启蒙开篇，是整套教程的认知基石。
+- [如何入门 AI 编程助手 Skill 核心运行原理与专业名词](https://mfy-lifeline.com/posts/e57cb390/): 零基础入门 AI 编程助手 Skill：全篇无代码、无实操，专注底层认知扫盲与专业名词拆解，帮你搞懂术语含义、分清核心概念，为后续环境搭建、语法学习与实操打好认知基石。
 - [如何实现更好的排版效果？](https://mfy-lifeline.com/posts/b9342cef/): 做独立站时总被排版卡壳：“首图咋放右上角还让文字绕着走？”我当初推工业阀门文章时，就因排版粗糙丢过潜在客户——专业感全被乱码似的布局磨没了。
 - [个人博客文章标签使用规范](https://mfy-lifeline.com/posts/ad9cf40f/): 为规范个人博客文章标签的使用标准，明确标签分类逻辑、选择依据及应用边界，确保标签体系的一致性、精准性和可扩展性，实现文章检索准确率提升30%以上、读者阅读路径优化。
 - [微信消息撤回机制：第三方为何无法查看](https://mfy-lifeline.com/posts/ab0a1bd1/): 微信撤回是一项保护发送者的隐私设计：2 分钟窗口、双方提示、不向接收方展示内容。
 - [如何用 Rust 轻松打包网页为多平台桌面应用？](https://mfy-lifeline.com/posts/a51aefa7/): 想一键将网页变成跨平台桌面应用？Rust 凭借 Tauri 等框架让这件事变得简单，无需复杂底层代码即可把网页内容打包为 Mac、Windows 与 Linux 原生程序。
-- [如何排查 AI 编程助手 Skill 故障并规范安全上线](https://mfy-lifeline.com/posts/fe9f2465/): 本文是《AI编程助手 Skill 从入门到精通 全体系教程》系列的收官终章，承担整套教程的知识闭环、能力固化、商用落地收尾作用。
+- [如何排查 AI 编程助手 Skill 故障并规范安全上线](https://mfy-lifeline.com/posts/fe9f2465/): AI 编程助手 Skill 写完了却失效、乱触发？本文作为系列收官，系统梳理故障排查思路与规范安全上线流程，帮你把前 9 篇的认知、环境、语法与模块化能力，固化成一套可商用的闭环。
 - [如何理解MCP通信协议的核心原理？](https://mfy-lifeline.com/posts/488b66fb/): 在现代通信技术的浪潮中，MCP通信协议以其高效、灵活和可靠的特性脱颖而出，成为工业自动化、物联网和嵌入式系统等领域的关键技术之一。
-- [如何用Coze创建自动化工作流？](https://mfy-lifeline.com/posts/68d350e2/): 在当今数字化时代，效率是衡量竞争力的关键。面对繁琐的工作，手动操作既耗时又易错。
+- [如何用Coze创建自动化工作流？](https://mfy-lifeline.com/posts/68d350e2/): 用 Coze 零代码搭建自动化工作流：从触发条件、节点编排到定时与消息通知，把繁琐的手动操作变成一键跑通的流水线。
 - [如何运用 Cursor Skill 高阶语法实现动态适配能力](https://mfy-lifeline.com/posts/83dd532c/): 在前7篇教程中，我们学习的Skill均为静态固定规则：步骤、路径、逻辑全部硬编码固定，仅能适配单一固定场景，灵活性与复用性极差。
 - [小米AI眼镜真能成为你的“第二大脑”？](https://mfy-lifeline.com/posts/a9fc7482/): 小米AI眼镜以“第二大脑”为宣传核心，试图重塑人机交互体验。其轻量化设计集成了语音助手、实时翻译和AR导航功能，承诺解放用户双手。
 - [小时候看过的公益广告你还记忆新犹吗？](https://mfy-lifeline.com/posts/8f4d7f6c/): 小时候的电视屏幕上，公益广告总在不经意间出现，它们没有华丽画面，却用简单的故事传递温暖的力量，像一粒粒种子悄悄埋在童年记忆里。
-- [如何防范个人信息被“开盒”？](https://mfy-lifeline.com/posts/85920be9/): 在数字化时代，我们的个人信息就像散落在网络上的珍珠，看似微不足道，却可能被别有用心之人串联成一条危险的项链。
+- [如何防范个人信息被“开盒”？](https://mfy-lifeline.com/posts/85920be9/): 「开盒」指通过非法手段获取并公开他人个人信息，正成为不可忽视的威胁。
 - [微信首个原生执行型AI插件，让AI真正替你“干活”](https://mfy-lifeline.com/posts/5dc1e28e/): 微信 ClawBot 插件与 QClaw 的深度整合，标志着 AI 接入微信从早期高风险第三方尝试迈向官方原生、合规、零门槛的成熟阶段。
 - [ADB 侧载教程：安卓安装权限与合规边界](https://mfy-lifeline.com/posts/2cbf2bcc/): 智能音箱、电视盒子这类安卓设备，应用商店内容往往较少，用户常想装更多应用。
 - [恋爱避坑心得体会](https://mfy-lifeline.com/posts/d097bc95/): 如果你正处于“没亲身经历过亲密关系，对恋爱、婚姻有期待却又被各类避坑铁律吓得心慌”的状态，不用焦虑，也不用逼自己立刻变成“情感专家”。
@@ -123,21 +123,21 @@
 - [时间滤镜下的爱情：你爱的是谁？](https://mfy-lifeline.com/posts/3369804f/): 多年后，街角偶遇，旧日情愫如潮涌。只是，再开口，熟悉的眉眼、习惯，都仿佛隔了一层纱。你是否也曾疑惑，眼前人，还是记忆中深爱的那位吗？
 - [构建我的抗风险人生](https://mfy-lifeline.com/posts/f33ceadd/): 在主业之外探索第二增长曲线，已成为现代人应对不确定性的明智之选。我的抗风险实践，始于一次业余时间的Shopify店铺搭建委托。
 - [浮灯照海送王去](https://mfy-lifeline.com/posts/bd4d0e0e/): 在闽南的龙海浮宫，一座临水的小村庄为迎接神明，开启了为期五日的建醮盛典。
-- [QtScrcpy手机投屏电脑利器连接Android设备](https://mfy-lifeline.com/posts/bc2ba537/): 在移动互联网日益普及的今天，手机已成为我们生活中不可或缺的一部分。
+- [QtScrcpy手机投屏电脑利器连接Android设备](https://mfy-lifeline.com/posts/bc2ba537/): QtScrcpy 是开源免费的手机投屏电脑利器，支持低延迟、高清晰度的投屏与键鼠控制。
 - [用户跳过你的搜索结果？](https://mfy-lifeline.com/posts/28d7b030/): 用户跳过搜索结果的现象在SEO优化中普遍存在，直接影响网站流量和转化率。这种现象往往源于标题设计缺陷，导致用户无法快速理解页面价值。
 - [我的底层代码更新日志](https://mfy-lifeline.com/posts/1e2258a3/): 人生如同一段不断迭代的底层代码，每个阶段都在编译运行中产生新的结果。我的初代代码运行在混沌未明的环境里，充满青涩与迷茫。
-- [用精细化运营重塑博客](https://mfy-lifeline.com/posts/3163726d/): 在内容营销竞争日益激烈的今天，许多博客陷入了盲目更新却收效甚微的困境。
-- [用GenAI构建持续流量的内容引擎](https://mfy-lifeline.com/posts/d809f60f/): 在流量竞争白热化的今天，传统内容创作模式已显疲态，GenAI正成为构建可持续流量增长引擎的核心驱动力。
+- [用精细化运营重塑博客](https://mfy-lifeline.com/posts/3163726d/): 盲目更新换不来流量。
+- [用GenAI构建持续流量的内容引擎](https://mfy-lifeline.com/posts/d809f60f/): GenAI 不只是提效工具，更能成为可持续流量增长引擎：深度理解用户意图、批量产出匹配搜索需求的高价值内容。
 - [百度搜索高能技巧你 get 到了吗？](https://mfy-lifeline.com/posts/618f4052/): 现在，百度搜索已成为我们日常获取信息的常用工具。可很多时候，我们输入关键词，却总找不到想要的结果。
 - [短信接口安全加固：常见风险与防御实践](https://mfy-lifeline.com/posts/2aea9a81/): 短信验证码是账号体系最常用的身份核验手段，也是最容易被滥用的环节。
 - [网站内链建设有数量限制吗？](https://mfy-lifeline.com/posts/d6a98346/): 网站内链建设是SEO优化中不可或缺的一环，它如同网站的神经网络，有效传递页面权重与用户流量。
 - [老龄化社会我们能做什么？](https://mfy-lifeline.com/posts/14e4d86a/): 当银发浪潮席卷而来，老龄化不再是一个遥远的概念，而是我们每个人正在面对的现实。
 - [Root 与 Bootloader 解锁：原理、风险与替代](https://mfy-lifeline.com/posts/6336ac44/): root 到底改了系统的什么？Bootloader 解锁为什么是前提？为什么有些 App 一检测到 root 就拒绝运行？
 - [支付风控科普：如何识别异常与保护账户](https://mfy-lifeline.com/posts/2080dcc7/): 很多人好奇支付平台的风控系统到底怎么判断"这笔操作正常还是异常"。
-- [UIAutomator2 安卓 UI 自动化：原理与合规边界](https://mfy-lifeline.com/posts/e93b1b79/): 本文以放置手游《家国梦》的自动收币脚本为案例，讲解安卓 UI 自动化的技术原理：adb 连接、UIAutomator2 模拟操作、OpenCV 模板匹配识别界面元素。
+- [UIAutomator2 安卓 UI 自动化：原理与合规边界](https://mfy-lifeline.com/posts/e93b1b79/): 以放置手游《家国梦》自动收币脚本为案例，讲清安卓 UI 自动化原理：adb 连接、UIAutomator2 模拟操作、OpenCV 模板匹配识图。
 - [基于大数据技术的bilibili网站数据分析的设计与实现](https://mfy-lifeline.com/posts/699ead5/): 哔哩哔哩也被称为 Bilibili，简称 B 站，2009 年 6 月创建，前身是 Mikufans 视频分享网站，如今是以泛二次元文化爱好者为目标用户的综合类视频弹幕社区。
 - [通信协议连接世界的语言](https://mfy-lifeline.com/posts/4e9eb22b/): 数字世界像一个庞大的对话场，而通信协议正是这场对话里不可或缺的通用语言。
-- [谁偷偷删了我的微信好友？](https://mfy-lifeline.com/posts/343e78a4/): 在数字社交的今天，微信早已成为我们生活中不可或缺的一部分。然而，你是否曾有过这样的疑惑：那些曾经亲密的微信好友，是否还在你的列表中？
+- [谁偷偷删了我的微信好友？](https://mfy-lifeline.com/posts/343e78a4/): 微信好友是否被偷偷删除，不用群发就能查。
 - [零基础小白如何开启地铁线路绘图之旅？](https://mfy-lifeline.com/posts/c4d3526/): 对着复杂的地铁图，你是否也曾想亲手绘制一条？或者，你对美观的交通网络图充满好奇，却不知如何入门？现在，机会来了！
 - [如何打造合理高效的城市功能分区？](https://mfy-lifeline.com/posts/bc19d2c1/): 城市功能分区是现代城市规划的核心。合理高效的分区能提升运行效率、改善居民生活并促进可持续发展，但不合理的职住分离、交通拥堵与资源浪费问题日益凸显。
 
@@ -145,17 +145,17 @@
 - [Halo和Hexo哪个更适合技术博客？](https://mfy-lifeline.com/posts/2d843850/): 技术博客的搭建工具直接影响创作效率和阅读体验。Halo作为现代化动态博客系统，提供开箱即用的可视化管理界面，适合追求便捷部署的用户。
 - [Hexo Live2D 零成本部署与报错解决](https://mfy-lifeline.com/posts/2514c491/): 很多搭建 Hexo 博客的博主，都会为站点接入Live2D 看板娘 交互组件，并搭配 DeepSeek 大模型 实现智能对话功能。
 - [Hexo 博客接入 giscus 完整流程](https://mfy-lifeline.com/posts/cab7a2a3/): Hexo作为静态博客生成器，原生缺乏评论系统支持。giscus利用GitHub Discussions实现免后端评论功能，与Hexo高度适配。
-- [Hexo博客集成ECharts图表教程](https://mfy-lifeline.com/posts/8bb22cde/): 在现代博客中，可视化图表能让数据展示更直观生动。ECharts 是一款功能强大的开源可视化库，支持折线、柱状、饼图、地图等多种图表与交互。
-- [Hexo+GitHub搭建个人博客教程（2025最新版）](https://mfy-lifeline.com/posts/2d25e1d/): 在信息爆炸的时代，拥有一个属于自己的独立博客，不仅能记录生活点滴、分享技术心得，更能成为个人品牌展示的窗口。
+- [Hexo博客集成ECharts图表教程](https://mfy-lifeline.com/posts/8bb22cde/): ECharts 是功能强大的开源可视化库，支持折线、柱状、饼图、地图等多种图表与交互。
+- [Hexo+GitHub搭建个人博客教程（2025最新版）](https://mfy-lifeline.com/posts/2d25e1d/): 从零用 Hexo + GitHub Pages 搭建属于你的个人博客：涵盖环境安装、主题配置、部署上线与自定义域名全流程。
 - [Hexo博客用Pretext实现杂志级排版与零抖动](https://mfy-lifeline.com/posts/4fca6a15/): 作为一名 Hexo 博客博主，你是否曾被这些问题困扰：文章滚动时的布局抖动、手机与 PC 端排版不一致、长文本换行混乱、CLS（布局偏移）跑分偏低？
-- [MCP光速建站，如何做到毫秒级访问？](https://mfy-lifeline.com/posts/c4efaa0d/): 在数字时代，网站访问速度直接影响用户体验。用户对等待的耐心越来越少，而加载缓慢的网页很容易导致他们离开。
+- [MCP光速建站，如何做到毫秒级访问？](https://mfy-lifeline.com/posts/c4efaa0d/): MCP 光速建站凭边缘渲染与预构建把页面加载压到毫秒级，连中国站产品文档页也能获得前所未有的流畅体验。
 - [OpenClaw（龙虾）Windows 部署实操知识库](https://mfy-lifeline.com/posts/a0c85c85/): OpenClaw 官方知识库：OpenClaw 知识库 部署教程参考：Windows 也能跑 OpenClaw！
 - [RustDesk 快速部署，搭建自己的“向日葵”](https://mfy-lifeline.com/posts/9edf104d/): 远程协作工具已成为现代工作刚需，闭源方案存在隐私泄露与定制化受限的痛点。RustDesk作为开源远程桌面工具，赋予用户完全掌控权。
 - [WordPress插件动画机制解读](https://mfy-lifeline.com/posts/5da9fa84/): WordPress动画插件已经从简单的CSS过渡效果发展到复杂的JavaScript驱动交互。
 - [从 Typecho 到 Hexo 的博客迁移之路](https://mfy-lifeline.com/posts/7d5f095a/): 我的博客之旅始于Typecho和Joe主题，那是我倾注了许多心血的第一个线上空间。它记录了我的思考与成长，每一篇文章都承载着独特的回忆。
 - [如何在hexo pro后台打造个性化博客？](https://mfy-lifeline.com/posts/327a8d06/): 在博客林立的网络世界，个性化定制是吸引受众、彰显特色的不二法门。
-- [如何搭建 Cursor Skill 标准化目录结构与部署环境](https://mfy-lifeline.com/posts/f2b68b74/): 绝大多数新手遇到的 Skill 失效、无法触发、执行错乱等问题，90% 源于路径错误、目录不标准、命名不规范。
-- [如何提升Hexo博客的访问速度？](https://mfy-lifeline.com/posts/538c1c99/): 在信息爆炸的时代，个人博客的加载速度直接影响访客留存与内容传播。Hexo 作为轻量级博客框架，虽以高效著称，但访问延迟仍是许多博主的痛点。
+- [如何搭建 Cursor Skill 标准化目录结构与部署环境](https://mfy-lifeline.com/posts/f2b68b74/): 新手遇到的 Skill 失效、无法触发、执行错乱，90% 源于路径错误、目录不标准、命名不规范。
+- [如何提升Hexo博客的访问速度？](https://mfy-lifeline.com/posts/538c1c99/): 从主题瘦身、图片懒加载、CDN 与缓存到服务器配置，系统梳理 Hexo 博客访问速度的可优化点与优先级。
 - [本地搭建WordPress开发环境](https://mfy-lifeline.com/posts/1c83d0aa/): 对于 WordPress 插件开发者而言，尤其是在开发和迭代 LifelineVerve（恒线智讯） 这类功能性较强、涉及数据交互、模块适配、站点联动的插件时。
 
 ### 数字生活
