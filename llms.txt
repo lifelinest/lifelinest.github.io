@@ -33,6 +33,7 @@
 - [海外保号卡对比：注册海外社媒与AI工具怎么选](https://mfy-lifeline.com/posts/2df33f2c/): 我注册海外社媒账号、体验国外 AI 工具这几年，踩过不少号码选型的坑。
 - [如何用AI为外贸B2B博客文章生成图片？](https://mfy-lifeline.com/posts/3413805d/): 在外贸B2B内容营销领域，“文字易撰，配图难寻”是从业者的高频痛点：选用盗版图片暗藏侵权风险，免版权图库素材又多显“通用化”，难以构建内容差异化优势。
 - [谷歌SEO实战指南独立站起量不踩坑](https://mfy-lifeline.com/posts/c953ce21/): 对 B2B 工业品独立站，尤其精密制造、注塑、金属加工等垂直领域而言，谷歌 SEO 是实现自然流量破千、稳定获取精准客户的核心路径。
+- [How to Find and Verify Chinese Metal Fabrication Suppliers](https://mfy-lifeline.com/posts/05b5d08e/): A practical sourcing guide for buyers who need Chinese metal fabricati…
 
 ### AI内容增长
 - [AI写文章必备WordPress插件安装](https://mfy-lifeline.com/posts/9641524/): 适用场景：AI生成内容缺乏SEO布局、网站收录慢、搜索排名靠后，需提升文章曝光量的用户。
@@ -49,6 +50,7 @@
 - [abbrlink与SEO优化的深度配合](https://mfy-lifeline.com/posts/a6aeac5e/): abbrlink作为Hexo的核心插件，通过生成永久性短链接彻底解决路径变动导致的SEO损失。
 - [哪些SEO因素影响收录？](https://mfy-lifeline.com/posts/6f70ce5/): 网站内容能否被搜索引擎收录是SEO成功的首要前提。收录意味着您的网页进入了搜索引擎的数据库，拥有了参与排名展示的资格。
 - [谷歌SEO核心逻辑全解析](https://mfy-lifeline.com/posts/a144abe9/): 谷歌掌握全球九成以上搜索份额，几乎决定网站曝光权。
+- [网站收录查询怎么做：3个免费方法判断页面有没有被谷歌收录](https://mfy-lifeline.com/posts/a3a54b05/): 网站收录查询是排查流量问题的第一步。
 
 ### 效率工具与软件
 - [Tor 浏览器与匿名通信技术科普：原理、合法隐私场景与风险](https://mfy-lifeline.com/posts/e6cd93cd/): Tor 是一款免费开源的匿名通信软件，核心是洋葱路由的多层加密与随机中继。

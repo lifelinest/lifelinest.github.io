@@ -1,0 +1,28 @@
+/*
+ * 关于页 · 性格模块（.personalities）人物图溢出修复
+ * 问题：.image 绝对定位右上角、img 仅有 max-width:100% 无限高，
+ *       竖长人物图(INTJ.png) 绝对定位后底部溢出卡片，被 overflow:hidden 裁掉下半身，显示残缺。
+ * 修复：用 top:10px + bottom:10px 锁死 .image 高度（百分比高度相对未定高父元素会解析成 none，失效），
+ *       img 等比缩放(max-height:100%)完整显示在右上角，不再溢出卡片。
+ *       不写 width，沿用主题响应式宽度(桌面220 / 1200:180 / 移动125)。
+ * 作用域：仅 #about-page 的 .personalities，不影响其他模块。
+ */
+#about-page .author-content-item.personalities .image {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  right: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#about-page .author-content-item.personalities .image img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+}
