@@ -31,7 +31,7 @@
     <item>
       <title>外贸询盘太多？用 Jev 帮你自动分类</title>
       <link>https://mfy-lifeline.com/posts/e9d1ae19/</link>
-      <description>Jev 是 TypeSafe AI 的判定模型，不聊天只做分类与分级。本文用 247 条真实外贸询盘作测试池，讲清怎么把 Jev 接进独立站工作流做询盘自动分拣，并附 30 条盲测校准法。</description>
+      <description>Jev 是 TypeSafe AI 的判定模型，不聊天只做分类与分级。本文用 247 条真实外贸询盘作测试池，讲清怎么把 Jev 接进独立站工作流做询盘自动分拣与分级，从配置到实际效果逐步演示，并对比人工处理的效率差异、适用边界与常见踩坑，附 30 条盲测校准法。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E5%A4%96%E8%B4%B8B2B%E7%8B%AC%E7%AB%8B%E7%AB%99/">外贸B2B独立站</category>
       <category domain="https://mfy-lifeline.com/tags/%E6%95%88%E7%8E%87%E8%BD%AF%E4%BB%B6/">效率软件</category>
@@ -45,7 +45,7 @@
     <item>
       <title>博饼的乐趣，不止拿奖品：闽南非遗里的骰子与科举趣俗</title>
       <link>https://mfy-lifeline.com/posts/82e329c9/</link>
-      <description>2026闽南厦门博饼完整规则教程：详解博饼起源、六大奖项寓意、状元等级大小排序、玩法流程与本地民俗禁忌，并对比厦门、漳州、泉州三地规则差异，适合公司团建与家庭中秋游玩参考。</description>
+      <description>2026 闽南厦门博饼完整规则教程，详解博饼起源、六大奖项寓意、状元等级大小排序、玩法流程与本地民俗禁忌，并对比厦门、漳州、泉州三地的规则差异。文中附完整奖项对照表、常见争议的统一判定口径，以及新手开局可直接照做的流程清单，零基础也能一次玩明白。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7%E4%B8%8E%E8%BD%AF%E4%BB%B6/">效率工具与软件</category>
       <category domain="https://mfy-lifeline.com/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/">社会观察</category>
@@ -241,7 +241,7 @@
     <item>
       <title>如何管理 Claude Skill 版本迭代与团队协作配置</title>
       <link>https://mfy-lifeline.com/posts/6cae7b2c/</link>
-      <description>通过前8篇系列教程，我们已经完整掌握AI Skill的从零搭建、语法编写、实战落地、脚本联动、模块化架构等高阶能力，能够独立开发高质量、可自动化运行的AI技能工具包。</description>
+      <description>通过前 8 篇系列教程，我们已掌握 AI Skill 的从零搭建、语法编写、实战落地与模块化架构，能独立开发可自动化运行的技能工具包。本文补齐最后一环，讲清版本如何命名与回滚、多人协作如何避免冲突、配置如何集中管理，并附目录结构与变更记录模板可供直接复用。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/AI%E5%86%85%E5%AE%B9%E5%A2%9E%E9%95%BF/">AI内容增长</category>
       <category domain="https://mfy-lifeline.com/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</category>
@@ -297,7 +297,7 @@
     <item>
       <title>如何优化 Cursor Skill 正文指令逻辑与执行效果</title>
       <link>https://mfy-lifeline.com/posts/30a2dcc4/</link>
-      <description>绝大多数新手搭建 AI Skill 时都会遇到一个共性难题：明明在文档中写满规则细节，但AI执行频繁出现跑偏、步骤遗漏、自主发挥、输出格式混乱等问题，最终导致技能可用性极低。</description>
+      <description>绝大多数新手搭建 AI Skill 时都会遇到一个共性难题，明明在文档里写满了规则细节，AI 执行却频繁跑偏、步骤遗漏、自主发挥、输出格式混乱，最终导致技能可用性极低。本文从指令分层、边界条件与验收标准三个角度给出可复用写法，并附前后对比示例帮你逐项修正。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7%E4%B8%8E%E8%BD%AF%E4%BB%B6/">效率工具与软件</category>
       <category domain="https://mfy-lifeline.com/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</category>
@@ -507,7 +507,7 @@
     <item>
       <title>谷歌SEO实战指南独立站起量不踩坑</title>
       <link>https://mfy-lifeline.com/posts/c953ce21/</link>
-      <description>对于B2B工业品独立站（尤其精密制造、注塑、金属加工等垂直领域）而言，谷歌SEO是实现自然流量突破千级、稳定获取精准客户的核心路径。然而，当前多数从业者普遍陷入盲目优化、流量停滞</description>
+      <description>对 B2B 工业品独立站，尤其精密制造、注塑、金属加工等垂直领域而言，谷歌 SEO 是实现自然流量破千、稳定获取精准客户的核心路径。然而多数从业者陷入盲目优化、流量停滞的困局。本文从关键词布局、页面结构、内容与内链、技术 SEO 到数据复盘逐环拆解，给出起量路线图与踩坑清单。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E5%A4%96%E8%B4%B8B2B%E7%8B%AC%E7%AB%8B%E7%AB%99/">外贸B2B独立站</category>
       <category domain="https://mfy-lifeline.com/tags/%E8%81%8C%E5%9C%BA%E6%8A%80%E8%83%BD/">职场技能</category>
@@ -563,7 +563,7 @@
     <item>
       <title>AI写外贸B2B文章3个增强插件</title>
       <link>https://mfy-lifeline.com/posts/1488d0d5/</link>
-      <description>当我第一次用AI生成外贸B2B文章时，确实被“分钟级出稿”的效率震撼到了。但很快就发现一个关键问题：文章写得再好，若客户搜不到、有疑问联系不上，最终还是“无效产出”。</description>
+      <description>AI 生成外贸 B2B 文章效率惊人，可客户搜不到、有疑问联系不上，再好的稿子也成了无效产出。本文实测 3 个能补齐这块短板的增强插件，从关键词布局、内链引导到询盘转化入口逐项拆解，附可直接套用的配置思路与常见踩坑提醒，帮你把 AI 稿件从能读推到能获客。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E5%A4%96%E8%B4%B8B2B%E7%8B%AC%E7%AB%8B%E7%AB%99/">外贸B2B独立站</category>
       <category domain="https://mfy-lifeline.com/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/">免费工具</category>
@@ -619,7 +619,7 @@
     <item>
       <title>如何在外贸B2B文章中插入合适外链</title>
       <link>https://mfy-lifeline.com/posts/41032b74/</link>
-      <description>在外贸B2B内容创作中，许多企业仍将重心局限于单向的产品功能罗列，却普遍忽视权威外部信息的引用价值。最终产出的内容往往沦为生硬的“产品说明书”——既缺乏行业专业深度，也难以获得海外买家的信任。</description>
+      <description>在外贸 B2B 内容创作中，许多企业仍把重心局限于单向的产品功能罗列，忽视了权威外部信息的引用价值，最终内容沦为生硬的产品说明书，既缺行业深度也难获海外买家信任。本文给出外链筛选标准、锚文本写法与插入位置的实操清单，并提醒避免过度堆砌带来的降权。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E5%A4%96%E8%B4%B8B2B%E7%8B%AC%E7%AB%8B%E7%AB%99/">外贸B2B独立站</category>
       <category domain="https://mfy-lifeline.com/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">知识总结</category>
@@ -647,7 +647,7 @@
     <item>
       <title>如何用AI给外贸B2B文章做图片SEO优化？</title>
       <link>https://mfy-lifeline.com/posts/61f2c21d/</link>
-      <description>做外贸内容营销的一线工作中，我最头疼的共性问题的是：花几天打磨的B2B文章发布后，配图却因缺少规范的Alt标签，根本进不了Google的“法眼”。要知道，2025年谷歌官方统计显示</description>
+      <description>做外贸内容营销时最常见的遗憾是，花几天打磨的 B2B 文章上线后，配图却因缺少规范的 Alt 标签进不了 Google 的法眼。本文讲清图片 SEO 的规范写法，用 AI 批量补齐图片的 Alt、标题与文件名，并附尺寸与格式优化建议，以及可复用的提示词模板与上线检查清单。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E5%A4%96%E8%B4%B8B2B%E7%8B%AC%E7%AB%8B%E7%AB%99/">外贸B2B独立站</category>
       <category domain="https://mfy-lifeline.com/tags/%E5%85%8D%E8%B4%B9%E5%B7%A5%E5%85%B7/">免费工具</category>
@@ -675,7 +675,7 @@
     <item>
       <title>如何用AI高效写外贸B2B文章？</title>
       <link>https://mfy-lifeline.com/posts/0ebe301f/</link>
-      <description>做外贸的朋友大多深知B2B文章的价值——帮网站抢Google排名、给客户建立信任、在LinkedIn上秀专业度，都是它的功劳。可真到落笔时，难题却一个接一个跳出来：</description>
+      <description>做外贸的朋友大多深知 B2B 文章的价值，它帮网站抢 Google 排名、给客户建立信任、在 LinkedIn 上秀出专业度。可真到落笔，选题、结构、语言、关键词样样卡壳。本文给出用 AI 高效写外贸 B2B 文章的完整流程，从选题与大纲到口语化改写与 SEO 检查均可直接套用。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E5%A4%96%E8%B4%B8B2B%E7%8B%AC%E7%AB%8B%E7%AB%99/">外贸B2B独立站</category>
       <category domain="https://mfy-lifeline.com/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">知识总结</category>
@@ -703,7 +703,7 @@
     <item>
       <title>写外贸B2B文章总找不到话题怎么办？</title>
       <link>https://mfy-lifeline.com/posts/5dd578ee/</link>
-      <description>核心价值：针对外贸B2B博客写作“话题枯竭、内容无效、流量缺失”三大核心痛点，提供AI驱动的低门槛解决方案——即便无专业营销背景，也能高效产出高转化潜力选题，让内容真正服务于获客。</description>
+      <description>写外贸 B2B 博客最怕话题枯竭、内容无效、流量缺失这三大痛点。本文提供一套 AI 驱动的低门槛方案，即便没有专业营销背景，也能持续产出高转化潜力的选题。文中给出可复用的选题方法、关键词挖掘思路与内容日历模板，让内容真正服务于获客而不只是凑数。</description>
       <author>Lifeline</author>
       <category domain="https://mfy-lifeline.com/categories/%E5%A4%96%E8%B4%B8B2B%E7%8B%AC%E7%AB%8B%E7%AB%99/">外贸B2B独立站</category>
       <category domain="https://mfy-lifeline.com/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">知识总结</category>
