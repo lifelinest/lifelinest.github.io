@@ -33,7 +33,7 @@
 - [海外保号卡对比：注册海外社媒与AI工具怎么选](https://mfy-lifeline.com/posts/2df33f2c/): 我注册海外社媒账号、体验国外 AI 工具这几年，踩过不少号码选型的坑。
 - [如何用AI为外贸B2B博客文章生成图片？](https://mfy-lifeline.com/posts/3413805d/): 在外贸B2B内容营销领域，“文字易撰，配图难寻”是从业者的高频痛点：选用盗版图片暗藏侵权风险，免版权图库素材又多显“通用化”，难以构建内容差异化优势。
 - [谷歌SEO实战指南独立站起量不踩坑](https://mfy-lifeline.com/posts/c953ce21/): 对 B2B 工业品独立站，尤其精密制造、注塑、金属加工等垂直领域而言，谷歌 SEO 是实现自然流量破千、稳定获取精准客户的核心路径。
-- [How to Find and Verify Chinese Metal Fabrication Suppliers](https://mfy-lifeline.com/posts/05b5d08e/): A practical sourcing guide for buyers who need Chinese metal fabricati…
+- [如何找到靠谱的中国金属加工供应商：筛选、验厂与避坑](https://mfy-lifeline.com/posts/05b5d08e/): 很多买家在中国找金属加工供应商时被坑，不是因为选错了国家，而是跳过了验证环节。
 
 ### AI内容增长
 - [AI写文章必备WordPress插件安装](https://mfy-lifeline.com/posts/9641524/): 适用场景：AI生成内容缺乏SEO布局、网站收录慢、搜索排名靠后，需提升文章曝光量的用户。
