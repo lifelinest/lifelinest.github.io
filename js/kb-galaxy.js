@@ -23,8 +23,8 @@
   var curIdx = -1, listIdx = [], focusSec = -1, query = '';
   var listeners = [];
 
-  var KCOL = { '死亡率': 0xff6b6b, '金钱': 0x2dd4bf, '时间': 0x818cf8, '自由': 0xfbbf24 };
-  var GCOL = { A: 0x3ec9b9, B: 0x4a8fe7, C: 0x8b93a7 };
+  var KCOL = { '死亡率': 0xff7b7b, '金钱': 0x2dd4bf, '时间': 0x9aa8ff, '自由': 0xffd166 };
+  var GCOL = { A: 0x5eead4, B: 0x7cb8ff, C: 0xdbe4f0 };
 
   function loadSet(k) { try { return new Set(JSON.parse(localStorage.getItem(k) || '[]')); } catch (e) { return new Set(); } }
   function saveSet(k, s) { try { localStorage.setItem(k, JSON.stringify(Array.from(s))); } catch (e) { } }
@@ -279,7 +279,7 @@
         );
         nodePos[s.id] = p;
         var r = 0.55 + Math.sqrt(s.count) * 0.19;
-        var col = KCOL[s.k] || 0x8b93a7;
+        var col = KCOL[s.k] || 0xdbe4f0;
         var m = new THREE.Mesh(
           new THREE.SphereGeometry(r, 22, 16),
           new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.92 })
@@ -327,7 +327,7 @@
       itemPos[i * 3] = np.x + rad * Math.sin(phi) * Math.cos(theta);
       itemPos[i * 3 + 1] = np.y + rad * Math.cos(phi);
       itemPos[i * 3 + 2] = np.z + rad * Math.sin(phi) * Math.sin(theta);
-      c.setHex(GCOL[it.g] || 0x8b93a7);
+      c.setHex(GCOL[it.g] || 0xdbe4f0);
       baseCol[i * 3] = c.r; baseCol[i * 3 + 1] = c.g; baseCol[i * 3 + 2] = c.b;
       dimCol[i * 3] = c.r * 0.16; dimCol[i * 3 + 1] = c.g * 0.16; dimCol[i * 3 + 2] = c.b * 0.16;
       sizes[i] = it.g === 'A' ? 0.42 : (it.g === 'B' ? 0.36 : 0.3);
@@ -347,7 +347,7 @@
       var d = document.createElement('div');
       d.className = 'kb-label';
       d.innerHTML = '<b>' + s.id + '</b> ' + esc(s.title) + '<i>' + s.count + '</i>';
-      d.style.color = '#' + (KCOL[s.k] || 0x8b93a7).toString(16).padStart(6, '0');
+      d.style.color = '#' + (KCOL[s.k] || 0xdbe4f0).toString(16).padStart(6, '0');
       labelWrap.appendChild(d);
       labels.push({ el: d, pos: nodePos[s.id].clone(), sec: s.id });
     });
@@ -430,7 +430,7 @@
       if (vis) {
         L.el.style.transform = 'translate(-50%,-50%) translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
         var d = camera.position.distanceTo(L.pos);
-        L.el.style.opacity = (focusSec > 0 && L.sec !== focusSec) ? 0.25 : Math.max(0.35, Math.min(1, 1.5 - d / 70));
+        L.el.style.opacity = (focusSec > 0 && L.sec !== focusSec) ? 0.45 : Math.max(0.55, Math.min(1, 1.6 - d / 70));
       }
     });
   }

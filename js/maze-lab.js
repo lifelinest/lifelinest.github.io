@@ -312,6 +312,8 @@
       if (S.paused) { S.raf = requestAnimationFrame(tick); return; }
       var n = speed >= 400 ? 100000 : speed;
       if (S.phase === 'gen') {
+        n *= 3;                          // 生成只是铺垫，快些；寻路才是要看的部分
+        if (n < 20) n = 20;
         for (var i = 0; i < n; i++) {
           var r = S.gen.next();
           if (r.done) { S.phase = 'idle'; S.ms = performance.now() - S.t0; draw(); updateStat(); startSolve(); return; }
@@ -342,8 +344,13 @@
           }
           if (!alive && !aliveB) break;
         }
+        if ((!S.solver || S.found) && (!S.solverB || S.foundB)) {
+          S.phase = 'done';
+          updateStat();                  // 先刷文案再画，保证提示不会卡在"正在搜索"
+          draw();
+          return;
+        }
         draw(); updateStat();
-        if ((!S.solver || S.found) && (!S.solverB || S.foundB)) { S.phase = 'done'; return; }
         S.raf = requestAnimationFrame(tick);
       }
     };
