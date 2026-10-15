@@ -1,0 +1,63 @@
+/* ===== 即刻短文页（/essay/）去除条目分隔线 =====
+
+   ─────────────────────────────────────────────────────────────
+   现象：/essay/ 页面正中央有一条贯穿的竖线。
+   ─────────────────────────────────────────────────────────────
+
+   【真凶】主题模板 themes/anzhiyu/layout/includes/page/essay.pug 里
+   `section.timeline.page-1` 是一条"时间轴"，样式（打包在 /css/bundle-a.css）：
+
+     #bber .timeline::before {
+       display: block;
+       content: "";
+       position: absolute;
+       width: 3px;
+       height: 2656px;                                    ← 贯穿整页
+       left: 676px;                                       ← 正好在页面正中
+       background: linear-gradient(rgb(179,136,255),      ← 紫色 → 蓝色渐变
+                                    rgb(74,159,245));
+     }
+
+   实测（无头 Chrome + getComputedStyle，1440x900）：
+     section.timeline.page-1::before
+       尺寸 3 x 2656  @ x=39+676=715（视口中心）
+       background-image: linear-gradient(rgb(179,136,255), rgb(74,159,245))
+       position: absolute
+   ⇒ 这就是那条紫线，与卡片边框、<hr> 都无关。
+
+   【修法】把这条时间轴伪元素整体关掉：
+     - content: none  让伪元素不生成
+     - 其余属性一并清零（防止换主题版本时残留）
+   选择器与主题原规则同权重（都用 #bber id）+ 本文件后加载 ⇒ 稳定覆盖。
+   只影响 /essay/ 页，不影响文章正文。
+
+   注意：这里必须用 `display:none` 单独再兜一层 —— 部分浏览器/主题版本
+   对 `content:none` 与 `display:none` 的处理顺序不一致，两者同时写最保险。
+*/
+
+/* ① 时间轴竖线（本页真正的紫线） */
+#bber .timeline::before {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  left: 0 !important;
+  position: static !important;
+  box-shadow: none !important;
+}
+
+/* ② 条目内的虚线分隔 <hr> */
+#bber .timeline ul li.bber-item hr,
+#bber hr {
+  display: none !important;
+  border: none !important;
+}
+
+/* ③ 卡片左边框：3 列瀑布流下，左右两列卡片的左边框在页面正中
+      纵向首尾相连，也会拼出一条竖线（实测 border-left: 1px solid rgb(66,68,74) × 30）。
+      只去掉左边框，上/右/下边框与 hover 高亮全部保留。 */
+#bber .timeline ul li.bber-item {
+  border-left: none;
+}

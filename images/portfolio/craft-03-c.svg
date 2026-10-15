@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a2450"/>
+      <stop offset="1" stop-color="#7d6cc4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1">
+    <circle cx="288" cy="780" r="260"/>
+    <circle cx="288" cy="780" r="150"/>
+    <path d="M0 300 L544 480 L992 280 L1600 520"/>
+  </g>
+  <text x="96" y="500" fill="#ffffff" fill-opacity="0.96"
+    font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
+    font-size="75" font-weight="600">成品 · 模块组合</text>
+  <text x="96" y="601.25" fill="#ffffff" fill-opacity="0.62"
+    font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif"
+    font-size="39"></text>
+</svg>

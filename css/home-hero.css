@@ -1,0 +1,109 @@
+/* ============================================================
+   首页首屏 hero 布局重设计 · 2026-09-24
+   ------------------------------------------------------------
+   背景：桌面端 #random-banner 内，.banners-title 原为 position:absolute，
+        且 .banners-title-big 固定 36px —— 副标题（约 22 字 × 36px ≈ 792px）
+        必然超出卡片文本区（约 672px），被裁切；
+        同时「技能点」图标球 #skills-tags-group-all 带 rotate(-30deg)
+        + 偶数图标 translate(-60px) 错位，呈「双行·斜角滚动」，
+        直接压在文案之上 → 视觉遮挡。
+
+   本次改动（仅作用于桌面 >1200px；≤1200px 时 #random-banner 本就隐藏）：
+     ① 文案块回到文档流，卡片改为「上文案 / 下图标条」纵向两段式，互不遮挡；
+     ② 副标题（第二个 .banners-title-big）降级为次级字号，单行不再溢出；
+     ③ 图标球取消 -30deg 斜角与错位，改为「单行·横向持续滚动」，两端 overflow:hidden 干净裁切；
+     ④ 主标题仍为「用 AI 把外贸独立站跑通」。
+   ============================================================ */
+
+/* 1) 卡片：纵向流式，文案在上、图标条贴底 */
+#home_top #random-banner {
+  padding: 2.1rem 2.4rem 0;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* 2) 文案块回到文档流（原来 absolute 悬浮、被图标覆盖）
+       ⚠️ 不要给这里加 z-index：.banners-title 是 #random-banner(flex) 的弹性子项，
+       flex 子项的 z-index 在 static 下也生效 → 一旦 >0 会压过悬停遮罩 #random-hover(auto)，
+       导致悬停时标题浮到遮罩上方。 */
+#home_top #random-banner .banners-title {
+  position: static;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 主标题 */
+#home_top #random-banner .banners-title-big {
+  font-size: 32px;
+  line-height: 1.16;
+  margin-bottom: 4px;
+}
+
+/* 副标题：第二个 .banners-title-big 降级为次级文字（原与主标题同为 36px → 必然溢出） */
+#home_top #random-banner .banners-title-big + .banners-title-big {
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--anzhiyu-secondtext);
+  margin-bottom: 8px;
+}
+
+/* 小注 */
+#home_top #random-banner .banners-title-small {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+/* 3) 图标条：取消斜角 + 单行横向滚动 + 通栏贴底
+       （用 overflow:hidden 干净裁切，不再用 mask-image 渐隐——避免边缘文字/emoji 图标被淡出成残缺） */
+#home_top #random-banner #skills-tags-group-all {
+  transform: none;
+  width: calc(100% + 4.8rem);
+  margin-left: -2.4rem;
+  margin-right: -2.4rem;
+  margin-top: auto;
+  overflow: hidden;
+}
+#home_top #random-banner #skills-tags-group-all .tags-group-wrapper {
+  margin-top: 0;
+  padding: 2px 0 12px;
+  animation-duration: 45s;
+}
+/* 把成对图标拆开，使其直接成为 wrapper 的 flex 子项 → 单行 */
+#home_top #random-banner #skills-tags-group-all .tags-group-icon-pair {
+  display: contents;
+}
+/* 取消偶数图标的错位（原 translate(-60px) + margin-top 造成「双行」） */
+#home_top #random-banner #skills-tags-group-all .tags-group-icon-pair .tags-group-icon:nth-child(even) {
+  margin-top: 0;
+  transform: none;
+}
+/* 图标尺寸 ≈ 原值 1.5×（54px→81px，用户 2026-09-24 要求放大） */
+#home_top #random-banner #skills-tags-group-all .tags-group-icon {
+  width: 81px;
+  height: 81px;
+  border-radius: 21px;
+  font-size: 57px;
+  margin-right: 0.9rem;
+}
+#home_top #random-banner #skills-tags-group-all .tags-group-icon img {
+  width: 42px;
+}
+
+/* 4) 尊重「减少动态效果」偏好 */
+@media (prefers-reduced-motion: reduce) {
+  #home_top #random-banner #skills-tags-group-all .tags-group-wrapper {
+    animation: none;
+  }
+}
+
+/* 5) 悬停「随便逛逛」遮罩必须盖在所有 banner 内容（标题/图标）之上。
+      .banners-title 是 flex 子项、z-index 对其生效，故这里给遮罩显式高位 z-index 兜底，
+      避免任何弹性子项被抬到遮罩上方。 */
+#home_top #random-banner #random-hover {
+  z-index: 5;
+}
