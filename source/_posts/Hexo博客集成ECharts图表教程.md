@@ -1,6 +1,6 @@
 ---
 title: Hexo博客集成ECharts图表教程
-description: "在现代博客中，可视化图表能让数据展示更直观生动。ECharts 是一款功能强大的开源可视化库，支持折线、柱状、饼图、地图等多种图表与交互。本文以 Hexo 博客为例，详细介绍通过 CDN 引入 ECharts、设置容器与响应式布局、加载动态数据，以及常见技术踩坑与解决思路，帮你快速在静态博客中嵌入专业的数据可视化图表。"
+description: "ECharts 是功能强大的开源可视化库，支持折线、柱状、饼图、地图等多种图表与交互。本文以 Hexo 博客为例，手把手教你用 CDN 引入 ECharts、设置响应式容器、加载动态数据，并汇总常见踩坑与解决思路，快速在静态博客嵌入专业图表。"
 author: Lifeline
 tags:
   - 工具教程
@@ -8,7 +8,7 @@ tags:
   - 技术踩坑
 categories:
   - 博客建站与前端
-cover: https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2025%E5%B9%B4/%E4%B9%9D%E6%9C%88/Hexo%E5%8D%9A%E5%AE%A2%E9%9B%86%E6%88%90ECharts%E5%9B%BE%E8%A1%A8%E6%95%99%E7%A8%8B/1789098552308_2222.png
+cover: https://cloudflare-img-bzb.pages.dev/file/%E5%B0%81%E9%9D%A2%E5%9B%BE/2025/09/1790782760369_8bb22cde.webp
 abbrlink: 8bb22cde
 date: 2025-09-02 19:27:20
 ai: "Hexo博客集成ECharts图表可优先通过CDN引入并设置容器宽高来快速实现数据可视化, 这份工具教程涵盖代码分享与常见技术踩坑解决方案, 掌握响应式调整和动态数据加载能让博客建站与前端展示更专业"
@@ -18,6 +18,10 @@ ai: "Hexo博客集成ECharts图表可优先通过CDN引入并设置容器宽高�
 ![333.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2025%E5%B9%B4/%E4%B9%9D%E6%9C%88/Hexo%E5%8D%9A%E5%AE%A2%E9%9B%86%E6%88%90ECharts%E5%9B%BE%E8%A1%A8%E6%95%99%E7%A8%8B/1789098914456_333.png)
 
 在现代博客中，可视化图表可以让数据展示更加直观、生动。ECharts作为一款功能强大的开源可视化库，提供了丰富的图表类型和交互功能。本文将详细介绍如何在Hexo博客中集成并使用ECharts图表。ECharts是百度开源的一个基于JavaScript的可视化图表库，具有以下特点：
+
+如果不熟悉 Hexo 的目录结构，集成前建议先看[《Hexo+GitHub搭建个人博客教程（2025最新版）》](/posts/2d25e1d/)，确认主题配置文件位置。
+
+除了图表，想给文章加一个可交互的大纲导图，可以参考[《基于AnZhiYu主题实现博客思维导图功能》](/posts/eb872732/)。
 
 - **丰富的图表类型**：支持折线图、柱状图、饼图、散点图、地图等多种图表类型
 - **强大的交互功能**：支持缩放、平移、悬浮提示等交互操作

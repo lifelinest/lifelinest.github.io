@@ -1,19 +1,21 @@
 ---
-title: Hexo Live2D AI零成本部署教程｜解决Cloudflare Worker被墙与报错
+title: Hexo Live2D 零成本部署与报错解决
+description: "很多搭建 Hexo 博客的博主，都会为站点接入Live2D 看板娘 交互组件，并搭配 DeepSeek 大模型 实现智能对话功能。流式问答的效果，能够极大提升个人博客的趣味性与页面互动性，也是目前 Hexo 博客热门的进阶美化方案。"
 author: Lifeline
 tags:
   - 技术踩坑
   - 开源项目
   - 人工智能
 categories:
-  - 技术探索
-cover: /images/抽象网络数据流被半透明屏障阻断，线条中断，冷灰蓝色科技画面.webp
+  - 博客建站与前端
+cover: https://cloudflare-img-bzb.pages.dev/file/%E5%B0%81%E9%9D%A2%E5%9B%BE/2026/08/1790782675751_2514c491.webp
 abbrlink: 2514c491
 date: 2026-08-31 22:31:11
+ai: "Hexo Live2D AI零成本部署需弃用被墙的workers.dev域名并规避国内云函数隐性扣费, 改用DNSHE免费域名托管Cloudflare Worker可根治国内访问问题, 部署时须用export default fetch写法并内置密钥以解决require报错和401失效, 同时将Worker代码与博客源码物理隔离防止更新覆盖, 这套开源项目方案兼顾人工智能交互体验与博客建站前端稳定性"
 ---
 ## 前言
 
-![域名解析概念抽象图形，锁形几何图标缠绕网络链路，低饱和度蓝色.webp](/images/%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%A6%82%E5%BF%B5%E6%8A%BD%E8%B1%A1%E5%9B%BE%E5%BD%A2%EF%BC%8C%E9%94%81%E5%BD%A2%E5%87%A0%E4%BD%95%E5%9B%BE%E6%A0%87%E7%BC%A0%E7%BB%95%E7%BD%91%E7%BB%9C%E9%93%BE%E8%B7%AF%EF%BC%8C%E4%BD%8E%E9%A5%B1%E5%92%8C%E5%BA%A6%E8%93%9D%E8%89%B2.webp)
+![域名解析概念抽象图形，锁形几何图标缠绕网络链路，低饱和度蓝色.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AB%E6%9C%88/Hexo%20Live2D%20AI%E9%9B%B6%E6%88%90%E6%9C%AC%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B%EF%BD%9C%E8%A7%A3%E5%86%B3Cloudflare%20Worker%E8%A2%AB%E5%A2%99%E4%B8%8E%E6%8A%A5%E9%94%99/1789100692195_%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%A6%82%E5%BF%B5%E6%8A%BD%E8%B1%A1%E5%9B%BE%E5%BD%A2%EF%BC%8C%E9%94%81%E5%BD%A2%E5%87%A0%E4%BD%95%E5%9B%BE%E6%A0%87%E7%BC%A0%E7%BB%95%E7%BD%91%E7%BB%9C%E9%93%BE%E8%B7%AF%EF%BC%8C%E4%BD%8E%E9%A5%B1%E5%92%8C%E5%BA%A6%E8%93%9D%E8%89%B2.webp)
 
 &nbsp;&nbsp;&nbsp;&nbsp;很多搭建 [Hexo](https://hexo.io/zh-cn/) 博客的博主，都会为站点接入[Live2D 看板娘](https://github.com/stevenjoezhang/live2d-widget) 交互组件，并搭配 [DeepSeek 大模型](https://www.deepseek.com/) 实现智能对话功能。流式问答的效果，能够极大提升个人博客的趣味性与页面互动性，也是目前 Hexo 博客热门的进阶美化方案。
 
@@ -23,9 +25,13 @@ date: 2026-08-31 22:31:11
 
 &nbsp;&nbsp;&nbsp;&nbsp;本文基于真实落地实操经验，系统复盘 Hexo Live2D AI 部署全流程坑点，淘汰所有现已失效的老旧方案，分享一套**可直接复刻、全程零成本、国内稳定可用**的 Cloudflare Worker 部署解决方案。
 
+如果还没搭建自己的 Hexo 博客，建议先按[《Hexo+GitHub搭建个人博客教程（2025最新版）》](/posts/2d25e1d/)把站点跑起来，再回来接入 Live2D。
+
+Live2D 这类前端组件会拖慢首屏，接入后常需再做一轮负载优化，具体可看[《如何提升Hexo博客的访问速度？》](/posts/538c1c99/)。
+
 ## 一、Hexo AI部署两大主流方案优缺点解析
 
-![悬浮的几何节点，网状互联线条，云原生无服务器抽象视觉，冷蓝色调.webp](/images/%E6%82%AC%E6%B5%AE%E7%9A%84%E5%87%A0%E4%BD%95%E8%8A%82%E7%82%B9%EF%BC%8C%E7%BD%91%E7%8A%B6%E4%BA%92%E8%81%94%E7%BA%BF%E6%9D%A1%EF%BC%8C%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8A%BD%E8%B1%A1%E8%A7%86%E8%A7%89%EF%BC%8C%E5%86%B7%E8%93%9D%E8%89%B2%E8%B0%83.webp)
+![悬浮的几何节点，网状互联线条，云原生无服务器抽象视觉，冷蓝色调.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AB%E6%9C%88/Hexo%20Live2D%20AI%E9%9B%B6%E6%88%90%E6%9C%AC%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B%EF%BD%9C%E8%A7%A3%E5%86%B3Cloudflare%20Worker%E8%A2%AB%E5%A2%99%E4%B8%8E%E6%8A%A5%E9%94%99/1789100982083_%E6%82%AC%E6%B5%AE%E7%9A%84%E5%87%A0%E4%BD%95%E8%8A%82%E7%82%B9%EF%BC%8C%E7%BD%91%E7%8A%B6%E4%BA%92%E8%81%94%E7%BA%BF%E6%9D%A1%EF%BC%8C%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8A%BD%E8%B1%A1%E8%A7%86%E8%A7%89%EF%BC%8C%E5%86%B7%E8%93%9D%E8%89%B2%E8%B0%83.webp)
 
 ### 1\. 国内云函数（FC/SCF）隐性扣费问题
 
@@ -47,7 +53,7 @@ date: 2026-08-31 22:31:11
 
 ## 二、避坑指南：两类免费域名已彻底不适用于博客AI
 
-![多组彩色几何方块，数据流在节点之间流转，域名解析抽象可视化.webp](/images/%E5%A4%9A%E7%BB%84%E5%BD%A9%E8%89%B2%E5%87%A0%E4%BD%95%E6%96%B9%E5%9D%97%EF%BC%8C%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9C%A8%E8%8A%82%E7%82%B9%E4%B9%8B%E9%97%B4%E6%B5%81%E8%BD%AC%EF%BC%8C%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%8A%BD%E8%B1%A1%E5%8F%AF%E8%A7%86%E5%8C%96.webp)
+![多组彩色几何方块，数据流在节点之间流转，域名解析抽象可视化.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AB%E6%9C%88/Hexo%20Live2D%20AI%E9%9B%B6%E6%88%90%E6%9C%AC%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B%EF%BD%9C%E8%A7%A3%E5%86%B3Cloudflare%20Worker%E8%A2%AB%E5%A2%99%E4%B8%8E%E6%8A%A5%E9%94%99/1789100809378_%E5%A4%9A%E7%BB%84%E5%BD%A9%E8%89%B2%E5%87%A0%E4%BD%95%E6%96%B9%E5%9D%97%EF%BC%8C%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9C%A8%E8%8A%82%E7%82%B9%E4%B9%8B%E9%97%B4%E6%B5%81%E8%BD%AC%EF%BC%8C%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%8A%BD%E8%B1%A1%E5%8F%AF%E8%A7%86%E5%8C%96.webp)
 
 &nbsp;&nbsp;&nbsp;&nbsp;网上大量老旧教程推荐的免费开发者域名，现阶段平台规则已全面收紧，不再兼容 Hexo 博客、Live2D 展示类、AI 交互类项目。盲目申请只会浪费大量时间，最终无法落地。
 
@@ -67,7 +73,7 @@ date: 2026-08-31 22:31:11
 
 ## 三、最终稳定方案：DNSHE免费域名 \+ Cloudflare Worker
 
-![分层堆叠的透明几何板块，网络链路贯穿层级，柔和青蓝色科技光影.webp](/images/%E5%88%86%E5%B1%82%E5%A0%86%E5%8F%A0%E7%9A%84%E9%80%8F%E6%98%8E%E5%87%A0%E4%BD%95%E6%9D%BF%E5%9D%97%EF%BC%8C%E7%BD%91%E7%BB%9C%E9%93%BE%E8%B7%AF%E8%B4%AF%E7%A9%BF%E5%B1%82%E7%BA%A7%EF%BC%8C%E6%9F%94%E5%92%8C%E9%9D%92%E8%93%9D%E8%89%B2%E7%A7%91%E6%8A%80%E5%85%89%E5%BD%B1.webp)
+![分层堆叠的透明几何板块，网络链路贯穿层级，柔和青蓝色科技光影.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AB%E6%9C%88/Hexo%20Live2D%20AI%E9%9B%B6%E6%88%90%E6%9C%AC%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B%EF%BD%9C%E8%A7%A3%E5%86%B3Cloudflare%20Worker%E8%A2%AB%E5%A2%99%E4%B8%8E%E6%8A%A5%E9%94%99/1789100638620_%E5%88%86%E5%B1%82%E5%A0%86%E5%8F%A0%E7%9A%84%E9%80%8F%E6%98%8E%E5%87%A0%E4%BD%95%E6%9D%BF%E5%9D%97%EF%BC%8C%E7%BD%91%E7%BB%9C%E9%93%BE%E8%B7%AF%E8%B4%AF%E7%A9%BF%E5%B1%82%E7%BA%A7%EF%BC%8C%E6%9F%94%E5%92%8C%E9%9D%92%E8%93%9D%E8%89%B2%E7%A7%91%E6%8A%80%E5%85%89%E5%BD%B1.webp)
 
 &nbsp;&nbsp;&nbsp;&nbsp;经过多平台实测对比、反复踩坑验证，目前适配 **Hexo Live2D AI 代理****服务** 的最优零成本方案为：使用 [DNSHE](https://dnshe.com/) 免费子域名托管至 Cloudflare。
 
@@ -99,7 +105,7 @@ date: 2026-08-31 22:31:11
 
 ## 四、Hexo AI部署高频报错解决方案（精准根治）
 
-![抽象云服务器几何体，悬浮粒子，暗色调隐喻资源消耗，极简科技构图.webp](/images/%E6%8A%BD%E8%B1%A1%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%A0%E4%BD%95%E4%BD%93%EF%BC%8C%E6%82%AC%E6%B5%AE%E7%B2%92%E5%AD%90%EF%BC%8C%E6%9A%97%E8%89%B2%E8%B0%83%E9%9A%90%E5%96%BB%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%EF%BC%8C%E6%9E%81%E7%AE%80%E7%A7%91%E6%8A%80%E6%9E%84%E5%9B%BE.webp)
+![抽象云服务器几何体，悬浮粒子，暗色调隐喻资源消耗，极简科技构图.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AB%E6%9C%88/Hexo%20Live2D%20AI%E9%9B%B6%E6%88%90%E6%9C%AC%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B%EF%BD%9C%E8%A7%A3%E5%86%B3Cloudflare%20Worker%E8%A2%AB%E5%A2%99%E4%B8%8E%E6%8A%A5%E9%94%99/1789101009382_%E6%8A%BD%E8%B1%A1%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%A0%E4%BD%95%E4%BD%93%EF%BC%8C%E6%82%AC%E6%B5%AE%E7%B2%92%E5%AD%90%EF%BC%8C%E6%9A%97%E8%89%B2%E8%B0%83%E9%9A%90%E5%96%BB%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%EF%BC%8C%E6%9E%81%E7%AE%80%E7%A7%91%E6%8A%80%E6%9E%84%E5%9B%BE.webp)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;本节汇总 Hexo \+ Cloudflare Worker 部署场景下，博主最高频遇到的三类报错，结合实战给出可直接落地的精准根治方案。
@@ -128,7 +134,7 @@ Cloudflare Worker 基于标准 Web 运行环境运行，**不支持 Node****\.js
 
 ## 五、方案落地最终效果
 
-![抽象代码模块几何体之间连接断裂，微弱橙色警告光晕，无任何字符.webp](/images/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E7%A0%81%E6%A8%A1%E5%9D%97%E5%87%A0%E4%BD%95%E4%BD%93%E4%B9%8B%E9%97%B4%E8%BF%9E%E6%8E%A5%E6%96%AD%E8%A3%82%EF%BC%8C%E5%BE%AE%E5%BC%B1%E6%A9%99%E8%89%B2%E8%AD%A6%E5%91%8A%E5%85%89%E6%99%95%EF%BC%8C%E6%97%A0%E4%BB%BB%E4%BD%95%E5%AD%97%E7%AC%A6.webp)
+![抽象代码模块几何体之间连接断裂，微弱橙色警告光晕，无任何字符.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AB%E6%9C%88/Hexo%20Live2D%20AI%E9%9B%B6%E6%88%90%E6%9C%AC%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B%EF%BD%9C%E8%A7%A3%E5%86%B3Cloudflare%20Worker%E8%A2%AB%E5%A2%99%E4%B8%8E%E6%8A%A5%E9%94%99/1789101028984_%E6%8A%BD%E8%B1%A1%E4%BB%A3%E7%A0%81%E6%A8%A1%E5%9D%97%E5%87%A0%E4%BD%95%E4%BD%93%E4%B9%8B%E9%97%B4%E8%BF%9E%E6%8E%A5%E6%96%AD%E8%A3%82%EF%BC%8C%E5%BE%AE%E5%BC%B1%E6%A9%99%E8%89%B2%E8%AD%A6%E5%91%8A%E5%85%89%E6%99%95%EF%BC%8C%E6%97%A0%E4%BB%BB%E4%BD%95%E5%AD%97%E7%AC%A6.webp)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;采用本文标准化方案部署后，可完美解决 Hexo Live2D AI 部署所有痛点，最终落地效果如下：
@@ -145,7 +151,7 @@ Cloudflare Worker 基于标准 Web 运行环境运行，**不支持 Node****\.js
 
 ## 六、总结与长期维护建议
 
-![抽象数字表单几何图形，红色柔和警示光晕，简约科技抽象表达审核拒绝.webp](/images/%E6%8A%BD%E8%B1%A1%E6%95%B0%E5%AD%97%E8%A1%A8%E5%8D%95%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2%EF%BC%8C%E7%BA%A2%E8%89%B2%E6%9F%94%E5%92%8C%E8%AD%A6%E7%A4%BA%E5%85%89%E6%99%95%EF%BC%8C%E7%AE%80%E7%BA%A6%E7%A7%91%E6%8A%80%E6%8A%BD%E8%B1%A1%E8%A1%A8%E8%BE%BE%E5%AE%A1%E6%A0%B8%E6%8B%92%E7%BB%9D.webp)
+![抽象数字表单几何图形，红色柔和警示光晕，简约科技抽象表达审核拒绝.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AB%E6%9C%88/Hexo%20Live2D%20AI%E9%9B%B6%E6%88%90%E6%9C%AC%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B%EF%BD%9C%E8%A7%A3%E5%86%B3Cloudflare%20Worker%E8%A2%AB%E5%A2%99%E4%B8%8E%E6%8A%A5%E9%94%99/1789101064232_%E6%8A%BD%E8%B1%A1%E6%95%B0%E5%AD%97%E8%A1%A8%E5%8D%95%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2%EF%BC%8C%E7%BA%A2%E8%89%B2%E6%9F%94%E5%92%8C%E8%AD%A6%E7%A4%BA%E5%85%89%E6%99%95%EF%BC%8C%E7%AE%80%E7%BA%A6%E7%A7%91%E6%8A%80%E6%8A%BD%E8%B1%A1%E8%A1%A8%E8%BE%BE%E5%AE%A1%E6%A0%B8%E6%8B%92%E7%BB%9D.webp)
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;Hexo 博客 Live2D AI 部署的核心难点，不在于代码编写，而在于甄别失效方案、规避平台规则限制与各类环境报错。

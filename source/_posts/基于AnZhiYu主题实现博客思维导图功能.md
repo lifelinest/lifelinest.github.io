@@ -1,19 +1,21 @@
 ---
 title: 基于AnZhiYu主题实现博客思维导图功能
+description: "写这篇文章，最核心的目的是向 原教程作者 表达最诚挚的感谢！如果没有你分享的《Hexo AnZhiYu主题魔改添加文章思维导图预览功能》教程，我根本无法顺利在自己的Hexo博客中，落地这个既实用又美观的文章思维导图预览功能。"
 author: Lifeline
-cover: /images/10_1770641731523.webp
+cover: https://cloudflare-img-bzb.pages.dev/file/%E5%B0%81%E9%9D%A2%E5%9B%BE/2026/02/1790783047362_eb872732.webp
 abbrlink: eb872732
 tags:
   - 前端开发
   - 技术踩坑
   - 代码分享
 categories:
-  - 技术探索
+  - 博客建站与前端
 date: 2026-02-09 20:48:43
+ai: "思维导图仅显示纯文本的根因是库文件占位、加载顺序错误、渲染元素类型错误及API校验缺失, 修复后需用SVG元素并调整依赖顺序, 前端开发中优先验证库文件完整性并添加API可用性校验可避免类似技术踩坑, 这套代码分享与效率工具经验能帮Hexo博客快速落地可交互思维导图"
 ---
-![7_1770641718521.webp](/images/7_1770641718521.webp)
+![7_1770641718521.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E4%BA%8C%E6%9C%88/%E5%9F%BA%E4%BA%8EAnZhiYu%E4%B8%BB%E9%A2%98%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%8A%9F%E8%83%BD/1789099535925_7_1770641718521.webp)
 
-&nbsp;&nbsp;&nbsp;&nbsp;写这篇文章，最核心的目的是向 [原教程作者](https://prorise666.site/posts/59033.html) 表达**最诚挚的感谢**！如果没有你分享的《Hexo AnZhiYu主题魔改添加文章思维导图预览功能》教程，我根本无法顺利在自己的Hexo博客中，落地这个既实用又美观的**文章思维导图预览功能**。
+&nbsp;&nbsp;&nbsp;&nbsp;写这篇文章，最核心的目的是向 原教程作者 表达**最诚挚的感谢**！如果没有你分享的《Hexo AnZhiYu主题魔改添加文章思维导图预览功能》教程，我根本无法顺利在自己的Hexo博客中，落地这个既实用又美观的**文章思维导图预览功能**。
 
 &nbsp;&nbsp;&nbsp;&nbsp;你的教程从功能配置、布局修改、样式优化到脚本编写，每一步都讲解得**细致入微**，清晰梳理了基于[Markmap库](https://markmap.js.org/)开发思维导图的核心逻辑，不仅给出了**完整的实现框架**，还考虑到了**性能优化、PJAX兼容**等细节，让我这样的开发者能够快速上手，少走了很多弯路。正是站在你的肩膀上，我才能一步步搭建起功能雏形，最终实现了文章标题的**可视化树状展示**。。
 
@@ -21,15 +23,19 @@ date: 2026-02-09 20:48:43
 
 &nbsp;&nbsp;&nbsp;&nbsp;为了解决这个问题，我反复排查、多次测试，最终找到了**问题根源并完成了修复**。现将整个**踩坑与修复过程**完整记录下来，一方面是对自己调试过程的总结，另一方面也希望能帮助到同样尝试该功能、遇到类似问题的小伙伴，也算对原作者分享精神的一种延续。
 
+想在博文里做可视化，除了思维导图也可以集成图表，方法见[《Hexo博客集成ECharts图表教程》](/posts/8bb22cde/)。
+
+这个功能基于 AnZhiYu 主题魔改实现，如果你还没搭好 Hexo 博客，建议先按[《Hexo+GitHub搭建个人博客教程（2025最新版）》](/posts/2d25e1d/)完成站点初始化。
+
 ## 一、核心问题：思维导图仅显示纯文本，无树状结构
 
-![2_1770641685192.webp](/images/2_1770641685192.webp)
+![2_1770641685192.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E4%BA%8C%E6%9C%88/%E5%9F%BA%E4%BA%8EAnZhiYu%E4%B8%BB%E9%A2%98%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%8A%9F%E8%83%BD/1789098772598_2_1770641685192.webp)
 
 &nbsp;&nbsp;&nbsp;&nbsp;现象描述：点击文章右下角思维导图按钮后，弹窗内**仅显示文章H1-H6标题的纯文本堆叠**，无节点层级、无连接线，无法进行缩放、拖拽等交互；浏览器控制台偶现API加载失败相关错误，功能**完全未达到预期效果**。
 
 ## 二、问题排查与根因分析
 
-![3_1770641691698.webp](/images/3_1770641691698.webp)
+![3_1770641691698.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E4%BA%8C%E6%9C%88/%E5%9F%BA%E4%BA%8EAnZhiYu%E4%B8%BB%E9%A2%98%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%8A%9F%E8%83%BD/1789099009790_3_1770641691698.webp)
 
 &nbsp;&nbsp;&nbsp;&nbsp;结合原教程逻辑，我从**库文件加载、API初始化、渲染逻辑**三个维度逐步排查，最终定位到4个**核心根因**，层层递进导致功能失效：
 
@@ -40,7 +46,7 @@ date: 2026-02-09 20:48:43
 
 ## 三、完整修复方案（附代码）
 
-![6_1770641710959.webp](/images/6_1770641710959.webp)
+![6_1770641710959.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E4%BA%8C%E6%9C%88/%E5%9F%BA%E4%BA%8EAnZhiYu%E4%B8%BB%E9%A2%98%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%8A%9F%E8%83%BD/1789099462608_6_1770641710959.webp)
 
 &nbsp;&nbsp;&nbsp;&nbsp;针对上述4个问题，我逐一进行**优化修复**，每一步都经过实际测试，确保功能可正常运行，具体方案如下：
 
@@ -148,7 +154,7 @@ render(container, markdownContent) {
 
 ## 四、最终效果与再次致谢
 
-![6_1770641710959.webp](/images/6_1770641710959.webp)
+![6_1770641710959.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E4%BA%8C%E6%9C%88/%E5%9F%BA%E4%BA%8EAnZhiYu%E4%B8%BB%E9%A2%98%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%8A%9F%E8%83%BD/1789099462608_6_1770641710959.webp)
 
 经过上述修复，思维导图功能**完美达到预期效果**，各项功能均能正常运行：
 
@@ -164,7 +170,7 @@ render(container, markdownContent) {
 
 ## 五、总结与经验分享
 
-![9_1770641726653.webp](/images/9_1770641726653.webp)
+![9_1770641726653.webp](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E4%BA%8C%E6%9C%88/%E5%9F%BA%E4%BA%8EAnZhiYu%E4%B8%BB%E9%A2%98%E5%AE%9E%E7%8E%B0%E5%8D%9A%E5%AE%A2%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%8A%9F%E8%83%BD/1789099619113_9_1770641726653.webp)
 
 此次实现思维导图功能的过程，让我总结出几点**实用经验**，也分享给大家：
 
