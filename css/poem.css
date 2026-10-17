@@ -1,0 +1,144 @@
+/* ====== 每日诗词组件样式 - 对齐主题标准卡片 UI ======
+   说明：卡片外壳（背景 / 边框 / 圆角 / 阴影 / 内边距）直接沿用主题
+   #aside-content .card-widget 的默认样式（var(--anzhiyu-card-bg) 等），
+   不再自绘液态玻璃/拟态效果。这里只负责卡片内部的诗句排版与配色，
+   全部使用主题变量，亮暗模式自动适配。
+*/
+
+/* 诗词句子（正文区域）：作为卡片内的次级浅色面板 */
+#card-poem #poem_sentence {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-family: 'STKaiti', 'KaiTi', 'PingFang SC', 'Microsoft YaHei', 'SimSun', serif;
+  font-size: 1.15rem;
+  line-height: 2.1;
+  color: var(--anzhiyu-fontcolor, #363636);
+  margin-bottom: 1rem;
+  padding: 1.1rem 0.8rem;
+  background: var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.137));
+  border-radius: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+/* 每句独占一行 */
+#card-poem .poem-line {
+  display: block;
+  width: 100%;
+  text-align: center;
+  word-break: break-all;
+  white-space: pre-line;
+  margin: 0.1em 0;
+  font-size: 1.18rem;
+  font-weight: 500;
+  line-height: 2.1;
+}
+
+/* 诗词信息容器：与主题卡片内分隔线一致 */
+#card-poem #poem_info {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-top: 0.9rem;
+  margin-top: 0.2rem;
+  border-top: 1px solid var(--anzhiyu-card-border, #e3e8f7);
+}
+
+/* 朝代标签：使用主题强调色，扁平圆角 */
+#card-poem #poem_dynasty {
+  background: var(--anzhiyu-theme, #425aef);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+#card-poem #poem_dynasty:empty {
+  display: none;
+}
+
+/* 作者 / 诗名：主题次要文字色 */
+#card-poem #poem_author {
+  color: var(--anzhiyu-fontcolor, #363636);
+  opacity: 0.75;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: right;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 诗名横向滚动容器（长标题时） */
+#card-poem .poem-title-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--anzhiyu-theme, #425aef) transparent;
+}
+
+#card-poem .poem-title-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+#card-poem .poem-title-scroll::-webkit-scrollbar-thumb {
+  background: var(--anzhiyu-theme, #425aef);
+  border-radius: 2px;
+}
+
+/* 移动端：信息上下排列并居中 */
+@media (max-width: 768px) {
+  #card-poem #poem_info {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  #card-poem #poem_author {
+    text-align: center;
+    width: 100%;
+  }
+
+  #card-poem #poem_sentence {
+    font-size: 1rem;
+  }
+
+  #card-poem .poem-line {
+    font-size: 1.05rem;
+  }
+}
+
+/* 加载态 */
+#card-poem.card-widget.loading #poem_sentence::after {
+  content: '...';
+  animation: poem-loading-dots 1.5s infinite;
+}
+
+@keyframes poem-loading-dots {
+
+  0%,
+  20% {
+    content: '.';
+  }
+
+  40% {
+    content: '..';
+  }
+
+  60%,
+  100% {
+    content: '...';
+  }
+}

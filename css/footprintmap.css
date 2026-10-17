@@ -1,0 +1,1137 @@
+/* =========================================================
+   足迹地图 FootprintMap —— 迹遇主题
+   顶部 hero 按用户图片 1:1 还原：
+     深蓝紫渐变 + 世界地图线稿 + 金色发光弧线 + 星光脚印
+     + 标题「迹遇」+ 歌词 + 右下角「——《小宇》」
+   下方保留真实高德地图模块，整体改为深色金色主题。
+   已适配桌面 / 平板 / 手机及 AnZhiYu 暗色模式。
+   ========================================================= */
+
+/* ---------- 1. 变量：金色主题 + 深色玻璃表面 ---------- */
+#footprint-map-page {
+  /* —— 浅色（默认）UI 控件变量：跟随明主题 ——
+     修复 BUG：此前控件表面被写死为深色，导致浅色模式下仍是暗色主题。
+     现改为浅色表面 + 深色文字，暗色模式仍由下方 [data-theme="dark"] 覆盖。
+     主色使用 AnZhiYu 主题色（蓝色），明亮模式下所有控件/标记/胶囊显示蓝色而非金色。 */
+  --fp-primary: var(--anzhiyu-theme, #425aef);
+  --fp-primary-glow: color-mix(in srgb, var(--anzhiyu-theme, #425aef) 32%, transparent);
+  --fp-primary-soft: color-mix(in srgb, var(--anzhiyu-theme, #425aef) 16%, transparent);
+  --fp-text: #2c2b3a;
+  --fp-text-sub: #6f6c84;
+  --fp-surface: rgba(255, 255, 255, 0.86);
+  --fp-surface-solid: #ffffff;
+  --fp-border: rgba(110, 100, 140, 0.16);
+  --fp-track: rgba(28, 26, 50, 0.10);
+  --fp-shadow: 0 14px 44px rgba(70, 60, 100, 0.16);
+  --fp-radius: 18px;
+
+  /* 迹遇 hero 主题变量（浅色默认）— 仍按参考图保持金色文字
+     拆分为 light / dark 两套，dark 用伪元素叠加并做 opacity 过渡，
+     实现明暗切换时的“渐变过渡”而非硬切（CSS 渐变本身无法 transition） */
+  --fp-hero-bg-light: linear-gradient(168deg, #f6f1fc 0%, #ece4f7 48%, #e7ecf8 100%);
+  --fp-hero-bg-dark: linear-gradient(180deg, #090d20 0%, #0f1533 16%, #15204a 34%, #252b63 58%, #5a4e83 82%, #b7a9d8 100%);
+  --fp-hero-title: #7d5e16;
+  --fp-hero-lyric: #5b5570;
+  --fp-hero-song: #9a7320;
+  --fp-frame-bg: #ffffff;
+}
+
+[data-theme="dark"] #footprint-map-page {
+  --fp-text: #F7F1E1;
+  --fp-text-sub: #A8A5B8;
+  --fp-surface: rgba(18, 20, 38, 0.86);
+  --fp-surface-solid: #121426;
+  --fp-border: rgba(255, 215, 122, 0.16);
+  --fp-track: rgba(255, 255, 255, 0.09);
+  --fp-shadow: 0 12px 44px rgba(0, 0, 0, 0.55);
+
+  /* 暗色下恢复金色氛围主色 */
+  --fp-primary: #FFD77A;
+  --fp-primary-glow: rgba(255, 215, 122, 0.35);
+  --fp-primary-soft: rgba(255, 215, 122, 0.12);
+
+  /* 迹遇 hero 暗色：参考图深蓝紫夜景 */
+  --fp-hero-bg-dark: linear-gradient(180deg, #090d20 0%, #0f1533 16%, #15204a 34%, #252b63 58%, #5a4e83 82%, #b7a9d8 100%);
+  --fp-hero-title: #F7F1E1;
+  --fp-hero-lyric: #E8EAF6;
+  --fp-hero-song: #EAD9A0;
+  --fp-map-line: rgba(255, 255, 255, 0.10);
+  --fp-arc-1: #FFD77A;
+  --fp-arc-2: #FFE5A8;
+  --fp-arc-3: #FFF4D6;
+  --fp-hero-fade: rgba(183, 169, 216, 1);
+  --fp-frame-bg: linear-gradient(180deg, rgba(12, 14, 30, 0.98), rgba(6, 8, 18, 0.98));
+}
+
+/* 暗色：迹遇卡片的暗色渐变遮罩淡入 */
+[data-theme="dark"] #footprint-map-page .fp-jiyu-card::before { opacity: 1; }
+
+/* ---------- 1b. 跟随系统：主题若未显式设置 data-theme（仅随系统切换），
+   则通过 prefers-color-scheme 兜底，确保 OS 切换明暗时本页同步 ----------
+   注意 :root:not([data-theme="light"]) —— 用户手动选了“浅色”时（data-theme=light）
+   不覆盖，尊重手动选择；其余情况（data-theme=dark 或 未设置）都跟随系统。 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #footprint-map-page {
+    --fp-text: #F7F1E1;
+    --fp-text-sub: #A8A5B8;
+    --fp-surface: rgba(18, 20, 38, 0.86);
+    --fp-surface-solid: #121426;
+    --fp-border: rgba(255, 215, 122, 0.16);
+    --fp-track: rgba(255, 255, 255, 0.09);
+    --fp-shadow: 0 12px 44px rgba(0, 0, 0, 0.55);
+
+    /* 暗色下恢复金色氛围主色 */
+    --fp-primary: #FFD77A;
+    --fp-primary-glow: rgba(255, 215, 122, 0.35);
+    --fp-primary-soft: rgba(255, 215, 122, 0.12);
+
+    --fp-hero-bg-dark: linear-gradient(180deg, #090d20 0%, #0f1533 16%, #15204a 34%, #252b63 58%, #5a4e83 82%, #b7a9d8 100%);
+    --fp-hero-title: #F7F1E1;
+    --fp-hero-lyric: #E8EAF6;
+    --fp-hero-song: #EAD9A0;
+    --fp-map-line: rgba(255, 255, 255, 0.10);
+    --fp-arc-1: #FFD77A;
+    --fp-arc-2: #FFE5A8;
+    --fp-arc-3: #FFF4D6;
+    --fp-hero-fade: rgba(183, 169, 216, 1);
+    --fp-frame-bg: linear-gradient(180deg, rgba(12, 14, 30, 0.98), rgba(6, 8, 18, 0.98));
+  }
+
+  /* 随系统切深时，迹遇卡片的暗色渐变遮罩淡入 */
+  :root:not([data-theme="light"]) #footprint-map-page .fp-jiyu-card::before { opacity: 1; }
+}
+
+/* ---------- 2. 独立「迹遇」卡片（地图上方，单独框，仅占 20% 高度） ---------- */
+.fp-jiyu-card {
+  position: relative;
+  width: 100%;
+  /* 高度由 JS 计算（= 可用高度 1/5，即与地图 2:8 占比），此处给最小保底 */
+  height: var(--fp-card-h, 200px);
+  min-height: 142px;
+  margin: 18px 0 14px;
+  border: 1px solid var(--fp-border);
+  border-radius: 18px;
+  box-shadow: var(--fp-shadow);
+  background: var(--fp-hero-bg-light);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* 暗色渐变遮罩：默认透明，暗色主题淡入，opacity 过渡形成“渐变过渡”效果 */
+.fp-jiyu-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--fp-hero-bg-dark);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.fp-jiyu-hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fp-hero-title);
+}
+
+/* 内容层：居中单列，右对齐落款 */
+.fp-jiyu-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  /* 上下留白：文字与卡片边缘保持间距，避免贴边 */
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.fp-jiyu-title {
+  display: flex;
+  flex-direction: row;
+  gap: 0.14em;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 8px;
+  font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  font-size: clamp(26px, 4.4vw, 42px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  color: var(--fp-hero-title);
+  text-shadow:
+    0 0 18px rgba(201, 162, 75, 0.28),
+    0 1px 8px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.9s,
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.9s;
+}
+
+#footprint-map-page.is-show .fp-jiyu-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fp-jiyu-lyric {
+  margin: 0 0 0;
+  font-family: "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(12.5px, 1.5vw, 15px);
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+  color: var(--fp-hero-lyric);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease 1.2s, transform 0.6s ease 1.2s;
+}
+
+#footprint-map-page.is-show .fp-jiyu-lyric {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fp-jiyu-song {
+  align-self: flex-end;
+  margin-top: 8px;
+  font-family: "Noto Serif SC", "Source Han Serif SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(11px, 1.2vw, 13.5px);
+  letter-spacing: 0.1em;
+  color: var(--fp-hero-song);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease 1.5s, transform 0.5s ease 1.5s;
+}
+
+#footprint-map-page.is-show .fp-jiyu-song {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+/* ---------- 3. 地图框：独立卡片，迹遇卡片已移至其上方 ---------- */
+#footprint-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: var(--fp-h, 720px);
+  min-height: 460px;
+  margin: 0 0 40px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--fp-frame-bg);
+  border: 1px solid var(--fp-border);
+  border-radius: 18px;
+  box-shadow:
+    var(--fp-shadow),
+    0 0 0 1px rgba(255, 215, 122, 0.05),
+    inset 0 0 50px rgba(255, 215, 122, 0.02);
+  z-index: 10;
+}
+
+/* 地图区：占满框内剩余高度，承载地图/面板/控制栏 */
+.fp-map-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* 地图铺满 */
+#footprint-map-container #footprint-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* 隐藏高德默认 UI 控件，统一使用我们自己的控制栏。
+   注意：高德 JS API 2.0 默认控件真实类名是 .amap-zoom（不是 .amap-zoomcontrol）、
+   .amap-scale / .amap-tool / .amap-maptype / .amap-luopan(或 .amap-control-luopan) 等，
+   此前用错类名导致原生缩放控件以浅色默认样式残留、明暗切换后“依旧是原样”。
+   这里同时关闭 JS 构造里的默认控件（zoomControl:false）并隐藏这些类名作为双保险。 */
+#footprint-map-container .amap-logo,
+#footprint-map-container .amap-zoom,
+#footprint-map-container .amap-zoom-touch,
+#footprint-map-container .amap-scale,
+#footprint-map-container .amap-tool,
+#footprint-map-container .amap-maptype,
+#footprint-map-container .amap-luopan,
+#footprint-map-container .amap-control-luopan,
+#footprint-map-container .amap-control-bar,
+#footprint-map-container .amap-indoormap-control,
+#footprint-map-container .amap-control-feature {
+  display: none !important;
+}
+
+/* 版权信息：浅色地图用深色字，暗色地图用浅色字（保留，不隐藏，遵守高德条款） */
+#footprint-map-container .amap-copyright {
+  opacity: 0.6 !important;
+  color: rgba(40, 40, 60, 0.65) !important;
+}
+
+[data-theme="dark"] #footprint-map-container .amap-copyright {
+  opacity: 0.55 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* ---------- 4. 底部胶囊控制栏 ---------- */
+.fp-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  min-width: 340px;
+  border-radius: 40px;
+  background: var(--fp-surface);
+  border: 1px solid var(--fp-border);
+  box-shadow: var(--fp-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fp-controls.is-show {
+  opacity: 1;
+}
+
+.fp-layer-selector {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 25px;
+  background: var(--fp-track);
+}
+
+.fp-layer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+  color: var(--fp-text-sub);
+  font-size: 13.5px;
+  font-weight: 500;
+  font-family: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.fp-layer-btn .fp-ic {
+  width: 16px;
+  height: 16px;
+}
+
+.fp-layer-btn:hover {
+  color: var(--fp-text);
+  background: var(--fp-track);
+}
+
+.fp-layer-btn.active {
+  background: var(--fp-primary);
+  color: #121426;
+  box-shadow: 0 2px 10px var(--fp-primary-glow);
+}
+
+.fp-feature-toggles {
+  display: flex;
+  gap: 10px;
+}
+
+.fp-toggle-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 6px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  color: var(--fp-text-sub);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.25s ease;
+}
+
+.fp-toggle-item:hover {
+  background: var(--fp-track);
+}
+
+.fp-toggle-item input {
+  display: none;
+}
+
+.fp-toggle-track {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: var(--fp-track);
+  transition: background 0.28s ease;
+}
+
+.fp-toggle-track::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+  transition: transform 0.28s ease;
+}
+
+.fp-toggle-item input:checked + .fp-toggle-track {
+  background: var(--fp-primary);
+}
+
+.fp-toggle-item input:checked + .fp-toggle-track::after {
+  transform: translateX(16px);
+}
+
+.fp-toggle-item input:checked ~ .fp-toggle-label {
+  color: var(--fp-primary);
+  font-weight: 600;
+}
+
+.fp-zoom-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.fp-zoom-btn {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--fp-track);
+  color: var(--fp-text-sub);
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.fp-zoom-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.fp-zoom-btn:hover {
+  background: var(--fp-primary);
+  color: #121426;
+}
+
+.fp-zoom-btn:active {
+  transform: scale(0.94);
+}
+
+.fp-scale-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: var(--fp-track);
+}
+
+.fp-scale-bar {
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--fp-primary), rgba(255, 255, 255, 0.28));
+}
+
+#fp-scale-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fp-text-sub);
+  white-space: nowrap;
+}
+
+/* ---------- 5. 足迹列表面板 ---------- */
+.fp-panel {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 35;
+  display: flex;
+  align-items: stretch;
+  width: 300px;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fp-panel-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--fp-radius);
+  background: var(--fp-surface);
+  border: 1px solid var(--fp-border);
+  box-shadow: var(--fp-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: auto;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.fp-panel.is-collapsed {
+  transform: translateX(calc(100% - 14px));
+}
+
+.fp-panel.is-collapsed .fp-panel-inner {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fp-panel-toggle {
+  position: absolute;
+  top: 14px;
+  left: -14px;
+  transform: rotate(180deg);
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--fp-border);
+  border-radius: 50%;
+  background: var(--fp-surface-solid);
+  color: var(--fp-text-sub);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.35s ease, color 0.25s ease;
+  z-index: 2;
+}
+
+.fp-panel-toggle svg {
+  width: 15px;
+  height: 15px;
+}
+
+.fp-panel-toggle:hover {
+  color: var(--fp-primary);
+}
+
+.fp-panel.is-collapsed .fp-panel-toggle {
+  transform: rotate(0deg);
+}
+
+.fp-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--fp-border);
+}
+
+.fp-panel-head h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fp-text);
+}
+
+.fp-count {
+  font-size: 12px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  color: #121426;
+  background: var(--fp-primary);
+  font-weight: 600;
+}
+
+.fp-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 16px 8px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: var(--fp-track);
+}
+
+.fp-search i {
+  font-size: 13px;
+  color: var(--fp-text-sub);
+}
+
+#footprint-search {
+  flex: 1;
+  min-width: 0;
+  height: 34px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13.5px;
+  color: var(--fp-text);
+  font-family: inherit;
+}
+
+#footprint-search::placeholder {
+  color: var(--fp-text-sub);
+  opacity: 0.75;
+}
+
+#footprint-type-filter {
+  margin: 0 16px 10px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid var(--fp-border);
+  background: var(--fp-track);
+  color: var(--fp-text);
+  font-size: 13.5px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.fp-stats {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid var(--fp-border);
+}
+
+.fp-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 7px 0;
+  border-radius: 10px;
+  background: var(--fp-track);
+}
+
+.fp-stat span {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fp-primary);
+  line-height: 1.2;
+}
+
+.fp-stat em {
+  font-size: 11px;
+  font-style: normal;
+  color: var(--fp-text-sub);
+}
+
+.fp-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px 14px;
+  scrollbar-width: thin;
+}
+
+.fp-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.fp-list::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.fp-item {
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--fp-track);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.fp-item:hover {
+  border-color: var(--fp-primary);
+  transform: translateX(2px);
+}
+
+.fp-item.is-active {
+  background: var(--fp-primary);
+  border-color: var(--fp-primary);
+}
+
+.fp-item.is-active .fp-item-name,
+.fp-item.is-active .fp-item-addr,
+.fp-item.is-active .fp-item-time {
+  color: #121426;
+}
+
+.fp-item-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fp-item-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fp-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fp-item-type {
+  flex-shrink: 0;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--fp-primary);
+  background: var(--fp-primary-soft);
+}
+
+.fp-item.is-active .fp-item-type {
+  color: #121426;
+  background: rgba(18, 20, 38, 0.25);
+}
+
+.fp-item-addr {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--fp-text-sub);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fp-item-time {
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: var(--fp-text-sub);
+  opacity: 0.85;
+}
+
+.fp-empty {
+  padding: 22px 8px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--fp-text-sub);
+}
+
+/* ---------- 6. 圆头像 marker ---------- */
+.fp-marker {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2.5px solid #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  background: var(--fp-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fp-marker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fp-marker span {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.fp-marker:hover {
+  transform: scale(1.16);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.38);
+  z-index: 999;
+}
+
+.fp-cluster {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--fp-primary);
+  color: #121426;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.fp-cluster:hover {
+  transform: scale(1.1);
+}
+
+.fp-cluster::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--fp-primary);
+}
+
+/* ---------- 7. InfoWindow：贴纸卡片 ---------- */
+.fp-iw {
+  width: 218px;
+  height: 280px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--fp-surface-solid);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  animation: fpIwIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes fpIwIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fp-iw-img {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.fp-iw-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fp-iw-noimg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--fp-primary), var(--fp-primary-soft));
+}
+
+.fp-iw-noimg i {
+  font-size: 30px;
+}
+
+.fp-iw-noimg span {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.fp-iw-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+}
+
+.fp-iw-title {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.fp-iw-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11.5px;
+  opacity: 0.94;
+}
+
+.fp-iw-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fp-iw-meta span::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+}
+
+.fp-iw-desc {
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0.95;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fp-iw-link {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 3px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  font-size: 12px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.fp-iw-link:hover {
+  background: #fff;
+  color: var(--fp-text);
+}
+
+.fp-iw-tag {
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  background: rgba(214, 69, 96, 0.9);
+}
+
+/* 隐藏高德 InfoWindow 外壳 */
+.amap-info-content,
+.amap-info-outer,
+.amap-info-inner {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.amap-info-sharp,
+.amap-info-close {
+  display: none !important;
+}
+
+/* ---------- 8. 响应式：平板 ---------- */
+@media screen and (max-width: 1200px) {
+  .fp-panel {
+    width: 262px;
+  }
+}
+
+/* ---------- 9. 响应式：手机 ---------- */
+@media screen and (max-width: 768px) {
+  /* 注意：卡片高度由 JS 按视口计算（与地图 2:8），
+     此处【不要】再写死 .fp-jiyu-hero 高度，否则会撑破卡片被裁切 */
+
+  .fp-jiyu-content {
+    padding: 14px 16px;
+  }
+
+  .fp-jiyu-title {
+    margin-bottom: 12px;
+  }
+
+  .fp-jiyu-lyric {
+    line-height: 1.85;
+    letter-spacing: 0.1em;
+  }
+
+  .fp-jiyu-song {
+    margin-top: 12px;
+  }
+
+  #footprint-map-container {
+    min-height: 380px;
+    margin-top: 0;
+  }
+
+  /* 列表面板 → 底部抽屉 */
+  .fp-panel {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-height: 52%;
+    z-index: 45;
+  }
+  .fp-panel-inner {
+    border-radius: 18px 18px 0 0;
+    border-bottom: none;
+  }
+  .fp-panel.is-collapsed {
+    transform: translateY(100%);
+  }
+  .fp-panel.is-collapsed .fp-panel-inner {
+    opacity: 1;
+    pointer-events: none;
+  }
+  .fp-panel-toggle {
+    top: -34px;
+    right: 12px;
+    left: auto;
+    transform: rotate(-90deg);
+  }
+  .fp-panel.is-collapsed .fp-panel-toggle {
+    transform: rotate(90deg);
+  }
+  .fp-list {
+    max-height: 40vh;
+  }
+
+  /* 控制栏：贴底通栏 */
+  .fp-controls {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    transform: none;
+    min-width: 0;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 22px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .fp-layer-btn {
+    padding: 6px 10px;
+    font-size: 12.5px;
+  }
+  .fp-layer-btn .fp-ic {
+    width: 14px;
+    height: 14px;
+  }
+  .fp-toggle-item {
+    padding: 3px 4px;
+    font-size: 12.5px;
+  }
+  .fp-zoom-btn {
+    width: 30px;
+    height: 30px;
+  }
+  .fp-zoom-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .fp-layer-btn span,
+  .fp-toggle-label {
+    display: none;
+  }
+  .fp-layer-btn {
+    padding: 6px 9px;
+  }
+  /* 超小屏隐藏比例尺，给控制栏腾出空间，避免横向溢出 */
+  .fp-scale-display {
+    display: none;
+  }
+  .fp-controls {
+    gap: 4px;
+    padding: 6px 7px;
+  }
+}
+
+/* 横屏矮屏（如手机横放）：卡片本就很小，进一步压缩文字与间距 */
+@media screen and (max-height: 520px) and (orientation: landscape) {
+  .fp-jiyu-content {
+    padding: 8px 16px;
+  }
+  .fp-jiyu-title {
+    font-size: clamp(22px, 5vw, 30px);
+    margin-bottom: 6px;
+  }
+  .fp-jiyu-lyric {
+    font-size: clamp(11px, 2.4vw, 13px);
+    line-height: 1.5;
+  }
+  .fp-jiyu-song {
+    margin-top: 5px;
+  }
+}
+
+/* ---------- 10. 错误/加载态 ---------- */
+.fp-error {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+  color: var(--fp-text-sub);
+  background: var(--fp-surface-solid);
+}
+
+.fp-error i {
+  font-size: 30px;
+  color: var(--fp-primary);
+}
+
+.fp-error p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.8;
+  max-width: 420px;
+}

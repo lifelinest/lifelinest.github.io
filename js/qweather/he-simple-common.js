@@ -1,0 +1,1 @@
+(function(d){var c=d.createElement('link');c.rel='stylesheet';c.href='/css/qweather/he-simple.css?v=20260718';var s=d.createElement('script');s.src='/js/qweather/he-simple.js?v=20260718';var sn=d.getElementsByTagName('script')[0];sn.parentNode.insertBefore(c,sn);sn.parentNode.insertBefore(s,sn)})(document)
