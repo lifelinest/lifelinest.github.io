@@ -1,24 +1,30 @@
 ---
 title: 如何从零开发 AI 编程助手 Skill 可运行自定义技能
+description: "本章是整套 Skill 系列教程的首个落地实战章节，承接前三篇所有理论基础（核心概念、目录规范、YAML 语法规则），摒弃空洞理论，全程采用手把手实操教学。零基础读者只需跟随步骤复刻操作，即可搭建出第一个可正常触发"
 author: Lifeline
 tags:
   - 人工智能
   - 技术踩坑
   - 开发工具
 categories:
-  - 技术探索
-cover: /images/doubao_image_12.jpg
+  - AI内容增长
+cover: https://cloudflare-img-bzb.pages.dev/file/%E5%B0%81%E9%9D%A2%E5%9B%BE/2026/06/1790783137207_5daa7ae4.webp
 abbrlink: 5daa7ae4
 date: 2026-06-19 15:45:40
+ai: "套用7大模块SKILL.md模板即可从零搭建可稳定触发的AI编程助手自定义技能, 新手优先选用户级全局路径部署并配齐Claude Code或Cursor等开发工具, 用Before/After示例与分步检查点约束AI避免自由发挥, 通过自动与手动双模式测试并排查路径、命名、YAML格式等常见技术踩坑, 即可让技能落地成为真正提效的效率工具与软件"
 ---
 ## 一、本章前言 \& 学习前置说明
 
-![doubao_image_1_1781855219192.png](/images/doubao_image_1_1781855219192.png)
+![doubao_image_1_1781855219192.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%20AI%20%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%20Skill%20%E5%8F%AF%E8%BF%90%E8%A1%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E8%83%BD/1789099949967_doubao_image_1_1781855219192.png)
 
 
 ### 1\.1 本篇定位
 
 本章是整套 Skill 系列教程的**首个落地实战章节**，承接前三篇所有理论基础（**核心概念、目录规范、YAML 语法规则**），摒弃空洞理论，全程采用**手把手实操教学**。零基础读者只需跟随步骤复刻操作，即可搭建出**第一个可正常触发、稳定运行的专属 AI 技能**，顺利完成「**理论认知 → 落地实操**」的核心跨越。
+
+理论基础见[《如何入门 AI 编程助手 Skill 核心运行原理与专业名词》](/posts/e57cb390/)。
+
+技能能跑起来但执行效果不稳，多半是正文指令写得不够严谨，[这一篇专门讲怎么优化](/posts/30a2dcc4/)。
 
 ### 1\.2 前置准备（必看）
 
@@ -41,7 +47,7 @@ date: 2026-06-19 15:45:40
 
 ## 二、零基础通用 SKILL\.md 标准正文模板
 
-![doubao_image_4_1781855228942.png](/images/doubao_image_4_1781855228942.png)
+![doubao_image_4_1781855228942.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%20AI%20%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%20Skill%20%E5%8F%AF%E8%BF%90%E8%A1%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E8%83%BD/1789100073822_doubao_image_4_1781855228942.png)
 
 结合前文理论知识点，我们总结出一套**小白通用、高适配、高识别度**的 SKILL\.md 正文标准模板，可覆盖 **90% 新手简易技能场景**，后续所有实战案例均可直接复用，大幅降低创作成本。
 
@@ -96,7 +102,7 @@ date: 2026-06-19 15:45:40
 执行以下命令/操作，确认整体任务完成、无异常：
 ## 三、5分钟实战：从零制作首个 Skill（Go 单元测试生成）
 
-![doubao_image_6_1781855371374.png](/images/doubao_image_6_1781855371374.png)
+![doubao_image_6_1781855371374.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%20AI%20%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%20Skill%20%E5%8F%AF%E8%BF%90%E8%A1%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E8%83%BD/1789100143550_doubao_image_6_1781855371374.png)
 本次实战选用[**Go 语言**](https://go.dev/)**单元测试自动生成技能**作为案例，该场景通俗易懂、逻辑简洁、落地效果直观，是新手入门 Skill 开发的最优场景之一。全程严格遵循「**创建目录 → 编写 YAML 配置 → 撰写技能正文 → 补充实战示例**」的标准化开发流程。
 
 ### 3\.1 第一步：创建标准 Skill 目录与文件
@@ -147,7 +153,7 @@ metadata:
 在 YAML 头部配置下方，粘贴以下完整正文内容。正文严格复用前文通用模板结构，全覆盖**场景说明、分步流程、校验规则、实战示例**四大核心模块，可直接落地使用。
 
 ```markdown
-# Go 单元测试自动生成技能
+## Go 单元测试自动生成技能
 ## 一、技能概述
 本技能可快速为[Go语言](https://go.dev/)自定义函数生成行业标准的**表驱动风格单元测试**代码，统一团队测试代码格式，覆盖**常规、边界、异常全量测试场景**，解决新手手写单测不规范、场景缺失、重复编码的痛点，大幅提升Go项目测试开发效率。
 
@@ -221,7 +227,7 @@ func TestAdd(t *testing.T) {
 
 ## 四、核心功能精讲：Before/After 与检查点用法
 
-![doubao_image_12_1781855387112.png](/images/doubao_image_12_1781855387112.png)
+![doubao_image_12_1781855387112.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%20AI%20%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%20Skill%20%E5%8F%AF%E8%BF%90%E8%A1%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E8%83%BD/1789099760875_doubao_image_12_1781855387112.png)
 
 **Before/After 示例、分步检查点**是新手编写高质量 Skill 的**两大核心关键**，可从根本上解决 AI 自由发挥、执行逻辑混乱、输出格式不统一等常见问题，是标准化 Skill 开发的必备能力。
 
@@ -247,7 +253,7 @@ func TestAdd(t *testing.T) {
 
 ## 五、双模式测试：自动触发 \+ 手动触发实操
 
-![doubao_image_13_1781855395950.png](/images/doubao_image_13_1781855395950.png)
+![doubao_image_13_1781855395950.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%20AI%20%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%20Skill%20%E5%8F%AF%E8%BF%90%E8%A1%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E8%83%BD/1789099776098_doubao_image_13_1781855395950.png)
 
 Skill 开发完成后，必须通过测试验证可用性。本章讲解两种**官方标准触发测试方式**，覆盖日常使用、问题排查全场景。测试前需保存全部文件，并重启 AI 编程助手，确保新技能配置正常加载生效。
 
@@ -275,7 +281,7 @@ Skill 开发完成后，必须通过测试验证可用性。本章讲解两种**
 
 ## 六、新手基础排错：常见问题与快速解决方案
 
-![doubao_image_7_1781855414372.png](/images/doubao_image_7_1781855414372.png)
+![doubao_image_7_1781855414372.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99%20Claude%20Skill%20%E8%A7%84%E8%8C%83%E7%9A%84%20YAML%20%E5%A4%B4%E9%83%A8%E9%85%8D%E7%BD%AE%E5%86%85%E5%AE%B9/1789100175149_doubao_image_7_1781854979937.png)
 
 汇总新手首次开发 Skill 的**高频报错问题**，配套极简排查流程与落地解决方案，无需复杂调试，新手可快速自主修复。
 
@@ -300,7 +306,7 @@ Skill 开发完成后，必须通过测试验证可用性。本章讲解两种**
 
 ## 七、本章总结
 
-![doubao_image_12_1781855422780.png](/images/doubao_image_12_1781855422780.png)
+![doubao_image_12_1781855422780.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99%20Claude%20Skill%20%E8%A7%84%E8%8C%83%E7%9A%84%20YAML%20%E5%A4%B4%E9%83%A8%E9%85%8D%E7%BD%AE%E5%86%85%E5%AE%B9/1789099750451_doubao_image_12_1781855014238.png)
 
 本章完成了 Skill 从**理论认知到落地实操**的完整闭环，你已熟练掌握新手核心实操技能：能够灵活套用标准化正文模板、独立完成 Skill 全流程开发、熟练使用双模式测试技能、自主排查基础运行问题。本次开发的 Go 单元测试生成技能，可直接应用于日常开发，真正实现 **AI 自动化编码提效**。
 

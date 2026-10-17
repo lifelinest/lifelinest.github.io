@@ -1,19 +1,21 @@
 ---
 title: 如何优化 Cursor Skill 正文指令逻辑与执行效果
+description: 绝大多数新手搭建 AI Skill 时都会遇到一个共性难题，明明在文档里写满了规则细节，AI 执行却频繁跑偏、步骤遗漏、自主发挥、输出格式混乱，最终导致技能可用性极低。本文从指令分层、边界条件与验收标准三个角度给出可复用写法，并附前后对比示例帮你逐项修正。
 author: Lifeline
 tags:
   - 人工智能
   - 技术踩坑
   - 开发工具
 categories:
-  - 技术探索
-cover: /images/doubao_image_13.jpg
+  - AI内容增长
+cover: https://cloudflare-img-bzb.pages.dev/file/%E5%B0%81%E9%9D%A2%E5%9B%BE/2026/06/1790783140379_30a2dcc4.webp
 abbrlink: 30a2dcc4
 date: 2026-06-19 15:51:18
+ai: "用祈使句与强制指令加原理说明可消除AI执行偏差, 配合常规边界异常三组Few-Shot示例能统一输出格式, 分步检查点让每步校验通过再继续以避免全盘失效, 表格与ASCII流程图替代冗长文字可降低逻辑混乱, 正文控制在500行内并清理冗余Token, 是人工智能开发工具类Skill稳定运行的关键, 按五大维度重构后劣质Skill可变为企业级专业版本, 实现零无效发挥与逻辑闭环, 显著提升效率工具与软件的复刻度"
 ---
 ## 一、本篇前言核心痛点
 
-![doubao_image_2_1781855517877.png](/images/doubao_image_2_1781855517877.png)
+![doubao_image_2_1781855517877.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%20Cursor%20Skill%20%E6%AD%A3%E6%96%87%E6%8C%87%E4%BB%A4%E9%80%BB%E8%BE%91%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%95%88%E6%9E%9C/1789099993068_doubao_image_2_1781855517877.png)
 
 绝大多数新手搭建 **AI Skill** 时都会遇到一个共性难题：明明在文档中写满规则细节，但AI执行频繁出现**跑偏、步骤遗漏、自主发挥、输出格式混乱**等问题，最终导致技能可用性极低。
 
@@ -21,11 +23,15 @@ date: 2026-06-19 15:51:18
 
 本篇作为 **Skill进阶核心章节**，聚焦[提示词工程](https://platform.openai.com/docs/guides/prompt-engineering)正文精细化落地优化，从**标准化指令话术、专业示例体系、流程可视化梳理、分步校验机制、Token轻量化精简**五大核心维度，手把手教大家搭建**AI 100%精准复刻、零无效发挥、逻辑闭环严谨**的高质量正文体系，彻底解决Skill失效问题。
 
+还没写出第一个 Skill 的话，先看[从零开发可运行自定义技能](/posts/5daa7ae4/)。
+
+正文调稳之后想突破纯文本的能力上限，继续看[用脚本实现批量自动化](/posts/24c9c254/)。
+
 **本篇学习目标**：熟练掌握全套正文优化方法论，能够独立编写**逻辑严谨、执行稳定、Token可控、复刻度极高**的企业级专业Skill正文。
 
 ## 二、核心技巧一：标准化指令书写规范（彻底杜绝模糊指令）
 
-![doubao_image_3_1781855542769.png](/images/doubao_image_3_1781855542769.png)
+![doubao_image_3_1781855542769.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%20Cursor%20Skill%20%E6%AD%A3%E6%96%87%E6%8C%87%E4%BB%A4%E9%80%BB%E8%BE%91%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%95%88%E6%9E%9C/1789100047371_doubao_image_3_1781855542769.png)
 
 [Skill](https://juejin.cn/post/7623967424427802687) 的核心本质是给AI传递可落地、可精准执行的指令，**指令话术直接决定最终执行精度**。新手高频踩坑点是使用模糊描述、商量式、建议式口语化文字，让AI拥有自主解读空间，最终引发执行偏差。本节带来行业通用的标准化指令写法，强制AI严格落地规则。
 
@@ -71,7 +77,7 @@ date: 2026-06-19 15:51:18
 
 ## 三、核心技巧二：搭建专业Few\-Shot示例体系（解决输出不统一问题）
 
-![doubao_image_7_1781855552792.png](/images/doubao_image_7_1781855552792.png)
+![doubao_image_7_1781855552792.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%20Cursor%20Skill%20%E6%AD%A3%E6%96%87%E6%8C%87%E4%BB%A4%E9%80%BB%E8%BE%91%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%95%88%E6%9E%9C/1789100183990_doubao_image_7_1781855552792.png)
 
 [大模型（LLM）](https://platform.openai.com/docs/guides/few-shot-learning)的核心能力是**模式识别与模仿复刻**，对于AI而言，**一组标准化高质量示例，效果远超百行文字规则**。纯文字描述极易产生语义偏差，而标准化的成对示例，能够精准锁定AI的输出格式、代码风格、处理逻辑，实现每次执行效果高度统一。
 
@@ -159,7 +165,7 @@ String sql = "SELECT * FROM user WHERE name = ?";
 
 ## 四、核心技巧三：复杂流程可视化优化（告别冗长文字堆砌）
 
-![doubao_image_9_1781855564682.png](/images/doubao_image_9_1781855564682.png)
+![doubao_image_9_1781855564682.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%20Cursor%20Skill%20%E6%AD%A3%E6%96%87%E6%8C%87%E4%BB%A4%E9%80%BB%E8%BE%91%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%95%88%E6%9E%9C/1789100247600_doubao_image_9_1781855564682.png)
 
 AI对**表格、ASCII流程图等结构化内容**的理解准确率，远高于大段纯文字描述。针对多分支判断、多步骤递进、多条件适配的复杂任务，严禁堆砌长篇文字，必须采用可视化形式梳理流程，彻底解决AI逻辑混乱、步骤颠倒、环节遗漏等问题。
 
@@ -198,7 +204,7 @@ Step4：全量验证（编译检测、单测校验、静态代码检查）
 
 ## 五、核心技巧四：分步检查点设计（杜绝一步出错、全盘失效）
 
-![doubao_image_13_1781855577687.png](/images/doubao_image_13_1781855577687.png)
+![doubao_image_13_1781855577687.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%20Cursor%20Skill%20%E6%AD%A3%E6%96%87%E6%8C%87%E4%BB%A4%E9%80%BB%E8%BE%91%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%95%88%E6%9E%9C/1789099782928_doubao_image_13_1781855577687.png)
 
 新手Skill最大的设计隐患是：**全程执行完毕后再统一校验结果**。一旦中间任意步骤出错，后续所有流程都会无效执行，且无法快速定位问题节点，排错成本极高。
 
@@ -232,7 +238,7 @@ grep -rn "old-http-client" . --include="*.go"
 
 ## 六、核心技巧五：正文精简原则，严控Token占用与消耗
 
-![doubao_image_17_1781855595137.png](/images/doubao_image_17_1781855595137.png)
+![doubao_image_17_1781855595137.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%20Cursor%20Skill%20%E6%AD%A3%E6%96%87%E6%8C%87%E4%BB%A4%E9%80%BB%E8%BE%91%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%95%88%E6%9E%9C/1789099933589_doubao_image_17_1781855595137.png)
 
 结合Skill三层加载机制，Level2核心正文（SKILL\.md主体内容）存在严格的[Token上限约束](https://platform.openai.com/docs/guides/token-limits)。内容冗余、话术繁杂、无效内容过多，会导致AI注意力分散、响应卡顿、执行精度下降。本节提供小白可直接落地的轻量化精简规则，兼顾内容完整性与运行高性能。
 
@@ -256,7 +262,7 @@ grep -rn "old-http-client" . --include="*.go"
 
 ## 七、综合实战：劣质新手Skill → 专业级Skill 全维度优化对比
 
-![doubao_image_20_1781855605463.png](/images/doubao_image_20_1781855605463.png)
+![doubao_image_20_1781855605463.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%20Cursor%20Skill%20%E6%AD%A3%E6%96%87%E6%8C%87%E4%BB%A4%E9%80%BB%E8%BE%91%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%95%88%E6%9E%9C/1789099974888_doubao_image_20_1781855605463.png)
 
 ### 7\.1 优化前（劣质版本，新手典型问题）
 
@@ -288,7 +294,7 @@ grep -rn "old-http-client" . --include="*.go"
 
 ## 八、本章专属避坑清单（高频错误全覆盖）
 
-![doubao_image_13_1781855621944.png](/images/doubao_image_13_1781855621944.png)
+![doubao_image_13_1781855621944.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%20AI%20%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%20Skill%20%E5%8F%AF%E8%BF%90%E8%A1%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E8%83%BD/1789099776098_doubao_image_13_1781855395950.png)
 
 ❌ **句式不规范**：禁止使用商量、模糊、建议式指令，统一使用祈使句命令式话术
 
@@ -304,7 +310,7 @@ grep -rn "old-http-client" . --include="*.go"
 
 ## 九、本章总结
 
-![doubao_image_12_1781855631517.png](/images/doubao_image_12_1781855631517.png)
+![doubao_image_12_1781855631517.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%20AI%20%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%20Skill%20%E5%8F%AF%E8%BF%90%E8%A1%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E8%83%BD/1789099760875_doubao_image_12_1781855387112.png)
 
 高质量Skill正文的核心打造逻辑可总结为五句话：**用严谨指令锁定执行规则，用标准化示例锁定输出效果，用可视化形式梳理复杂流程，用分步校验规避执行错误，用精简内容保障运行性能**。
 
@@ -312,7 +318,7 @@ grep -rn "old-http-client" . --include="*.go"
 
 ## 十、课后练习（实操巩固，落地掌握）
 
-![doubao_image_1_1781855640074.png](/images/doubao_image_1_1781855640074.png)
+![doubao_image_1_1781855640074.png](https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0/2026%E5%B9%B4/%E5%85%AD%E6%9C%88/%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%8F%91%20AI%20%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B%20Skill%20%E5%8F%AF%E8%BF%90%E8%A1%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%80%E8%83%BD/1789099949967_doubao_image_1_1781855219192.png)
 
 1\. 选取自己之前编写的简易Skill，运用本章**指令优化技巧**重构话术，并补齐常规、边界、异常3组**Few\-Shot标准化示例**；
 
