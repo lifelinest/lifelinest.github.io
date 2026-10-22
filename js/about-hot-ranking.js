@@ -1,7 +1,7 @@
 /**
  * 关于页 - 阅读排行 + 访客地图 渲染逻辑
  *
- * 数据来源：51.la → Cloudflare Worker 代理（stats.mfyresume.dpdns.org）→ 客户端渲染
+ * 数据来源：51.la → Cloudflare Worker 代理（stats.mfy-lifeline.com）→ 客户端渲染
  * 为什么不用 workers.dev：国内被 DNS 污染，实测 HTTP 000 不可达（2026-09-22 迁到自定义域）
  * 失败降级：本地缓存 → 显示友好错误提示
  *
@@ -16,9 +16,9 @@
   //   workers.dev 子域在国内被 DNS 污染，实测 HTTP 000 完全不可达，
   //   结果是「阅读排行 / 访客地图」两块对国内访客直接白掉（2026-09-22 迁域）。
   // 推荐做法：不改这里，而是在 _config.anzhiyu.yml 的 inject.head 中加一行：
-  //   <script>window.__LA_STATS_PROXY__='https://stats.mfyresume.dpdns.org';</script>
+  //   <script>window.__LA_STATS_PROXY__='https://stats.mfy-lifeline.com';</script>
   // 这样升级主题/JS 文件时不会丢失配置
-  var DEFAULT_PROXY = 'https://stats.mfyresume.dpdns.org';
+  var DEFAULT_PROXY = 'https://stats.mfy-lifeline.com';
 
   // 备用 Worker（主域异常时的兜底；留空则不做二次尝试）
   var FALLBACK_PROXY = '';

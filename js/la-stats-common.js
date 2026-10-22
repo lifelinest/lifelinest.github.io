@@ -10,41 +10,35 @@
   const LA = window.anzhiyu;
 
   // ========= 配置 =========
-  // 数据来源：51.la 官方数据挂件 quote.js（与 51.la 后台口径完全一致）。
-  // 挂件托管在阿里云 OSS 且开放 CORS，浏览器可直接读取，不依赖 Worker。
-  const WIDGET_BASE = 'https://v6-widget.51.la/v6/';
-  // ck 在模板注入后会写到 window.__LA_CK__
-  const CK =
-    (typeof window.__LA_CK__ !== 'undefined' ? window.__LA_CK__ : '') || '';
-  const WIDGET_URL = CK ? WIDGET_BASE + CK + '/quote.js' : '';
+  // 数据来源：自建 Cloudflare Worker 代理（la-stats-proxy），走 51.la OpenAPI。
+  // 原官方挂件 v6-widget.51.la 的阿里云 OSS 端点已停服，故统一改走 Worker。
+  // ⚠️ 必须与 worker/wrangler-la.toml 的 routes 域名保持一致。
+  const PROXY_BASE = 'https://stats.mfy-lifeline.com';
 
   // 缓存：同一次页面生命周期内只请求一次
   let cachedPromise = null;
 
-  // ========= 内部：Widget（官方数据挂件 quote.js） =========
-  // 挂件数据块按行内嵌 7 组「索引:数值」：
-  //   0=最近活跃, 1=今日UV, 2=今日PV, 3=昨日UV, 4=昨日PV, 5=本月PV, 6=总PV
-  function fetchFromWidget() {
-    if (!WIDGET_URL) return Promise.reject(new Error('No LA ck'));
-    return fetch(WIDGET_URL)
+  // ========= 内部：Worker 代理（/stats 返回 51.la 站点统计） =========
+  // Worker 返回的 data 字段结构：
+  //   { todayUV, todayPV, yesterdayUV, yesterdayPV, monthPV, totalPV }
+  function fetchFromWorker() {
+    return fetch(PROXY_BASE + '/stats', { credentials: 'omit' })
       .then(function (res) {
-        if (!res.ok) throw new Error('Widget HTTP ' + res.status);
-        return res.text();
+        if (!res.ok) throw new Error('Worker HTTP ' + res.status);
+        return res.json();
       })
-      .then(function (data) {
-        const rows = data.match(/<span>(\d+)<\/span><span>(\d+)<\/span><\/p>/g);
-        if (!rows || rows.length < 7) throw new Error('Widget parse error');
-        const values = rows.map(function (row) {
-          const m = row.match(/<span>(\d+)<\/span><span>(\d+)<\/span><\/p>/);
-          return m ? parseInt(m[2], 10) || 0 : 0;
-        });
+      .then(function (j) {
+        if (!j || j.code !== 0 || !j.data) {
+          throw new Error('Worker data error: ' + ((j && j.error) || 'unknown'));
+        }
+        const d = j.data;
         return {
-          todayUV: values[1] || 0,
-          todayPV: values[2] || 0,
-          yesterdayUV: values[3] || 0,
-          yesterdayPV: values[4] || 0,
-          monthPV: values[5] || 0,
-          totalPV: values[6] || 0,
+          todayUV: d.todayUV || 0,
+          todayPV: d.todayPV || 0,
+          yesterdayUV: d.yesterdayUV || 0,
+          yesterdayPV: d.yesterdayPV || 0,
+          monthPV: d.monthPV || 0,
+          totalPV: d.totalPV || 0,
         };
       });
   }
@@ -52,7 +46,7 @@
   // ========= 公共：获取全站统计对象（带缓存） =========
   function fetchSiteStats() {
     if (cachedPromise) return cachedPromise;
-    cachedPromise = fetchFromWidget().catch(function (e) {
+    cachedPromise = fetchFromWorker().catch(function (e) {
       console.info('[LA Stats] Widget failed:', e && e.message);
       cachedPromise = null; // 失败不缓存，下次可重试
       throw e;
