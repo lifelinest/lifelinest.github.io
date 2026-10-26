@@ -4,6 +4,91 @@
   
     
     <entry>
+      <title>外贸工厂官网怎么讲清定制能力</title>
+      <link href="/posts/4e8b1d63/"/>
+      <url>/posts/4e8b1d63/</url>
+      
+        <content type="html"><![CDATA[<div id="postchat_postcontent"><p>&nbsp;&nbsp;&nbsp;&nbsp;很多外贸工厂的英文官网，都有一句熟悉的介绍：支持 OEM&#x2F;ODM 定制。但海外采购商真正想知道的，往往不是你愿不愿意接定制订单，而是：哪些地方可以改、有没有做过类似项目、下一步该提供什么资料。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;定制能力展示的本质，是让采购商能判断“我的项目是否匹配你们”，而不是证明你“什么都能做”。问题不在于网站有没有写“支持定制”，而在于客户看完之后，能不能判断项目是否匹配。下面六个观察，从“能改什么”一路讲到“怎么开始合作”。</p><h2 id="观察一：先讲清定制范围，别急着说“全都能做”"><a href="#观察一：先讲清定制范围，别急着说“全都能做”" class="headerlink" title="观察一：先讲清定制范围，别急着说“全都能做”"></a>观察一：先讲清定制范围，别急着说“全都能做”</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;定制能力不是一个笼统标签。对采购商而言，最有用的信息，是企业可以在哪个层级参与产品开发。我习惯把它分成三层，每一层对应不同的合作深度：</p><ol><li><strong>外观与选项定制</strong>：商标、颜色、材料或包装形式等，在现有产品范围内调整。</li><li><strong>规格与配置调整</strong>：尺寸、功能模块、性能配置或适配条件等，根据可行性确定方案。</li><li><strong>开发型定制</strong>：依据图纸、样品或应用需求开展设计、试制与验证；是否提供须以企业真实能力为准。</li></ol><p>&nbsp;&nbsp;&nbsp;&nbsp;这三个层级不是用来给工厂分高低，而是帮助客户理解服务边界。有些企业专注标准化产品的灵活配置，同样可以建立明确竞争力。把能做的事情说清楚，也把需要评估的限制讲明白，通常比一句“满足各种定制需求”更可信。</p><p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/4e8b1d63/1792911030513_cust1.webp" alt="工程师在白板上标注可定制的产品模块，分层展示定制范围"></p><h2 id="观察二：产品页不止展示成品，还要说明“可变的部分”"><a href="#观察二：产品页不止展示成品，还要说明“可变的部分”" class="headerlink" title="观察二：产品页不止展示成品，还要说明“可变的部分”"></a>观察二：产品页不止展示成品，还要说明“可变的部分”</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;对于标准品，产品图和规格表可能已经解决大部分初步问题。但定制型产品页面还应该回答：这款产品哪些部分可选、哪些条件需要确认、需要客户提供什么信息？</p><p>&nbsp;&nbsp;&nbsp;&nbsp;机械设备可以突出适用工况、配置选项和产线衔接条件；包装产品可以说明材料、尺寸、印刷工艺和结构选择；美妆代工则更需要区分配方、包材、灌装规格及相应的开发流程。并不需要公开全部技术细节，更合理的做法，是在页面中先呈现客户可以初步判断的项目，再把复杂问题引导至技术咨询。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;这一点正是<a href="/posts/7c3a9f21/">产品页 8 个模块</a>里“定制能力”那一块要承担的任务：页面重点不止是“现有型号是什么”，还应说明“项目需求可以在哪些环节得到匹配”。</p><h2 id="观察三：证明能力靠具体过程，不是空泛口号"><a href="#观察三：证明能力靠具体过程，不是空泛口号" class="headerlink" title="观察三：证明能力靠具体过程，不是空泛口号"></a>观察三：证明能力靠具体过程，不是空泛口号</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;“研发经验丰富”“技术团队专业”并非不能写，但这些话无法代替可核实的项目证据。一份有说服力的定制案例，至少应该回答三个问题：客户原本遇到什么限制，工厂实际调整了什么，最终通过什么方式确认方案可行。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;比如包装设备改型项目，与其只放一张成品照片，不如说明设备需要适配的包装规格、为此调整的关键部件，以及完成了哪些测试。没有可核实的效果数据，就不必使用夸张的效率提升数字。如果项目涉及保密协议，可以匿名描述场景，并只展示获得授权、允许公开的内容；真实工厂、装配和检验画面，也能补充证明制造能力。</p><p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/4e8b1d63/1792911019756_cust2.webp" alt="工厂车间里的装配与质检实景，用真实过程而非口号证明能力"></p><p>&nbsp;&nbsp;&nbsp;&nbsp;把这些信息以结构化方式呈现，机器也更容易读懂。除了页面文字，<a href="https://schema.org/Product">schema.org 的 Product 类型</a>可以承载一款产品的规格与属性，配合<a href="/posts/986539b5/">让内容更容易被 AI 引擎引用</a>的做法，采购商和 AI 都能更快确认你的能力边界。涉及质量体系时，像 <a href="https://www.iso.org/">ISO 9001 这类可查的体系认证</a>也能为“能力”提供第三方背书，比自说自话更稳。</p><h2 id="观察四：把合作过程讲明白，客户才知道怎么开始"><a href="#观察四：把合作过程讲明白，客户才知道怎么开始" class="headerlink" title="观察四：把合作过程讲明白，客户才知道怎么开始"></a>观察四：把合作过程讲明白，客户才知道怎么开始</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;定制项目常常需要多轮确认。对于第一次联系的海外买家，合作路径越模糊，首次沟通的门槛就越高。一条可以参考的路径：</p><ol><li><strong>需求提交</strong>：客户说明用途、规格、目标市场或提供参考图纸。</li><li><strong>可行性评估</strong>：企业确认技术边界、关键条件及需要补充的资料。</li><li><strong>方案与样品确认</strong>：根据项目复杂程度，完成方案沟通、必要的打样或测试。</li><li><strong>生产与交付</strong>：依据双方最终确认的规格、检验要求和商务条件执行。</li></ol><p>&nbsp;&nbsp;&nbsp;&nbsp;以上是一条用于网站说明的参考路径，不代表所有行业都需要同样的步骤。简单的颜色定制与非标设备开发，沟通深度和周期自然不同。网站要呈现的，应当是企业<strong>真实执行的合作方式</strong>，而不是为了排版整齐设计一套不符合实际的流程。</p><h2 id="观察五：询盘入口别只留一句“联系我们”"><a href="#观察五：询盘入口别只留一句“联系我们”" class="headerlink" title="观察五：询盘入口别只留一句“联系我们”"></a>观察五：询盘入口别只留一句“联系我们”</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;定制采购商可能还不知道准确型号，只是带着初步需求或参考产品来寻找供应商。如果网站只给一个普通留言框，沟通很容易从反复追问基本信息开始。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;更有效的做法，是让客户在咨询时选择产品类型、简述用途和定制要求；预计采购数量、目标市场等字段可以按实际业务设置为选填。但表单也不应越长越好——首次询盘只需要足以判断需求方向的关键信息，复杂的技术文件可以在建立联系后通过合适的商务渠道沟通。</p><p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/4e8b1d63/1792911037246_cust3.webp" alt="定制询盘表单的设计示意，让客户容易开口也便于业务判断"></p><p>&nbsp;&nbsp;&nbsp;&nbsp;好的定制询盘设计，是让客户容易开口，也让业务人员知道下一步该问什么。</p><h2 id="观察六：让网站形成一条清晰的判断路径"><a href="#观察六：让网站形成一条清晰的判断路径" class="headerlink" title="观察六：让网站形成一条清晰的判断路径"></a>观察六：让网站形成一条清晰的判断路径</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;当客户进入定制型工厂官网，理想的浏览过程不是在各个页面寻找“我们还能做什么”，而是逐步获得答案。建议的信息组织逻辑：</p><p><strong>先识别产品与行业 → 了解可定制范围 → 核实制造能力与案例 → 明确合作流程 → 提交项目需求</strong></p><p>&nbsp;&nbsp;&nbsp;&nbsp;栏目名称不必照搬固定模板。对于只提供有限外观定制的企业，页面可以更精简；对于以项目开发为核心业务的工厂，技术能力、案例和定制流程就需要更加突出。网站结构应当反映真实业务，而不是把所有工厂都做成同一种导航和首页。这也和<a href="/posts/f0629247/">一线外贸工厂的真实处境</a>一致：能落地的能力，永远比漂亮的口号更有说服力。</p><h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;定制型外贸工厂的网站，不应该只回答“你们卖什么”，还应该进一步回答“我们能一起做什么”。清楚展示服务边界、可调整内容、真实项目经验和合作方式，不能保证每一次访问都变成订单，却能帮助合适的采购商更快判断双方是否值得进一步沟通。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>真正有效的定制能力展示，不是承诺什么都能做，而是让需要你的人，看得懂你究竟能做什么。</strong></p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 外贸B2B独立站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 避坑指南 </tag>
+            
+            <tag> 行业观察 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>外贸独立站产品页怎么写</title>
+      <link href="/posts/7c3a9f21/"/>
+      <url>/posts/7c3a9f21/</url>
+      
+        <content type="html"><![CDATA[<div id="postchat_postcontent"><p>&nbsp;&nbsp;&nbsp;&nbsp;产品页是外贸独立站里最该花心思的页面。首页是门面，实力页是信任，案例和新闻页是背书，但采购商在站点上停留最久、反复对比、转发给工程师、下载资料时停下来的地方，几乎都是产品页。它写得好不好，直接决定询盘有没有。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;产品页的本质，是把“买家做决策需要的信息”按他的浏览顺序摆好，让他不用发邮件来问，就能判断这款东西值不值得进一步沟通。一个常见的误区是：把产品页当成“展示我们很有料”的版面，结果篇幅花出去了，写的却不是买家想看的东西。下面先讲两个最容易犯的“写偏”，再给一套可以直接照着搭的结构。</p><h2 id="写偏之一：设备页写成了下游产品的介绍"><a href="#写偏之一：设备页写成了下游产品的介绍" class="headerlink" title="写偏之一：设备页写成了下游产品的介绍"></a>写偏之一：设备页写成了下游产品的介绍</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;我改过一家做加工设备的工厂产品页，结构是这么排的：先花 800 字讲“这个设备生产出来的产品是什么”，最后 200 字才是设备本身的参数，而且还是从说明书里抄来的。主角和配角完全反了。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;想一下这个页面的访客是谁：他要做的是买一台生产效率更高、更稳定的机器，意味着他大概率比你还懂那个下游产品——人家可能已经做了十年，正在扩产，来找的是一台更合适的设备。你给他科普下游产品，就像给驾校教练推荐驾照考试攻略，信息他不缺。</p><p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/7c3a9f21/1792910309338_prod1.webp" alt="工厂里正在运转的加工设备，产品页的主角应该是这台机器而不是它生产的产品"></p><p>&nbsp;&nbsp;&nbsp;&nbsp;他缺的是判断这台设备值不值得买的信息：产能多少、良品率多少、能不能吃他的原料、换模具要多久、售后怎么管。所以记一个原则：**页面的主角永远是你卖的东西。**下游产品不是不能提，但它只配在“应用场景”里占一行——“适用于 XX 产品的规模化生产，适配原料 XX-XX”，一句话够了。</p><h2 id="写偏之二：B-端产品页写出了-C-端的味道"><a href="#写偏之二：B-端产品页写出了-C-端的味道" class="headerlink" title="写偏之二：B 端产品页写出了 C 端的味道"></a>写偏之二：B 端产品页写出了 C 端的味道</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;第二个写偏常见于外观属性强的产品：玩具、家居、礼品、包装。页面一打开全是生活方式大片，温馨的儿童房、精致的餐桌、慵懒的午后。这套语言是从 C 端电商抄来的，因为 C 端页面说服的是“买东西的人自己”——这个产品让他心动、让他觉得好看、让他愿意下单。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;但 B 端页面的访客不是为自己买。采购商挑一款玩具，心里想的是：我的下游渠道会不会好卖？质量过不过得了目的国检测？这家工厂能不能稳定供货、能不能按我的要求定制？他在替他的客户选品，不是在替自己挑选。所以打动他的从来不是“这款玩具会让孩子微笑”，而是“这款玩具的起订量、认证、出货周期、定制空间”。</p><p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/7c3a9f21/1792910348793_prod2.webp" alt="白底产品图与生活方式大片的对比，B 端产品页该用前者而非后者"></p><p>&nbsp;&nbsp;&nbsp;&nbsp;这不是说图片不重要——B 端也要好看，但好看解决的是“像不像正经供应商”，资料和证据才解决“能不能下单”。一个简单的自查方法：把产品页每一段话挑出来问一句——<strong>这句话是写给“用的人”的，还是写给“买的人、选品的人”的？</strong> B 端产品页，大部分篇幅应该属于后者。</p><h2 id="一款产品页该有的-8-个模块"><a href="#一款产品页该有的-8-个模块" class="headerlink" title="一款产品页该有的 8 个模块"></a>一款产品页该有的 8 个模块</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;不写偏之后，产品页的结构其实相当固定。下面这 8 个模块，按采购商的浏览顺序排：</p><ol><li><strong>主图区</strong>：白底主图 + 场景图 + 细节图各司其职，主图要能放大看材质。</li><li><strong>一句话定位</strong>：型号 + 核心规格 + 差异点，30 字以内说清“这是什么、强在哪”。</li><li><strong>完整参数表</strong>：产品页的心脏，下一节单独讲。</li><li><strong>认证与检测</strong>：证书扫描件 + 对应目的国标准，别只写一行“CE available”就完事。</li><li><strong>定制能力</strong>：OEM&#x2F;ODM 范围、改模周期、起订量变化——采购商最愿意多花时间看的一块（后面会单独写<a href="/posts/4e8b1d63/">定制能力怎么在官网上讲清楚</a>）。</li><li><strong>商务信息</strong>：MOQ、参考交期、包装方式、贸易条款（FOB&#x2F;CIF 港口）。</li><li><strong>质检与售后</strong>：出货前检验流程、质保期、备件支持。</li><li><strong>询盘入口</strong>：页面首尾各一个，表单还是那五栏——公司名称、姓名、电话、邮箱、需求，邮箱必填。</li></ol><p>&nbsp;&nbsp;&nbsp;&nbsp;这 8 块其实是同一个逻辑：采购商关心的每一点，都在页面上有明确的落点，他不需要发邮件来问。你每少一块，就等于多一次“先发邮件问清楚”的摩擦，而摩擦就是询盘的流失。</p><h2 id="参数表怎么写，才会被-AI-引用"><a href="#参数表怎么写，才会被-AI-引用" class="headerlink" title="参数表怎么写，才会被 AI 引用"></a>参数表怎么写，才会被 AI 引用</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;这一节落到具体做法。AI 引擎在回答“which machine can do XX”这类问题时，引用的往往是结构清晰、参数完整、口径统一的页面。四个动作：</p><ul><li><strong>一页一款产品，参数用真正的表格</strong>（两栏：参数名 &#x2F; 参数值），不要写成大段文字。表格是爬虫最容易按行提取的结构，这也是<a href="/posts/986539b5/">让 AI 引擎更愿意引用你内容</a>时最基础的一环。</li><li><strong>单位写全</strong>：kg、mm、kW、pcs&#x2F;hr，数字永远带单位。AI 引用参数时需要确定性，“大产能”三个字没人敢引。</li><li><strong>每款产品的参数口径全站一致</strong>：同一台设备，在产品页、下载的规格书、PDF 目录里数值必须一样。AI 比对发现矛盾，两边都不敢引。</li><li><strong>页面第一段直接给答案</strong>：先写“Model XY-200 是一款为 A 产品设计的全自动加工设备，产能 800–1200 pcs&#x2F;hr，支持 XX-XX 原料”，而不是从行业故事开始讲。</li></ul><p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/7c3a9f21/1792910602962_prod3.webp" alt="带完整参数表的技术规格文档，单位与口径统一是 AI 引用的前提"></p><p>&nbsp;&nbsp;&nbsp;&nbsp;在结构化数据上，<a href="https://schema.org/Product">schema.org 的 Product 类型</a>提供了标准的字段来描述一款产品的规格、品牌、参数，谷歌和主流 AI 产品都能读懂。把参数表同时以结构化数据的形式交给机器，比只把文字铺在页面上多一层保障。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;顺便也是对人的优化：采购商扫参数表就是找三五个决定性指标。<strong>把最关键的 5 个参数放在表格最上面</strong>，别按说明书顺序从“外观尺寸”开始排。</p><h2 id="型号命名：最小的功夫，最大的复利"><a href="#型号命名：最小的功夫，最大的复利" class="headerlink" title="型号命名：最小的功夫，最大的复利"></a>型号命名：最小的功夫，最大的复利</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;型号是产品页里最被低估的东西。一个统一的型号体系，同时服务三件事：买家好检索、谷歌好收录、AI 好引用。推荐的命名骨架是<strong>品牌系列 - 规格 - 版本</strong>，例如 <code>XY-BF200-A</code>（系列 BF、口径 200、A 版本）。定了骨架之后，三条纪律：</p><ol><li><strong>一款产品一个型号，全站唯一</strong>——产品页、图片文件名、PDF、询盘回复里都是同一个型号。</li><li><strong>型号进 URL 和图片名</strong>：<code>/products/xy-bf200-a.html</code>，而不是 <code>/product_1039.html</code>。WordPress、<a href="https://woocommerce.com/document/permalinks/">WooCommerce 这类系统的固定链接设置</a>都可以把产品链接改成带型号的结构，对收录和人工传播都更友好。</li><li><strong>别用营销名替代型号</strong>：“闪电 Pro”可以当副标题，但参数表和 URL 里必须有一个稳定的技术型号。</li></ol><p>&nbsp;&nbsp;&nbsp;&nbsp;为什么值钱？因为买家复购、比价、转给工程师时用的就是型号——<strong>型号是客户脑子里你产品的文件名</strong>。它稳定，客户搜“XY-BF200-A price”就能回到你这里；它混乱，客户连询盘都写不清楚要哪款。这一点，在<a href="/posts/a6b306ed/">建站前做关键词调研</a>时就应该和型号体系一起规划，让型号本身就是可被搜索的词。</p><h2 id="改产品页的顺序"><a href="#改产品页的顺序" class="headerlink" title="改产品页的顺序"></a>改产品页的顺序</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;如果产品页有几十上百款，别从第一页改到最后一页，按数据来：</p><p><strong>第一步</strong>，从后台拉出<strong>访问量最高的 20 个产品页</strong>和<strong>已经带来过询盘的产品页</strong>——这两组的并集先改，它们承担了大部分流量和全部的转化证据。</p><p><strong>第二步</strong>，按上面 8 模块逐页补齐，优先补参数表、认证、定制能力这三块。</p><p><strong>第三步</strong>，统一这 20 页的型号口径，再把命名规则写成一页内部规范，新品上线照着走。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;长尾页面可以慢慢来，但<strong>别让一款主力产品挂在残缺的页面上接流量</strong>——那等于最好的业务员没带名片。</p><h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;产品页不是给“喜欢产品的人”看的，是给“要下单的人”用的。设备页的主角是设备，B 端页面的主语是采购商和他的客户——把写给买家的证据补齐，把写给路人的故事删短，询盘自然会来敲门。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;如果你手上是做定制产品的工厂，产品页里的“定制能力”那一块尤其不能马虎，建议接着看<a href="/posts/4e8b1d63/">定制型外贸工厂，官网怎么讲清真正的定制能力</a>：从“支持定制”四个字，到让海外采购商看懂你的能力边界、合作流程与实际经验。</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 外贸B2B独立站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 避坑指南 </tag>
+            
+            <tag> 行业观察 </tag>
+            
+            <tag> 观点输出 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>外贸独立站的搜索框，正在偷偷吃掉你的谷歌排名</title>
+      <link href="/posts/26e86d24/"/>
+      <url>/posts/26e86d24/</url>
+      
+        <content type="html"><![CDATA[<div id="postchat_postcontent"><p>你给独立站装搜索框，本意是让用户快速搜型号、搜产品。但在谷歌眼里，那个框是一扇没上锁的后门——门外连着一片它爬不完的页。</p><p>做外贸独立站的，几乎都装过站内搜索。WordPress 用插件，Shopify 自带，WooCommerce 更不用说。装的时候没人有空回头看一眼：这个框在后台给谷歌造了多少页面。</p><h2 id="这条-URL-是怎么生出来的"><a href="#这条-URL-是怎么生出来的" class="headerlink" title="这条 URL 是怎么生出来的"></a>这条 URL 是怎么生出来的</h2><p>用户在框里敲 “red dress”，回车，程序生成 <code>/search?q=red+dress</code>，渲染成一个结果页。结果页上又有”相关搜索””推荐词”一堆链接，每条又指向新的搜索页。谷歌顺着爬，从 A 爬到 B 再爬到 C，理论上没有尽头。</p><p>谷歌管这叫”无限空间（infinite space）”：不是说你站真有无限页，是说你的搜索框能生成的数量对爬虫是无限的。一个用户敲一次，可能带出几十条新 URL；乘以每天访问量，再乘以爬虫每次回来重扫，索引里就开始不断冒你从没发过的新页。</p><p>而且 <code>search?q=椅子</code> 和 <code>search?q=桌子</code> 是两条不同 URL，哪怕意思差不多，谷歌都当独立新页面。你的站没发任何新内容，索引却在涨。</p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/26e86d24/1792742044445_search-box-web.webp" alt="站内搜索框如何批量生成无限可抓的 URL" title="站内搜索框如何批量生成无限可抓的 URL" width="1280" height="720" loading="lazy"><h2 id="2026-年-7-月，谷歌重新提了这事"><a href="#2026-年-7-月，谷歌重新提了这事" class="headerlink" title="2026 年 7 月，谷歌重新提了这事"></a>2026 年 7 月，谷歌重新提了这事</h2><p>谷歌早年（约 2007 年的站长指南）明确建议屏蔽站内搜索结果页。2026 年 7 月，Google Search Relations 的 Martin Splitt 和 John Mueller 在 <em>Search Off the Record</em> 播客里又把这事拎出来说——重点是：现在搜索页被收录，不再自动算违规，也不再自动算垃圾。</p><p>听着像放宽？错。Mueller 的原话是：他仍然强烈建议你屏蔽它们。谷歌删掉”铁律”，不是觉得搜索页变好了，是把判断权交回给你：你自己的站，你自己想清楚哪些页该露脸。2007 年你不屏蔽顶多浪费点爬取；2026 年你不屏蔽，后果自己扛，而且比从前重。</p><h2 id="外贸站最痛的其实是分面导航"><a href="#外贸站最痛的其实是分面导航" class="headerlink" title="外贸站最痛的其实是分面导航"></a>外贸站最痛的其实是分面导航</h2><p>搜索框是一个坑，但 B2B 外贸站更常见的翻车点是分面导航（faceted navigation）。</p><p>一个产品，配颜色、尺寸、材质筛选项，每换一个组合就是一个新 URL：<code>?filter_color=red&amp;filter_size=L</code>、<code>?filter_material=cotton</code>……这些页和搜索页本质一样，都是参数批量造出来的。WooCommerce、Shopify 的筛选插件默认就会这么干。</p><p>很多站的产品 SKU 上千，筛选组合十万级，等于给谷歌喂了十万条”长得都不一样、内容却高度重复”的 URL。爬虫陷进去绕圈，新文章、新产品页的抓取配额被啃光，收录自然慢。</p><h2 id="更要命的新风险：被人灌词"><a href="#更要命的新风险：被人灌词" class="headerlink" title="更要命的新风险：被人灌词"></a>更要命的新风险：被人灌词</h2><p>开放的搜索框，用户能敲，脚本也能敲。有人用现成脚本，往你框里灌 casino、viagra 这类词，每灌一个生成一条带这词的搜索页 URL。如果谷歌抓到了，它不会想”哦这是别人灌的”，它看到的是：你站里突然冒出一批赌博、成人相关页面。第一反应：这站可能被黑了，挂个”疑似被黑”标记。</p><p>注意，是”疑似”，不需要你真被黑。服务器干干净净，文件没改，密码没丢，但谷歌已经把你当被黑站对待。结果就是排名临时往下掉，掉得莫名其妙，你在后台翻半天找不到原因。等谷歌重扫确认你没被黑，标记才慢慢撤——小站几周，大站拖几个月也正常，这期间流量是实打实亏的。</p><h2 id="怎么自查（不花一分钱）"><a href="#怎么自查（不花一分钱）" class="headerlink" title="怎么自查（不花一分钱）"></a>怎么自查（不花一分钱）</h2><p>打开 GSC，切到”页面”维度，过滤框敲 <code>search</code> 或 <code>q=</code>，看被收录多少条。几百条问题不大；几千上万条，该动手了。翻翻这些 URL 里有没有和你业务完全无关的词，尤其是不该出现在正经企业站里的词——有，说明你的搜索框已经被当成留言板了。</p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/26e86d24/1792742045932_gsc-crawl-diagnose.webp" alt="在 GSC 里用 search / q= 过滤看搜索页收录与抓取统计" title="在 GSC 里用 search / q= 过滤看搜索页收录与抓取统计" width="1280" height="720" loading="lazy"><p>再看”设置 → 抓取统计”，正常时每天抓取量比较稳。某段没发新内容却突然暴涨，多半是爬虫陷进搜索页绕圈。服务器那头也能看：半夜 CPU 和数据库连接数飙高、又没真实访客，基本就是爬虫在搜索页空转。</p><p>拉访问日志，过滤 <code>search</code> 或 <code>q=</code>，看哪些 IP 成百上千次地打——同一批 IP 疯狂请求，是脚本灌词不是真人。</p><p>最后用 <code>site:你的域名 search</code> 在外网搜一下，看谷歌到底放了多少搜索页进索引，和 GSC 对一下，心里就有数了。</p><p>如果你已经发现排名掉了、想搞清楚怎么救，这篇更对口：<a href="/posts/9f2b4c7d/">谷歌降权了别乱救</a>。用 GSC 自查也离不开基础工具，新手可先补齐：<a href="/posts/cf9e2cfd/">谷歌 SEO 新手工具清单</a>。</p><h2 id="拆弹顺序（顺序比动作重要）"><a href="#拆弹顺序（顺序比动作重要）" class="headerlink" title="拆弹顺序（顺序比动作重要）"></a>拆弹顺序（顺序比动作重要）</h2><p>先堵入口，再把已进索引的撤下来，剩下的交给时间。</p><p><strong>① robots.txt（首选）。</strong> 加一条 <code>Disallow: /search</code>，或针对你真实搜索 URL 的参数写。它的好处是不花任何爬取预算——爬虫根本不进门。WooCommerce 常见是 <code>Disallow: /?s=</code>；Shopify 是 <code>Disallow: /search</code>。把真实一条搜索 URL 拿出来照着写就行。</p><p><strong>② 给搜索接口加限流或验证码。</strong> 这是从根上断脚本灌词的路。脚本能批量灌，是因为接口不设防；加上频率限制，同一 IP 短时间只能搜有限次，脚本就干不动了。和 robots.txt 不冲突，一个挡爬虫一个挡脚本，两个一起上最稳。</p><p><strong>③ noindex 是第二道锁。</strong> 给搜索页加 meta <code>noindex</code> 也行，但要清楚：谷歌得先爬到页面才知道它写着 noindex，这一步本身要花爬取预算。所以它是次选，不是第一道。</p><p><strong>④ 分面页用 canonical 救。</strong> 有价值的筛选组合，升级成真正的独立分类页（干净 URL 如 <code>/category/red-dress</code>，配标题、描述、内链），用 canonical 指回主分类页；没价值的组合，交给 robots.txt 挡掉。</p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/10/26e86d24/1792742046699_robots-canonical-recipe.webp" alt="robots.txt 屏蔽搜索页与分面导航 canonical 的治理配方" title="robots.txt 屏蔽搜索页与分面导航 canonical 的治理配方" width="1280" height="720" loading="lazy"><p><strong>⑤ 两条路别走。</strong> 一条是给搜索页返回 500 错误——谷歌会因你站报错多而调低整个站的抓取频率，得不偿失。另一条是去 GSC 移除工具一条条删——那是掩耳盗铃，重抓又回来。</p><h2 id="你自己的博客安全吗"><a href="#你自己的博客安全吗" class="headerlink" title="你自己的博客安全吗"></a>你自己的博客安全吗</h2><p>如果你的站是 Hexo、Hugo 这类静态博客，搜索是本地搜（生成 <code>search.xml</code> 或走 JS 本地索引），不上服务器、不产生 <code>?q=</code> 这种可被爬的 URL，那你是安全的，不用管。</p><p>但你的读者、你的客户，大多跑在 WordPress &#x2F; WooCommerce &#x2F; Shopify 上，默认就是开放搜索加分面筛选。他们才是该立刻去 GSC 敲一下 <code>search</code> 的人。</p><h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>搜索功能本身没错，错的是拿它当分类页、让它裸奔。屏蔽入口只要一行 robots.txt，但很多人从没想过：在谷歌眼里，那个框到底是个什么存在。</p><p>去 GSC 敲一个 <code>search</code> 看看吧。没有最好；有的话，趁还没被灌进奇怪的词，把门关上。</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> SEO与Google Ads </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术踩坑 </tag>
+            
+            <tag> 避坑指南 </tag>
+            
+            <tag> 行业观察 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>外贸独立站不会写代码？我用 AI 编程代理从模板到上线搭了一遍</title>
       <link href="/posts/8d3c1d31/"/>
       <url>/posts/8d3c1d31/</url>
@@ -252,9 +337,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 运维部署 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 避坑指南 </tag>
             
@@ -339,9 +424,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 避坑指南 </tag>
             
@@ -546,11 +631,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -575,9 +660,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开源项目 </tag>
             
@@ -718,11 +803,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -861,9 +946,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -890,9 +975,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -919,9 +1004,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -948,9 +1033,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -977,9 +1062,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1006,9 +1091,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1035,9 +1120,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1064,9 +1149,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1093,9 +1178,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1122,9 +1207,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1153,9 +1238,9 @@
             
             <tag> 工具教程 </tag>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -1267,9 +1352,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 博客搭建 </tag>
             
@@ -1296,9 +1381,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开源项目 </tag>
             
@@ -1325,9 +1410,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 运维部署 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开源项目 </tag>
             
@@ -1354,9 +1439,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开源项目 </tag>
             
@@ -1385,9 +1470,9 @@
             
             <tag> 技术踩坑 </tag>
             
-            <tag> 代码分享 </tag>
-            
             <tag> 前端开发 </tag>
+            
+            <tag> 代码分享 </tag>
             
         </tags>
       
@@ -1441,9 +1526,9 @@
       
         <tags>
             
-            <tag> 怀旧回忆 </tag>
-            
             <tag> 生活感悟 </tag>
+            
+            <tag> 怀旧回忆 </tag>
             
             <tag> 成长感悟 </tag>
             
@@ -1472,9 +1557,9 @@
             
             <tag> 免费工具 </tag>
             
-            <tag> 博客搭建 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 博客搭建 </tag>
             
         </tags>
       
@@ -1499,9 +1584,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 博客搭建 </tag>
             
@@ -1557,9 +1642,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -1617,9 +1702,9 @@
             
             <tag> 免费工具 </tag>
             
-            <tag> 博客搭建 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 博客搭建 </tag>
             
         </tags>
       
@@ -1789,9 +1874,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 博客搭建 </tag>
             
@@ -1818,11 +1903,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -1990,11 +2075,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -2510,11 +2595,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -2539,9 +2624,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -2568,11 +2653,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -2684,11 +2769,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -2713,9 +2798,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -2742,9 +2827,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -2771,9 +2856,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 浏览器插件 </tag>
             
@@ -2829,11 +2914,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -2858,9 +2943,9 @@
       
         <tags>
             
-            <tag> 博客搭建 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 博客搭建 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -2889,9 +2974,9 @@
             
             <tag> 人工智能 </tag>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -2918,9 +3003,9 @@
             
             <tag> 人工智能 </tag>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -2947,9 +3032,9 @@
             
             <tag> 人工智能 </tag>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -2974,9 +3059,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -3003,9 +3088,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -3061,11 +3146,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -3090,9 +3175,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -3119,9 +3204,9 @@
       
         <tags>
             
-            <tag> 技术踩坑 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 技术踩坑 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -3177,9 +3262,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 软件测评 </tag>
             
@@ -3264,9 +3349,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -3293,9 +3378,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 浏览器插件 </tag>
             
@@ -3378,9 +3463,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -3438,9 +3523,9 @@
             
             <tag> 人工智能 </tag>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -3548,11 +3633,11 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
             
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
         </tags>
       
@@ -3565,7 +3650,7 @@
       <link href="/posts/a4b9adb4/"/>
       <url>/posts/a4b9adb4/</url>
       
-        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt"     data-hbe-format="4"     data-wpm="Oh, this is an invalid password. Check and try again, please."     data-whm="Oh, this is an invalid password. Check and try again, please."     data-salt="585ef915e8f7e5f0a210b2988d6d06b5753ff4b469d06b00f1721aae76f07b42"     data-nonce="a58f417b1135dca05f435951"     data-kdf-iterations="250000"     data-auto-save="false">  <script id="hbeData" type="hbeData">    f7198102174fd61006a27e13f45a26c43f8e9b39212db592d027ef0e62e63324e1394e1c8b6fddd5fa4ab7971477b0f80eef57e65934773f629ef83e505cd5562e260de996c1ac187dfc7156365bf7ef2fc7ec1ca28fd6c192267aae4baf458440b6570b4230830bc4ea5e232c93cf1cd0197670b81045d5ebaa02e1c371531bb5feadddbcca05c2b6a693a4aca9b5a631dc30330e98eb7c6e125b13ee23eef289616015f66143dc9f588557147003c32d0f13157a4ff35c2ef221f59ffd3e72de49d760e4a6e5d928eba1ea17b2f66393e9f813279f0f27e24cd450ec61b8ae3ad006717c2cb29ec29180d697c5c82fe7a4c81d937960d0a7b0acd01924c2a8531443b1e3bc8a70d780b2f4a24ad92014a3362a41de0efeb3f1ca992de4ccd0b69abb4abc55b175702f5ddb9d18e2f2e76a2d6d97116d38017b3f259ab78083cb66e754f6d8a7d2220e3ce786d0f559ed0c33654e6ba284317307f3213d26d70098374d07dadb0def3d5aee7908bb01fbc993d783167ce994f3543f64595c2db861b856af660644e9b6615927df5f565003ccccacd5d8a7b20f1f1d737762a2dc1bd6fa7692bbb28870e1af97ad78214feb707cdd00582e3741e44f7ccde01cea2d8f07f6ed603e24f6ff477517d20d0190e63746cdd6271b1a60d072f9161f2e464c641f27827f01128090ab84501afdc02607f0aaca8b9f69757864af04dc232fe9b4f7235a9f4ac3443d1bb5fd33ca1475f29be62207b68b48301743c61dfbe574113fbf55879f548e323a4a5693c7a2000e677900f0361c6a391308d743f040c7cc2918981dc797eab8bdf47a91f4d1864946d7234dce8cedadad0f0a267269d15584219ee5ad5cd580ae3731c2aa65b65d93c5df0304a89d31780ea23eb1e10c366e75b7188fffdb8aca02c49e4a21e14ba1138eb1eaa9fd094e09edcfc2f54f0b76ee220caf44ee1df3c3705613499b585a643a34fdf262a48bb6daa4dfc355f233cf478616d0173832ba830176bba3c32e787eb85cb8a828f6d38e134599f1965b31720000f051bd2eb6818d0cc93da025ca14216c6fae08ad4443f5b2a851a5f87f21cdfd1b899adc469ef0e7ed420097ae789676fc54ab0a03f8037fa1a7d3600194c2ae57a8ce67aff9dd9e016af9f16cb0f2bbc6c0d083c4ff804291e8604f82129ac41e8f5178554e56b79561eac855720dbd87bd002e3ac87f7c738adebfe3e2acccf69a1dddcc74e7ab3539da50e29e402b1bb628ed0ff096653b52bbeee00aa62b23b194535e2005ae9956e883cb2697bfcd6a4ccb6bc6c748e13d188150140527d7908123443a9325da7d8abc883cc3cb3b27155257b82fab077160a36709d79d88d608fc776aa59d17900476d286880f08a26754c75aa3abb75687827b12832f3561584e1203a8403d6117adf489886f09d3ce3f8e51fca19f2f22f3c3e9cf2d7895965aa61fae67e9e641b321ea374e58f8681985f7cbe7923a24e750db29248d71c5cfa1ba618f0ac82ac0babc641d88a414091de0557836d27d1ef94448d897ce12b9065f9a0bb19c7477fc39ba7ee15e4293fd9ea0ad5e10cd5bc48a435f07ea884dda54fcc905bc2df9338a0cffeb33b7b9915c8d88bf40db7a2ec30f7b6b08d0c46870df540b01ad0f4ba04f112c86757f2ab6930096519b0f30e2ee290b3b61a2e454d08394671ec4bf9c036ad54fee25fbbf6cd3a9faebf90ee55bd64100186e96d2e1179e79bde6b5e717c67646d0c253a24676798d487890805c2da0dd28015a525e5011f0873632009a3ffc34690f397a1ca8bcf83b82d893f43ab240762011efaf900db5e4145fc44ef78dd5c2abb1184586973aba09612ef5e2c63de7eeb6676e9116d3ef65a891a7d0b1a9ceffc8295df41f9890c37f4c54408a65342f6994327b7db4f85bed189ce5496db1fc6bf9c55780bc9bc7f358f996d27a95e9a01028c7bfd1e80e90de1b53deefd2bc1686808e9cfe6cac4eebf3e1453309aa7af0e661177285c99c984422246216132f33cf1b96f490ecd3ad572cd6d328173274fa8755ba9461ab7c99b10337683eef919e4416c91699f50bb9a737277b520a8146ae05beda1689033174153882f0642684d4f3b29978fc983699a49dd19f1ec6f639e3d6499aa95c5fd8f4522b3562dc8fd2b0f126561eef71384c25f00957b3c10d77172cd2eeacdcfc28a1b221a17bd59ffc487f4c0df1efdbc00a85fcbb673bca6805b0cec7e720a60fa68e5ef0db8f8f2a3aae5e5e6afd8bf11d9e6331758d20d3171dc15c850cadf0ba06547d9fe2f3f391377be8ae1f918ad85122ac78badcc90d459f043ead93171028926059bcfb57bd002b92c5519137a1b270cfaf7da2909a4519c853af08ddb17e7465d3bb6f9ec0e6bdf8630efcfe17bde84136fc0f392e1a01def77fcdb2f129f567da599b578ddac400e8ff4899cbb9c99bac7950a8c6b2c7b86a71996d1d3e6cc56088f412b6b704961fcfb300fcc19ef233cb3cfba424aef56cb0f63f7c416a4aeb4e66a9a9d279bd0781f48b34f320e00ffa4e8bfd04df8f6a4a5bc9a38206e61d9a6958db633282acb551bd5e8543a5d73dbb209c18de8f6bc72b969bbca62dc71967ac8f9ef6e3b8569ed8d270ebe56e212473fb0d3a8417396133342184d2ae2d6d356abab07a0fc70f53ccef8221859b1b24d45d9b9940b23609e1507a0e04008c1504aca49b6647ab7f2ff234a7522de86b2a1c96b050f560bbe5eca3c143f2f5b676583d7882f49da61aa7e10f417328c16bb65d0a610141d8e80cf1e8d6e84fd6253f4c6086f4b1887312bb42120eca2417f122ca6372242ed5e64453ddc62af03e71318f0c2cd62e9200279e52fe244f5ebcd39076a8219e34e64163902bd0bc3b0fe85653748fa008d9805e54214c8bc165ed5cd233127287e452e1e6152d446632b8f9689ec092458f61cf6f5db81d466be8e522e7b696b9288ada57b64c823e98e59e0a8703a831e9ad68269b878e58166b06be399a5e79cc8b283651bc5ef9e1d6b598eca6f1dfce2a2d28502f1178331ac99ecc025b4575c50b2da2565d56b45fd4cfbe34ff831e42899abe9b183981392eeb1327e103db54dc9ca821339fddce1d2229b13b31eb745238c39c2213495908d22f2169be6d59885f4443ba1c4dc28f90eccb9770d955668189526001888be64c25b77c74d75a728b7c3c88cc336d5c2b050654f744679622e58d01db463e8c50a46ea7d50894af00f7b052e168f23bb378b6830a48adb36e836cab50419cdafaded3a161990403c4be76512fce68802ab7fce9f8b9b04d8c99c688af45d2afe17dc22a131e7d145b7fa212de041987dff552586aaa479895cdd3213319ec09377494adf9d2551383694f872b44f0514a1de6f7141d7de07a76eaf10783456b0f3acbb66033b5a5f07b78ea637e2f8bc6e3c57e270cca5a24c2685d42d72caee8511d11b89d9278a4f1a4daef52206a4c4d4b1f5992a63e98b46409155e3050e8e6d32f99da78aac5278f681378be0953498b417ad53438d897de775a9b163472ef4a152a9dc7b62659d5de70b06578e58c3444488248a177a6fa18552a51201df636a0994372bcc7a79b4b3c2aeeb02e09222e059208ec70c38c58b01260afb6f4c5e65a60f1df6679b6023306cea7149bd3d0e3939f7815080dc4ce16839700ad278d083a5e94db855a61c58eaa99a597452b0893abafaca4ac24c0e94cff4d51854315c270eea048f946eccedacb40b0c4a27028bfa68e6f186fbe0d62c8e0260f7e3d7ea5540ed460f8d9f20202dccc8da70bd5101ff20d8d1c3bbc329bf0e54097a58e3979c23b1e80083c832cc5761cce760b9733eae5d24c3c935062a22fe6932122585e96b086f40bb5a822098956c34f52df19236c786036adb40ffbd217dec36c34afe13a9d6f6410ef771426e5d46aad78d0d3e46cd6500573f5c3b34d0b25f17a554faadf749d7396307d5654da9185862461014cf228f039736bca4fae14ece964dd4bde654efd51834561d907c425406cc515a8c2f1c0bf6b456b54bafacf9159126377e00c74551086c8344e3d99c88c299364bc592faaccf1d8a7fdc7320ee6e87395beacdfd4625d5459913f2768864eea5b0568fb5593532c6d0b44d6b534a93ddef388d431974ee7a7db8da81c76aac9f4b4c06379dcef9aee52ea3ed54c98150911e388e44053606be04822327a18734d1b82d0c08c5350907560dcac7305a7d7b99c05760f2b9770de999e817bc855034f0c1a3009fa5de1ffb317b4aba0ea1a5ee064f1310386bc1c6a810a8d07939a08095edd6447da76038592658087e9f80ad4150aff6b7702a86446c86fa7effff596a0855e32d54d28b9ce9b9fdf15590664a919cdb526d4d23a97f90806438f86b1dfc903a9d60fe02cd246b047c8a7721576aaf0402b4fe0f6810805b9d9eec28506e18f1b8662467c0731a0eaff67438097d05c2835a55a735a3adf252fe9fb6bdeafe28d18b9ed4935e6ebeca72460931fa68d65867387399616de4116a2f941d7bb6956052827716c5e91d903c3613d60a7a497d7f94f0402838b158608fba771099d58f7f6b8105f075621a944b5112f93b78179c907ceb2e9b1f0afff764c518bd23897d3f28d867924559275b47694149fd9963b6c523f4c494e23119354f8ceb452428798bd5f12896a2147a2eba7cf00ab86eeb89d07d047839d46992e4d93cccbef2a7d5bdcf8672607760c8a4aec25b876d7feba3be7e0cb13476d590c08ccda42ffd9b8c211d0a006948eb4296b596269885b5d671bee91515bafad8b5a25f016da18981d5b9a318fb0f658e98c960e36a28c02a550eb5f7622de77d227acd58767e77616e5b1192c0cc1c34db77f3df9709965907166abb709712e9795c44c510b8aaa31f4ae6a6edf23c8ec14609e13a601d64a38072550fe1175d7c50c39c56cfb04d4a2815abb2e488ef9a9292a49ffa77cb78572343d19e34c4084f61c21b22f0d88a56298cd7cdd561de32b7d5d487df4349749710dbf0aa2196517b5601b3fe62977571894047b49942b8823d3f28ea00b3d274fba3719520370259e81842cfefbe7af922f176459ea6f8836e4afaeacd1c724ebf08aad2ebbd9cf6d6631683355b645adea46649bcebce877cf50221cc5afab222a3d149bfbecd8c1f76fdfcf1846d61277e1ccab43707ba336e9ce0adce3a24360d83a13beec67c2a3ad37237a85959d4489ca9e664ab595810bcb7888f2158be3f661cf2b8b6870f0ad5b8440d375737f91dac7435a940c6ded790ed42d914d73e4e7e9cc39e5a27e90fa87077fe293ef9eda4fb650d13d01dfbad14ad49ae4bdd2316d2ba65e0e0c203ebd831938f20fcb1ddb924e7bba3c71c8e7116f71028915d4e0d1fba6c265b0ea25d00a028d2519732adfb25ca7c983ad69ef64426587113395bdfa81b8fde9333b9e4eca5a014f96fa846c153e248c55a3a48dc845948aa71bfc76ad1040e2110d187e4d0741c2b6d07cca725f052513217e2b1a1b304e6eb3b90c88c9428df49831718a43c0be93d488ca22b5dc0aa60a7ea38187e1a4d2f402e7fdff8eab26535522f7ecd1d814c326444ec33d3f14683fb9d19a6d6cbd7f8d7dd213a6d7925cc4100e5b9244d07a4d420e2769b2b06a5f9dad2c57113382104a9aa545d7ea3a3aa2aebd64f94adc9cd09826d5737d7b774fa91a4db6aca80a765626418bf4b1994d0f9dfd46f178537cd528656ca8c1855e6f2bea89fc47d5167ba76fc8beed4a0c93a230aadf867d659202cb571ea982b46fe90c72d010411ead63ee93c0a50cd5b09a051c7bac1ceabac8403c5e0a008752fbacb4832f617c69fbb6c389c863d139d0497c4d2646366610037c3fc0e5a1cfb2a755eed92d2e97f46d9284eeff9fa20e9ce5e3cbfd8bd3  </script>  <div class="hbe hbe-content">    <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">      <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>      <button class="hbe hbe-button" type="submit">Decrypt</button>      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>    </form>  </div></div><script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt"     data-hbe-format="4"     data-wpm="Oh, this is an invalid password. Check and try again, please."     data-whm="Oh, this is an invalid password. Check and try again, please."     data-salt="125cdb63e896ec6f1e0b468c1c48e7ac626e084163a235c407f632f33114ae36"     data-nonce="c31ea92f8e9c22178f920bb9"     data-kdf-iterations="250000"     data-auto-save="false">  <script id="hbeData" type="hbeData">    25b49be137e5fe7596ad04080e346a3c679114df9131e0a58baac2e205d764537269c09d144429721a73d7fd0ce67a80d4c37d9d3d28db62918439e8ab9a7d52486c35ebce95720637d9bbcb3a021c12ecb4b7481f8d2f6b215f55784393f6f308f7f3703f45d65ea9cfa221058eeab61aa7f91accb098c536c9a24c08728a5f3658ab8737ffc3fcd30888f2d04e94a19e96377e3015d273a9972bc5995bea0ff553ec65d11da54e4176f6873968dbfb8431a36744d38eb269d9e680f4c4c7fcafa88f6160333c24e14aea21ef56accd0edfbc6a8207183345f55d9cecfb561c2433ce23e7904d0c1c8552acfadaa13cf5f8ca39fe55aab887a444ae1abd5ffb606e1ca57ee9d2c083f6c251a5e4cfbd4c3f8edadb79a4e2c40e38ae791cbfbc204b8252a7e8ef3cc1fa4f62ea9c60446100923794764728fd99f525502b9919b8e47143aecd86248d3a33d95470ba0186677f28bf0fef29027bb59be8ff9f44aee156717dc4110d2475e1d18534d11bc9b96005b889bc7fcfab4226ed16ebf091a3d2d38945020bf499b120ac9fbcd1bb5533193bc1933c6c4fa3fe960f1fc83990319530df758c0fad03538c07ab597432490d5830dea0f5005ed79eeccda599e56a337a8c70e6a752c4eb97b049f930429461471f084f036e105af1ded4ae2a867eb82d0aaa562d848a272f89bae76e3fced667572e82e7bdd02478f15c044cc4ce35b0bd6d68fa04f56134d3ab9dd74f36959c2b2b68432750c566898d1b62d38ab7ccca3f99ff1cc3535cc85d59ee432998ba5dee2e10b76a6e1415589ae9129ba2751d38a4a38b8a0a77021e7b1d511e4827c64eb0e5dbf3d5fafaa06051d8ae8f3c00c6b40a7e009ba9977836c88ffd09dc56a0390e68a26962e63b1350cf997e9a49df88a3586410461e940fa24c9d504521f44839108df3eeb037fb7785dbe385757b96353303176ca0add274155416d49a1484374a8b32cd32a15cff94f0ea1d81c41a00ac438b0d48eba15e952309ae15db2960710f8d60fb1127f22537eb1f7ea33df9a315bec1288c9a6ef4338301d44ac7c96a181c79a4a61c6bd298fc21b0263c81941f42e97202f73995482cabede5fdce0b062b3622ded345ca63c6c8238c792bc42292eb878d6f1434e769600191773fea7599e341d7e7a54414fcac635bec4273dd0a9c61acfb7138c79c64a91a2ce6527c4f36de603b72359331b8b5065954f209af07c6a729d342dfb6a4eba56644eb785b741dc595ed3368a01f58bc45ac83d46474dd514f0463a9ff09a2faf00f609e082d65927269cae386ad0d889988ec914ac0f737e86d4948f8bc1c70e3c28a0d5f56091957d19dd539789fdcf45fa57a869c4283842e81fbf34ae21f509f59750aae8a467fd44eb689cbb645743b60ef5a8b7a7b9296837c274a4afc7428bf500986dc657602d6f0ebfc3295d281557a2e485d9b4e6d2c39e033bf764d654ef1c77a4beea5863bc0cfb4ff5ecb3d8e9587a79ba0b47e9513c1e84130d4f9aff54fcc8c844dea4a32e296982ce1a51a362a1b9c3e2ebb78860317c7ce5bd6030c490a08cb5db72741744bc15b7742bb48b74f06c6af2ea19425e3b7e87c8886c3ff05391dd4fec1f9f7a106f4b363c7654e3bc8aaab12dc657ceed2ebca9ca828655b1953e77ce264db292311888167a6591352feba5b3dcfe9a7e0c7a9e6d2ca10ad4b56db340efcbb645fb14a2f5353f595bfba98fd179af5cfeeb272e9dbfd6f3a13186ab86018770a596100958e44342770020b9d8a16618c198a7a8312320b7c0f2432befbdce7269daf5bbcccd00fb161f7cb8d62b280785481a6a56e6707cedcc8cd4369e9bff334799197af3a7e713b613811abc01a3fcf71179f2d70974d16e489d2e95907afa3d54313b76496b90c48304bb6f95926a9a42fbf3c346ea92dcdc29a0f39b04da22c8bb3189f03822d153d547ff35e5d034f5e88a8c5955cee67a0579cf6ac82f313d5070dfd2f531c59a2250cd1190f759a5afde026925c47e0eac60ab89a563b5e79acc612c97bb836f39a16e75051e785bcdf4e7048dd89d4fcf75411c9319360d7e5858ba07ec0c8a2bffb38869ccdc3615343f6441fe21d431533350c7638806df856e712b16717a19382768091e6cfb54ccd1a8a9b6832379ddec9e97a5c5974ee4b9fc65f12bb1e6c42cc9742c26a7bfb4de62d5698b0aaaf2171696be47dc3f5d07f23c5fec2ffaf22198a02869f06de03037f7b72144bb10f31996611d6d28d19693620f09b5455922ee4fc0b7c33ea81411372989b3ab0741c97462a62b3b15dbe11a7e289e166bdd7dbdfe827c239b254b1b7388102f733779d132f180a46ac2732f771acfd5b7985264d8964f30ead4718ed03f29930784fb546dfc6f459fea5cab8185ef99c67b191e9e261723b96519c8c501f183aa1a1cacebe5e01094051c57446c90111f7f72f3927409b35006043a847412f3fcb72de89f594125eeb027cdb31abdcfd998bee80298895401748f3bc56df24fd1ee53b2240b279e4b103083ba86c8878df27d40fef2b033aa27f78a00ac2361a655cf054d5b5c2494e38a004f978436706c115cea2afe685a1012de6a05bf89a2dd222026536ea55a32adffb7da603b22ee8a98130163b7b5b49e418f86fc00678ed88583acf56998eb4a46ee88d075ecee6f2ab27edd3799405ee0c0270baddfb37ce4be1e32416a7f91c11b021a42a61a23d7c7fab62c7b36200ee21f21b6c2f311a9f8aacf34cc14294644c58ce6fc4ec4c11a729f33468872563b778de240875bad02b23d5d288d73237a5c20251db20fd2f44166e47a3cfc58915e2b20808a02dc43e4b0cbd1bff4bbbcfd444814df90520e1783eb3dbc92225e7c5a296a4b1120801ff33c20e391d01db49c5e70bb419cb3dfba2c0847b50b5a8f2c18ff9c8e357dcec4c4dc20ea7e480de64fdecb81c5b496b2d9efbc48ee7e2d0947405819b367dec063ac38ffcc2443330d729f2ca368be0130b71d7fd56a3fd9b3c7a6c2ca29b19289c6ab3980eabb87413fe76756c0e261babd0be9cc9bbbb8ebd5aa3020353782b165164b07b27c4f992baff3f597f2feb73dffe94e0b3e38b9e5d41907612901f7b144abb801cbc419ce7db97c01acbbe4a025cf26557e2fd14f763ddba7bd638118ae429dd2b420f635d4701d7295592515596953f610bedd04186c0c25ede082f7d86dff9cb53b549472f48b6337f646786240f958c5efd93e73c3a59ce873c3033c14fd1ce86fe1066bb58cd33cb53f0ad7fc3c45b4a09c6c4852511472d3a0cc02cad0b3abcf8a48cc0a06fdc94662a8d810db843ddaec3b383d48e6add2f200a2a77428e47b17723e225313b7ac2d63c308ba806914d6ff83a79baf82b687a4b63ac8b3bf1268506584c23240ad7916372aad968ccea6cc77c0e65f8bab21c5c968c587bfd90284651c524465c045ace592b3944b8776bd6c893803e4360ee2f4080eabcea74e461d4b12f71d4323671f364413c3ad408f8276afc8b90012556e43ecbcb59b0ec783f22010e2033f45339c69504c3e43aa05c5bc1d03e1da61dacdedf0da4c02fadadd77075b3c03b33b5f0d8091934f3b207ba04debf24d30d507137eae1393deb71f053d224f61c9e8b39755cc0cc88f7bcb958816bf847cb85626f447ba01c6753681627f05ed8fe9a99697834fc62c383746e6188baff7dcc927e439dfafbd118f0e5218a07a372475300cc3c5ebd8fa146a29af72b3590b2bfa7c6ab0fc43e26b80d5221d28666d6d70b40affd57bd532fcb01c5969ab0d9c0d1d04ce5f0a089b9a976e23e23375b13c8cc5ad5223ee62d0ca96e593d12866d38ba0df805493a24dab4d9f6714ebd9628767ea250050d596d97f17021010297f5bf364a39add5b21be35100779a5f80a2e60d454a492cbee402c57282a53e86002ec65670600b1ebe5eff8136e7c3c370fd10523f08e395c56686a5ab0aa5a4c201f563e36ccccacc0a2d7357a82485154bcd00878062c0afa0c0393fd917138587269c27bc7bd8a38de7fc67d6123a9e188d55c0e3aab891b46f9ecf456abb4888545f63131a6310adc4c1b96c2fba58716b33aabfc6bb802a77dd0e507a80502081664329d5cb1def36228656310d58114f830bdc57e9f66717a3ef8efdb1bb50e5158def373546be1c31dc61b31a1c14f873961b799611bab211633bc3865c461370c3761884b01d236786bf6f7c179c238eb0a8256db68d688d3f680589f7dd982c5a3400ab39ba2013317a01cf5c4b6988610136b2a827493ff69b0610d74f947946649480b32e74b7c2ce8aedd1b4ab44566c4f605923c4ed2b37f8869952060cd60bb49a70a02eaf49a7c55a4d16cd80fadbccfa181c1f95b2f2a4d17290ed68638e029dfbaf4efb7350f0557f417c8deeed3c9f8eab7e1ba06eacad09d32663acafc276e994c0c0d21727f4205a2d510b4908d79322a6f95ea0102f9b9dfe98a706bd5f35981581519fdb89df89bb03577802f872d17757409b16ddc2bba459bbf797c73e5b16a7a2654759debaa9f703eb4bfa70f01fc03a926d51a172e80b31e82aa83ce71c199865f399535c1029ce2712bc92f54a5a9aadfa92eb2e10c10654279cbdd7142af9e8ac147b93d4d7091b6bb7094bee407e63253909a0e995695d22691a198ee1fefd8be2c0604a9d0ec3de15272e42bfdb08d4548d8e64cf33f476f85a4832ac427da945385c59774e1a904d1d956e4a44c159248dc2a42228937823f64dbbc1201b42c9f12ef51482271ba26519fbeeb4b29744e5e264978dd49d11712021014b69b19432e3333591b76fd9e2fef3d1ff736b9cbe77484443c2242c878034aac539be917f756e0e741eb384570d1fca57992c4cdcfc906a583f6b6f620705b26b8d47b1e5a29b4d2ae8c9d65d0bde7d0500c986e8469c5da4911acd2dfb1f95d4d1e2e54a58763304590933775a9001ce88d4ba61b5e5b6b699466108dae9dd977643a5d3520fb61ef1d025df852b7e0571c4bae66d1d14bffd31d6313fa281046b754fb748549b1d6d56a2299c207456cb5757b1738aa2c8a8d2e9f10efef3168878e74ca1139221a825b7beb1dde8d430c24135cd762178ce33f7d154487642dd53d3545deba0690adfe4aaabd3e5b8b58c6c37581669ce4e5380b8cb236ddd9611f18dd7a33fb82358d2b20e94de4b4c60433a29f47c274d2dd09fcbca017fa81f2427941b45ffc94c74013810cd3d92926051701f2ea939df3247a96bd3594cce3d832a56e8fdc35df54766eafe75b844ad786736c24614c84da3bd247eae3fccc1f1bd6df252be8caac84933ac893d6cf605d99b18fd93ad47a5de43803bfff742e5fe44eb8a77e06c38b86358919b54e5357c7ca6bc84bd493debcb456abe98c0c5112753e45cbb3021c817e1966b8285b509249679f7856fa65eff4378af542b19347277858fee5bb0eb4cea43fb27f3b8985a0f10348e26e31bde803ca01c3c3041b36158b5daaca92e71e8d8ec6fd835c1f3ac042b581760afedbb4ef16f9b2c26456e3918828a494595a3fed30a56d67a46eb15e669f8ef156f9a30406129502494cea2fb8ce2a8c9f1c5b780de5319d83c6171bc300bd6f28e33ec8747f9fc6aba2f08789ec2532935bfd48bfd654806ef5d28773b72b28201f48706c9588e0b21d64be698fca6586f221a35a61057b3de21b61a6a94cb7480bf57b7a8837ba51fb11f5efb1599279669b1bfa1750ab941a3470607202a4314a02e02c7473eee9f40126a6f58ef2ca7f2997d4985c61e7c17a3f8ce4457b5b521cd21cb6dc960a3de13d2b09e998b1024195cd047e79acc5efc62ad9aec5a32660a3e4b27f84f58194b254191055dd4b08bb9363469d93b6c0b3358803626253143149d9b59dd1f42499082565f0d  </script>  <div class="hbe hbe-content">    <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">      <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>      <button class="hbe hbe-button" type="submit">Decrypt</button>      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>    </form>  </div></div><script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       
       
       <categories>
@@ -3577,9 +3662,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -3606,9 +3691,9 @@
       
         <tags>
             
-            <tag> 效率软件 </tag>
-            
             <tag> 免费工具 </tag>
+            
+            <tag> 效率软件 </tag>
             
             <tag> 博客搭建 </tag>
             

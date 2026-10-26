@@ -13,7 +13,8 @@
   // 数据来源：自建 Cloudflare Worker 代理（la-stats-proxy），走 51.la OpenAPI。
   // 原官方挂件 v6-widget.51.la 的阿里云 OSS 端点已停服，故统一改走 Worker。
   // ⚠️ 必须与 worker/wrangler-la.toml 的 routes 域名保持一致。
-  const PROXY_BASE = 'https://stats.mfy-lifeline.com';
+  // 用 mfyresume.dpdns.org（Cloudflare 托管、国内直连可达）；workers.dev 在国内被污染不可用。
+  const PROXY_BASE = 'https://stats.mfyresume.dpdns.org';
 
   // 缓存：同一次页面生命周期内只请求一次
   let cachedPromise = null;
