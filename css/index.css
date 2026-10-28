@@ -26317,13 +26317,26 @@ body[data-type="link"] main #page {
   }
 }
 
-/* 爱心霓虹灯闪烁效果 */
+/* 爱心霓虹灯（WebGL shader） */
 .love-heart {
   display: inline-block;
   margin: 0 10px;
   vertical-align: middle;
 }
 
+.love-heart canvas#neon-heart-canvas {
+  width: 22px;
+  height: 22px;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.love-heart canvas#neon-heart-canvas:hover {
+  transform: scale(1.25);
+}
+
+/* WebGL 不可用时的回退（JS 里 canvas.outerHTML 替换为 emoji） */
 .heart-shape {
   font-size: 20px;
   color: #ff69b4;
