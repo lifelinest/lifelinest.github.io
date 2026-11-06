@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>外贸独立站做工具页（计算器/生成器）值不值？给运营者的取舍与落地</title>
+      <link href="/posts/483eb1bd/"/>
+      <url>/posts/483eb1bd/</url>
+      
+        <content type="html"><![CDATA[<div id="postchat_postcontent"><!-- 封面：ThisCover 生成后回填 cover 字段；1 张内文图走图床，alt 用短标签、图注只写说明不重复 alt --><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>先说结论：工具页（计算器、生成器、转换器这类”当场给答案”的页面）是独立站里被严重低估的一类可链接资产——但它不是”建个工具就能躺赚”，对外贸独立站运营者尤其要翻译视角、补上静态站的落地绕法、躲开三个坑。</strong></p><p>很多人一听到”做工具页”，脑子里冒出来的是 Veed 那种 250 个免费工具页、80% 流量来自工具的中心化打法。那个案例是真的（多家独立来源交叉确认过），但它发生在视频剪辑 SaaS 身上，和咱们外贸 B2B 站的现实差得远。所以这篇文章不跟你聊怎么当 SaaS，聊的是：作为外贸独立站运营者，工具页这套打法里，<strong>哪些能借鉴、哪些要改写、哪些干脆别碰</strong>。</p><h2 id="一、工具页为什么能”被动”赚外链"><a href="#一、工具页为什么能”被动”赚外链" class="headerlink" title="一、工具页为什么能”被动”赚外链"></a>一、工具页为什么能”被动”赚外链</h2><p>把底层逻辑拆开，就三句话：</p><ol><li><strong>外链磁铁</strong>：博客要拿外链，得说服别人”我的观点值得引用”，很难；工具页要拿外链，只需要别人写”怎么算 XX”时顺手补一句”你可以用这个算一下”——因为你补的是他给不了的功能。后者几乎不用说服。</li><li><strong>停留与复用</strong>：博客是线性阅读，看完就走；工具页要输入、点按钮、看结果，停留天然更长。外贸人算运费、关税可能隔三差五回来用一次，用熟了直接记你域名。</li><li><strong>权威与 AI 可见</strong>：一个工具被几十个站引用后，搜索引擎把它当成这个话题的”答案提供者”，AI 搜索也会优先摘它的公式和结论。</li></ol><p>机制听起来漂亮，但对外贸运营者，真正的价值不在”我也去抄 250 个工具”，而在<strong>把”答案”变成别人愿意链你的理由</strong>。你手上的真料——真实询盘里反复出现的报价、MOQ、关税、货期问题——本来就是现成的工具选题池。</p><img src="https://cloudflare-img-bzb.pages.dev/file/%E6%96%87%E7%AB%A0%E5%9B%BE/2026/11/483eb1bd/1793954028962_toolpage-linkable-asset.webp" alt="工具页作为可链接资产的机制示意" title="工具页三机制：外链磁铁、停留复用、AI 可见" loading="lazy" /><h2 id="二、先拆掉一个误会：工具页不是程序员的活"><a href="#二、先拆掉一个误会：工具页不是程序员的活" class="headerlink" title="二、先拆掉一个误会：工具页不是程序员的活"></a>二、先拆掉一个误会：工具页不是程序员的活</h2><p>很多人头一个反应是”我又不会写代码”。这个误会要先拆掉。</p><p>工具页的本质不是代码，是<strong>可链接资产（linkable asset）</strong>：这个页面有没有一个让外人想主动链你的理由。一张原创数据表、一个填空就能用的计算器，都是。代码只是实现方式——可以自己写、可以外包、也可以用无代码工具搭。</p><p>换个角度更清楚：博客卖”观点”，工具给”答案”。观点会被质疑、会过时；答案会被使用、被反复使用。人天生愿意把好用的答案推荐给别人，这个”愿意”就是外链的来源。所以<strong>选题、公式、文案是运营和内容的事，代码是末了一下</strong>。</p><h2 id="三、三个真坑，比”做不做”更该先想清楚"><a href="#三、三个真坑，比”做不做”更该先想清楚" class="headerlink" title="三、三个真坑，比”做不做”更该先想清楚"></a>三、三个真坑，比”做不做”更该先想清楚</h2><p>工具页不是躺赚，做砸的到处都是。这三个坑踩得最多：</p><p><strong>坑 1：谷歌自己就会答的词别碰。</strong> 有人 3 周堆了 140 个工具页，只拿了 1 次点击。判断方法很简单：先搜你的目标词，看谷歌是不是在结果页顶部直接把答案给了。单位换算、计时器这类词，谷歌自己答了，轮不到你的页面。量不是优势，<strong>对才是</strong>。</p><p><strong>坑 2：纯工具没内容壳。</strong> 只有交互框、没有文字，谷歌和 AI 都读不进去你算的是什么。正确做法：工具下面配 300–500 字说明 + 一组 FAQ + 把公式写明白，再标上 <code>SoftwareApplication</code> &#x2F; <code>WebApplication</code> 这类 Schema。工具是给用户用的，内容壳是给机器读的，两者缺一页面就瘸腿。</p><p><strong>坑 3：只建不推。</strong> 建完坐等，头 10 个外链迟迟不来。上线头两周要主动推：同行社群里以”我做了个工具”的口吻发、送给会写相关文章的博主当素材、从你自己的博客内链过去。前面的主动，是为了后面的被动。</p><h2 id="四、给外贸独立站运营者的落地取舍"><a href="#四、给外贸独立站运营者的落地取舍" class="headerlink" title="四、给外贸独立站运营者的落地取舍"></a>四、给外贸独立站运营者的落地取舍</h2><p>这是和我们博客定位最相关的一段——原文假设你能随手建个工具，但我们的站是 Hexo 静态博客，不能直接塞交互。怎么绕？</p><p><strong>1. 视角先转：不是”建工具卖货”，是”做同行会链的资源”。</strong> 外贸 B2B 站的读者是运营者同行、采购商、或是你自己的潜在客户。一个”独立站 ROI 估算器””外链价值估算器””关键词难度速查”这类给运营者自己用的工具，比”运费计算器”更贴咱们定位，也更容易被同行文章链。</p><p><strong>2. 静态站绕法：独立 mini-app + iframe 嵌内容外壳。</strong> 别硬把交互逻辑塞进 Hexo。两条现实路径：</p><ul><li>用 Vercel &#x2F; Cloudflare Pages 起一个独立的小应用（前端 JS 跑计算），然后在 Hexo 里写一篇”内容外壳”文章，用 <code>&lt;iframe&gt;</code> 把工具嵌进去；</li><li>计算不复杂的，用 Cloudflare Worker 跑逻辑、前端只做壳。</li></ul><p>这样 Hexo 负责”内容壳 + 内链 + 收录”，工具负责”给答案”，各司其职。</p><p><strong>3. 选题三关怎么调。</strong> 原文给了”月搜索 5000+ &#x2F; 2 周能上线 &#x2F; 有外链潜力”三关，但<strong>月搜索 5000+ 对外贸 B2B 太死</strong>——你的工具词（MOQ 计算器、某类产品的关税估算）量可能远小于 5000，但意图极准、转化路径短，别因量小砍掉好主意。换成更适用的判断：长尾 + 带”计算器&#x2F;生成器&#x2F;转换器”尾缀 + 竞争小 + 谷歌不直接自答 + 你手上有真实公式或数据。</p><h2 id="五、和你已在做的-GEO-怎么接"><a href="#五、和你已在做的-GEO-怎么接" class="headerlink" title="五、和你已在做的 GEO 怎么接"></a>五、和你已在做的 GEO 怎么接</h2><p>工具页这套里最该接的，是”可引用外壳”——把公式明文写、放几个算好的示例、配一组 FAQ。这恰恰是你在配 llms.txt 和 Schema 时已经在做的事：<a href="/posts/986539b5/">外贸独立站怎么配 llms.txt 和 Schema？我给博客实操了一遍</a>。AI 搜不到交互框里的结果，但读得进你写明的公式和示例，所以”给机器读的答案”和”给用户用的工具”要一起做，一页吃谷歌和 AI 两路流量。</p><p>内链矩阵也同理：把同类工具页串成一个”工具中心”，任何一个页面拿到的外链，权重都会顺着内链流到整个中心——这个思路和你的产品聚合页主入口打法是同一套逻辑：<a href="/posts/7c5a2e9b/">独立站询盘从哪来：产品聚合页才是主入口</a>。</p><h2 id="六、一句话结论-行动清单"><a href="#六、一句话结论-行动清单" class="headerlink" title="六、一句话结论 + 行动清单"></a>六、一句话结论 + 行动清单</h2><p>工具页是少数”建一次、用很多年、外链自己长”的页面，但前提是选对题、做对壳、别踩谷歌自答那个坑。对外贸独立站运营者，我的建议不是盲目铺量，而是：</p><ol><li>从你真实询盘里挑 1 个反复出现、你有真公式的问题，做成给<strong>运营者自己用</strong>的工具；</li><li>用”独立 mini-app + 内容外壳页”落地，别硬塞静态博客；</li><li>配 300–500 字说明 + FAQ + 公式明文 + Schema，上线头两周主动推。</li></ol><p>从一个词、一个公式、一页工具开始，半年后回头看，它会比十篇博客都值钱——前提是，你做的是”对的那个”，不是”多的那堆”。</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 外贸B2B独立站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 避坑指南 </tag>
+            
+            <tag> 行业观察 </tag>
+            
+            <tag> 知识总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>外贸独立站询盘页面怎么设计：从接得住需求到拿得到询盘</title>
       <link href="/posts/a0cdce66/"/>
       <url>/posts/a0cdce66/</url>
@@ -47,9 +76,9 @@
       
         <tags>
             
-            <tag> 行业观察 </tag>
-            
             <tag> 避坑指南 </tag>
+            
+            <tag> 行业观察 </tag>
             
             <tag> 知识总结 </tag>
             
@@ -76,11 +105,11 @@
       
         <tags>
             
+            <tag> 避坑指南 </tag>
+            
             <tag> 行业观察 </tag>
             
             <tag> 认知升级 </tag>
-            
-            <tag> 避坑指南 </tag>
             
         </tags>
       
@@ -105,11 +134,11 @@
       
         <tags>
             
+            <tag> 人工智能 </tag>
+            
             <tag> 行业观察 </tag>
             
             <tag> 认知升级 </tag>
-            
-            <tag> 人工智能 </tag>
             
         </tags>
       
@@ -134,9 +163,9 @@
       
         <tags>
             
-            <tag> 避坑指南 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 避坑指南 </tag>
             
             <tag> 效率提升 </tag>
             
@@ -163,11 +192,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
+            <tag> 避坑指南 </tag>
             
             <tag> 行业观察 </tag>
             
-            <tag> 避坑指南 </tag>
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -192,9 +221,9 @@
       
         <tags>
             
-            <tag> 行业观察 </tag>
-            
             <tag> 避坑指南 </tag>
+            
+            <tag> 行业观察 </tag>
             
         </tags>
       
@@ -219,11 +248,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
+            <tag> 避坑指南 </tag>
             
             <tag> 行业观察 </tag>
             
-            <tag> 避坑指南 </tag>
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -250,9 +279,9 @@
             
             <tag> 人工智能 </tag>
             
-            <tag> 博客搭建 </tag>
-            
             <tag> 运维部署 </tag>
+            
+            <tag> 博客搭建 </tag>
             
         </tags>
       
@@ -277,11 +306,11 @@
       
         <tags>
             
-            <tag> 行业观察 </tag>
+            <tag> 技术踩坑 </tag>
             
             <tag> 避坑指南 </tag>
             
-            <tag> 技术踩坑 </tag>
+            <tag> 行业观察 </tag>
             
         </tags>
       
@@ -306,11 +335,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
+            <tag> 人工智能 </tag>
             
             <tag> 行业观察 </tag>
             
-            <tag> 人工智能 </tag>
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -335,11 +364,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
+            <tag> 人工智能 </tag>
             
             <tag> 行业观察 </tag>
             
-            <tag> 人工智能 </tag>
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -364,11 +393,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
+            <tag> 避坑指南 </tag>
             
             <tag> 行业观察 </tag>
             
-            <tag> 避坑指南 </tag>
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -393,11 +422,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
+            <tag> 工具教程 </tag>
             
             <tag> 避坑指南 </tag>
             
-            <tag> 工具教程 </tag>
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -422,11 +451,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
+            <tag> 避坑指南 </tag>
             
             <tag> 行业观察 </tag>
             
-            <tag> 避坑指南 </tag>
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -451,11 +480,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
+            <tag> 避坑指南 </tag>
             
             <tag> 行业观察 </tag>
             
-            <tag> 避坑指南 </tag>
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -480,11 +509,11 @@
       
         <tags>
             
-            <tag> 行业观察 </tag>
+            <tag> 人工智能 </tag>
             
             <tag> 避坑指南 </tag>
             
-            <tag> 人工智能 </tag>
+            <tag> 行业观察 </tag>
             
         </tags>
       
@@ -509,9 +538,9 @@
       
         <tags>
             
-            <tag> 避坑指南 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 避坑指南 </tag>
             
             <tag> 运维部署 </tag>
             
@@ -567,9 +596,9 @@
       
         <tags>
             
-            <tag> 避坑指南 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 避坑指南 </tag>
             
             <tag> 效率提升 </tag>
             
@@ -596,11 +625,11 @@
       
         <tags>
             
-            <tag> 避坑指南 </tag>
+            <tag> 技术踩坑 </tag>
             
             <tag> 人工智能 </tag>
             
-            <tag> 技术踩坑 </tag>
+            <tag> 避坑指南 </tag>
             
         </tags>
       
@@ -625,11 +654,11 @@
       
         <tags>
             
+            <tag> 工具教程 </tag>
+            
             <tag> 避坑指南 </tag>
             
             <tag> 效率提升 </tag>
-            
-            <tag> 工具教程 </tag>
             
             <tag> 免费工具 </tag>
             
@@ -656,11 +685,11 @@
       
         <tags>
             
+            <tag> 避坑指南 </tag>
+            
             <tag> 行业观察 </tag>
             
             <tag> 认知升级 </tag>
-            
-            <tag> 避坑指南 </tag>
             
             <tag> 学习方法 </tag>
             
@@ -687,9 +716,9 @@
       
         <tags>
             
-            <tag> 行业观察 </tag>
-            
             <tag> 避坑指南 </tag>
+            
+            <tag> 行业观察 </tag>
             
             <tag> 职场技能 </tag>
             
@@ -716,9 +745,9 @@
       
         <tags>
             
-            <tag> 避坑指南 </tag>
-            
             <tag> 人工智能 </tag>
+            
+            <tag> 避坑指南 </tag>
             
             <tag> 效率软件 </tag>
             
@@ -745,9 +774,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 工具教程 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 效率软件 </tag>
             
@@ -832,9 +861,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开源项目 </tag>
             
@@ -1089,11 +1118,11 @@
       
         <tags>
             
+            <tag> 资源分享 </tag>
+            
             <tag> 行业观察 </tag>
             
             <tag> 认知升级 </tag>
-            
-            <tag> 资源分享 </tag>
             
         </tags>
       
@@ -1118,9 +1147,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1147,9 +1176,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1176,9 +1205,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1205,9 +1234,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1234,9 +1263,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1263,9 +1292,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1292,9 +1321,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1321,9 +1350,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1350,9 +1379,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1379,9 +1408,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -1524,9 +1553,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 博客搭建 </tag>
             
@@ -1553,9 +1582,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开源项目 </tag>
             
@@ -1584,9 +1613,9 @@
             
             <tag> 技术踩坑 </tag>
             
-            <tag> 开源项目 </tag>
-            
             <tag> 运维部署 </tag>
+            
+            <tag> 开源项目 </tag>
             
         </tags>
       
@@ -1611,9 +1640,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开源项目 </tag>
             
@@ -1642,9 +1671,9 @@
             
             <tag> 技术踩坑 </tag>
             
-            <tag> 前端开发 </tag>
-            
             <tag> 代码分享 </tag>
+            
+            <tag> 前端开发 </tag>
             
         </tags>
       
@@ -1729,9 +1758,9 @@
             
             <tag> 免费工具 </tag>
             
-            <tag> 博客搭建 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 博客搭建 </tag>
             
         </tags>
       
@@ -1874,9 +1903,9 @@
             
             <tag> 免费工具 </tag>
             
-            <tag> 博客搭建 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 博客搭建 </tag>
             
         </tags>
       
@@ -2218,11 +2247,11 @@
       
         <tags>
             
-            <tag> 知识总结 </tag>
-            
             <tag> 工具教程 </tag>
             
             <tag> 技术踩坑 </tag>
+            
+            <tag> 知识总结 </tag>
             
         </tags>
       
@@ -2305,11 +2334,11 @@
       
         <tags>
             
-            <tag> 知识总结 </tag>
-            
             <tag> 工具教程 </tag>
             
             <tag> 技术踩坑 </tag>
+            
+            <tag> 知识总结 </tag>
             
         </tags>
       
@@ -2334,9 +2363,9 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
-            
             <tag> 行业观察 </tag>
+            
+            <tag> 观点输出 </tag>
             
             <tag> 思维方式 </tag>
             
@@ -2392,11 +2421,11 @@
       
         <tags>
             
-            <tag> 知识总结 </tag>
-            
             <tag> 工具教程 </tag>
             
             <tag> 技术踩坑 </tag>
+            
+            <tag> 知识总结 </tag>
             
         </tags>
       
@@ -2537,9 +2566,9 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
-            
             <tag> 行业观察 </tag>
+            
+            <tag> 观点输出 </tag>
             
             <tag> 思维方式 </tag>
             
@@ -2738,11 +2767,11 @@
       
         <tags>
             
-            <tag> 行业观察 </tag>
-            
             <tag> 技术踩坑 </tag>
             
             <tag> 软件测评 </tag>
+            
+            <tag> 行业观察 </tag>
             
         </tags>
       
@@ -2854,11 +2883,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
-            
             <tag> 行业观察 </tag>
             
             <tag> 认知升级 </tag>
+            
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -2912,11 +2941,11 @@
       
         <tags>
             
-            <tag> 观点输出 </tag>
-            
             <tag> 行业观察 </tag>
             
             <tag> 认知升级 </tag>
+            
+            <tag> 观点输出 </tag>
             
         </tags>
       
@@ -3115,9 +3144,9 @@
       
         <tags>
             
-            <tag> 博客搭建 </tag>
-            
             <tag> 资源分享 </tag>
+            
+            <tag> 博客搭建 </tag>
             
             <tag> 办公技巧 </tag>
             
@@ -3376,9 +3405,9 @@
       
         <tags>
             
-            <tag> 人工智能 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 人工智能 </tag>
             
             <tag> 开发工具 </tag>
             
@@ -3463,11 +3492,11 @@
       
         <tags>
             
-            <tag> 知识总结 </tag>
-            
             <tag> 工具教程 </tag>
             
             <tag> 技术踩坑 </tag>
+            
+            <tag> 知识总结 </tag>
             
         </tags>
       
@@ -3608,9 +3637,9 @@
       
         <tags>
             
-            <tag> 避坑指南 </tag>
-            
             <tag> 技术踩坑 </tag>
+            
+            <tag> 避坑指南 </tag>
             
         </tags>
       
@@ -3664,9 +3693,9 @@
       
         <tags>
             
-            <tag> 行业观察 </tag>
-            
             <tag> 避坑指南 </tag>
+            
+            <tag> 行业观察 </tag>
             
             <tag> 设计工具 </tag>
             
@@ -3749,11 +3778,11 @@
       
         <tags>
             
-            <tag> 行业观察 </tag>
-            
             <tag> 避坑指南 </tag>
             
             <tag> 运维部署 </tag>
+            
+            <tag> 行业观察 </tag>
             
         </tags>
       
@@ -3822,7 +3851,7 @@
       <link href="/posts/a4b9adb4/"/>
       <url>/posts/a4b9adb4/</url>
       
-        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt"     data-hbe-format="4"     data-wpm="Oh, this is an invalid password. Check and try again, please."     data-whm="Oh, this is an invalid password. Check and try again, please."     data-salt="eeb40c29d4ef98e6efa8a25cd482c1d1e6e988922158fb850ba3f0902da7f653"     data-nonce="7f842f3cdf20f7f9357f0a39"     data-kdf-iterations="250000"     data-auto-save="false">  <script id="hbeData" type="hbeData">    4eb4245e4c49c4b1d8d46e41ccac300ce39be78a8844b06ea6e54dfd432bb7b4f7ac2ed13ace32c032b37cdaab990e8e4ca91160c41da92b992793e670fc60913fd4a0c8d8c08798b9b36b7842f63df326bd08f0c923c4f163212743e11e3116495470e62c9455f519ea0483a1bc813b0952e35f6e007fc35a832dd7946f20cd5dacf7afa514d3457c6104e6537266194563791e3e45216a533de50c18b08b499827b6c305fc603a3f5e0a3a76837ee19a71fa8f5086341de2990c6e51c077ca4f8c1a05ac77581a671e671694715765e990252b1a11f30ef219134d80daaa7dd728b4c3a55a25521d78dfcce5fa145743c73faaba211f3dea6064ad55212ad358266677f366be126f24141f41c5d10783cb33a9de8de5ef89ecd41ced8b5d329d7053634dac9ee154cebed1a39f8e61304b3a86968716d79159934148d66793e23d3bd5c4b649aafbe2a2c2ccbe9b0e187aa257c3b63f29c70145c32e05997a616132fab8955dd598e2118bc61feaf816646865694dc4e4d338cd8ad47118e4ec01f8c7f597b84a9c5fd2d3a4b33565b12582b4fa18886d716c7a446fe2c76a62d814c8ba847d88dda79b543b58e7cbb0891774be555cd7c804343806f2f040eb8fccfbee9fb7de6c42673f3ec55b0cdebb9d98c9d3485057288b4a60106c29fc5ed6802ee2fad74c847c305d2ea56eae7f14509a24dc0aa38e13e8be9fe1d7eb418e7c80c24bbb644477c52fc9de1f5983e144203fa38c5ba96b3dfddc40622d2da4c31d6fd88004ff98461df2d4037ddf459d2ede7772ce0d5bc79ba91f3c22401880edc56bf4d9a9733e258bc32be4356b7b455e795bb8cc63da69ff04754849de71d72a6e79eb4d81aa94cd8e76b1617fba0fa99f5706f6b26c62c280c8037023306fcdbe3165d5e33859ab18786bff5c3bd873bc64bc938220fd6bab01ba2c83fa59947913b281b17c2c342f468f178cc952fdf5820c64c98740a0381391241b28953640db8214024b051976e30bba018ef5f49884455be6dcd47a5d2e37addb67792492e6fa3659b7af40459d19960b6f2a39940c4b241ea798ff8917cc05673ed13581195d5fd68dfa682a35b957f639549e033ddfebabf160eed48e347e02df74d40d17cb8408e4f08c350856d3de4da3f2e5f4d8fc5307aebed85c0cb6db3f954a02816e2a5da175d59ffb3272d81013e3c375c302d1142f39eed0c4042675d2f5f06ac8c2655ac8f694919281a8f1b14a3c1a31788d6311346df66f68c67e63daebef8924cfa5be0788d350da173ae4b75d828125d53b32bb552218dd00347285797552764f97a68c92f7c2a74851781b5798849ca54091ff6a100d9a42c0a056aabe07e09fd20d9093cf51c635d891050ebc1ad0adffb7a7daf861744edcd68d0e4e83e63bd1bd8e6df0ba60eb0b7faeea3e91eade96460d4facdecd1be9cba47103cbaca3f6d02f36515b144c875c1983a8317c7884004837ee1ac61d45f4986cc03a6b300618ab76f55d886d8629111a1b49d48d2da6bb72cbaef005a126b850d04d382e363b889e083e05127b22319a704bfe9e5c35f8643afb3743d0566046505ed3a0504c325b2485555eb46fbe369d23959a343b68a637d0d91efa7edec2727568879e66e95c407832e66c4b3e580f88a44d50996fef52487a5e147871b2b248dc334fbf1920b6bc9f699eefa81336570c6b54144734bff3cba1254a048482d45edc58c4678a7e91f2d678cc5bb421dcbb7bbc1fe1dcfbb9be518ab398604d39dc7a2a87669018ea49043ad12817766c24bad9bea784e31b0fab410d111672dc68cc9f96ffb8d6232b0036c63f3f6db199c69fabc79eb86ac4d197f697c5f8f78d8faa330cd12e3a2ee56d4d9ce2c4ccb6744f3a27a5524c86c393eec23fd154e78eb8a096fd86db60d49ae7423e5dd2e6b26450b0de12afb358912d1ca394c161e0da8977f77757863cba25652d7a2bafc2d8fe453b786d331556a239633a9938174bf4982c7b4962df6ed47a59b5047d3efbbff8e6281770cc1ae6e3257b3de8f9844ce4b55432d46c7eb104afea68e6410d025b24416c6dc23f0c063ec0a0bd6f50587194c60f2f27e6215200b2e243a7549c5ef5f208039c8194a97c9d2691716a31870c7f934e0fb859dafc121e5fe2c2337c4a4749b7054cb06911fda7292dd9d2859232730df2b45a3350a59ba006442fe57aca3ba678701f12b82cae312165f16dfeda52ba6b975504bd5945231df0c4157f3076ab468a1da514ddb9df7ca8b132ee770b34e4fa917f2bcf0eaebe9f3035cc0029f7e00dd9db9874643727814ba9561687a5f85bd692350a8119b569c4045d27462535cd8fe1b99770be8af2098e15dce7420b3b9b880f2610d4db16e014209cddc2684a4da2731b1c89be778910bf59366b3fdb81ae39b56d80a2489d008f6519a0d2ac636870a243804357eb6fd975874d2f5ff0b7056ba2678e6810fa2b35c6ab2899739135a79d2c742956b6f5cad1da86ffc4903db8845bf68986747c54c17da5699d23a99d38fa274b52b667948d42b7e5a74e6f3c4e8385aba599914a5c5b4bab7f169b0877187e0cc391c69163fc784d2fc7ed730de15e5bb8d547c42b961ad8bfde28f143c5d15e1888565f3b4c3bbed0386d05ae7681ba211ec5b4c87a35de2aad480a542b6a71b6c8f747433c90102fc12d919b0b4d82c52250949a4eef4b2ec5189aa3b6838a81887c388207c076f37634a4fedf1900b66e370bbfc8064879436afc78a5d630c887e8476b22c1614ca544dfe7a7e13a1b52c18892a429a6407c580a192f6692d468006a5509d835a1ed8bbdb79f924e12d0b382eb2a52ce323f9b7f0d04701c0125b047bb74f7bf365120fd46264b8a0c80694e63bd27728dd629dcc476d1d28237551ff63e79da1427dc8a9324b3939b819b703fb7db5db3839c66242582d9452da8e3a7680a420c01c434e787d174dc2653ed26cbab26c62b3dce3a38c824eaa9596d91f62b52e6d45c692ea69a2b76dd5dc1ac5e7906dbfc15e19cf62e81c9df9fdce4609d28afe23e427a14297680e3789a725d514c2e7b235b86753b2306cf5f04bc6b1edc230aff3f3d38eb36d7af59f42360a6ed2a7fe199b529366ebcee5c1c8550f485440749863a9943244f74066007b0a9ba9ca3ca69f1a9a4c88b87651516c8fa2c2aebf4a287679f644d6b8ec2c299fe9bc12ce5e64b89704865247e3c407b3a74ddacd04c50c6e45eecc91c65b450400d6c9f4e967cc608358b2716be48ca18101e53b69f4fbd7fee842038f6c2c14f2b15542f101385f655523e33edf0550ef1c299e623baa3d9b77d0246613929efc4295e673a5c7d75a96bd32fcffde9b45851c2b242757eb31efb40ce26c14dac855c99869166305d9143c473b208585710bf82b0cbd99c5e274a164730b5719811c435176c42d45dccd161e7859c04a528fc2e8d9d916478036b0a8403ed9a916276ec2242df0f80ff3528941416656b6a6a380beaa98c2a23ef9edadc9a6abea61d7f36e5f865974054e954c72529ef3bdafbaa6f3bb2b7e1a87cc53bad1dc727333a08da8318fba3588c2eddefbcb6c387ff05c68eeda7a923f77afd7edf9a2d75cf6d14200bac56b4f28eaa000b571e39bf66d2b72a6aa7d1e445d4dd252b8f402d421e0f9a5a57fd41609826a0164e2cadfcb0e5de1be0029c178e5931b7bc9d3fb18a74a1f6285a835df29c5e4cae6accd378dd76920e6b393dfcfdef766153d4a22b919466b586d27f93329f9ef488a6abca912a66940c442070f3de8fe47c84f90cc345ffdf4a565715f37e87126858032c49295c671b60a81371fd06f4a57dd19bfe859534a9a814764d1b30b51717b04eda916b48f8915a023b905f8e0f0b924949109749a8b21e807c8fb9beac8285d016d902b439d50a4163f99b196afdea7342f96db4d378acfadee46240696c467cfc5c25b0e15cf87c9c7d6a2ed100b75cdaf39a9aef27078f9f5a5951df66ca4bae41f806600cb4ad2fc9e69c8e327dd6f5d323f9ae4d6317bda0e09f8ceb3dd1954490f5f99c1060644dd5b6d13a7edc74a63f44123094bf2cafefcaddff7700b02e5caf112a993bee6cf241fceb77460f18a0d0f480dd58c6e47e19411308c74b4ac1f9a5650bad65b2356b93532d73f826b086b8b5a58433b814f45401e0031f3ecb84d1e93475022141ca2a13790442c16f8d967d2a344ba611f4f707b8c601b995273f21fac3b2fde392da9d130b1f93c5107f676532305dc0f1583c185c464787a2d7e74d7cbce630214b3bd7da41a844ef22f407930c6079ce9d2e082f8693a0746566255eb9034950671a4079556b2531d6edf73b72667cb3c2b970008c7f41601fde6c6d80b361cf0eb83f2c96510f7b5defb2bcb2d762bda91999c2ba29fbb9cd48097b338980eefcae3fd2170c20b7b2f3c9f5af07dc6993fcd8099d5ef67c5c62fc52cb61549c4aa5cd24092b8e86f4f5bf2131a8893d9f7a9e6eebd1e1615652f233998da0c6f0419d863283f60fe351f5341a94df95d237680813fe995314efa65d7e1031434a3cd5219d8609fadd48f63d8ff8f9ed601e41c51ad77eaebdb7c62591ab0f88718ea768152741c02af4b8c827d018d9de9c12081000db2e1513efb2ce071d17b400f7e6bf1490277fd2cdf73452192c88c4d2037b80ee566f3d78e931308a23d5dd356e3f218c586fcfb88f733a98d44239551b06803a3d57e78f9d059aa926c820aa4ddfabad75ff3538977bc2b21c25555cbdb2033d6e5ef8b160386b92e6c12304ef821660c376ae2ab15d7c21b45f3a79a66eec0d3d23ef578f81b919fc4f39cfa821b627cd3d4b8e7ccf3ecf293cfaa27e5a815da42019141498c0ae6f8df4f0e7b5f2b030b574ebf860981f868c7703361eab2e0726b68cced3be815fde207ce8117aa1ddb67e86500d05a5e44e875247a94a76ede6e99a424e83584d88367d07e5c459b9f649458678c0a30286ffe687782e9e23e891733e007b645a825d6683f201afdabe94011d208456aa1dc90640446618c56e3cda8f456c7819dfd310a844ec25cab73d4b957f78552e8d550895e2810ebaa8d93cb27fd10a748153924e298b4283f4e1e06159c356b8fad17bff7e059e5d7b15ed9efbd532e63b4d53c9897140eb1cb7761c59586b57edb7c32369e1d35010e97fffd72b8ad8e2bfc06b2173540fe9a0433f28fd4997a10482812438e83a2268ecd4fd3418b6e1edf7f7c8bb84fc4248e6c42ea8f216f73db3b453f1b038b327aa826ce9b3651308151263d5b45c8c0780b3b3d4c2da5dacaa45a8afa1d8c857802aa6fa7386233b2aa281ae6a3f70121c9ced13e8e9ab4a961401d31bb6e72c92726426b15a37e3eaa3481cdfdae0366f89449e8da4e34b47eb25e7b0148e8ce3925019a713cb08c328cba962afaca4ac6e705e503b94da097ea6b35dd33b0187cf17f0615495d39d74ab25ff5969900a4bb52d41cd304d8a72364e0638cff2261323ece882e7ef8de2e54ec3477d9f9c423f267be19fc03b9f973eb360bbeb0985855328e9a3d22eefd30677723449c6a376a6e22aa0e3d692665fa91a1373dbe0d00f1f438b79c75686de51a51bb2ceae48a92b5b52f498fd66af757747897f074122414855d1d2f9c6b152a8107d0365a54b159b0ae3411a838a1f5609572d435fe5446294c311ecf02dc4e630f2b0387e9081dc94c86179c372aeadf184c853f915380a6654f536b439709349d7ff91969bc1a599b538d1c0762442c413d8abef973fd44552bb43912246db4aa5e821b76b787617e6981e4a4fd9154cbf735dbde5be9040f74cd2a224c3607c5d29b430016c454fe3abd76a9a2e59dd687eaf0ea2e108b3babd57db954a3168ad1be4a9c3e7a140561cc1b716e5e116d3ddf6ed6d3fb9755c  </script>  <div class="hbe hbe-content">    <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">      <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>      <button class="hbe hbe-button" type="submit">Decrypt</button>      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>    </form>  </div></div><script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt"     data-hbe-format="4"     data-wpm="Oh, this is an invalid password. Check and try again, please."     data-whm="Oh, this is an invalid password. Check and try again, please."     data-salt="6a6fa58bd548e050b477f7808a7a6d1f6d054e70033ae5df7b1b05c60cffe5d7"     data-nonce="ebb1be4869139696297b6f1c"     data-kdf-iterations="250000"     data-auto-save="false">  <script id="hbeData" type="hbeData">    74efca5b05588e7eee21af2999352839bdbc6e29bc1e232fadf39162847003939c56be9c2c45a496aaef5e11867632b086ccc243b701a5131bc9c305b04d22c7d0aa081cb9ec6be1f04db40bd030ca55bf4d27f235085f52b21c8056a942ea18b201d6773b91fcccbf86402e591354cd8b5ce876d1e6d6e18225a768edfdc8cf68be89dfd613d8bb99f6e327dc785bc21ae8fadb5ba19c023e0439c3efa97a5952fa0b2c29009f680916dbb6be19da8420969ed8540cb5a322105c1e27bbae46cd909970d8a6f9526b337b416dcf93b086356a7dcefc96b238954c1aed1abc31bd6e13d3f2c3272a190dd766bb1ea8a1001c94828d38026c5558a811fb4b13bae39630d77f33c8043f9970b801039b2d782ed96a2a1223613610e0363c425c9763175d5372f5db38e513171b3c9f0d7e8338a7ecc5cc35d1033db5d99248bb4aa8fc5c8670bd8d826c70c55a00390ab224a4465beaf547c1c1df09d7fed38927d9c2e168c81bf02edede8d58ac01af2f99bf0ff1fe2f6251c16deec5f5e3715a12ab526304997f16c34daa8cb3a789c0a93ab3d7ef70354e0f34c1d8f27bb94e25b6cb3154aee197b992c9ac1a1699516b0c29aa942f7ca77a5deaca33abad9161c47c2241d0e44e21a7f5b919993e808cbc1f7e0bb97cc876eee355c6b1e72f99547167c35955424e89bb1c5b88ab6cb515db24d3c9cdb5685f4b4b8348998a439d03a00336c4cdaaf4d51654c4760c0237bba2f127eeaf2746b0cb7a8cb1444ccfe921e015a45a759fdc6ad0f25730a20595ec9e48481732a1a637ec4410aa38ac02af9dd39e0dbf5d1b8fb254424b37b1698de1198375d054b771f258dbd0b195d7d81b2b2ce564d3ab43ebc245e3c3afbbdee88ec791556d1e48f9729ba62259417ac0ef8d6c5e32fc528968d14b205571fa3a8d63b222a61c5852c89b88f6db75e70a6d6ef1f890fcab7f78bd7819b16d5ac42863b90a8f4a55856e1a20dc9f9f29a0b42e6674130eadbdf6fba133b1b10dec8f3f0b28124f793316b303737eb511791a7253ce6d19be4c9fb8028db80e496b108d1e5092ef3fe665babf272cd3ed6ba4c0058fe1f8ff612b4e9b4c8161998a9a74630835be4c2af300552204a5a740a512e1329c293e63692aa3d3a53b31955284daed0eaf17e731933f67702b8a4751dddce83331854775f84432f216e1210770906a5a0b0759eab0a29184c6c155379c67174e832bb208d0f38507f00ca5ae0e82c678895206cb34b14676dfe4635dd71a4c263a779312791fc3eddaddeb01fb93c7e3080d4282cca1541211b3b1f3d3268b15892b4db75e1c5540340bbe87a5b6afe9c84cd95f741caf06d2e8eafc9786117d9c6a37dc706b947d7b25eb63336d76e1b27644ee990dcbb16acf84474fa0545b715c60f7e46b5983171b8aa3bf8251c3d2b5020c235ca6cb9dd5bb22f6a84f5d355439fc4696ca0e3f1ca8c0726eba8c638db725587ee6917d642f06e1fe41c6ce395a4d09a21397b7e69f53b46389d32cdca075ad02b5706f3bdd76d2b675202cfe5ad9eceab0bdbbb13894ae9ca3b338e24e4d1887492132af7f7e894db343536d3020ad74788043be6c35db4787e7f255f7cbc86229393fca5307d5a86b677b31e6f4ac9b4a32d21b1e125903a584f9215f2028ab010a5dafaf8f12b1ded33c2e064b525ccaf42fce2c3d2401b18fac2d744eb11e0bf16f2e851e82a0d8ee0c7a12f635e943dc37ff4bc1b53ba1f23ff9b897ad5aaea2613f03d94613b9df730f69adcbcd4002d67a3ed511a01816392cbcacc8bc5f69dd82a2f25f93784797791002e1ca7865e0f0c20ff47468b857df1a4cdabc6e30121835d115d2f6ecf24182833f784b64fa65420a2b19148ffe7c7287b24530e09d920ad4136a223cb956e47cfdfe97700a768f491aa421d1f39b8bda62267b7c203b6a4e127eafdab0b9c3c25d3e0645b4c2ec95593aed90dc39adf639965956d8e80a525595bc2fa8970c3a6c8c97df49e19bddd3af5823ad112c3796774c53a5486b39865b9ed5c6d47bb25de96ee9a78bfcb2e51d6ba2fc447e5c42100c16a865ccac35c23f6e45568b369b37f545220cff4787a42fc7f8116f21a41eff5b953f48cd6311d7acc026e00eba2e6174a126faaed4619750a311f3d77d3c014b86a90745b9d9e9d6020fb8387ae5972cebada11ae3d3a6dfb1f5aa53b3ef4f2c8fdd8b727f49f30a2c957dd8fe5d51c35e16692fdc1d7313263a313158ffb3656fb634dbfe66a80ce306ccab53859dce7c566f7975cff57658dee59b7ace486dc709e845af8ea06d90ba47f2e02df580dabbbfe8b09ef419e2ce94bec1091bbddb3b3db208aea99dcdcb1f106142eafa8f246c0d65815237356daf02fd409119bfdea0e2b5bc214aaa1ad48fe4f34d997bb0de1912fb40f6b4970c5495938ab48a8ecb7b6f9e73f3ac9b8195f0499a92b0bb3e9310ac936373834f50544c76151e5754ff5d62aecfac919d0bc9d9deb9eae23499701e3c2a7fe1c49583f2ffff9142e55b9d3bd518652e85acf9293e349fc7439d874554da274e666b960f53543a85b5961c6bb35fffef2a821bcc546e6e2e1aa39a52514c3fca17c8d04f2091399e83871b1a38f00ebfff254ca222ec357def87cab8b4fbabf42aaa7dd462c8bab3fe606227de35e05e9bcde74fa7c4fb51771ce6a97ee0c0fbee7f7db9ccef117eb6bd72ca54a2c0f3318a221bbecb5645785ada0c5d890364597ed7929a1ed782f643238f4f5913cff27355ae8b19a5915476ef9d4c09dd3a5846f4f7cb69ef3cd41202bce77633aaa08622c508b3689875ff6b1abe8c6d19741328ec8013dc402c711d0ea95f6d063aa49cf5f7e779e3d6da5ae2bf2815e570b679ee184ae1e8f63c589e4b6a56f04e7f3986cfeaeb9d50269ba3d3b7bd3e11ad2e16e6d3bf54013b5397588cb8f1ffdfce7507a050d8aeaaecda16511ab0b0dd9f4e6f6da9330030b035d7c3515fce5c8503b984530325f51032c29e223cbe15445295736343722e576d3b82479f9f855bb5f91a928f51ba4093544660b102676a3bf5f5ff4d265fd9e04369b80860497d565b25c0e348a4fb4c4f878915bf5a44501b8b424875424e29cf56640aa00cbe3d9135303e6196e415c495f324e41eb231ce7a1226f8ecea1a2a0c8e130a03a6745fec5b696af970ac6b6f3ebc3663f263aef568e87bdaa7d4a85bbf420e155a4e47e8c0c1cbf533848c5769e4030c997c9d467c418c1ebe84a5f002abd5535e9ceaa61388de686575157aeb5bc9c8d1c8ab4ef8af92e59fec6bcf196d95457cbc7034ed33a2f216f49a4832a5983168907207a0de96aa1a81a90ca2d6413eb0d539e75a1ddc25ada17dc69fbd037ea6ac3bddc13b1f51ac6185ea01a1e30308b9d655da9094c9b3961f750c7edaef32e6be34bcb962f93a921966ca6c0e2bc3985d269c73d6009e0a3470192546a502f74f944c6b57fbde31c9fbd411d231e987e3955b7ab0a45d4dee10816de5a8ab4733aa63179dfff7e987d450fa483d3cbc70a66c8967c1af784507f181005bdaa0ced10dd0adde4882756ea0b5d9f1a0f9403d1631730b55cfec1fc1dc7a92b4307aed6dc1dab85ef7b1482caba3063e3c878a6615c5f211c598e9b3b39ae04490815ae64967fad758ea12202692d84dd4fa158e9c3992a1dea3d89c30aea188fd204db0e7041a1a376d9d3df15bd0a31023678986fb0f6454d044d56888d3ddee24a3a6b25612462c90be341d47e5bbf6e720e18dafebe3683e932f7f777d4067326ed6220a0fd75cf1db67a609ddb023ed03ced0e39f70beb88ed596b0f0e849eb6d93bcdc9a1e0b02755a4d27f6bd901fc3a8c9d7d01735ba53e14d0a72069731bb5e09c6a72eadeeff408d3bd14ba95ff3a35e8d5508c5ac4ed47d06035b57f7148633a1c1a540766a6589e251efce1b402e8ee814bbbdb0f994d2ce2f0a33bf62f3342788eff5a7b0e085eb447deb24526d4b6843f9442ed37ba41385d142d74b648cc4a273e36db3288910d56cb352236e8b7f405040376425f8dda05c46e343b087e657083f746ccd34a7f932ee5f99dd54bf640c5215d2d5bbf34b11c96d97b2a7c9f4efe5cf2ea3f3bcd7f3cfa444fb215f6c4c348bb18ba249b8769f66e590919c9f9bf29ac486504175e5fe71f9602378e3374c28306ac01b232e236e9d2b958445b2dd8a129394ba11fb125eec56d6990ae13bc4c2435c14384e7f373db7ba0967520400b174d806a020f07025319963f0a994599b94097e5c1c5b355e519e9c2f37c1666cbb22de04e815f32a9fa258296cae12abe0187029ca62af0970c1707781f5bf33c4c6249726e311c1b42d0c5afe78763c8f673bde2d48f702fe60be3736eec0358d237d4a7dc3b0e93afd22ee5af8fb5360b9dce425487aea31422c6cfa7ee2540cd284359174a11d5413c34665264a7a8b61a586f69c20aaa8c31f1296b71c2ba7820962a8882376500c6569e55e398a4f388637b312b92b7972004f93231b855535e1d9003b4c35ea128af9805e0f113fe4658dd27f5d92a3cc8667659e4869e9f4cb21d37196433ce0a9a32f670d63006b714aef32690a62da200e3157ef6efc82a74d869b8fe889baad0bd78fabea6af14a7c34229d19c810fd6074f3c5f2791668d8a9379dd21bf115a850dccf61dee22045b6db13d0a82fed67b980ff31a996adb6ca0cfa789b8c092a30c43d1df25a35a9d36056d17cc685c4e6b3aa1c397c73661475e9fa32cc3986b1ca897c9816b0649cd8e00a805a43e59e76dc5a3f1139e206504af3c9f6a6e537cac3af9988dac0f8321e3d933b53f4bd155665a617ab4a2cd9eeeb47ca5bd8146455105f1df8a25615f3d98a5f1d2b9f15bcd01ccd91897eeca2bf9a9cc85adc8ab3587952cede37fb4622d8c5a3dc9cec2091e18d203945a1458817a6ec7f1e41e705451e7aa40462a508267450c6dec879ad5a3bdb07a7ead00c9835a3ecd87b4a4f541d760bc38960d8ef44e220f8655cc25fbb84268942aa1e528c951d5c4e8f7abc5bf81fd00164c5296e56661d258c49b1489b2bc6dd7c21ee983e2bffcf09bc705f242930331da99fc8587e5bcf2764cbb103080632dc370947f30a0bfacad75734d85e3f8d7712f97a8f2d6607f217034f9c783e2ba37defb6d258c1b1bc907eea1215771754a205cc9f9af540bba20b556e5acb514e9eee084dd48e4dd179788f5770e95669cd0c40c24cecce044765fd0bb1f48995ae5fc1b877e1a4d5b6d2a54e2eb82f8cb7d765110d3348c516ffff1b1a0d7f74f2803fd4802d0948e86919435f6e0bc75c39316bd49dbb33a6a655231dc3e43c398ecc657034f24dba28a20472c19e32ba921976297242bc0e3d3b5d994457cc6361f33de45f5f5993a1405e2e5fa6965c1ca6859f9ad4eff854c93952e1560b6c9f2cee7ae005ac21ebf00db614698391ed74b437128bbe83e6f67ca66eece9aa18f21c4874178eabb670af57a352ce92b9f55a3dd47936a0a3a77c7f3f191c11999f0f9f1f6b71d9343a12b3fe3c846b4f790adf88e144d21f5a25c4692bbb1dacab5b351e04e2a438f8c2e0b1a643a9d914c570398eaebb9c213243c53f860ac9205b9955eb8c7ff4da307f7291581fe2689961082a529898864f11201574f33b439eb86ad9c6bd5a942259158b17fd45b2fb8ee9e91e0567e198ec641e5784ec65d27a29727ed18f6fbdd453a9ca5922a66d3e7866a42b7f1ddf2169fbc24dedf837a054546b5df8a42364e949cde887d2c29932e9aebc39cd05c9754b58b2f782c92b8d8e5e8f81bb65147a3a9ddc7b9be4173e03a3f22866cbb9a73c970be75d520038a773a4025fa2133c8dcb8b6a15695e983be7d163cffdb557543611f72af0d2b4b13098cc4c8fc825ccfc00da1273d2  </script>  <div class="hbe hbe-content">    <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">      <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>      <button class="hbe hbe-button" type="submit">Decrypt</button>      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>    </form>  </div></div><script data-pjax src="/lib/hbe.9e70f1e1d2.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       
       
       <categories>
