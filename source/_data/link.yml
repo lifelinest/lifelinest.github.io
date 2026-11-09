@@ -41,7 +41,7 @@
       link: https://blogwe.com/
       avatar: https://blogwe.com/img/logo200.png
       descr: 博客路上不止你一个人，还有我们。2025，致敬还在写博客的我们！
-      siteshot: https://bu.dusays.com/2025/10/27/68ff796757cfc.webp
+      siteshot: https://cloudflare-img-bzb.pages.dev/file/posts/legacy/1789890901323_o22.webp
       color: vip
       tag: 技术
     - name: 笔墨迹
@@ -95,21 +95,9 @@
       recommend: true
     - name: FrWalker
       link: https://blog.frwalker.top/
-      avatar: http://blog.frwalker.top/favicon.ico
+      avatar: https://blog.frwalker.top/favicon.ico
       descr: 听风雨，问星辰，随心归✨
       siteshot: https://blog.frwalker.top/siteshot.webp
-      recommend: true
-    - name: Yeppioo
-      link: https://blog.yeppioo.vip/
-      avatar: https://blog.yeppioo.vip/static/img/avatar.png
-      descr: 梦想成为庄稼地里的读书人.....
-      siteshot: https://blog.yeppioo.vip/static/img/screenshot.png
-      recommend: true
-    - name: 小赵の破宅
-      link: https://www.ziyis.cn
-      avatar: http://doc.ziyis.cn/avatar.jpg
-      descr: 让美好持续发生.
-      siteshot: 
       recommend: true
     - name: 青桔气球
       link: https://blog.qjqq.cn/
@@ -117,40 +105,26 @@
       descr: 分享网络安全与科技生活
       siteshot: https://q2.qlogo.cn/headimg_dl?dst_uin=1645253&spec=640
       recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: 前尘小筑
       link: https://mnchen.cn/
       avatar: https://image.mnchen.cn/2023/12/mnochen.jpg
       descr: 虽多尘色染，犹见墨痕浓
       siteshot: 
       recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: Aurielの小破站
       link: https://www.auriel.top/
       avatar: https://blog.auriel.top/img/avatar.png
       descr: 生活的最佳状态，是冷冷清清的风风火火
       siteshot: 
       recommend: true
-    - name: 未央の童话镇
-      link: https://forever97.top
-      avatar: https://forever97-picture-bed.oss-cn-hangzhou.aliyuncs.com/img/avatar.png
-      descr: 在人海里梦游
-      siteshot: https://cdn.jsdelivr.net/gh/Akilarlxh/ScreenShot@gh-pages/forever97.top.jpg
-      recommend: true
-    - name: 安小歪
-      link: https://blog.anxy.top/
-      avatar: https://imgse.koxiuqiu.cc/imgse/u/19/2025/02/20/67b737d854192.webp
-      descr: 记住你！自己！
-      siteshot: https://imgse.koxiuqiu.cc/imgse/u/19/2025/02/20/67b739bef3f9c.png
-      recommend: true
     - name: 幻雪的博客
       link: https://huanxueblog.top/
       avatar: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_avatar.webp
       descr: 腐烂于花海，致死于所爱
-      siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
-      recommend: true
-    - name: Leonus
-      link: https://blog.leonus.cn/
-      avatar: https://q1.qlogo.cn/g?b=qq&nk=990320751&s=5
-      descr: 进一寸有进一寸的欢喜。
       siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
       recommend: true
     - name: 葱苓小筑
@@ -165,18 +139,14 @@
       descr: 点一盏灯，等一个迷路的夜🍁🍁🍁
       siteshot: https://seln.cn/img/a.jpg
       recommend: true
-    - name: AirTouchの小站
-      link: https://www.xsl.im/
-      avatar: https://www.xsl.im/avatar.webp
-      descr: 岩间琉璃云间月
-      siteshot: https://www.xsl.im/screenshot.webp
-      recommend: true
     - name: 泠泫凝的异次元空间
       link: https://lxnchan.cn
       avatar: https://lxnchan.cn/assets/logo-v2.webp
       descr: 先空着2333
       siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
       recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: Xlenco
       link: https://blog.xlenco.top/
       avatar: https://q.qlogo.cn/headimg_dl?dst_uin=1043865083&spec=640
@@ -189,43 +159,44 @@
       descr: 学习技术 分享生活
       siteshot: https://s21.ax1x.com/2025/09/29/pVomdB9.png
       recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: 無名小栈
-      desc: 分享技术与科技生活
-      url: https://blog.imsyy.top/
+      descr: 分享技术与科技生活
+      link: https://blog.imsyy.top/
       avatar: https://pic.imgdb.cn/item/65bc52b0871b83018a06699d.png
-      screenshot: https://pic.imgdb.cn/item/65dc47009f345e8d030b65ba.png
-      rss: https://blog.imsyy.top/rss.xml
+      siteshot: https://pic.imgdb.cn/item/65dc47009f345e8d030b65ba.png
       recommend: true
-    - name: 小冰博客
-      link: https://zfe.one
-      avatar: https://zfe.space/images/headimage.png
-      descr: 做个有梦想的人！
-      recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: Adil
       link: https://blog.adil.com.cn/
       avatar: https://blog.adil.com.cn/img/icon.png
       descr: 行胜于言 德胜于声
       recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: ImQi1 / 棋
       link: https://imqi1.com
       avatar: https://imqi1.com/avatar.webp
       descr: 做技术的分享者、生活的摄影师、时事的评论员。
       recommend: true
-    - name: MoyuqLのBlog
-      link: https://blog.moyuql.top
-      avatar: https://bu.dusays.com/2023/07/29/64c4f45ee421b.jpg
-      descr: MoyquL与你同在~
-      recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: CC康纳百川
       link: https://blog.ccknbc.cc
       avatar: https://cdn.jsdmirror.com/gh/ccknbc-backup/cdn/logo/CC.png
       descr: CC康纳百川的小窝
       recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: 2BROEAR
       link: https://blog.2broear.com
       avatar: https://imgs.2broear.com/2broear.png
       descr: 兴趣指引方向，会玩才会学
       recommend: true
+      tag: 技术
+      color: "#4a9eff"
     - name: Vian
       link: https://www.vian.top/
       avatar: https://www.vian.top/avatar.ico
@@ -236,11 +207,75 @@
       avatar: https://s21.ax1x.com/2025/07/13/pVlsr8S.jpg
       descr: 努力吃上更贵的雪糕！
       recommend: true
+    - name: idindoo
+      link: https://idindoo.com
+      avatar: https://idindoo.com/upload/有底白字圆形logo.png
+      descr: 好物分享，不止代码。记录 NAS、Docker、AI 与开源工具的真实实践。
+      recommend: true
+    - name: 阿涛の小破站
+      link: https://blog.emohe.cn
+      avatar: https://blog.emohe.cn/favicon.ico
+      descr: 记录折腾日常和技术分享
+      recommend: true
+
+
+- class_name: "⚠️ 疑似失效（待复核）"
+  class_desc: 以下站点检测时连接失败（复测仍失败），可能域名变更、服务器宕机或被代理拦截，建议人工复核后再决定是否下架。
+  flink_style: anzhiyu
+  hundredSuffix: ""
+  link_list:
+    - name: Yeppioo
+      link: https://blog.yeppioo.vip/
+      avatar: https://blog.yeppioo.vip/static/img/avatar.png
+      descr: 梦想成为庄稼地里的读书人.....
+      siteshot: https://blog.yeppioo.vip/static/img/screenshot.png
+      recommend: true
+    - name: 小赵の破宅
+      link: https://www.ziyis.cn
+      avatar: https://doc.ziyis.cn/avatar.jpg
+      descr: 让美好持续发生.
+      siteshot: 
+      recommend: true
+    - name: 未央の童话镇
+      link: https://forever97.top
+      avatar: https://forever97-picture-bed.oss-cn-hangzhou.aliyuncs.com/img/avatar.png
+      descr: 在人海里梦游
+      siteshot: https://cdn.jsdelivr.net/gh/Akilarlxh/ScreenShot@gh-pages/forever97.top.jpg
+      recommend: true
+    - name: 安小歪
+      link: https://blog.anxy.top/
+      avatar: https://imgse.koxiuqiu.cc/imgse/u/19/2025/02/20/67b737d854192.webp
+      descr: 记住你！自己！
+      siteshot: https://imgse.koxiuqiu.cc/imgse/u/19/2025/02/20/67b739bef3f9c.png
+      recommend: true
+    - name: Leonus
+      link: https://blog.leonus.cn/
+      avatar: https://q1.qlogo.cn/g?b=qq&nk=990320751&s=5
+      descr: 进一寸有进一寸的欢喜。
+      siteshot: https://testingcf.jsdelivr.net/gh/huanxueshengmou/picture-host/huanxueblog_background.png
+      recommend: true
+      tag: 技术
+      color: "#4a9eff"
+    - name: AirTouchの小站
+      link: https://www.xsl.im/
+      avatar: https://www.xsl.im/avatar.webp
+      descr: 岩间琉璃云间月
+      siteshot: https://www.xsl.im/screenshot.webp
+      recommend: true
+    - name: 小冰博客
+      link: https://zfe.one
+      avatar: https://zfe.space/images/headimage.png
+      descr: 做个有梦想的人！
+      recommend: true
+    - name: MoyuqLのBlog
+      link: https://blog.moyuql.top
+      avatar: https://bu.dusays.com/2023/07/29/64c4f45ee421b.jpg
+      descr: MoyquL与你同在~
+      recommend: true
     - name: 回忆中的明天
       link: https://ichochy.com/
       avatar: https://avatars.githubusercontent.com/u/6365006?v=4
       descr: 码农小站，写点Java、Swift和感悟
       recommend: true
-
-
-
+      tag: 技术
+      color: "#4a9eff"
