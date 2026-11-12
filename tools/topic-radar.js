@@ -498,6 +498,7 @@ function main() {
   L.push('> 选题方向 = 你的真实内容矩阵：**AI × SEO × GEO × 建站(WordPress)**，垂直语境 = 外贸运营网站。');
   L.push('> 雷达先算你 ' + prof.total + ' 篇落在哪些矩阵格，优先填**空白/薄弱格**（如 GEO×建站、三轴/四轴组合目前全 0 篇）。');
   L.push('> 每条选题都标注「落在哪个格 + 能和哪些现有文章互链」——单篇是个体，成网是整体。');
+  L.push('> 饱和矩阵格的种子已移入下方「已覆盖·建议翻新」，不占优先位。');
   L.push('');
 
   // 1.0 矩阵热力图
@@ -541,6 +542,14 @@ function main() {
     L.push('> 🔁 已写过（建议翻新，而非新立）：');
     seeds.deduped.forEach((d) => {
       L.push('> - 已写过《' + d.existing + '》← 种子《' + d.title + '》（语义重合 ' + d.score + '，矩阵格 ' + d.cell + '）');
+    });
+  }
+  // 已覆盖·建议翻新（矩阵格已饱和，写法不同也先别新增，优先翻新已有）
+  if (seeds.covered && seeds.covered.length) {
+    L.push('');
+    L.push('> 🟰 已覆盖·建议翻新（矩阵格已较满，写法不同也先别新增，优先翻新已有）：');
+    seeds.covered.forEach((c) => {
+      L.push('> - 矩阵格 **' + c.cell + '**（现 ' + c.count + ' 篇，权重 ' + c.weight + '）← 待立项《' + c.title + '》');
     });
   }
   L.push('');

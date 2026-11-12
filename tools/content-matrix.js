@@ -123,29 +123,37 @@ function extractKeywords(text) {
   }
   return kw;
 }
-function findDuplicateSeed(seedTitle, allTitles) {
+function kwScore(seedKw, pKw, seedStrong) {
+  if (!pKw || pKw.size === 0) return { score: 0, strongHit: false, overlap: 0, jaccard: 0, shared: 0 };
+  let inter = 0;
+  for (const x of seedKw) if (pKw.has(x)) inter++;
+  if (inter === 0) return { score: 0, strongHit: false, overlap: 0, jaccard: 0, shared: 0 };
+  const overlap = inter / seedKw.size;
+  const jaccard = inter / (seedKw.size + pKw.size - inter);
+  const strongHit = seedStrong.length > 0 && seedStrong.some(x => pKw.has(x));
+  const score = strongHit ? Math.max(overlap, jaccard) : jaccard * 0.6;
+  return { score, strongHit, overlap, jaccard, shared: inter };
+}
+
+function findDuplicateSeed(seedTitle, posts) {
   const seedKw = extractKeywords(seedTitle);
   if (seedKw.size === 0) return null;
-  let best = null, bestScore = 0;
-  for (const p of allTitles) {
-    const pKw = extractKeywords(p);
-    if (pKw.size === 0) continue;
-    let inter = 0;
-    for (const x of seedKw) if (pKw.has(x)) inter++;
-    if (inter === 0) continue;
-    const overlap = inter / seedKw.size;
-    const jaccard = inter / (seedKw.size + pKw.size - inter);
-    const seedStrong = [...seedKw].filter(x => STRONG.has(x));
-    const pStrong = [...pKw].filter(x => STRONG.has(x));
-    const hasStrong = seedStrong.length > 0 && pStrong.length > 0 && seedStrong.some(x => pKw.has(x));
-    const score = hasStrong ? Math.max(overlap, jaccard) : jaccard * 0.6;
-    if (score > bestScore) { bestScore = score; best = p; }
+  const seedStrong = [...seedKw].filter(x => STRONG.has(x));
+  let best = null; // { score, match, reason }
+  for (const p of posts) {
+    const titleText = (typeof p === 'string') ? p : (p.title || '');
+    const rawText   = (typeof p === 'string') ? p : (p.raw || titleText); // 取全文 raw（含正文前1200字）
+    const tRes = kwScore(seedKw, extractKeywords(titleText), seedStrong);
+    const titleOk = tRes.score >= (tRes.strongHit ? 0.5 : 0.6);
+    const rRes = kwScore(seedKw, extractKeywords(rawText), seedStrong);
+    const angleOk = (rRes.strongHit && rRes.score >= 0.35) ||
+                    (rRes.overlap >= 0.5 && rRes.shared >= 3);
+    let cand = null;
+    if (titleOk)      cand = { score: tRes.score, match: titleText, reason: 'title' };
+    else if (angleOk) cand = { score: rRes.score, match: titleText, reason: 'angle' };
+    if (cand && (!best || cand.score > best.score)) best = cand;
   }
-  if (!best) return null;
-  const seedStrongSet = [...seedKw].filter(x => STRONG.has(x));
-  const strongHit = seedStrongSet.some(x => extractKeywords(best).has(x) && STRONG.has(x));
-  const threshold = strongHit ? 0.5 : 0.6;
-  return bestScore >= threshold ? { title: best, score: +bestScore.toFixed(2) } : null;
+  return best; // { score, match, reason } | null
 }
 
 // 单元格优先级权重：越空越值得填（gap 越大权重越高），用户点名的轴组合加权
@@ -159,6 +167,14 @@ function gapWeight(cellKeyStr, coverage) {
   if (cellKeyStr.includes('FT·')) w += 1; // 外贸语境优先（用户垂直）
   if (cellKeyStr.includes('GEO')) w += 1;  // GEO 是你最缺也最想打的轴
   return { count: n, weight: w };
+}
+
+// 饱和闸门：该矩阵格是否已足够满，建议不再发射新种子
+function isCellSaturated(g) {
+  if (g.count === 0) return false;            // 空格永不判饱和（最该补）
+  const SAT = { 5: 8, 4: 8, 3: 10, 2: 15, 1: 20 };
+  const thr = SAT[g.weight] != null ? SAT[g.weight] : 20;
+  return g.count >= thr;
 }
 
 // 从空白/薄弱单元格生成"自矩阵派生"的种子选题（用户点名方向，不依赖随机网页）
@@ -192,24 +208,33 @@ const SEED_TEMPLATES = {
   ],
 };
 
-function matrixSeeds(coverage, allTitles) {
+function matrixSeeds(coverage, allPosts) {
   const out = [];
-  const deduped = [];
-  const titles = (allTitles && allTitles.length)
-    ? allTitles.map(p => (typeof p === 'string' ? p : (p.title || '')).toLowerCase())
-    : Object.values(coverage.exact || {}).flat().map(x => x.toLowerCase());
+  const deduped = [];   // 真·写过一模一样 / 换角度写过（命中已有文）
+  const covered = [];   // 矩阵格已饱和，写法不同也先别新增
+  const posts = (allPosts && allPosts.length) ? allPosts
+    : Object.values(coverage.exact || {}).flat().map(t => ({ title: t, raw: t }));
+
   for (const cell of TARGET_CELLS) {
     const g = gapWeight(cell, coverage);
+    if (isCellSaturated(g)) {
+      (SEED_TEMPLATES[cell] || []).forEach(t =>
+        covered.push({ title: t, cell, count: g.count, weight: g.weight, reason: 'saturated' }));
+      continue;
+    }
     const tmpl = SEED_TEMPLATES[cell] || [];
     for (const t of tmpl) {
-      // 跨全站语义去重：与任一篇已写文章标题语义重合则标为「已写过（建议翻新）」
-      const dup = findDuplicateSeed(t, titles);
-      if (dup) { deduped.push({ title: t, cell, existing: dup.title, score: dup.score }); continue; }
+      const dup = findDuplicateSeed(t, posts);   // 现传对象数组，能拿 raw
+      if (dup) {
+        deduped.push({ title: t, cell, existing: dup.match, score: +dup.score.toFixed(2), reason: dup.reason });
+        continue;
+      }
       out.push({ title: t, cell, weight: g.weight, count: g.count });
     }
   }
   out.sort((a, b) => b.weight - a.weight);
-  out.deduped = deduped;
+  out.deduped = deduped;     // 兼容现有渲染
+  out.covered = covered;     // 新增
   return out;
 }
 
@@ -234,4 +259,5 @@ module.exports = {
   classify, cellKey, parseCell, postCovers, buildCoverage, gapWeight, TARGET_CELLS,
   matrixSeeds, linkTargets, loadPosts,
   GLOSSARY, STRONG, STOP, extractKeywords, findDuplicateSeed,
+  isCellSaturated, kwScore,
 };
