@@ -1,4 +1,4 @@
-// 内容矩阵锚点：以用户真实"AI / SEO / GEO / 建站(WordPress) × 外贸运营网站"矩阵为选题方向
+// 内容矩阵锚点：以用户真实"AI / SEO / GEO / 独立站技术 × 外贸运营网站"矩阵为选题方向
 // 实时扫描 source/_posts 计算各矩阵单元格覆盖，优先填空白/薄弱格，并为每条选题找可互链文章。
 const fs = require('fs');
 const path = require('path');
@@ -10,12 +10,12 @@ const AXES = {
   AI: ['ai', '人工智能', 'gpt', '大模型', 'llm', 'chatgpt', '智能体', 'agent', '机器学习', 'prompt', '提示词', 'ai写作', 'aigc', 'copilot', 'cursor'],
   SEO: ['seo', '谷歌', 'google', '搜索', '排名', '关键词', 'sem', 'ads', '广告', '流量', '收录', '外链', 'serp', '索引'],
   GEO: ['geo', '生成式', '生成引擎', 'ai引用', 'ai搜索', 'ai可见', 'ai推荐', '引用', 'schema', '结构化数据', '知识图谱', 'aio', '生成式引擎', 'llms.txt', 'llm.txt'],
-  WP: ['wordpress', 'wp', '建站', '博客搭建', 'cms', '主题', '插件', '古腾堡', '页面构建', 'hexo', 'typecho', '模板', '站点', '网站'],
+  WP: ['wordpress', 'wp', '建站', '博客搭建', 'cms', '主题', '插件', '古腾堡', '页面构建', 'hexo', 'typecho'],
 };
 // 外贸运营网站语境（垂直约束，不是第5轴）
 const FT_CTX = ['外贸', 'b2b', '独立站', '跨境', '询盘', 'rfq', '出海', '出口', '海外', '国际站', 'alibaba', '谷歌广告', 'shopify', '亚马逊', '获客', '转化'];
 
-const AXIS_NAMES = { AI: 'AI', SEO: 'SEO', GEO: 'GEO', WP: '建站/WordPress' };
+const AXIS_NAMES = { AI: 'AI', SEO: 'SEO', GEO: 'GEO', WP: '独立站技术' };
 const AXIS_ORDER = ['AI', 'SEO', 'GEO', 'WP'];
 
 function loadPosts() {
@@ -96,10 +96,10 @@ function buildCoverage() {
 
 // 用户关心的目标单元格（按自述矩阵推导，优先填这些）
 const TARGET_CELLS = [
-  'FT·AI×SEO', 'FT·AI×GEO', 'FT·AI×建站/WordPress', 'FT·SEO×GEO', 'FT·SEO×建站/WordPress', 'FT·GEO×建站/WordPress',
-  'FT·AI×SEO×GEO', 'FT·AI×SEO×建站/WordPress', 'FT·AI×GEO×建站/WordPress', 'FT·SEO×GEO×建站/WordPress',
-  'FT·AI×SEO×GEO×建站/WordPress',
-  'AI×SEO', 'AI×GEO', 'SEO×GEO', 'GEO×建站/WordPress', // 非外贸语境也值得（技术纵深）
+  'FT·AI×SEO', 'FT·AI×GEO', 'FT·AI×独立站技术', 'FT·SEO×GEO', 'FT·SEO×独立站技术', 'FT·GEO×独立站技术',
+  'FT·AI×SEO×GEO', 'FT·AI×SEO×独立站技术', 'FT·AI×GEO×独立站技术', 'FT·SEO×GEO×独立站技术',
+  'FT·AI×SEO×GEO×独立站技术',
+  'AI×SEO', 'AI×GEO', 'SEO×GEO', 'GEO×独立站技术', // 非外贸语境也值得（技术纵深）
 ];
 
 // 跨全站语义去重（修复去重失效 B）：空白格之前永远不触发同格去重，这里改为对全站标题做语义比对
@@ -166,22 +166,24 @@ function gapWeight(cellKeyStr, coverage) {
   if (axisCount >= 3) w += 1;
   if (cellKeyStr.includes('FT·')) w += 1; // 外贸语境优先（用户垂直）
   if (cellKeyStr.includes('GEO')) w += 1;  // GEO 是你最缺也最想打的轴
-  return { count: n, weight: w };
+  return { count: n, weight: w, ft: cellKeyStr.includes('FT·') };
 }
 
 // 饱和闸门：该矩阵格是否已足够满，建议不再发射新种子
 function isCellSaturated(g) {
   if (g.count === 0) return false;            // 空格永不判饱和（最该补）
   const SAT = { 5: 8, 4: 8, 3: 10, 2: 15, 1: 20 };
-  const thr = SAT[g.weight] != null ? SAT[g.weight] : 20;
+  let thr = SAT[g.weight] != null ? SAT[g.weight] : 20;
+  // P2 阈值翻转：外贸(FT)语境放宽（更该补，不易判饱和），非 FT 收紧（更易判饱和）
+  if (g.ft) thr *= 1.5; else thr *= 0.6;
   return g.count >= thr;
 }
 
 // 从空白/薄弱单元格生成"自矩阵派生"的种子选题（用户点名方向，不依赖随机网页）
 const SEED_TEMPLATES = {
-  'FT·GEO×建站/WordPress': [
-    '外贸独立站用 WordPress 怎么配置 llms.txt 和 Schema 让 AI 推荐',
-    'WordPress 外贸站 GEO 内容结构：让 AI 引擎稳定引用你的产品页',
+  'FT·GEO×独立站技术': [
+    '外贸独立站怎么配置 llms.txt 和 Schema 让 AI 推荐',
+    '外贸独立站 GEO 内容结构：让 AI 引擎稳定引用你的产品页',
     '建站阶段就埋 GEO：外贸网站上线前必做的 AI 可见性清单',
   ],
   'FT·AI×SEO': [
@@ -193,18 +195,18 @@ const SEED_TEMPLATES = {
     '外贸站 SEO 与 GEO 怎么分工：传统搜索与 AI 搜索双轨内容策略',
     '同一篇外贸文章怎么同时吃谷歌排名和 AI 引用',
   ],
-  'FT·SEO×建站/WordPress': [
-    'WordPress 外贸独立站上线前的 SEO 技术体检清单（速度/结构化数据/索引）',
-    '外贸网站改版不丢排名：WordPress 迁移的 SEO 避坑',
+  'FT·SEO×独立站技术': [
+    '外贸独立站上线前的 SEO 技术体检清单（速度/结构化数据/索引）',
+    '外贸网站改版不丢排名：Hexo 迁移的 SEO 避坑',
   ],
-  'FT·AI×GEO×建站/WordPress': [
-    '用 AI 给 WordPress 外贸站自动生成可被 AI 引用的知识库页面',
+  'FT·AI×GEO×独立站技术': [
+    '用 AI 给外贸独立站自动生成可被 AI 引用的知识库页面',
   ],
   'FT·AI×SEO×GEO': [
     '外贸内容矩阵：一篇 AI 写的文章如何同时服务 SEO、GEO 与询盘转化',
   ],
-  'FT·AI×SEO×GEO×建站/WordPress': [
-    '从 0 搭一个 AI 驱动的外贸 WordPress 站：SEO+GEO+内容生产全链路复盘',
+  'FT·AI×SEO×GEO×独立站技术': [
+    '从 0 搭一个 AI 驱动的外贸独立站：SEO+GEO+内容生产全链路复盘',
   ],
 };
 

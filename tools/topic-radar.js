@@ -287,6 +287,17 @@ function runFetch(all, tag) {
     .filter((x) => x.tier !== 'hot')
     .filter((x) => x.decision === 'KEEP' || x.decision === 'REVIEW')
     .map((x) => Object.assign({}, x, { title: cleanTitle(x.title) }));
+  // P1-A-b 站内相似度比对接入站外新料：命中已写文章(重合≥0.5)的 KEEP 降为 REVIEW，防重复立项
+  const posts = cm.loadPosts();
+  for (const it of items) {
+    if (it.decision !== 'KEEP') continue;
+    const dup = cm.findDuplicateSeed(it.title, posts);
+    if (dup && dup.score >= 0.5) {
+      it.decision = 'REVIEW';
+      it.reason = (it.reason ? it.reason + ' ｜ ' : '') +
+        '⚠️ 站内相似度比对命中《' + dup.match + '》(重合 ' + dup.score + '，' + dup.reason + ') → 降 REVIEW 防重复';
+    }
+  }
   return { ok: true, items, errors: data.errors || [], sources: data.sources };
 }
 
@@ -433,6 +444,27 @@ function main() {
     : loadDemand();
   const serp = loadSerp();
   const gaps = buildGaps(corpus, demand, serp);
+  // P1-B 低风险增强：展平需求层词 + 复用 SERP map，给第一节 picks 附「需求/竞争」信号
+  const demandByWord = new Map();
+  if (demand.ok) {
+    for (const colWords of Object.values(demand.byCol || {})) {
+      for (const d of (colWords || [])) {
+        const w = String(d.word || '').toLowerCase();
+        if (!w) continue;
+        demandByWord.set(w, (demandByWord.get(w) || 0) + (d.hits || 1));
+      }
+    }
+  }
+  const serpMap = serp.ok ? serp.map : new Map();
+  const attachSignals = (it) => {
+    const t = String(it.title || '').toLowerCase();
+    let hits = 0;
+    for (const [w, n] of demandByWord) if (t.includes(w)) hits += n;
+    it.demandHits = hits;
+    const sv = serpMap.get(it.title);
+    it.serpVerdict = sv ? sv.verdict : null;
+    return it;
+  };
   const outside = NO_FETCH
     ? { ok: true, items: [], errors: [], sources: 0, note: '（--no-fetch：本次跳过站外采集）' }
     : fetchOutside();
@@ -459,13 +491,16 @@ function main() {
   const realPicks = outside.items.filter((x) => !x.hotFlag);
   const realKeep = realPicks.filter((x) => x.decision === 'KEEP');
   const realReview = realPicks.filter((x) => x.decision === 'REVIEW');
+  // P1-B：附需求/竞争信号；P1-A-c：保鲜度(日期)优先，其次分，再 tiebreaker 用 demandHits
+  realKeep.forEach(attachSignals);
+  realKeep.sort((a, b) => (b.date || 0) - (a.date || 0) || b.score - a.score || (b.demandHits || 0) - (a.demandHits || 0));
   const picks = realKeep.slice(0, TOP);
 
   const L = [];
   L.push('# 选题雷达 · ' + today());
   L.push('');
   const emptiest = cm.TARGET_CELLS.map((c) => ({ c, g: cm.gapWeight(c, cov) })).sort((a, b) => b.g.weight - a.g.weight)[0];
-  L.push('> 站内画像：**' + prof.total + ' 篇** ｜ 内容矩阵：**AI × SEO × GEO × 建站(WordPress)**，垂直语境 = 外贸运营网站');
+  L.push('> 站内画像：**' + prof.total + ' 篇** ｜ 内容矩阵：**AI × SEO × GEO × 独立站技术**，垂直语境 = 外贸运营网站');
   L.push('> 矩阵缺口：最该补的格 = **' + emptiest.c + '**（现 ' + emptiest.g.count + ' 篇，权重 ' + emptiest.g.weight + '）｜ 选题方向由矩阵缺口驱动');
   if (reflow.ok) {
     L.push('> 学习层：PV 覆盖 **' + reflow.pvCoverage + ' / ' + reflow.total + '** 篇' +
@@ -495,7 +530,7 @@ function main() {
   // —— 一、内容矩阵缺口选题（来自真实矩阵，优先填空白格）——
   L.push('## 一、内容矩阵缺口选题（来自你真实矩阵 · 优先填空白格）');
   L.push('');
-  L.push('> 选题方向 = 你的真实内容矩阵：**AI × SEO × GEO × 建站(WordPress)**，垂直语境 = 外贸运营网站。');
+  L.push('> 选题方向 = 你的真实内容矩阵：**AI × SEO × GEO × 独立站技术**，垂直语境 = 外贸运营网站。');
   L.push('> 雷达先算你 ' + prof.total + ' 篇落在哪些矩阵格，优先填**空白/薄弱格**（如 GEO×建站、三轴/四轴组合目前全 0 篇）。');
   L.push('> 每条选题都标注「落在哪个格 + 能和哪些现有文章互链」——单篇是个体，成网是整体。');
   L.push('> 饱和矩阵格的种子已移入下方「已覆盖·建议翻新」，不占优先位。');
@@ -562,12 +597,15 @@ function main() {
   if (!picks.length) {
     L.push('本期站外无命中矩阵格的过筛新料（可 `--since=30` 放宽；矩阵缺口种子见 1.1）。');
   } else {
-    L.push('| # | 选题 | 矩阵格 | 建议栏目 | 分 | 专业度 | 来源 |');
-    L.push('|---|---|---|---|---|---|---|');
+    L.push('| # | 选题 | 矩阵格 | 建议栏目 | 分 | 专业度 | 需求/竞争 | 来源 |');
+    L.push('|---|---|---|---|---|---|---|---|');
     picks.forEach((it, i) => {
       const col = it.bestCol || '待定';
       const pro = it.proTier === 'operator' ? '操盘手级 ✓' : it.proTier === 'beginner' ? '入门向' : (it.proTier === 'hot' ? '热点·人工筛' : '通用技法');
-      L.push('| ' + (i + 1) + ' | ' + it.title.replace(/\|/g, '\\|') + ' | ' + (it.cell || '—') + ' | ' + col + ' | ' + it.score + ' | ' + pro + ' | ' + it.source + ' |');
+      const dStar = it.demandHits ? '★'.repeat(Math.min(it.demandHits, 5)) : '—';
+      const vIcon = it.serpVerdict === '内容词' ? '✅' : (it.serpVerdict === '商业词' || it.serpVerdict === '导航词') ? '⛔' : (it.serpVerdict === '平台垄断' ? '⚠️' : '—');
+      const signal = dStar + ' ' + vIcon;
+      L.push('| ' + (i + 1) + ' | ' + it.title.replace(/\|/g, '\\|') + ' | ' + (it.cell || '—') + ' | ' + col + ' | ' + it.score + ' | ' + pro + ' | ' + signal + ' | ' + it.source + ' |');
     });
     L.push('');
     L.push('明细与理由：');
@@ -575,6 +613,9 @@ function main() {
       L.push('');
       L.push('**' + (i + 1) + '. ' + it.title + '**');
       L.push('- 矩阵格：' + (it.cell || '—') + '　栏目：' + (it.bestCol || '待定') + '　决策：' + it.decision + '（' + it.score + ' 分）');
+      const dStar = it.demandHits ? '★'.repeat(Math.min(it.demandHits, 5)) : '—';
+      const vIcon = it.serpVerdict === '内容词' ? '✅' : (it.serpVerdict === '商业词' || it.serpVerdict === '导航词') ? '⛔' : (it.serpVerdict === '平台垄断' ? '⚠️' : '—');
+      L.push('- 需求/竞争：' + dStar + '（hits ' + (it.demandHits || 0) + '）　竞争判定：' + vIcon + (it.serpVerdict ? '（' + it.serpVerdict + '）' : '（无 SERP 数据）'));
       L.push('- 理由：' + (it.reason || '—'));
       if (it.linkable && it.linkable.length) L.push('- 可互链文章：' + it.linkable.map((t) => '《' + t + '》').join('、'));
       if (it.link) L.push('- 原文：' + it.link);
@@ -999,4 +1040,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { buildGaps, readCorpus, COLUMNS };
+module.exports = { buildGaps, readCorpus, COLUMNS, runFetch, fetchOutside };

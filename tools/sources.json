@@ -1,0 +1,39 @@
+{
+  "_comment": "站外输入源清单（fetch-sources.js 读取）。两类：RSS/Atom（kind 省略，默认 rss）与 热榜 JSON（kind=json）。pillar 仅作归类提示，真正的定位判定由 topic-fit-scorer 做。新增源先跑 `node tools/hot-calibrate.js` 双校准（正：能取到 ≥5 条互异；负：calibUrl 必须取不到，否则是模板/缓存型假数据源）。",
+  "feeds": [
+    { "name": "百度热搜·实时", "url": "https://top.baidu.com/api/board?platform=wise&tab=realtime", "kind": "json", "tier": "hot", "path": "data.cards.content.content", "titleKey": "word", "linkKey": "url", "calibUrl": "https://top.baidu.com/api/board?platform=wise&tab=__calib_notexist__", "lang": "zh", "pillar": "", "note": "2026-10-02 实测 200/JSON，国内搜索热搜第一入口；条目无热度值，靠排序反映热度" },
+    { "name": "今日头条热榜", "url": "https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc", "kind": "json", "tier": "hot", "path": "data", "titleKey": "Title", "linkKey": "Url", "hotKey": "HotValue", "calibUrl": "https://www.toutiao.com/hot-event/__calib_notexist__/?origin=toutiao_pc", "lang": "zh", "pillar": "", "note": "2026-10-02 实测 200/JSON，含 HotValue 可排序" },
+    { "name": "抖音热榜", "url": "https://www.iesdouyin.com/web/api/v2/hotsearch/billboard/word/", "kind": "json", "tier": "hot", "path": "word_list", "titleKey": "word", "linkTpl": "https://www.douyin.com/search/{word}", "hotKey": "hot_value", "calibUrl": "https://www.iesdouyin.com/web/api/v2/hotsearch/billboard/__calib_notexist__/", "lang": "zh", "pillar": "", "note": "2026-10-02 实测 200/JSON；接口不给链接，用 linkTpl 构造搜索页" },
+    { "name": "知乎热榜", "url": "https://api.zhihu.com/topstory/hot-list", "kind": "json", "tier": "hot", "path": "data", "titleKey": "target.title", "linkKey": "card_id", "linkStrip": "Q_", "linkTpl": "https://www.zhihu.com/question/{v}", "hotKey": "target.answer_count", "calibUrl": "https://api.zhihu.com/__calib_notexist__", "lang": "zh", "pillar": "", "note": "2026-10-02 实测 200/JSON；www.zhihu.com/api/v3 那条要登录（401），别换回去" },
+
+    { "name": "白鲸出海", "url": "https://www.baijingapp.com/feed", "pillar": "外贸B2B独立站实战", "lang": "zh", "tier": "vertical", "note": "2026-10-02 实测 200/RSS；中文跨境·出海垂直，站内最缺的一块" },
+    { "name": "钛媒体", "url": "https://www.tmtpost.com/rss.xml", "pillar": "AI内容增长工作流", "lang": "zh", "tier": "noise", "note": "2026-10-02 实测 200/RSS；中文科技/AI/出海" },
+
+    { "name": "Bing Webmaster Blog", "url": "https://blogs.bing.com/webmaster/feed", "pillar": "SEO与Google Ads 流量增长", "lang": "en", "note": "2026-10-02 实测 200/RSS；必应官方，算法与索引政策一手源（本站 Bing 是主力流量）" },
+
+    { "name": "Google Search Central", "url": "https://developers.google.com/search/blog/feed.xml", "pillar": "SEO与Google Ads 流量增长", "lang": "en" },
+    { "name": "Search Engine Journal", "url": "https://www.searchenginejournal.com/feed/", "pillar": "SEO与Google Ads 流量增长", "lang": "en" },
+    { "name": "Ahrefs Blog", "url": "https://ahrefs.com/blog/feed/", "pillar": "SEO与Google Ads 流量增长", "lang": "en" },
+    { "name": "SEMrush Blog", "url": "https://www.semrush.com/blog/feed/", "pillar": "SEO与Google Ads 流量增长", "lang": "en", "note": "2026-10-26 实测 200/RSS，20 条；原 Moz 被 Cloudflare 403 已替换为 SEMrush（同属 SEO 支柱）" },
+    { "name": "Backlinko", "url": "https://backlinko.com/feed", "pillar": "SEO与Google Ads 流量增长", "lang": "en" },
+    { "name": "HubSpot Marketing", "url": "https://blog.hubspot.com/marketing/rss.xml", "pillar": "外贸B2B独立站实战", "lang": "en" },
+    { "name": "Neil Patel", "url": "https://neilpatel.com/blog/feed/", "pillar": "外贸B2B独立站实战", "lang": "en" },
+    { "name": "WP Tavern", "url": "https://wptavern.com/feed", "pillar": "博客建站与前端", "lang": "en" },
+    { "name": "CSS-Tricks", "url": "https://css-tricks.com/feed/", "pillar": "博客建站与前端", "lang": "en", "tier": "noise" },
+    { "name": "Smashing Magazine", "url": "https://www.smashingmagazine.com/feed/", "pillar": "博客建站与前端", "lang": "en", "tier": "noise" },
+    { "name": "阮一峰的网络日志", "url": "https://feeds.feedburner.com/ruanyifeng", "pillar": "AI内容增长工作流", "lang": "zh", "tier": "noise" },
+    { "name": "Hacker News", "url": "https://hnrss.org/frontpage", "pillar": "AI内容增长工作流", "lang": "en", "tier": "noise" },
+    { "name": "dev.to", "url": "https://dev.to/feed", "pillar": "AI内容增长工作流", "lang": "en", "tier": "noise" },
+    { "name": "Yoast SEO Blog", "url": "https://yoast.com/feed/", "pillar": "SEO与Google Ads 流量增长", "lang": "en", "note": "2026-10-26 实测 200/RSS，20 条；用户英文站用 Yoast，强相关" },
+    { "name": "OpenAI News", "url": "https://openai.com/news/rss.xml", "pillar": "AI内容增长工作流", "lang": "en", "tier": "noise", "note": "2026-10-26 实测 200/RSS，1319 条（取前 N 即可）" },
+    { "name": "The Verge", "url": "https://www.theverge.com/rss/index.xml", "pillar": "AI内容增长工作流", "lang": "en", "tier": "noise", "note": "2026-10-26 实测 200/RSS，10 条" },
+    { "name": "MIT Tech Review · AI", "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed", "pillar": "AI内容增长工作流", "lang": "en", "tier": "noise", "note": "2026-10-26 实测 200/RSS，10 条" },
+
+    { "name": "微博热搜", "url": "https://weibo.com/ajax/side/hotSearch", "kind": "json", "tier": "hot", "lang": "zh", "disabled": true, "note": "2026-10-02 实测 403 Forbidden（s.weibo.com/top/summary 跳新浪访客系统）；需登录态，暂不可用" },
+    { "name": "Google Trends 每日热搜", "url": "https://trends.google.com/trends/trendingsearches/daily/rss?geo=CN", "lang": "zh", "tier": "hot", "disabled": true, "note": "2026-10-02 实测 code 000（本机不可达）。Google 大陆不可达属已知约束，趋势验证改看热榜在榜时长" },
+    { "name": "Ecwid Blog", "url": "https://www.ecwid.com/blog/feed", "lang": "en", "tier": "vertical", "pillar": "外贸B2B独立站实战", "note": "2026-10-26 实测 200/RSS，15 条；原亿邦 403 已替换为 Ecwid（同属外贸电商垂直）" },
+    { "name": "36氪", "url": "https://www.36kr.com/feed", "lang": "zh", "tier": "noise", "pillar": "外贸B2B独立站实战", "note": "2026-10-26 实测 200/RSS，11 条；原雨果 404 已替换为 36 氪（中文商业/出海）" },
+    { "name": "cognitiveSEO", "url": "https://cognitiveSEO.com/blog/feed/", "lang": "en", "tier": "vertical", "pillar": "SEO与Google Ads 流量增长", "note": "2026-10-26 实测 200/RSS；原亿欧 JS 挑战已替换为 cognitiveSEO（同属 SEO 支柱）" }
+  ],
+  "pages": []
+}
