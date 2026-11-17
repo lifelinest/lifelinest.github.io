@@ -13,7 +13,6 @@ menu:
     音乐馆: /music/ || anzhiyu-icon-music
     追番页: /bangumis/ || anzhiyu-icon-bilibili
     相册集: /album/ || anzhiyu-icon-images
-    小空调: /air-conditioner/ || anzhiyu-icon-fan
     足迹: /FootprintMap/ || anzhiyu-icon-location-dot
 
   关于:
@@ -28,28 +27,20 @@ nav:
   travelling: true
   clock: false
   menu:
-    - title: 工具
-      item:
-        - name: kimi
-          link: https://kimi.moonshot.cn/chat/empty
-          icon: https://ecmb.bdimg.com/tam-ogel/-1772417172_-552089199_88_88.jpg
-        - name: 百度网盘
-          link: https://pan.baidu.com/
-          icon: https://ecmb.bdimg.com/tam-ogel/829950526_-541861125_88_88.png
     - title: 娱乐
       item:
-        - name: 网易云音乐
-          link: https://music.163.com/?from=itab
-          icon: https://bizaladdin-image.baidu.com/0/pic/-999594904_-827328017_-1364673394.jpg
-        - name: 哔哩哔哩
-          link: https://www.bilibili.com/
-          icon: https://bizaladdin-image.baidu.com/0/pic/288929568_-302461403_433714833.jpg
-        - name: 知乎
-          link: https://www.zhihu.com/
-          icon: https://img1.baidu.com/it/u=1821089500,4276043120&fm=253&fmt=auto&app=138&f=PNG?w=415&h=312
-        - name: 天空之城
-          link: https://www.skypixel.com/
-          icon: https://img1.baidu.com/it/u=11010786,400614760&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=800
+        - name: 塔罗占卜
+          link: /tarot/
+          icon: /img/tarot.svg
+        - name: 粒子文字
+          link: /text-sculpture/
+          icon: /img/type.svg
+        - name: 拾光扭蛋铺
+          link: /maze-lab/
+          icon: /img/capsule.svg
+        - name: 人生指南
+          link: /knowledge-base/
+          icon: /img/kb.svg
 
 
 
@@ -138,7 +129,10 @@ docsearch:
 # Local search
 local_search:
   enable: true
-  preload: true
+  # preload: true 会让「每一个页面」都去预取 /search.xml（线上 gzip 后约 703KB），
+  # 而绝大多数访客从不使用站内搜索 —— 纯浪费带宽、拖慢 LCP。
+  # 搜索是点击触发才加载的，关掉预取不影响功能。
+  preload: false
   CDN:
 
 # Math (数学)
@@ -167,8 +161,11 @@ favicon: /favicon.ico
 
 # Avatar (头像)
 avatar:
-  img: http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130
+  img: https://cloudflare-img-bzb.pages.dev/file/系统/头像/1788956412205_头像.jpg
   effect: false
+
+# Default Open Graph share image (微信/社交平台分享卡片默认图，建议 478×478 JPG/PNG，< 2MB)
+og_image: /img/og-default.jpg
 
 # Disable all banner image
 disable_top_img: false
@@ -246,7 +243,7 @@ index_post_content:
 
 # anchor
 # when you scroll in post, the URL will update according to header id.
-anchor: false
+anchor: true
 
 # Post
 # --------------------------------------
@@ -271,8 +268,8 @@ post_copyright:
   copyright_author_img_back:
   copyright_author_img_front:
   copyright_author_link: /
-  copyright_author: xxxx
-  copyright_author_href: https://xxxxxx.com
+  copyright_author: 孟凡宇
+  copyright_author_href: https://mfy-lifeline.com
   copyright_url: https://xxxxxx.com
   copyright_info: 此文章版权归Lifeline[生命线]所有,如有转载,请注明来自原作者.
 
@@ -395,9 +392,18 @@ waline:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId: https://twikoo-6ucy.vercel.app
+  envId: https://twikoo.mfyresume.dpdns.org
+  # 备用端点：主端点探测失败时按顺序自动切换，可留空（[]）或配置多个
+  # 例如 fork twikoo-netlify 后填：- https://xxx.netlify.app/.netlify/functions/twikoo
+  envIdBackup: []
   region: 
   visitor: true
+  # 端点可用性探测 + 降级提示：避免后端不可达时评论框无限转圈
+  fallback:
+    enable: true      # false = 跳过探测，直接用主端点初始化
+    timeout: 4000     # 单个端点探测超时（毫秒）
+    notice: 评论服务暂时不可用，可稍后重试，或通过「关于」页面的邮箱联系我
+    retry_text: 重新加载
   option:
     lang: zh-CN
     placeholder: 欢迎留言，一起交流~
@@ -500,7 +506,7 @@ footer:
   owner:
     enable: true
     since: 2023
-    avatar: http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130
+    avatar: https://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130
     email: 3434848843@qq.com
     weibo: https://weibo.com/u/7340189538
     facebook: https://www.facebook.com/profile.php?id=100092208016287&sk=about
@@ -526,7 +532,7 @@ footer:
       - link: https://blog.anheyu.com/
         shields: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg
         message: 本站使用AnZhiYu主题
-      - link: http://creativecommons.org/licenses/by-nc-sa/4.0/
+      - link: https://creativecommons.org/licenses/by-nc-sa/4.0/
         shields: https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg
         message: 本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可
       - link: https://www.cloudflare.com/
@@ -683,12 +689,19 @@ google_adsense:
 # --------------------------------------
 
 site_verification:
-  - name: google-site-verification
-    content: xxx
+  # 百度搜索资源平台 站点所有权验证（当前账号）。
+  # ⚠️ 勿删：百度每次抓取都会复核，删了验证状态会掉。
+  # 唯一填写位置就是这里 —— 不要在 inject.head 里再写一条，否则会输出两条同名 meta。
   - name: baidu-site-verification
-    content: codeva-dmPP1sPmLD
-  - name: msvalidate.01
-    content: xxx
+    content: codeva-zU5TiULerc
+  # ── Bing / Copilot 站长验证 ─────────────────────────────────────────────
+  # 唯一填写位置在【根目录 _config.yml】的 `bing_site_verification: ''`（已接入自动注入）。
+  # 去 https://www.bing.com/webmasters → 添加站点 → 验证方式选「Meta 标签」，
+  # 把 msvalidate.01 的值粘进 _config.yml 即可，不要在下面重复配置（避免输出两条 meta）。
+  #   bing_site_verification: 'ABCDEF1234567890ABCDEF1234567890'
+  # ───────────────────────────────────────────────────────────────────────
+  #
+  # Google 已通过 HTML 验证文件完成验证（public/googleae17ca249fa02438.html），此处无需重复。
 
 # Beautify/Effect (美化/效果)
 # --------------------------------------
@@ -860,9 +873,14 @@ subtitle:
   # source: 2  调用一句网（简体） http://yijuzhan.com/
   # source: 3  调用今日诗词（简体） https://www.jinrishici.com/
   # subtitle 会先显示 source , 再显示 sub 的内容
-  source: 1
+  # source: false —— 不再调一言网随机句（第三方请求 + 与站点定位无关）。
+  # 注：首页当前未启用顶部大图（index_img/default_top_img 均为 false）→ header 的 #site-info
+  #     整块不渲染，因此这里不会出现在首页。首页可见 slogan 已改由 home_top 承载（见文件下方 home_top 段）。
+  #     本段仅在其他页面启用顶部大图时生效，保留站内 slogan 以免回退成第三方随机句。
+  source: false
   # 如果关闭打字效果，subtitle 只会显示 sub 的第一行文字
   sub:
+    - 用 AI 把外贸独立站跑通 —— 孟凡宇的实战开放笔记
     # - 生活明朗&#44;万物可爱&#44;人间值得&#44;未来可期.
 
 # Loading Animation (加载动画)
@@ -875,7 +893,15 @@ preloader:
   source: 3
   # pace theme (see https://codebyzach.github.io/pace/)
   pace_css_url:
-  avatar: http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130 # 自定加载动画义头像
+  avatar: https://cloudflare-img-bzb.pages.dev/file/系统/头像/1788956412205_头像.jpg # 自定加载动画义头像
+
+# 侧边栏欢迎卡片（有朋自远方来 不亦乐乎）
+# home 为博主所在城市坐标，用于计算「访客距博主约 X 公里」。
+# 换城市只需改这两行，无需动 JS。
+welcome_card:
+  home:
+    lat: 24.4798   # 福建·厦门
+    lon: 118.0894  # 福建·厦门
 
 # aside (侧边栏)
 # --------------------------------------
@@ -1161,9 +1187,12 @@ css_prefix: true
 home_top:
   enable: true # 开关
   timemode: updated #date/updated
-  title: 云程发轫
-  subTitle: 未来可期
-  siteText: 逐梦云程启新篇🚀 未来可期展宏图🌈
+  # 首页可见区文案：显式承载三支柱定位（2026-09-19 定位冻结）。
+  # 此前为「云程发轫 / 未来可期」格言式文案 → 首页可见区定位词出现 0 次；现改为定位文案。
+  # 2026-09-24 首屏重设计：siteText 由长句收敛为一行短注（原长句撑满卡片、与图标球相压）。
+  title: 用 AI 把外贸独立站跑通
+  subTitle: 外贸B2B独立站 · AI内容增长 · SEO与Ads
+  siteText: 孟凡宇 · Lifeline ｜ 独立站增长 · 一线实战笔记
   category:
     - name: 工具箱
       path: /frontend/
@@ -1306,7 +1335,7 @@ electric_clock:
 LA:
   enable: true
   ck: 3QwSZ9Z73TkmWmKS
-  LingQueMonitorID:
+  LingQueMonitorID: 3RbEQMByzSXQF9hj
 
 # 标签卖萌
 diytitle:
@@ -1383,17 +1412,17 @@ greetingBox:
       startTime: 20
       endTime: 24
 
-# 文章顶部ai摘要
+# 文章顶部ai摘要（文章级：仅针对当前这一篇）
 post_head_ai_description:
   enable: true
-  gptName: AnZhiYu
-  mode: local # 默认模式 可选值: tianli/local
-  switchBtn: false # 可以配置是否显示切换按钮 以切换tianli/local
-  btnLink: https://afdian.net/item/886a79d4db6711eda42a52540025c377
+  gptName: LifelineVerve # 品牌名：与「站内管家 LifelineVerve」同源不同层（这里=单篇摘要）
+  mode: local # 固定 local：摘要来自构建期写入 front-matter 的 ai: 字段，运行期零外部请求
+  switchBtn: false # 关闭 tianli/local 切换（tianli=墨洪AI，已弃用）
+  btnLink: "" # 已弃用（原 tianli 模式的爱发电链接）
   randomNum: 3 # 按钮最大的随机次数，也就是一篇文章最大随机出来几种
   basicWordCount: 1000 # 最低获取字符数, 最小1000, 最大1999
-  key: lhvAVTHquc9
-  Referer: https://xx.xx/
+  key: "" # 已弃用：tianli/墨洪AI 密钥，local 模式不需要
+  Referer: ""
 
 # 快捷键配置
 shortcutKey:
@@ -1427,7 +1456,7 @@ rightClickMenu:
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
   enable: false
-  img: https://img0.baidu.com/it/u=1167194022,2363258544&fm=253&fmt=auto&app=120&f=PNG?w=750&h=500
+  img: /img/og-default.jpg
 
 # 动效
 dynamicEffect:
@@ -1443,21 +1472,36 @@ custom_js: /js/custom.js
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
   head:
-    - <script src="https://kit.fontawesome.com/7af8740427.js" crossorigin="anonymous"></script>
-    - <script src="/js/update.js"></script>
-    - <link rel="stylesheet" href="/css/custom.css?v=20260824">
+    # follow.it 订阅源所有权验证（认领 feed「生命线」，验证通过后可删除）
+    - <meta name="follow.it-verification-code" content="n8RBf6U4dJsxX6BaS5Df"/>
+    # 百度站点验证 meta 的唯一出口是 `site_verification` 段（见本文件上文），此处不再重复注入
+    # （原先这里也写过一条 baidu-site-verification，会与上面的段输出两条同名 meta，已合并）
+    # 全局图片加载失败兜底：避免裂图，统一回退到已存在的占位图（/img/404.jpg 真实存在）
+    - <script>document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&!t.getAttribute('data-fallback')){t.setAttribute('data-fallback','1');t.src='/img/404.jpg';}},true);</script>
+    # 注：/js/update.js 原先在此处与 inject.bottom 重复加载两次，已移除此处（保留底部那份）
+    # 注：Font Awesome Kit (kit.fontawesome.com/7af8740427.js) 已于 2026-09-15 移除——
+    #     主题已自带本地 FA6 图标 CSS（graphics.fontawesome: true），该 kit 属重复加载，
+    #     且自身抛 "Cannot read properties of null (reading 'appendChild')" 并触发 ERR_BLOCKED_BY_ORB。
+    - <link rel="stylesheet" href="/css/custom.css?v=20260916">
     # Live2D 看板娘大模型对话面板样式
     - <link rel="stylesheet" href="/css/live2d-chat.css?v=20260806g">
     - <link rel="stylesheet" href="/css/calendar-card.css">
     - <link rel="stylesheet" href="/css/progress-fix.css">
     - <link rel="stylesheet" href="/css/zhihu.css">
-    - <link rel="stylesheet" href="/css/article-reading.css">
+    # 全文朗读 CSS 已停用：朗读功能由 AI 播客替代（保留文件，随时可恢复）
+    # - <link rel="stylesheet" href="/css/article-reading.css">
     - <link rel="stylesheet" href="/css/home.css"> # 首页文章卡片擦亮效果
+    - <link rel="stylesheet" href="/css/home-hero.css?v=20260924"> # 首页首屏 hero 布局（文案分区 + 图标单行横向滚动）
+    - <link rel="stylesheet" href="/css/about-personalities-fix.css?v=20260930"> # 关于页性格模块人物图溢出修复
+    # 即刻短文页（/essay/）条目间虚线去除。必须挂在本段（而非上方 1485 行那批）：
+    # 那批 custom.css / live2d-chat.css / zhihu.css / home.css 等 7 个文件经 grep 产物验证
+    # 从未进入任何 HTML（线上 /css/custom.css 返回 0 字节），疑似 theme fragment_cache 缓存断点所致；
+    # 本段之后的注入均正常生效，故放这里。
+    - <link rel="stylesheet" href="/css/essay-hr-fix.css?v=20261010">
     - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" />
-    - <script src="https://open.lightxi.com/unpkg/chinese-lunar@0.1.4/lib/chinese-lunar.js"></script>
-    # 诗词
+    - <script defer src="/js/chinese-lunar.js"></script>
+    # 诗词（poem.css 已由主题 layout.pug 加载，此处不重复，省一次阻塞请求）
     - <link rel="stylesheet" type="text/css" href="/css/heoMainColor.css">
-    - <link rel="stylesheet" type="text/css" href="/css/poem.css">
     # 自定义css
     # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
     # - <link rel="stylesheet" href="/css/amap-footprint.css">
@@ -1466,8 +1510,7 @@ inject:
     - <link rel="stylesheet" href="/css/style.css">
     # 更新日志页面CSS
     - <link rel="stylesheet" href="/css/update.css">
-    # 隐私政策页面CSS
-    - <link rel="stylesheet" href="/css/privacy.css">
+    # 隐私政策页面CSS（privacy.css 已由主题 head.pug 加载，此处不重复）
     # 相册页面CSS (已嵌入到模板中)
     # - <link rel="stylesheet" href="/css/album.css">
     # 移除直接的CDN引用，使用主题配置的CDN提供商
@@ -1477,18 +1520,26 @@ inject:
 
 
   bottom:
-    # WinBox弹窗插件
-    - <script src="https://cdn.jsdelivr.net/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script>
+    # WinBox弹窗插件：主题 additional-js.pug 已加载，此处不重复
     # 自定义js
     # - <script src="/js/xxx"></script>
     - <script defer pjax src="/js/custom.js"></script>
+    # 头像：中国法定节假日自动切换国旗版（严格法定节假日口径，永久自动生效）
+    - <script defer pjax src="/js/avatar-holiday.js?v=20260909"></script>
     # Live2D 看板娘大模型对话逻辑（点击看板娘唤起，安全版经 Cloudflare Worker + lifeline.cc.cd 域名代理）
     - <script defer pjax src="/js/live2d-chat.js?v=20260831cc"></script>
     - <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     - <script src="/js/update.js"></script>
-    - <script src="/js/calendar-card.js"></script>
-    - <script src="/js/zhihu.js"></script>
-    - <script src="/js/article-reading.js"></script>
+    - <script defer src="/js/calendar-card.js"></script>
+    - <script src="/js/zhihu.js?v=20260911"></script>
+    # 全文朗读脚本已停用：其注入的「朗读文章」按钮由 AI 播客替代（保留文件，随时可恢复）
+    # - <script src="/js/article-reading.js"></script>
+    # 百度搜索资源平台「自动提交」JS 推送：访客打开页面即把该 URL 实时推给百度，
+    # 与 scripts/baidu-push.js（主动推送 API，10 条/天配额）互补且无配额上限。
+    # 验证：https://ziyuan.baidu.com/ → 普通收录 → 自动提交（看推送量曲线）
+    - <script defer src="/js/baidu-autopush.js"></script>
+    # AI 播客：把「朗读摘要」替换为双人对话播放器（脚本自带 pjax / 异步初始化兜底）
+    - <script pjax src="/js/podcast-player.js?v=20261117c"></script>
     # 相册页面JS (已嵌入到模板中)
     # - <script src="/js/album.js"></script>
 
@@ -1563,7 +1614,8 @@ CDN:
     # aplayer_css:
     # aplayer_js:
     # meting_js:
-    # meting_api:
+    # Meting API 地址，覆盖 MetingJS 内置的 api.i-meto.com（该公共接口已失效）
+    meting_api: https://api.injahow.cn/meting/?server=:server&type=:type&id=:id
     # prismjs_js:
     # prismjs_lineNumber_js:
     # prismjs_autoloader:

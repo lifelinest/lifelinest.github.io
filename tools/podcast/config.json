@@ -1,0 +1,56 @@
+{
+  "site": "https://mfy-lifeline.com",
+  "show": {
+    "title": "孟凡宇 · Lifeline｜AI 播客",
+    "description": "把博客文章聊成一段双人对话。每期台词只取自文章自身的标题、AI 摘要、FAQ 与章节要点，不添加原文之外的内容。",
+    "author": "Lifeline",
+    "language": "zh-cn",
+    "category": "Technology",
+    "explicit": "false",
+    "ownerEmail": "",
+    "link": "https://mfy-lifeline.com/",
+    "artwork": "https://mfy-lifeline.com/audio/podcast/artwork.jpg"
+  },
+  "defaultVoice": "a",
+  "_comment_voiceSets": "三套音色供读者在播放器下拉切换。id 与 suffix 是硬约定：A 为默认（无后缀，RSS enclosure 固定指向它），B/C 分别加 -b / -c。改音色只改本表 host_a/host_b 后 --force 重合成；播放器 VOICE_SETS 的 id/suffix 需保持一致。",
+  "voiceSets": [
+    {
+      "id": "a",
+      "label": "云希 × 晓晓",
+      "desc": "阳光男声 · 温暖女声",
+      "host_a": "zh-CN-YunxiNeural",
+      "host_b": "zh-CN-XiaoxiaoNeural",
+      "suffix": ""
+    },
+    {
+      "id": "b",
+      "label": "云扬 × 晓晓",
+      "desc": "播报男声 · 温暖女声",
+      "host_a": "zh-CN-YunyangNeural",
+      "host_b": "zh-CN-XiaoxiaoNeural",
+      "suffix": "-b"
+    },
+    {
+      "id": "c",
+      "label": "云希 × 晓伊",
+      "desc": "阳光男声 · 活泼女声",
+      "host_a": "zh-CN-YunxiNeural",
+      "host_b": "zh-CN-XiaoyiNeural",
+      "suffix": "-c"
+    }
+  ],
+  "voices": {
+    "host_a": "zh-CN-YunxiNeural",
+    "host_b": "zh-CN-XiaoxiaoNeural"
+  },
+  "audio": {
+    "rate": "+8%",
+    "bitrate": "64k",
+    "sampleRate": "24000",
+    "channels": "1",
+    "gap": 0.32
+  },
+  "intro": "欢迎收听《孟凡宇 · Lifeline》AI 播客。",
+  "outro_a": "好，这期就先聊到这，完整原文放在文章页里了。",
+  "outro_b": "我们下期见。"
+}
