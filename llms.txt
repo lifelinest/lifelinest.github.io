@@ -104,6 +104,8 @@
 - [谷歌SEO新手该用哪些工具](https://mfy-lifeline.com/posts/cf9e2cfd/): 做外贸独立站做谷歌SEO，新手最容易犯的错是一上来就纠结买 Ahrefs 还是 Semrush。
 - [谷歌SEO是什么意思？和谷歌广告到底差在哪，一篇讲清](https://mfy-lifeline.com/posts/7d8009d8/): 很多人搜「谷歌seo是什么意思」，其实是想搞清楚它和谷歌广告的区别、要不要花钱、多久见效。
 - [谷歌降权了别乱救：一个排查顺序救回外贸站](https://mfy-lifeline.com/posts/9f2b4c7d/): 外贸独立站被谷歌降权，最怕的是慌乱救：当天删文章、买外链、换模板，一顿操作把原本能救的站送走。
+- [关键词调研：AI扩词，人工验真](https://mfy-lifeline.com/posts/565fbf8a/): AI 能把十个关键词扩成上千个，却不知道哪个值得写。关键词调研的正确分工是：人先定方向、挑词根公式，AI 只管放大，最后人工验真。
+- [网站诊断：喂数据，验报告](https://mfy-lifeline.com/posts/355ed96f/): 把网站交给 AI 诊断，只丢一个网址没用，拿到漂亮报告就照做更危险。
 
 ### 博客建站与前端
 - [Halo和Hexo哪个更适合技术博客？](https://mfy-lifeline.com/posts/2d843850/): 技术博客的搭建工具直接影响创作效率和阅读体验。Halo作为现代化动态博客系统，提供开箱即用的可视化管理界面，适合追求便捷部署的用户。
@@ -131,6 +133,13 @@
 - [独立站加 GPU 特效前，先算清加载、兼容、转化三笔账](https://mfy-lifeline.com/posts/d96a7f37/): GPU 特效能不能加到独立站？不追新也不一刀切，加之前先算兼容性、加载交互、转化三笔账。
 - [用精细化运营重塑博客](https://mfy-lifeline.com/posts/3163726d/): 盲目更新换不来流量。
 - [通信协议连接世界的语言](https://mfy-lifeline.com/posts/4e9eb22b/): 数字世界像一个庞大的对话场，而通信协议正是这场对话里不可或缺的通用语言。
+
+### 未分类
+- [AI写外贸13步：哪4步真影响排名](https://mfy-lifeline.com/posts/3c1a9f02/): 2026年10月谷歌把"AI内容合规"画清楚了，但绝大多数"13步写作法"都把13步当成平等的——这是错的。
+- [Schema sameAs 绑 SGS/TÜV：让 AI 点名你](https://mfy-lifeline.com/posts/e2b8d716/): 做外贸独立站，最尴尬的不是没流量，是 AI 引擎在回答里推荐了你同行却没提你——哪怕你手里握着 SGS、TÜV 这类硬核认证。
+- [外贸询盘成本账：CPL/CPA 怎么算](https://mfy-lifeline.com/posts/b7e3f0a2/): 你后台投了不少广告、也写了不少内容，月底却说不清「一条询盘到底花了多少、其中几单真成了」。
+- [谷歌定性假作者：外贸站怎么补真人信号](https://mfy-lifeline.com/posts/7d4e2b18/): 谷歌2026年10月把"虚构作者人设"明确定性为欺骗——AI头像、编出来的"10年采购总监"、假资质都会把整页拖进低质量。
+- [产品页标题别写零信息：谷歌算质量分](https://mfy-lifeline.com/posts/a5f9c304/): 谷歌2026年10月把"主内容"抬到与E-E-A-T并列，标题和H1也按正文标准审，还点名"Products|ABC Factory"这类零信息标题拖质量。
 
 ## 站点导航
 - 首页: https://mfy-lifeline.com/
