@@ -37,21 +37,14 @@
     var s = document.createElement('style');
     s.id = 'llpod-style';
     s.textContent = [
-      '.llpod-trigger{display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;margin-left:auto;',
-      'border:1px solid var(--anzhiyu-theme,#425aef);border-radius:20px;background:transparent;',
-      'color:var(--anzhiyu-theme,#425aef);font-size:12px;line-height:1;cursor:pointer;',
-      'vertical-align:middle;transition:background .2s,color .2s,transform .2s,box-shadow .2s}',
-      '.llpod-trigger:hover{background:var(--anzhiyu-theme,#425aef);color:#fff;transform:translateY(-1px);',
-      'box-shadow:0 3px 10px rgba(66,90,239,.22)}',
-      '.llpod-trigger:active{transform:scale(.96)}',
+      '.llpod-trigger{display:inline-flex;align-items:center;vertical-align:middle;',
+      'font-size:15.5px;line-height:1;cursor:pointer;user-select:none;',
+      'transition:all .3s;border:0;font-family:inherit}',
+      '.llpod-trigger .llpod-ico{font-size:16px;line-height:1;margin-right:5px}',
+      '.llpod-trigger.is-playing .llpod-ico{animation:llpod-breathe 1s ease-in-out infinite}',
+      '@keyframes llpod-breathe{0%,100%{opacity:1}50%{opacity:.45}}',
       '.llpod-trigger:focus-visible{outline:2px solid var(--anzhiyu-theme,#425aef);outline-offset:2px}',
-      '.llpod-trigger[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}',
-      '.llpod-trigger svg{width:13px;height:13px;flex:none}',
-      '.llpod-trigger svg .bar{transform-origin:center bottom}',
-      '.llpod-trigger.is-playing svg .b1{animation:llpod-b .8s ease-in-out infinite}',
-      '.llpod-trigger.is-playing svg .b2{animation:llpod-b .8s ease-in-out .16s infinite}',
-      '.llpod-trigger.is-playing svg .b3{animation:llpod-b .8s ease-in-out .32s infinite}',
-      '@keyframes llpod-b{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}',
+      '.llpod-trigger[disabled]{opacity:.45;cursor:not-allowed}',
       '.llpod-panel{display:none;align-items:center;gap:9px;flex-wrap:wrap;margin-top:10px;padding:8px 10px;',
       'border-radius:10px;background:var(--anzhiyu-secondbg,rgba(66,90,239,.06));',
       'color:var(--anzhiyu-font-color,#363636);font-size:12px}',
@@ -70,7 +63,7 @@
       '.llpod-voice option{background:var(--anzhiyu-card-bg,#fff);color:var(--anzhiyu-font-color,#363636)}',
       '.llpod-close{border-color:transparent;opacity:.6;padding:0 6px}',
       '.llpod-hint{width:100%;opacity:.7;font-size:11px;line-height:1.5}',
-      '@media (max-width:520px){.llpod-trigger{height:22px;padding:0 6px;font-size:11px}.llpod-panel{gap:7px}',
+      '@media (max-width:520px){.llpod-panel{gap:7px}',
       '.llpod-voice{max-width:118px;font-size:10px;padding:0 4px}}'
     ].join('');
     document.head.appendChild(s);
@@ -102,12 +95,9 @@
     // 主题 ai_abstract.js 在播放器之前加载执行（事件已绑定完成），删除后其引用变 detached、
     // 点击无从触发，浏览器内置 TTS 朗读功能随之消失；播客按钮补位到原处。
     var old = card.querySelector('.anzhiyu-icon-circle-dot');
-    // 朗读图标原在标题行 .ai-title 内（朗读图标 → #ai-tag）。播客按钮必须原位替换它，
-    // 不能 appendChild 到卡片末尾——那样会掉到按钮 tag 行下面、样式错位。
-    var title = card.querySelector('.ai-title');
-    var insertParent = old && old.parentNode ? old.parentNode : (title || card);
-    var insertRef = old ? old.nextSibling : (title ? title.querySelector('#ai-tag') : null);
     if (old) { try { old.remove(); } catch (e) { old.style.display = 'none'; } }
+    // 播客按钮放进底部按钮栏 .ai-btn-box，与「站内管家」等按钮同栏、同款样式
+    var insertParent = card.querySelector('.ai-btn-box') || card;
     // 用「按钮是否仍挂在 DOM 上」判重：主题异步初始化 / pjax 可能重建卡片，
     // 只靠卡片属性会误判为已完成，导致按钮被冲掉后永不恢复。
     var existing = card.querySelector('.llpod-trigger');
@@ -121,16 +111,12 @@
 
     var trigger = document.createElement('button');
     trigger.type = 'button';
-    trigger.className = 'llpod-trigger';
+    trigger.className = 'ai-btn-item llpod-trigger';
     trigger.title = 'AI 播客 · 听两人聊这篇文章';
     trigger.setAttribute('aria-label', trigger.title);
-    trigger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-      '<rect class="bar b1" x="3" y="9" width="3" height="7" rx="1.5" fill="currentColor"/>' +
-      '<rect class="bar b2" x="9" y="5" width="3" height="15" rx="1.5" fill="currentColor"/>' +
-      '<rect class="bar b3" x="15" y="8" width="3" height="9" rx="1.5" fill="currentColor"/>' +
-      '</svg><span>AI 播客</span>';
-    try { insertParent.insertBefore(trigger, insertRef && insertRef.parentNode === insertParent ? insertRef : null); }
-    catch (e) { (title || card).appendChild(trigger); }
+    trigger.innerHTML = '<i class="anzhiyufont anzhiyu-icon-radio llpod-ico" aria-hidden="true"></i><span>AI 播客</span>';
+    try { insertParent.appendChild(trigger); }
+    catch (e) { card.appendChild(trigger); }
 
     var panel = document.createElement('div');
     panel.className = 'llpod-panel';

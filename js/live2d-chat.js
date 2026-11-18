@@ -89,7 +89,7 @@
     if (!box || box.querySelector('.lc-butler-entry')) return;
     var btn = document.createElement('div');
     btn.className = 'ai-btn-item lc-butler-entry';
-    btn.textContent = '站内管家 LifelineVerve 🤖';
+    btn.innerHTML = '<i class="anzhiyufont anzhiyu-icon-comment-sms" style="vertical-align:-1px;margin-right:5px"></i>站内管家 LifelineVerve';
     btn.addEventListener('click', function () { openPanel(); });
     box.appendChild(btn);
   }
