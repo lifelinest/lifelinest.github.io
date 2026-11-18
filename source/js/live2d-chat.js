@@ -13,12 +13,13 @@
   'use strict';
 
   var CONFIG = {
-    // 调用自有 AI 代理（Cloudflare Worker，绑定 lifeline.cc.cd 自定义域名，密钥存于服务端，浏览器零接触）
-    proxyEndpoint: 'https://ai.lifeline.cc.cd',
+    // 调用自有 AI 代理（Cloudflare Worker，绑定 mfyresume.dpdns.org 自定义域名，密钥存于服务端，浏览器零接触）
+    proxyEndpoint: 'https://ai.mfyresume.dpdns.org',
     indexUrl: '/site-index.json',
     temperature: 0.6,
     maxHistory: 8,                               // 保留最近 N 轮对话（用户+助手各算 1 条）
-    welcome: '嗨，我是博客小助手 ✨\n欢迎来到 Lifeline 的博客～\n有任何关于博客内容的问题尽管问我，我会帮你找到准确答案和相关文章链接。'
+    brand: 'LifelineVerve',
+    welcome: '嗨，我是 LifelineVerve ✨\nLifeline 博客的站内管家——全站内容我都熟。\n问我「这个站有什么」「XX 主题的文章在哪」，我会给你答案和相关文章链接。'
   };
 
   // ---------- 状态 ----------
@@ -30,6 +31,9 @@
   var indexLoading = false;      // 索引是否正在加载
   var indexPromise = null;       // 索引加载 Promise（缓存，避免重复 fetch）
   var inited = false;
+  // ⚠️ 必须在此处（init() 之前）声明：init 可能在脚本主体执行完之前就被调用，
+  // 若声明在下方函数区内会因 var 提升而取到 undefined，导致会话恢复读到错误的 key
+  var STORE_KEY = 'lc-chat-history-v1';
 
   // ---------- 入口 ----------
   function init() {
@@ -37,6 +41,22 @@
     inited = true;
     buildPanel();
     bindEvents();
+    injectButlerEntry();
+    prefetchIndex();
+  }
+
+  // 空闲时预取站点索引（约 66KB），避免访客点开面板后才开始下载、白等一段
+  function prefetchIndex() {
+    // 省流模式或极慢网络下不预取，避免替用户多花流量
+    try {
+      var c = navigator.connection;
+      if (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || ''))) return;
+    } catch (e) {}
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(function () { ensureIndex(); }, { timeout: 4000 });
+    } else {
+      setTimeout(function () { ensureIndex(); }, 2500);
+    }
   }
 
   // 兜底：DOMContentLoaded + pjax 切换后尝试初始化
@@ -47,6 +67,32 @@
   }
   document.addEventListener('pjax:success', init);
   document.addEventListener('pjax:complete', init);
+  // pjax 切页后文章 AI 框会重绘，需重新注入「问管家」入口按钮
+  document.addEventListener('pjax:success', injectButlerEntry);
+  document.addEventListener('pjax:complete', injectButlerEntry);
+
+  // 按当前页面动态生成欢迎语：文章页会点出"你正在读的这篇"
+  function welcomeText() {
+    try {
+      var cfg = window.GLOBAL_CONFIG_SITE || {};
+      if (/^\/posts\//.test(location.pathname) && cfg.title) {
+        return '嗨，我是 LifelineVerve ✨ Lifeline 博客的站内管家。\n你现在读的是《' + cfg.title +
+          '》——需要我讲讲这篇的要点，或帮你找相关文章吗？';
+      }
+    } catch (e) {}
+    return CONFIG.welcome;
+  }
+
+  // 在文章 AI 摘要框里注入「问管家」入口，打通"单篇摘要 → 全站管家"两层
+  function injectButlerEntry() {
+    var box = document.querySelector('.post-ai-description .ai-btn-box');
+    if (!box || box.querySelector('.lc-butler-entry')) return;
+    var btn = document.createElement('div');
+    btn.className = 'ai-btn-item lc-butler-entry';
+    btn.innerHTML = '<i class="anzhiyufont anzhiyu-icon-comment-sms" style="vertical-align:-1px;margin-right:5px"></i>站内管家 LifelineVerve';
+    btn.addEventListener('click', function () { openPanel(); });
+    box.appendChild(btn);
+  }
 
   // ---------- 构建 UI ----------
   function buildPanel() {
@@ -55,10 +101,10 @@
     panel.id = 'live2d-chat-panel';
     panel.innerHTML =
       '<div class="lc-header">' +
-        '<img class="lc-avatar" src="http://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" alt="博客小助手" onerror="this.style.display=\'none\'" />' +
+        '<img class="lc-avatar" src="https://p2.music.126.net/x55FPD2xWTqmMIFjDKXogw==/109951163513084093.jpg?param=130y130" alt="LifelineVerve 站内管家" onerror="this.style.display=\'none\'" />' +
         '<div class="lc-title-wrap">' +
-          '<div class="lc-title">博客小助手</div>' +
-          '<div class="lc-status">在线</div>' +
+          '<div class="lc-title">LifelineVerve</div>' +
+          '<div class="lc-status">站内管家 · 在线</div>' +
         '</div>' +
       '</div>' +
       '<div class="lc-body"></div>' +
@@ -73,8 +119,8 @@
     inputEl = panel.querySelector('.lc-input');
     sendBtn = panel.querySelector('.lc-send');
 
-    // 欢迎语
-    appendMessage('assistant', CONFIG.welcome, false);
+    // 恢复本标签页内已有的对话；没有则显示欢迎语
+    restoreHistory();
 
     // 输入框自适应高度 + 回车发送
     inputEl.addEventListener('input', autoGrow);
@@ -88,12 +134,47 @@
     panel.querySelector('.lc-new').addEventListener('click', newChat);
   }
 
+  // ---------- 对话持久化（sessionStorage，仅本标签页，关掉即清） ----------
+  function saveHistory() {
+    try {
+      sessionStorage.setItem(STORE_KEY, JSON.stringify(history.slice(-CONFIG.maxHistory * 2)));
+    } catch (e) { /* 隐私模式等场景静默降级 */ }
+  }
+
+  function clearStoredHistory() {
+    try { sessionStorage.removeItem(STORE_KEY); } catch (e) {}
+  }
+
+  function loadStoredHistory() {
+    try {
+      var arr = JSON.parse(sessionStorage.getItem(STORE_KEY) || '[]');
+      if (!Array.isArray(arr)) return [];
+      return arr.filter(function (m) {
+        return m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string';
+      });
+    } catch (e) { return []; }
+  }
+
+  // 面板构建时渲染：有历史就还原气泡，否则只放欢迎语
+  function restoreHistory() {
+    var restored = loadStoredHistory();
+    if (!restored.length) {
+      appendMessage('assistant', welcomeText(), false);
+      return;
+    }
+    history = restored;
+    for (var i = 0; i < restored.length; i++) {
+      appendMessage(restored[i].role, restored[i].content, false);
+    }
+  }
+
   // 新对话：清空历史并重置为欢迎语
   function newChat() {
     if (loading) return;
     history = [];
+    clearStoredHistory();
     if (bodyEl) bodyEl.innerHTML = '';
-    appendMessage('assistant', CONFIG.welcome, false);
+    appendMessage('assistant', welcomeText(), false);
     try { inputEl.focus(); } catch (e) {}
   }
 
@@ -188,20 +269,44 @@
     var indexText = lines.length ? lines.join('\n\n') : '（索引为空，可能是首次构建未生成）';
 
     return [
-      '你是「博客小助手」，服务于 Lifeline 的个人博客。你的职责是根据下方提供的站点页面索引，准确回答访客关于博客内容的问题，并在合适时附上相关页面的链接。',
+      '你是「LifelineVerve」，Lifeline 个人博客的站内管家 AI，了解本站的全部内容（下方索引列出了每篇文章/页面的标题、链接、标签、分类与摘要）。你的职责是准确回答访客关于本站内容的问题，并在合适时附上可点击的相关文章链接。',
+      '',
+      '你的定位（与「文章 AI 摘要」的层级关系）：',
+      '- 你是「全站管家」：负责跨文章、跨主题地回答"这个站有什么、我要的内容在哪"，并给出链接。',
+      '- 每篇文章顶部另有一个「文章 AI 摘要」模块，那是针对当前这一篇的简介；你与它是互补的两层，互不替代。',
       '',
       '回答规则：',
-      '1. 只回答与博客内容相关的问题；与博客无关的问题礼貌引导回博客主题。',
-      '2. 当回答涉及某篇具体文章或页面时，必须在回复中附上对应链接，使用 Markdown 格式：[标题](相对路径)。',
-      '3. 链接路径必须严格使用下方索引中提供的真实路径（形如 /posts/xxxx/ 或 /about/），禁止编造任何路径或 URL。',
-      '4. 若索引中没有相关内容，如实告知访客该博客可能未涉及此话题，不要编造文章。',
+      '1. 只回答与本站内容相关的问题；与站点无关的问题礼貌引导回博客主题。',
+      '2. 当回答涉及某篇具体文章或页面时，必须附上对应链接，使用 Markdown 格式：[标题](相对路径)。',
+      '3. 链接路径必须严格使用下方索引中的真实路径（形如 /posts/xxxx/ 或 /about/），禁止编造任何路径或 URL。',
+      '4. 若索引中没有相关内容，如实告知访客本站可能未涉及此话题，不要编造文章。',
       '5. 优先推荐与问题最相关的 1-3 篇，避免一次性罗列过多。',
       '6. 语言简洁友好，称呼访客为"你"，正文不要使用代码块包裹链接。',
       '',
-      '以下是博客全部页面的索引（共 ' + items.length + ' 条，每条含标题、链接、标签、摘要）：',
+      '以下是本站全部页面的索引（共 ' + items.length + ' 条，每条含标题、链接、标签、摘要）：',
       '',
-      indexText
+      indexText,
+      '',
+      // ⚠️ 顺序很关键：可变内容（当前文章）必须排在体积最大的索引【之后】。
+      // 大模型按「前缀」命中缓存，索引（约 2 万 token）放在最后才能被所有页面共享前缀，
+      // 否则每篇文章都会让整段索引缓存失效、成本翻十倍。
+      currentPageContext()
     ].join('\n');
+  }
+
+  // 当前页面上下文：把"访客正在读哪一篇"告诉管家，打通「单篇摘要」与「全站管家」两层
+  function currentPageContext() {
+    try {
+      var cfg = window.GLOBAL_CONFIG_SITE || {};
+      if (/^\/posts\//.test(location.pathname) && cfg.title) {
+        var sum = String(cfg.postAI || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean).join('；');
+        var block = '【当前页面】访客正在阅读文章《' + cfg.title + '》（链接：' + location.pathname + '）。';
+        if (sum) block += '本文 AI 摘要：' + sum + '。';
+        block += '当访客提到"这篇文章/本文"时，请优先结合本文内容回答。\n\n';
+        return block;
+      }
+    } catch (e) {}
+    return '';
   }
 
   // ---------- 发送 ----------
@@ -289,6 +394,7 @@
       bubble.innerHTML = renderMarkdown(full);
       if (full) history.push({ role: 'assistant', content: full });
       trimHistory();
+      saveHistory();
       setLoading(false);
       scrollToBottom();
     }).catch(function (err) {
@@ -367,10 +473,16 @@
     t = escapeHtml(t);
     // 4. 换行
     t = t.replace(/\n/g, '<br>');
-    // 5. 放回链接
+    // 5. 放回链接：仅站内相对路径可点击，外部链接降级为纯文本
+    //    （防止提示注入把管家当成站外链接出口）
     t = t.replace(/\u0000L(\d+)\u0000/g, function (_, i) {
       var l = links[+i];
-      return '<a href="' + escapeHtml(l.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(l.txt) + '</a>';
+      var href = String(l.url);
+      var isInternal = href.charAt(0) === '/' && href.indexOf('//') !== 0;
+      if (!isInternal) {
+        return '<span class="lc-link-plain">' + escapeHtml(l.txt) + '</span>';
+      }
+      return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(l.txt) + '</a>';
     });
     return t;
   }

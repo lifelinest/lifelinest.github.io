@@ -150,6 +150,16 @@ async def build(task, manifest):
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0',
                     '-i', lst, '-c:a', 'libmp3lame', '-b:a', AUD['bitrate'],
                     '-ar', AUD['sampleRate'], '-ac', AUD['channels'], out], check=True)
+    # 混入背景音乐（ Lifeline 原曲低音量垫底 + 人声闪避）。out 此刻是纯人声，
+    # mix 内部写 out+'.mixing.mp3' 再原子替换回 out，同路径读入写出安全。
+    # 背景失败不阻断文章播客本身：退化为纯人声仍可正常收听。
+    if AUD.get('bgm', {}).get('enabled'):
+        try:
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            import mix_bg
+            mix_bg.mix(out, out)
+        except Exception as e:
+            print('  [warn] 背景音乐混入失败，退化为纯人声: %s' % str(e)[:120], flush=True)
     dur = duration(out)
 
     try:

@@ -48,7 +48,20 @@
     "bitrate": "64k",
     "sampleRate": "24000",
     "channels": "1",
-    "gap": 0.32
+    "gap": 0.32,
+    "bgm": {
+      "enabled": true,
+      "source": "assets/lifeline.mp3",
+      "bed": "assets/lifeline-bed.mp3",
+      "bedLufs": -31,
+      "duckThreshold": 0.05,
+      "duckRatio": 4,
+      "duckAttack": 30,
+      "duckRelease": 500,
+      "fadeIn": 2.0,
+      "fadeOut": 3.0,
+      "_note": "背景用《Lifeline》原曲压到 -31 LUFS（人声约 -20，低 11dB）；sidechaincompress 以人声为触发，说话时背景自动 duck，停顿间隙回升。改 bedLufs 后需 --make-bed 并全量重混。"
+    }
   },
   "intro": "欢迎收听《孟凡宇 · Lifeline》AI 播客。",
   "outro_a": "好，这期就先聊到这，完整原文放在文章页里了。",
