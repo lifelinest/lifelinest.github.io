@@ -1,45 +1,265 @@
+!= partial('includes/third-party/comments/twikoo-endpoint', {}, { cache: true })
+
 script.
   window.addEventListener('load', () => {
+    // 表情 <img> 先压成 \u0001URL\u0002 占位符，渲染时再还原成内嵌小图标。
+    // 占位符整体算 1 个可见字符，截断时不会被切坏。
+    const TL = '\u0001', TR = '\u0002'
+    const splitVisual = (s) => {
+      const out = []
+      let buf = '', inToken = false
+      for (const ch of String(s == null ? '' : s)) {
+        if (inToken) {
+          buf += ch
+          if (ch === TR) { out.push(buf); inToken = false; buf = '' }
+          continue
+        }
+        if (ch === TL) { inToken = true; buf = ch; continue }
+        out.push(ch)
+      }
+      return out // 未闭合的占位符直接丢弃
+    }
+    const truncateVisual = (s, max) => {
+      const chars = splitVisual(s)
+      if (chars.length <= max) return chars.join('')
+      return chars.slice(0, Math.max(0, max - 1)).join('') + '…'
+    }
+    const plainText = (s) => splitVisual(s).filter(c => !c.startsWith(TL)).join('')
+
     const changeContent = (content) => {
       if (content === '') return content
-
-      content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[!{_p("aside.card_newest_comments.image")}]') // replace image link
-      content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[!{_p("aside.card_newest_comments.link")}]') // replace url
-      content = content.replace(/<pre><code>.*?<\/pre>/gi, '[!{_p("aside.card_newest_comments.code")}]') // replace code
-      content = content.replace(/<[^>]+>/g,"") // remove html tag
-
-      if (content.length > 150) {
-        content = content.substring(0,150) + '...'
-      }
+      content = content.replace(/<img[^>]*?src=["']([^"']+)["'][^>]*>/ig, (m, u) => TL + u + TR)
+      content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[!{_p("aside.card_newest_comments.link")}]')
+      content = content.replace(/<pre><code>.*?<\/pre>/gi, '[!{_p("aside.card_newest_comments.code")}]')
+      content = content.replace(/<br\s*\/?>/gi, ' ')
+      content = content.replace(/<[^>]+>/g, '')
       return content
     }
 
-    const getComment = () => {
+    // 参考 CommentCoreLibrary / artplayer-plugin-danmaku 的成熟做法：
+    // 时间轴发射 → 空间分配器选轨（时序碰撞检测）→ Web Animations 匀速渲染 → 离场回收。
+    // 与本卡片旧的「全部预铺 + animation-delay 负值」不同，这里是真正的逐条入场弹幕墙。
+    const createDanmaku = (stage, array, maxText) => {
+      const SPEED = 72            // px/s，与参考实现的「同速滚动」一致
+      const LANE_GAP = 6          // 轨间留白
+      const SAFE_GAP = 26         // 同轨前车尾部与入场口的最小安全距离
+      const PAD_TOP = 12
+      const MIN_GAP = 2600        // 发射间隔（随机，控制密度：约 2.6~4.6s 一条）
+      const MAX_GAP = 4600
+      const MAX_ACTIVE = 4        // 同屏最多 4 条弹幕，绝不刷屏
+
+      let laneH = 32, lanes = [], active = [], anims = new Set()
+      let timer = null, warmTimer = null, paused = false, destroyed = false, cursor = 0
+
+      const esc = (v) => String(v == null ? '' : v)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+
+      const measure = () => {
+        const probe = document.createElement('a')
+        probe.className = 'danmaku-item'
+        probe.style.visibility = 'hidden'
+        probe.style.transform = 'translate3d(0,0,0)'
+        probe.textContent = '测'
+        stage.appendChild(probe)
+        const itemH = probe.offsetHeight || 26
+        probe.remove()
+        laneH = itemH + LANE_GAP
+        const n = Math.max(3, Math.min(12, Math.floor(((stage.clientHeight || 330) - PAD_TOP * 2) / laneH)))
+        lanes = new Array(n).fill(null)
+      }
+
+      // URL 放 data-* 再运行时赋 src，绕开 Hexo lazyload 的构建期改写；加载失败直接移除
+      const hydrate = (root) => {
+        const apply = (sel, attr) => root.querySelectorAll(sel).forEach((img) => {
+          const u = img.getAttribute(attr)
+          img.removeAttribute(attr)
+          if (!u) { img.remove(); return }
+          img.addEventListener('error', () => img.remove())
+          img.src = u
+        })
+        apply('.danmaku-avatar', 'data-avatar')
+        // 表情加载失败时降级成一个可见占位符，避免变成空白小胶囊
+        root.querySelectorAll('.danmaku-emoji').forEach((img) => {
+          const u = img.getAttribute('data-emoji')
+          img.removeAttribute('data-emoji')
+          if (!u) { img.replaceWith(document.createTextNode('[表情]')); return }
+          img.addEventListener('error', () => {
+            if (img.parentNode) img.parentNode.replaceChild(document.createTextNode('[表情]'), img)
+          })
+          img.src = u
+        })
+      }
+
+      // 时序碰撞检测（CCL willCollide 的同速特化）：
+      // 同速弹幕间距恒定，只要前车已移动 >= 自身宽度 + SAFE_GAP，本轨就永不追尾。
+      // 没有空轨时选「最早可用」的那条；全忙则本次跳过，绝不硬塞造成重叠。
+      const pickLane = (w) => {
+        const empty = []
+        let best = -1, bestWait = Infinity
+        for (let i = 0; i < lanes.length; i++) {
+          const last = lanes[i]
+          if (!last) { empty.push(i); continue }
+          const moved = (last.anim.currentTime || 0) / 1000 * SPEED
+          const wait = (last.w + SAFE_GAP - moved) / SPEED
+          if (wait <= 0) return i
+          if (wait < bestWait) { bestWait = wait; best = i }
+        }
+        // 空轨随机起步，避免开局所有弹幕从 lane 0 依次排队成楼梯状
+        if (empty.length) return empty[Math.floor(Math.random() * empty.length)]
+        return best
+      }
+
+      const spawn = () => {
+        if (destroyed || !array.length) return false
+        if (active.length >= MAX_ACTIVE) return false // 达到密度上限，本次跳过
+        const it = array[cursor++ % array.length]
+        const nick = truncateVisual(it.nick, 7)
+        const titleText = plainText(it.content)
+        const text = esc(truncateVisual(it.content, maxText))
+          .replace(/\u0001([^\u0002]+)\u0002/g, (m, u) => '<img class="danmaku-emoji" data-emoji="' + esc(u) + '" alt="[表情]" title="表情">')
+        const el = document.createElement('a')
+        el.className = 'danmaku-item'
+        el.href = it.url || '#'
+        el.target = '_blank'
+        el.rel = 'noopener noreferrer'
+        el.title = nick + '：' + titleText
+        el.innerHTML = '<img class="danmaku-avatar" data-avatar="' + esc(it.avatar) + '" alt="" referrerpolicy="no-referrer">' +
+          '<span class="danmaku-nick">' + esc(nick) + '</span>' +
+          '<span class="danmaku-sep">：</span>' +
+          '<span class="danmaku-text">' + text + '</span>'
+        stage.appendChild(el)
+        hydrate(el)
+
+        const w = el.offsetWidth || 200
+        const lane = pickLane(w)
+        if (lane < 0) { el.remove(); return false }
+
+        const sw = stage.clientWidth || 376
+        const startX = sw + 6
+        const endX = -w - 6
+        const y = PAD_TOP + lane * laneH
+        const from = 'translate3d(' + startX + 'px,' + y + 'px,0)'
+        const to = 'translate3d(' + endX + 'px,' + y + 'px,0)'
+        el.style.transform = from
+        const anim = el.animate(
+          [{ transform: from }, { transform: to }],
+          { duration: (startX - endX) / SPEED * 1000, easing: 'linear', fill: 'forwards' }
+        )
+        const rec = { el, anim, w, lane }
+        lanes[lane] = rec
+        active.push(rec)
+        anims.add(anim)
+        if (paused) anim.pause()
+        anim.onfinish = () => {
+          anim.cancel()
+          if (el.parentNode) el.remove()
+          anims.delete(anim)
+          const ai = active.indexOf(rec); if (ai >= 0) active.splice(ai, 1)
+          if (lanes[lane] === rec) lanes[lane] = null
+        }
+        return true
+      }
+
+      const schedule = (ms) => {
+        if (destroyed || paused) return
+        clearTimeout(timer)
+        const gap = ms || (MIN_GAP + Math.random() * (MAX_GAP - MIN_GAP))
+        timer = setTimeout(() => { spawn(); schedule() }, gap)
+      }
+
+      const onEnter = () => {
+        paused = true
+        clearTimeout(timer)
+        anims.forEach(a => a.pause())
+      }
+      const onLeave = () => {
+        paused = false
+        anims.forEach(a => a.play())
+        schedule(220)
+      }
+      stage.addEventListener('mouseenter', onEnter)
+      stage.addEventListener('mouseleave', onLeave)
+
+      // 尺寸变化（横竖屏 / pjax 换页）时重排，避免旧坐标错位
+      let ro = null
+      if (window.ResizeObserver) {
+        let lastW = stage.clientWidth, lastH = stage.clientHeight
+        ro = new ResizeObserver(() => {
+          if (destroyed) return
+          if (stage.clientWidth === lastW && stage.clientHeight === lastH) return
+          lastW = stage.clientWidth; lastH = stage.clientHeight
+          anims.forEach(a => a.cancel())
+          anims.clear()
+          active.forEach(r => { if (r.el.parentNode) r.el.remove() })
+          active = []
+          lanes = []
+          measure()
+          let n = 0
+          const refill = setInterval(() => {
+            if (destroyed || n >= Math.min(4, lanes.length)) { clearInterval(refill); return }
+            spawn(); n++
+          }, 160)
+        })
+        ro.observe(stage)
+      }
+
+      // 开局先快速铺几条；间隔带随机抖动，避免等距排队成楼梯
+      measure()
+      let warm = 0
+      const warmMax = Math.min(3, lanes.length)
+      const warmUp = () => {
+        if (destroyed || warm >= warmMax) { schedule(600 + Math.random() * 600); return }
+        spawn(); warm++
+        warmTimer = setTimeout(warmUp, 300 + Math.random() * 400)
+      }
+      warmUp()
+
+      return {
+        destroy () {
+          destroyed = true
+          clearTimeout(timer)
+          clearInterval(warmTimer)
+          if (ro) ro.disconnect()
+          stage.removeEventListener('mouseenter', onEnter)
+          stage.removeEventListener('mouseleave', onLeave)
+          anims.forEach(a => a.cancel())
+          anims.clear()
+          active.forEach(r => { if (r.el.parentNode) r.el.remove() })
+          active = []; lanes = []
+        }
+      }
+    }
+
+    const getComment = async () => {
+      const api = window.anzhiyuTwikoo
+      const envId = api ? await api.pick() : '!{theme.twikoo.envId}'
+      if (!envId) {
+        const card = document.getElementById('card-newest-comments')
+        if (card) card.style.display = 'none'
+        return
+      }
       const runTwikoo = () => {
         twikoo.getRecentComments({
-          envId: '!{theme.twikoo.envId}',
+          envId: envId,
           region: '!{theme.twikoo.region}',
           pageSize: !{theme.newest_comments.limit},
           includeReply: true
         }).then(function (res) {
-          const twikooArray = res.map(e => {
-            return {
-              'content': changeContent(e.comment),
-              'avatar': e.avatar,
-              'nick': e.nick,
-              'url': e.url + '#' + e.id,
-              'date': new Date(e.created).toISOString()
-            }
-          })
-
-          saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), !{theme.newest_comments.storage}/(60*24))
+          const twikooArray = res.map(e => ({
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }))
+          saveToLocal.set('twikoo-newest-comments-v2', JSON.stringify(twikooArray), !{theme.newest_comments.storage}/(60*24))
           generateHtml(twikooArray)
         }).catch(function (err) {
-          const $dom = document.querySelector('#card-newest-comments .aside-list')
-          $dom.textContent= "!{_p('aside.card_newest_comments.error')}"
+          const $dom = document.querySelector('#card-newest-comments .comment-danmaku-stage')
+          if ($dom) $dom.textContent = "!{_p('aside.card_newest_comments.error')}"
         })
       }
-
       if (typeof twikoo === 'object') {
         runTwikoo()
       } else {
@@ -48,37 +268,27 @@ script.
     }
 
     const generateHtml = array => {
-      let result = ''
-
-      if (array.length) {
-        for (let i = 0; i < array.length; i++) {
-          result += '<div class=\'aside-list-item\'>'
-
-          if (!{theme.newest_comments.avatar}) {
-            const name = '!{theme.lazyload.enable ? "data-lazy-src" : "src"}'
-            result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
-          }
-          
-          result += `<div class='content'>
-          <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
-          <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
-          </div>`
-        }
-      } else {
-        result += '!{_p("aside.card_newest_comments.zero")}'
+      const stage = document.querySelector('#card-newest-comments .comment-danmaku-stage')
+      if (!stage) return
+      if (stage.__llDanmaku) { stage.__llDanmaku.destroy(); stage.__llDanmaku = null }
+      stage.innerHTML = ''
+      if (!array || !array.length) {
+        stage.innerHTML = '<span class="danmaku-loading">!{_p("aside.card_newest_comments.zero")}</span>'
+        return
       }
-
-      let $dom = document.querySelector('#card-newest-comments .aside-list')
-      $dom && ($dom.innerHTML= result)
-      window.lazyLoadInstance && window.lazyLoadInstance.update()
-      window.pjax && window.pjax.refresh($dom)
+      // 弹幕宽度必须小于舞台，否则内容会被裁掉；按实测宽度反推可容纳的可见字符数
+      const stageW = stage.clientWidth || 376
+      const maxText = Math.max(8, Math.floor((stageW - 152) / 13))
+      stage.__llDanmaku = createDanmaku(stage, array, maxText)
+      window.pjax && window.pjax.refresh(stage)
     }
 
     const newestCommentInit = () => {
-      if (document.querySelector('#card-newest-comments .aside-list')) {
-        const data = saveToLocal.get('twikoo-newest-comments')
+      if (document.querySelector('#card-newest-comments .comment-danmaku-stage')) {
+        try { saveToLocal.remove('twikoo-newest-comments') } catch (e) {}
+        const data = saveToLocal.get('twikoo-newest-comments-v2')
         if (data) {
-          generateHtml(JSON.parse(data))
+          try { generateHtml(JSON.parse(data)) } catch (e) { getComment() }
         } else {
           getComment()
         }

@@ -1,0 +1,432 @@
+/* ====== 「订阅更新」侧边栏卡片 ======
+   卡片外壳（背景 / 边框 / 圆角 / 阴影 / 内边距）直接沿用主题
+   #aside-content .card-widget 的默认样式，这里只负责卡片内部（标签页 / 表单 / RSS）与配色，
+   全部使用主题变量（--anzhiyu-*），亮暗模式自动适配。
+   已接入 follow.it（原生表单 POST 到 api.follow.it，target=_blank），不引入其自带样式/JS。
+   结构：单卡片内「邮件订阅 / RSS 订阅」两个标签页切换，一次只显示一组，避免竖向堆叠占空间。
+*/
+
+/* ====== 标签页（分段控件） ====== */
+#card-subscribe .subscribe-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  margin: 0 0 0.95rem;
+  background: var(--anzhiyu-secondbg, #f2f3f7);
+  border-radius: 10px;
+}
+
+#card-subscribe .subscribe-tab {
+  flex: 1;
+  padding: 0.45rem 0.4rem;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+#card-subscribe .subscribe-tab:hover {
+  color: var(--anzhiyu-theme, #425aef);
+}
+
+#card-subscribe .subscribe-tab.is-active {
+  background: var(--anzhiyu-card-bg, #fff);
+  color: var(--anzhiyu-theme, #425aef);
+  box-shadow: var(--anzhiyu-shadow-border, 0 2px 8px rgba(0, 0, 0, 0.08));
+}
+
+/* ====== 面板显隐 ====== */
+#card-subscribe .subscribe-panel {
+  display: none;
+}
+
+#card-subscribe .subscribe-panel.is-active {
+  display: block;
+}
+
+/* ====== 邮件订阅 ====== */
+#card-subscribe .subscribe-desc {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+}
+
+#card-subscribe .subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+#card-subscribe .subscribe-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  background: var(--anzhiyu-secondbg, #f7f7f9);
+  border: 1px solid var(--anzhiyu-card-border, #e3e8f7);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#card-subscribe .subscribe-field:focus-within {
+  border-color: var(--anzhiyu-theme, #425aef);
+  box-shadow: 0 0 0 3px var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.137));
+}
+
+#card-subscribe .subscribe-field-icon {
+  flex: none;
+  font-size: 0.9rem;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+}
+
+#card-subscribe .subscribe-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--anzhiyu-fontcolor, #363636);
+}
+
+#card-subscribe .subscribe-input::placeholder {
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+  opacity: 0.75;
+}
+
+#card-subscribe .subscribe-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.55rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--anzhiyu-theme, #425aef);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#card-subscribe .subscribe-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.137));
+}
+
+#card-subscribe .subscribe-btn:active {
+  transform: translateY(0);
+}
+
+#card-subscribe .subscribe-note {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.7rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+  opacity: 0.85;
+}
+
+#card-subscribe .subscribe-tip {
+  margin: 0.6rem 0 0;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+#card-subscribe .subscribe-tip.is-ok {
+  color: var(--anzhiyu-theme, #425aef);
+  background: var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.137));
+}
+
+#card-subscribe .subscribe-tip.is-err {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.12);
+}
+
+/* ====== RSS 阅读器面板 ====== */
+/* RSS 是什么：常驻信息卡（左侧主题色强调条 + 浅底），不折叠不展开 */
+#card-subscribe .subscribe-rss-info {
+  margin: 0 0 0.85rem;
+  padding: 0.6rem 0.75rem;
+  border-left: 3px solid var(--anzhiyu-theme, #425aef);
+  border-radius: 6px;
+  background: var(--anzhiyu-theme-op, rgba(66, 89, 239, 0.1));
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--anzhiyu-secondtext, rgba(60, 60, 67, 0.8));
+}
+
+#card-subscribe .subscribe-rss-info p {
+  margin: 0;
+}
+
+#card-subscribe .subscribe-rss-info strong {
+  color: var(--anzhiyu-fontcolor, #363636);
+}
+
+#card-subscribe .subscribe-rss-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#card-subscribe .subscribe-rss-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.78rem;
+  color: var(--anzhiyu-fontcolor, #363636);
+  background: var(--anzhiyu-secondbg, #f7f7f9);
+  border: 1px solid var(--anzhiyu-card-border, #e3e8f7);
+  border-radius: 8px;
+  outline: none;
+}
+
+#card-subscribe .subscribe-rss-input:focus {
+  border-color: var(--anzhiyu-theme, #425aef);
+}
+
+#card-subscribe .subscribe-rss-copy {
+  flex: none;
+  padding: 0 0.85rem;
+  border: 1px solid var(--anzhiyu-theme, #425aef);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--anzhiyu-theme, #425aef);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+#card-subscribe .subscribe-rss-copy:hover {
+  background: var(--anzhiyu-theme, #425aef);
+  color: #fff;
+}
+
+#card-subscribe .subscribe-rss-copy.is-copied {
+  background: var(--anzhiyu-theme, #425aef);
+  color: #fff;
+  border-color: var(--anzhiyu-theme, #425aef);
+}
+
+#card-subscribe .subscribe-rss-readers {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+}
+
+#card-subscribe .subscribe-rss-reader {
+  flex: 1;
+  text-align: center;
+  padding: 0.45rem 0.4rem;
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: var(--anzhiyu-fontcolor, #363636);
+  background: var(--anzhiyu-secondbg, #f7f7f9);
+  border: 1px solid var(--anzhiyu-card-border, #e3e8f7);
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+#card-subscribe .subscribe-rss-reader:hover {
+  border-color: var(--anzhiyu-theme, #425aef);
+  color: var(--anzhiyu-theme, #425aef);
+}
+
+
+/* ====== 微信入口 v2：二维码为主角（默认可见），圣诞树为彩蛋 ====== */
+/* 层级原则：进来即见二维码、零操作可扫；树需主动点开，且有明确返回与自动返回，避免流失。 */
+#card-subscribe .subscribe-wechat-panel {
+  padding: 0;
+}
+
+/* ---------- 主视图：公众号二维码，纯色底，默认可见 ---------- */
+#card-subscribe .wechat-primary {
+  position: relative;
+  height: 320px;
+  margin: 0 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--anzhiyu-card-border, rgba(0, 0, 0, 0.08));
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+}
+html[data-theme='dark'] #card-subscribe .wechat-primary { background: transparent; }
+/* 彩蛋展开时隐藏二维码主视图，避免两视图同时占位 */
+#card-subscribe .wechat-primary.is-hidden { display: none; }
+
+#card-subscribe .wechat-qr-primary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#card-subscribe .wechat-qr-frame {
+  position: relative;
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #fffdf4, #f3edd2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(255, 224, 138, 0.5);
+}
+#card-subscribe .wechat-qr-frame::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 224, 138, 0.55);
+}
+#card-subscribe .wechat-qr-grid {
+  display: grid;
+  grid-template-columns: repeat(37, 5.4px);
+  grid-template-rows: repeat(37, 5.4px);
+  gap: 0;
+  line-height: 0;
+}
+#card-subscribe .wechat-qr-grid i { display: block; width: 5.4px; height: 5.4px; }
+#card-subscribe .wechat-qr-grid i.on { background: var(--anzhiyu-theme, var(--heo-theme, #425AEF)); }
+#card-subscribe .wechat-qr-grid i.off { background: transparent; }
+#card-subscribe .wechat-qr-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #fffdf4, #f3edd2);
+  border: 2px solid var(--anzhiyu-theme, var(--heo-theme, #425AEF));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+#card-subscribe .wechat-avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(18, 2.4px);
+  grid-template-rows: repeat(18, 2.4px);
+  line-height: 0;
+}
+#card-subscribe .wechat-avatar-grid i { display: block; width: 2.4px; height: 2.4px; }
+#card-subscribe .wechat-logo-txt {
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: var(--anzhiyu-theme, var(--heo-theme, #425AEF));
+  font-weight: 700;
+  margin-top: 2px;
+}
+#card-subscribe .wechat-qr-tip {
+  margin: 0;
+  font-size: 12px;
+  color: var(--anzhiyu-theme, var(--heo-theme, #425AEF));
+  letter-spacing: 0.5px;
+}
+html[data-theme='dark'] #card-subscribe .wechat-qr-tip { color: var(--anzhiyu-theme, var(--heo-theme, #425AEF)); }
+
+/* 低调彩蛋入口：小、淡、不抢二维码视觉 */
+#card-subscribe .wechat-easter-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  padding: 2px 6px;
+  border: none;
+  background: transparent;
+  color: #b4a781;
+  font-size: 10px;
+  font-family: inherit;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+#card-subscribe .wechat-easter-btn:hover { opacity: 1; color: var(--anzhiyu-theme, var(--heo-theme, #425AEF)); }
+html[data-theme='dark'] #card-subscribe .wechat-easter-btn { color: var(--anzhiyu-theme, var(--heo-theme, #425AEF)); }
+
+/* ---------- 彩蛋视图：默认隐藏，点开才出现 ---------- */
+#card-subscribe .wechat-easter {
+  display: none;
+  height: 320px;
+  margin: 0 10px 12px;
+}
+#card-subscribe .wechat-easter.is-open { display: block; }
+
+#card-subscribe .easter-stage {
+  position: relative;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
+  clip-path: circle(150% at 50% 94%);
+  perspective: 900px;
+}
+html[data-theme='dark'] #card-subscribe .easter-stage { background: transparent; }
+#card-subscribe .easter-stage.ripple-open {
+  animation: wechatRippleOpen 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes wechatRippleOpen {
+  from { clip-path: circle(0% at 50% 94%); }
+  to { clip-path: circle(150% at 50% 94%); }
+}
+
+/* 3D 钟摆旋转：2D 抠图不能真转 360°（会看到纸片背面），用 ±18° 来回摆动做立体旋转感 */
+#card-subscribe .easter-tree {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  height: 91%;
+  width: auto;
+  max-width: 94%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  transform-origin: 50% 70%;
+  transform-style: preserve-3d;
+  animation: wechatTreeSwing 7s ease-in-out infinite;
+}
+@keyframes wechatTreeSwing {
+  0%, 100% { transform: translate(-50%, -50%) rotateY(-18deg) rotateZ(-1.2deg); }
+  50% { transform: translate(-50%, -50%) rotateY(18deg) rotateZ(1.2deg); }
+}
+/* 鼠标移入暂停，便于看清；配合 JS 重置自动返回倒计时 */
+#card-subscribe .easter-stage.is-paused .easter-tree { animation-play-state: paused; }
+
+#card-subscribe .easter-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  text-align: center;
+  pointer-events: none;
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  color: #a29370;
+  opacity: 0.85;
+}
+
+/* 彩蛋视图本身即返回热区：点卡片任意位置回二维码 */
+#card-subscribe .wechat-easter.is-open { cursor: pointer; }
+#card-subscribe .easter-back:hover { background: var(--anzhiyu-theme, var(--heo-theme, #425AEF)); color: #fff; }

@@ -1,0 +1,270 @@
+#card-subscribe.card-widget
+  .item-headline
+    i.anzhiyufont.anzhiyu-icon-envelope
+    span 订阅更新
+  //- 切换标签页：一次只显示一组，避免两块竖向堆叠占空间
+  .subscribe-tabs
+    button.subscribe-tab.is-active(type="button" data-tab="mail") 邮件订阅
+    button.subscribe-tab(type="button" data-tab="rss") RSS 订阅
+    button.subscribe-tab(type="button" data-tab="wechat") 微信
+
+  //- 邮件订阅面板
+  .subscribe-panel.is-active(data-panel="mail")
+    p.subscribe-desc 留下邮箱，新文章发布时第一时间送到你的收件箱。
+    //- action 指向 follow.it 的订阅端点：原生表单 POST（不受跨域限制），target=_blank 让读者留在本站
+    form#subscribe-form.subscribe-form(action="https://api.follow.it/subscription-form/R25VZVhHNGxCOGU3SGpFSUl3bDlJeXd3N2lFY3NpZXFDTXRwY3pyc3Q4UGEyT1pOL2VEU1lwWDFCQjNJREYrTllvMjNvTHhoVyswSXdncUw1cmsva2N3RE9vTStrb0dEYWFldGFFalFnaDcrUzRHdmJObm9hdkZzcWF4V2t5eXJ8dTJiR2JOSmNpcUxGTUVwMzVhdVlidzZUbFJib0FmV1ZzR21Nb21ESFUybz0=/8" method="post" target="_blank" novalidate)
+      .subscribe-field
+        i.anzhiyufont.anzhiyu-icon-envelope.subscribe-field-icon
+        input#subscribe-email.subscribe-input(type="email" name="email" placeholder="输入你的邮箱地址" autocomplete="email" required)
+      button#subscribe-submit.subscribe-btn(type="submit")
+        i.anzhiyufont.anzhiyu-icon-paper-plane
+        span 订阅
+    p.subscribe-note
+      i.anzhiyufont.anzhiyu-icon-lock
+      span 邮件由 follow.it 投递，随时可退订，绝不打扰。
+    p#subscribe-tip.subscribe-tip(style="display:none;")
+
+  //- RSS 阅读器面板
+  .subscribe-panel(data-panel="rss")
+    //- 解释 RSS：常驻信息卡（左侧主题色强调条），不折叠不展开
+    .subscribe-rss-info
+      p
+        strong RSS 是什么？
+        | 它是一种订阅格式：把本站链接添加进阅读器（如 Feedly、Inoreader），新文章会自动送达，不用反复来网站刷新——适合想「一处订阅、集中读多个博客」的人。
+    .subscribe-rss-row
+      input#subscribe-rss-url.subscribe-rss-input(type="text" readonly value="")
+      button#subscribe-rss-copy.subscribe-rss-copy(type="button" title="复制 RSS 链接") 复制
+    .subscribe-rss-readers
+      a#subscribe-rss-feedly.subscribe-rss-reader(href="javascript:void(0);" target="_blank" rel="noopener") Feedly
+      a#subscribe-rss-inoreader.subscribe-rss-reader(href="javascript:void(0);" target="_blank" rel="noopener") Inoreader
+
+  //- 微信面板：二维码为主角（进来即见、零操作可扫），圣诞树是点开的小彩蛋
+  .subscribe-panel.subscribe-wechat-panel(data-panel="wechat")
+    //- 主视图：公众号二维码，默认可见
+    .wechat-primary#wechat-primary
+      .wechat-qr.wechat-qr-primary#wechat-qr
+      p.wechat-qr-tip 扫码关注公众号 · Lifeline
+      button.wechat-easter-btn#wechat-easter-btn(type="button" title="圣诞彩蛋") 这里藏了个小彩蛋
+    //- 彩蛋视图：纯色底 + 3D 钟摆旋转圣诞树（默认隐藏）
+    .wechat-easter#wechat-easter(title="点击任意位置返回二维码")
+      .easter-stage#easter-stage
+        //- src 会被 hexo lazyload 改写，点彩蛋时 JS 主动 hydrate
+        img.easter-tree(src="/images/christmas-tree-cutout.webp" alt="点画风圣诞树" draggable="false")
+        .easter-caption M E R R Y · C H R I S T M A S
+
+script(type='text/javascript').
+  (function () {
+    var FEED = location.origin + '/atom.xml';
+    function subscribeInit() {
+      // ===== 标签页切换 =====
+      var tabs = document.querySelectorAll('#card-subscribe .subscribe-tab');
+      var panels = document.querySelectorAll('#card-subscribe .subscribe-panel');
+      var easterView = document.getElementById('wechat-easter');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var key = tab.getAttribute('data-tab');
+          tabs.forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          panels.forEach(function (p) {
+            var active = p.getAttribute('data-panel') === key;
+            p.classList.toggle('is-active', active);
+          });
+          // 离开微信 tab：复位彩蛋视图，避免下次进来还停在树上
+          if (key !== 'wechat') closeEaster();
+        });
+      });
+
+      // ===== 邮件订阅表单 =====
+      var form = document.getElementById('subscribe-form');
+      if (!form) return;
+      var tip = document.getElementById('subscribe-tip');
+      var input = document.getElementById('subscribe-email');
+      function show(msg, ok) {
+        tip.textContent = msg;
+        tip.style.display = 'block';
+        tip.className = 'subscribe-tip ' + (ok ? 'is-ok' : 'is-err');
+      }
+      form.addEventListener('submit', function (e) {
+        var v = (input.value || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+          e.preventDefault();
+          show('请输入有效的邮箱地址', false);
+          input.focus();
+          return;
+        }
+        show('已提交！确认邮件由 follow.it 发出，请点击邮件里的链接完成订阅～', true);
+      });
+
+      // ===== RSS 区块 =====
+      var rssUrl = document.getElementById('subscribe-rss-url');
+      if (rssUrl) rssUrl.value = FEED;
+
+      var copyBtn = document.getElementById('subscribe-rss-copy');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          var restore = function () {
+            copyBtn.textContent = '复制';
+            copyBtn.classList.remove('is-copied');
+          };
+          var done = function () {
+            copyBtn.textContent = '已复制 ✓';
+            copyBtn.classList.add('is-copied');
+            setTimeout(restore, 1800);
+          };
+          var fallback = function () {
+            if (!rssUrl) return;
+            rssUrl.focus();
+            rssUrl.select();
+            try { document.execCommand('copy'); done(); } catch (err) {}
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(FEED).then(done).catch(fallback);
+          } else {
+            fallback();
+          }
+        });
+      }
+
+      var enc = encodeURIComponent(FEED);
+      var fl = document.getElementById('subscribe-rss-feedly');
+      if (fl) fl.href = 'https://feedly.com/i/subscription/feed/' + enc;
+      var ir = document.getElementById('subscribe-rss-inoreader');
+      if (ir) ir.href = 'https://www.inoreader.com/?add_feed=' + enc;
+
+      // ===== 公众号二维码（字符方块，非图片；中心头像点阵）=====
+      var WECHAT_QR_ROWS = [
+        "1111111010110100010100000100001111111",
+        "1000001001110101010101011101001000001",
+        "1011101000101110011001110000001011101",
+        "1011101001010101100010110011101011101",
+        "1011101010111001110110011100101011101",
+        "1000001010001101010100000111101000001",
+        "1111111010101010101010101010101111111",
+        "0000000000011011111011100100100000000",
+        "0111111100010010111110111010100110001",
+        "1100110111110111001101010001001111000",
+        "0100101111000100001110100111101010011",
+        "1011100111100011000011110011001111011",
+        "1111111101000000000000000111101001001",
+        "1100010100110000000000000101110101110",
+        "0110011011010000000000000111010011011",
+        "0111100011110000000000000010110100011",
+        "0011101100010000000000000111111010101",
+        "1111000101010000000000000000100101000",
+        "1011001011110000000000000111111110011",
+        "1000100010110000000000000010111001000",
+        "0011101000100000000000000110011111110",
+        "0111000111100000000000000010001100101",
+        "0001101110100000000000000001101000011",
+        "0010010101010000000000000010111100011",
+        "0001101001010000000000000000001101011",
+        "1010100001110000110000011011111000101",
+        "1011011010010111001101001010000101111",
+        "1000000111111100010111101010100000110",
+        "1001001001000000011100000110111111000",
+        "0000000011101101110000110101100010010",
+        "1111111010110111001000100010101011011",
+        "1000001011010100010000001010100010000",
+        "1011101011111001000011111111111110110",
+        "1011101011000011100001000010101110100",
+        "1011101010110101100011011100100101101",
+        "1000001010000001000001010001110110001",
+        "1111111001110110101000111111011011111"
+      ];
+      var WECHAT_AVATAR_ROWS = [
+        "999981118816931000",
+        "479999999999999744",
+        "075555666666666699",
+        "881122222222234489",
+        "982223333334433388",
+        "984544444455565481",
+        "595665545684168895",
+        "194566668995378899",
+        "896775689875269899",
+        "997883589874136899",
+        "994443336774225699",
+        "996533332442223499",
+        "998544434762222389",
+        "996344337752000183",
+        "995531101111123493",
+        "996532233456678899",
+        "999999999999999999",
+        "999971593399933999"
+      ];
+      var qrEl = document.getElementById('wechat-qr');
+      if (qrEl && typeof WECHAT_QR_ROWS !== 'undefined') {
+        var cells = '';
+        WECHAT_QR_ROWS.forEach(function (row) {
+          for (var i = 0; i < row.length; i++) cells += '<i class="' + (row.charAt(i) === '1' ? 'on' : 'off') + '"></i>';
+        });
+        var shadeAlpha = [1,0.92,0.84,0.75,0.66,0.56,0.46,0.36,0.26,0.16];
+        var themeVar = 'var(--anzhiyu-theme, var(--heo-theme, #425AEF))';
+        var av = '';
+        WECHAT_AVATAR_ROWS.forEach(function (row) {
+          for (var i = 0; i < row.length; i++) av += '<i style="background:' + themeVar + ';opacity:' + shadeAlpha[+row.charAt(i)] + '"></i>';
+        });
+        qrEl.innerHTML = '<div class="wechat-qr-frame"><div class="wechat-qr-grid">' + cells +
+          '</div><div class="wechat-qr-logo"><div class="wechat-avatar-grid">' + av +
+          '</div><div class="wechat-logo-txt">LIFELINE</div></div></div>';
+      }
+
+      // ===== 彩蛋视图：点开进树，点卡片任意处返回 / 12 秒无操作自动回二维码 =====
+      var easterBtn = document.getElementById('wechat-easter-btn');
+      var stage = document.getElementById('easter-stage');
+      function stopEasterTimer() {
+        if (!easterView) return;
+        clearTimeout(easterView._easterTimer);
+        easterView._easterTimer = null;
+      }
+      function armEasterTimer() {
+        stopEasterTimer();
+        easterView._easterTimer = setTimeout(closeEaster, 12000);
+      }
+      function openEaster() {
+        if (!easterView) return;
+        // 彩蛋打开时隐藏二维码主视图，避免两个视图同时占位把卡片拉长
+        var primary = document.getElementById('wechat-primary');
+        if (primary) primary.classList.add('is-hidden');
+        // hexo lazyload 把 src 换成 1x1 gif：主动 hydrate 保证展开即显示
+        var tree = easterView.querySelector('.easter-tree');
+        if (tree && tree.getAttribute('src').indexOf('data:image') === 0 && tree.getAttribute('data-lazy-src')) {
+          tree.setAttribute('src', tree.getAttribute('data-lazy-src'));
+        }
+        easterView.classList.add('is-open');
+        easterView._armedAt = Date.now();
+        if (stage) { stage.classList.remove('ripple-open'); void stage.offsetWidth; stage.classList.add('ripple-open'); }
+        armEasterTimer();
+      }
+      function closeEaster() {
+        stopEasterTimer();
+        if (easterView) easterView.classList.remove('is-open');
+        var primary = document.getElementById('wechat-primary');
+        if (primary) primary.classList.remove('is-hidden');
+      }
+      if (easterBtn) easterBtn.addEventListener('click', openEaster);
+      // 卡片任意位置点击返回；切标签与彩蛋入口各走自己的逻辑
+      var card = document.getElementById('card-subscribe');
+      if (card && !card.dataset.easterBackBound) {
+        card.dataset.easterBackBound = '1';
+        card.addEventListener('click', function (e) {
+          var view = document.getElementById('wechat-easter');
+          if (!view || !view.classList.contains('is-open')) return;
+          if (Date.now() - (view._armedAt || 0) < 300) return;
+          if (e.target.closest && e.target.closest('.subscribe-tab, .wechat-easter-btn')) return;
+          closeEaster();
+        });
+      }
+      if (stage) {
+        // 鼠标在树上：暂停旋转方便看清；移开：恢复旋转，并重置自动返回倒计时
+        stage.addEventListener('pointerenter', function () {
+          stage.classList.add('is-paused');
+          stopEasterTimer();
+        });
+        stage.addEventListener('pointerleave', function () {
+          stage.classList.remove('is-paused');
+          armEasterTimer();
+        });
+      }
+    }
+    if (document.readyState !== 'loading') subscribeInit();
+    else document.addEventListener('DOMContentLoaded', subscribeInit);
+  })();

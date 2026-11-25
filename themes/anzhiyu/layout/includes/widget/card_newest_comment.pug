@@ -4,5 +4,98 @@ if theme.newest_comments.enable
       .author-content-item-tips 互动
       span.author-content-item-title 
         != _p('aside.card_newest_comments.headline')
-    .aside-list
-      span= _p('aside.card_newest_comments.loading_text')
+    .comment-danmaku-stage
+      span.danmaku-loading= _p('aside.card_newest_comments.loading_text')
+    style.
+      #card-newest-comments {
+        min-height: 0 !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      #card-newest-comments .card-content { flex: 0 0 auto; }
+      #card-newest-comments .comment-danmaku-stage {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 240px;
+        margin: 12px 0 0;
+        overflow: hidden;
+        border-radius: 12px;
+        background: var(--anzhiyu-card-bg);
+        border: var(--style-border);
+        /* 上下柔化遮罩，模拟弹幕墙的景深，不遮挡点击 */
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+        mask-image: linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      }
+      #card-newest-comments .danmaku-loading {
+        display: block;
+        padding: 20px;
+        text-align: center;
+        color: var(--anzhiyu-secondtext);
+        font-size: 14px;
+      }
+      /* 弹幕条目：由 JS 用 Web Animations API 驱动 translate3d，CSS 只负责外观 */
+      #card-newest-comments .danmaku-item {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-flex;
+        align-items: center;
+        max-width: calc(100% - 16px);
+        padding: 3px 10px;
+        border-radius: 12px;
+        background: var(--anzhiyu-maskbgdeep);
+        border: var(--style-border);
+        color: var(--anzhiyu-fontcolor);
+        font-size: 13px;
+        line-height: 18px;
+        white-space: nowrap;
+        text-decoration: none;
+        backdrop-filter: saturate(180%) blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        will-change: transform;
+        cursor: pointer;
+        z-index: 1;
+      }
+      #card-newest-comments .danmaku-item:hover {
+        background: var(--anzhiyu-main);
+        color: var(--anzhiyu-white);
+        z-index: 3;
+      }
+      #card-newest-comments .danmaku-avatar {
+        display: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 5px;
+        flex-shrink: 0;
+        border: 1px solid var(--anzhiyu-card-bg);
+        background: var(--anzhiyu-card-bg);
+      }
+      #card-newest-comments .danmaku-avatar[src] { display: inline-block; }
+      #card-newest-comments .danmaku-emoji {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: -3px;
+        margin: 0 2px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+      #card-newest-comments .danmaku-nick {
+        color: var(--anzhiyu-main);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      #card-newest-comments .danmaku-sep { opacity: 0.55; flex-shrink: 0; }
+      #card-newest-comments .danmaku-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #card-newest-comments .danmaku-item:hover .danmaku-nick,
+      #card-newest-comments .danmaku-item:hover .danmaku-sep { color: var(--anzhiyu-white); }
+      @media screen and (max-width: 768px) {
+        #card-newest-comments .comment-danmaku-stage { min-height: 200px; }
+        #card-newest-comments .danmaku-item { font-size: 12px; padding: 3px 8px; }
+      }
