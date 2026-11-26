@@ -53,6 +53,7 @@
 - [电商 App 运营合规自动化：UI 自动化在自有业务中的提效边界](https://mfy-lifeline.com/posts/e93b1b79/): 用 UI 自动化接管重复操作，是测试工程师和个人效率玩家的实用技能。
 - [重复内容判定：为什么只换表述救不了页面](https://mfy-lifeline.com/posts/a83e5f21/): 两页只换同义词、调段落顺序、让 AI 润色一遍，Google 会当成新内容吗？
 - [外贸独立站素材版权避坑：图片、字体、视频怎么才算不侵权](https://mfy-lifeline.com/posts/1fddf13f/): 外贸站点最常见的三类版权雷区是图片、字体和视频：随手百度来的产品图可能来自图库、官网字体可能是需要授权的商用字体、背景音乐和宣传片也可能有版权。
+- [About Us 页不是画册，是信任证据](https://mfy-lifeline.com/posts/b7d91e34/): 把中文画册翻译一下就当 About Us，是外贸独立站最亏的一处。
 
 ### AI内容增长
 - [用 Cherry Studio 把多个 AI 模型变成外贸内容工作站](https://mfy-lifeline.com/posts/a0f90707/): 外贸内容生产最耗人的不是写，是在多个模型、多个网页、多个语言之间反复横跳。
