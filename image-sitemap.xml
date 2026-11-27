@@ -63,9 +63,6 @@
   <url>
     <loc>https://mfy-lifeline.com/admin/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -132,6 +129,9 @@
   <url>
     <loc>https://mfy-lifeline.com/album/index.html</loc>
     <image:image>
+      <image:loc>https://mfy-lifeline.com/images/stellar-album-banner.jpg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -161,9 +161,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2024/03/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -201,9 +198,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2024/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -239,9 +233,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/03/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -279,9 +270,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/04/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -317,9 +305,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/04/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -357,9 +342,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/05/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -395,9 +377,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/05/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -435,9 +414,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/06/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -473,9 +449,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/07/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -513,9 +486,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/08/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -551,9 +521,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/09/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -591,9 +558,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/10/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -629,9 +593,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/11/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -669,9 +630,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/11/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -707,9 +665,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -747,9 +702,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -785,9 +737,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -825,9 +774,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/page/4/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -863,9 +809,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/page/5/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -903,9 +846,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/page/6/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -941,9 +881,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2025/page/7/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -981,9 +918,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/01/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1019,9 +953,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/02/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1059,9 +990,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/03/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1097,9 +1025,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/04/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1137,9 +1062,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/06/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1175,9 +1097,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/07/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1215,9 +1134,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/08/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1253,9 +1169,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/09/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1293,9 +1206,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/10/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1331,9 +1241,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/10/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1371,9 +1278,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/11/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1409,9 +1313,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/11/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1449,9 +1350,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1487,9 +1385,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1527,9 +1422,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/page/3/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1565,9 +1457,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/page/4/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1605,9 +1494,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/page/5/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1643,9 +1529,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/page/6/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1683,9 +1566,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/2026/page/7/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1721,9 +1601,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1761,9 +1638,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/page/10/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1799,9 +1673,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/page/11/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1839,9 +1710,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/page/12/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1877,9 +1745,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/page/13/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1917,9 +1782,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/page/14/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1955,9 +1817,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/page/15/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -1995,9 +1854,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2033,9 +1889,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2073,9 +1926,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/page/4/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2111,9 +1961,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/page/5/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2151,9 +1998,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/page/6/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2189,9 +2033,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/archives/page/7/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2229,9 +2070,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/page/8/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2268,9 +2106,6 @@
   <url>
     <loc>https://mfy-lifeline.com/archives/page/9/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2306,9 +2141,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/bangumis/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2376,9 +2208,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/AI内容增长/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2414,9 +2243,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/AI内容增长/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2454,9 +2280,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/AI内容增长/page/3/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2492,9 +2315,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/AI内容增长/page/4/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2562,9 +2382,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/SEO与Google-Ads/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2600,9 +2417,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/SEO与Google-Ads/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2640,9 +2454,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/SEO与Google-Ads/page/3/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2678,9 +2489,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/博客建站与前端/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2718,9 +2526,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/博客建站与前端/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2756,9 +2561,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/博客建站与前端/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2796,9 +2598,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/外贸B2B独立站/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2834,9 +2633,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/外贸B2B独立站/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2874,9 +2670,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/外贸B2B独立站/page/3/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2912,9 +2705,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/外贸B2B独立站/page/4/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -2952,9 +2742,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/效率工具与软件/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -2990,9 +2777,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/效率工具与软件/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -3030,9 +2814,6 @@
   <url>
     <loc>https://mfy-lifeline.com/categories/效率工具与软件/page/3/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3068,9 +2849,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/categories/数字生活/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -3108,9 +2886,6 @@
   <url>
     <loc>https://mfy-lifeline.com/charts/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3146,9 +2921,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/cinemas/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -3216,9 +2988,6 @@
   <url>
     <loc>https://mfy-lifeline.com/comments/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3255,9 +3024,6 @@
   <url>
     <loc>https://mfy-lifeline.com/copyright/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3293,9 +3059,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/dailyPhoto/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -3371,9 +3134,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/docs/footprint-map-plugin-dev.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -3504,6 +3264,9 @@
   <url>
     <loc>https://mfy-lifeline.com/FootprintMap/index.html</loc>
     <image:image>
+      <image:loc>https://mfy-lifeline.com/images/stellar-album-banner.jpg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3564,9 +3327,6 @@
   <url>
     <loc>https://mfy-lifeline.com/games/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3602,9 +3362,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -3732,9 +3489,6 @@
   <url>
     <loc>https://mfy-lifeline.com/link/copyright.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3770,9 +3524,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/link/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -3870,9 +3621,6 @@
   <url>
     <loc>https://mfy-lifeline.com/page/10/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3908,9 +3656,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/page/11/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -3948,9 +3693,6 @@
   <url>
     <loc>https://mfy-lifeline.com/page/12/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -3986,9 +3728,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/page/13/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4026,9 +3765,6 @@
   <url>
     <loc>https://mfy-lifeline.com/page/14/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4064,9 +3800,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/page/15/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4104,9 +3837,6 @@
   <url>
     <loc>https://mfy-lifeline.com/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4142,9 +3872,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4182,9 +3909,6 @@
   <url>
     <loc>https://mfy-lifeline.com/page/4/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4220,9 +3944,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/page/5/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4260,9 +3981,6 @@
   <url>
     <loc>https://mfy-lifeline.com/page/6/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4298,9 +4016,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/page/7/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4338,9 +4053,6 @@
   <url>
     <loc>https://mfy-lifeline.com/page/8/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4376,9 +4088,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/page/9/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4416,9 +4125,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/0055d24e/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4454,9 +4160,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/05b5d08e/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4494,9 +4197,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/0ebe301f/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4532,9 +4232,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/1488d0d5/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4572,9 +4269,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/1a2e622e/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4610,9 +4304,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/1a7e4f01/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4650,9 +4341,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/1b5138db/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4688,9 +4376,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/1c83d0aa/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4728,9 +4413,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/1e3fd2c9/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4766,9 +4448,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/1fddf13f/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4806,9 +4485,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/2080dcc7/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4844,9 +4520,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/20b9a35c/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4884,9 +4557,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/24c9c254/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -4922,9 +4592,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/2514c491/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -4962,9 +4629,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/26e86d24/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5000,9 +4664,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/28d7b030/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5040,9 +4701,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/2aa71edb/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5078,9 +4736,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/2aea9a81/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5118,9 +4773,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/2d25e1d/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5156,9 +4808,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/2d843850/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5196,9 +4845,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/2df33f2c/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5234,9 +4880,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/30a2dcc4/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5274,9 +4917,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/3163726d/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5312,9 +4952,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/327a8d06/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5352,9 +4989,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/3413805d/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5390,9 +5024,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/355ed96f/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5430,9 +5061,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/3d8e1b4a/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5468,9 +5096,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/40ec352a/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5508,9 +5133,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/41032b74/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5546,9 +5168,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/41e03a2b/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5586,9 +5205,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/481d113d/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5624,9 +5240,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/483eb1bd/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5664,9 +5277,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/488b66fb/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5702,9 +5312,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/4e8b1d63/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5742,9 +5349,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/4e9eb22b/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5780,9 +5384,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/4fca6a15/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5820,9 +5421,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/5242d200/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5858,9 +5456,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/538c1c99/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5898,9 +5493,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/565fbf8a/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -5936,9 +5528,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/5c36814b/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -5976,9 +5565,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/5da9fa84/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6014,9 +5600,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/5daa7ae4/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6054,9 +5637,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/5dc1e28e/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6092,9 +5672,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/5dd578ee/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6132,9 +5709,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/6161e3e8/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6170,9 +5744,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/618f4052/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6210,9 +5781,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/61f2c21d/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6248,9 +5816,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/66ea8cb4/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6288,9 +5853,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/68d350e2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6326,9 +5888,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/6cae7b2c/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6366,9 +5925,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/6de28ddf/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6404,9 +5960,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/6f2a8c3e/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6444,9 +5997,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/6f70ce5/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6482,9 +6032,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/77ee308b/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6522,9 +6069,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/78e63314/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6560,9 +6104,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/79b00bbf/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6600,9 +6141,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/7be0899e/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6638,9 +6176,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/7c3a9f21/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6678,9 +6213,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/7c5a2e9b/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6716,9 +6248,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/7d5f095a/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6756,9 +6285,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/7d8009d8/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6794,9 +6320,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/7e51e542/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6834,9 +6357,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/8058905f/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6872,9 +6392,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/82e329c9/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6912,9 +6429,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/83dd532c/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -6950,9 +6464,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/84168663/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -6990,9 +6501,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/85920be9/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7028,9 +6536,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/89472648/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7068,9 +6573,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/8bb22cde/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7106,9 +6608,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/8d3c1d31/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7146,9 +6645,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/909097d9/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7184,9 +6680,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/910dfdcb/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7224,9 +6717,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/91d3c7cc/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7262,9 +6752,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/934c6c1c/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7302,9 +6789,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/95094afd/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7340,9 +6824,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/9641524/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7380,9 +6861,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/985f9bfd/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7418,9 +6896,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/986539b5/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7458,9 +6933,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/98bdfbb4/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7496,9 +6968,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/9edf104d/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7536,9 +7005,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/9f2a7c1e/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7574,9 +7040,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/9f2b4c7d/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7614,9 +7077,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/9fc22798/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7652,9 +7112,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/a0627e97/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7692,9 +7149,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/a0c85c85/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7730,9 +7184,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/a0cdce66/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7770,9 +7221,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/a0f90707/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7808,9 +7256,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/a144abe9/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7848,9 +7293,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/a3a54b05/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7886,9 +7328,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/a4b9adb4/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -7926,9 +7365,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/a51aefa7/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -7964,9 +7400,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/a6aeac5e/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8004,9 +7437,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/a6b306ed/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8042,9 +7472,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/a83e5f21/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8082,9 +7509,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/a9fc7482/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8120,9 +7544,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/ac008fca/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8160,9 +7581,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/afc9406a/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8198,9 +7616,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/b2368471/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8238,9 +7653,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/b25123cd/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8276,9 +7688,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/b63649ea/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8316,9 +7725,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/b7d91e34/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8354,9 +7760,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/b7e4a912/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8394,9 +7797,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/b7e4f1a9/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8432,9 +7832,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/b9342cef/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8472,9 +7869,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/ba9cc685/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8510,9 +7904,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/bc2ba537/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8550,9 +7941,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/bfa77aa4/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8588,9 +7976,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/c4d3526/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8628,9 +8013,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/c4efaa0d/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8666,9 +8048,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/c50d6270/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8706,9 +8085,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/c65bdcca/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8744,9 +8120,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/c70de62d/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8784,9 +8157,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/c953ce21/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8822,9 +8192,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/cab7a2a3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8862,9 +8229,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/cd7681cc/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8900,9 +8264,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/cf9e2cfd/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -8940,9 +8301,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/d0dc42b8/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -8978,9 +8336,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/d1874d21/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9018,9 +8373,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/d6a98346/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9056,9 +8408,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/d809f60f/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9096,9 +8445,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/d8b0d66/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9134,9 +8480,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/d923f1bb/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9174,9 +8517,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/d96a7f37/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9212,9 +8552,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/daa5a7f5/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9252,9 +8589,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/de68b87d/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9290,9 +8624,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/e0822f31/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9330,9 +8661,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/e13e8e02/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9368,9 +8696,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/e3b9c205/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9408,9 +8733,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/e57cb390/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9446,9 +8768,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/e6cd93cd/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9486,9 +8805,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/e93b1b79/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9524,9 +8840,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/e9d1ae19/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9564,9 +8877,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/ea64d404/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9602,9 +8912,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/eb872732/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9642,9 +8949,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/f0629247/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9680,9 +8984,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/f1de5082/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9720,9 +9021,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/f2555b7f/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9758,9 +9056,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/f2b68b74/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9798,9 +9093,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/f3b2c920/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9836,9 +9128,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/f6a174e9/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -9876,9 +9165,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/f7a3c9d1/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9915,9 +9201,6 @@
   <url>
     <loc>https://mfy-lifeline.com/posts/f83bd290/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -9953,9 +9236,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/posts/fe9f2465/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10023,9 +9303,6 @@
   <url>
     <loc>https://mfy-lifeline.com/products/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10061,9 +9338,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/reward-admin-readme.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10131,9 +9405,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10169,9 +9440,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/人工智能/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10209,9 +9477,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/人工智能/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10247,9 +9512,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/人工智能/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10287,9 +9549,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/人文观察/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10325,9 +9584,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/人生思考/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10365,9 +9621,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/人生感悟/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10403,9 +9656,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/代码分享/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10443,9 +9693,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/免费工具/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10481,9 +9728,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/免费工具/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10521,9 +9765,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/免费工具/page/3/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10559,9 +9800,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/免费工具/page/4/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10599,9 +9837,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/前端开发/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10637,9 +9872,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/办公技巧/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10677,9 +9909,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/办公技巧/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10715,9 +9944,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/博客搭建/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10755,9 +9981,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/后端入门/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10793,9 +10016,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/学习方法/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10833,9 +10053,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/宠物日常/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10871,9 +10088,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/小众目的地/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10911,9 +10125,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/工具教程/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -10949,9 +10160,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/工具教程/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -10989,9 +10197,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/工具教程/page/3/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11027,9 +10232,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/开发工具/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11067,9 +10269,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/开发工具/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11105,9 +10304,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/开源项目/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11145,9 +10341,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/怀旧回忆/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11183,9 +10376,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/思维方式/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11223,9 +10413,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/成长感悟/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11261,9 +10448,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/手工DIY/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11301,9 +10485,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/手机APP/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11339,9 +10520,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/技术踩坑/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11379,9 +10557,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/技术踩坑/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11417,9 +10592,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/技术踩坑/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11457,9 +10629,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/技术踩坑/page/4/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11495,9 +10664,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/摄影记录/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11535,9 +10701,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/效率提升/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11573,9 +10736,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/效率软件/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11613,9 +10773,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/效率软件/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11651,9 +10808,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/效率软件/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11691,9 +10845,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/效率软件/page/4/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11729,9 +10880,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/文化思考/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11769,9 +10917,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/日常随想/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11807,9 +10952,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/浏览器插件/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11847,9 +10989,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/深度思考/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11885,9 +11024,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/游戏心得/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -11925,9 +11061,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/热点杂谈/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -11963,9 +11096,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/生活感悟/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12003,9 +11133,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/知识总结/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12041,9 +11168,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/知识总结/page/2/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12081,9 +11205,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/社会观察/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12119,9 +11240,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/编程学习/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12159,9 +11277,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/美食制作/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12197,9 +11312,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/职场技能/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12237,9 +11349,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/自我反思/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12275,9 +11384,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/行业观察/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12315,9 +11421,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/行业观察/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12353,9 +11456,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/行业观察/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12393,9 +11493,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/行业观察/page/4/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12431,9 +11528,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/观点输出/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12471,9 +11565,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/观点输出/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12509,9 +11600,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/认知升级/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12549,9 +11637,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/设计工具/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12587,9 +11672,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/资源分享/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12627,9 +11709,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/资源分享/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12665,9 +11744,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/软件测评/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12705,9 +11781,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/软件测评/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12743,9 +11816,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/运维部署/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12783,9 +11853,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/避坑指南/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12822,9 +11889,6 @@
   <url>
     <loc>https://mfy-lifeline.com/tags/避坑指南/page/2/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12860,9 +11924,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/tags/避坑指南/page/3/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
@@ -12960,9 +12021,6 @@
   <url>
     <loc>https://mfy-lifeline.com/todolist/index.html</loc>
     <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>
     <image:image>
@@ -12998,9 +12056,6 @@
   </url>
   <url>
     <loc>https://mfy-lifeline.com/update/index.html</loc>
-    <image:image>
-      <image:loc>https://mfy-lifeline.com/images/christmas-tree-cutout.webp</image:loc>
-    </image:image>
     <image:image>
       <image:loc>https://mfy-lifeline.com/img/404.jpg</image:loc>
     </image:image>

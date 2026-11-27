@@ -56,7 +56,7 @@
     return isDark() ? (cfg.mapStyleDark || 'amap://styles/dark') : (cfg.mapStyle || 'amap://styles/normal');
   }
 
-  /* 容器/卡片高度：卡片 : 地图 = 2 : 8，铺满可用视口高度（底部留 40px 页脚） */
+  /* 地图高度：铺满可用视口高度（底部留 40px 页脚） */
   function syncHeight() {
     var page = document.getElementById('footprint-map-page');
     if (!container || !page) return;
@@ -64,17 +64,11 @@
     var available = window.innerHeight - pageTop - 40; // 给页脚留 40px 余量
     if (!isFinite(available)) available = 760;
 
-    // 卡片上下外边距（与 CSS 中 .fp-jiyu-card margin 对应）从可分配空间里扣除
-    var cardMarginTop = 18, cardMarginBottom = 14;
-    var share = available - cardMarginTop - cardMarginBottom;
-    if (share < 200) share = 200;
-
-    var cardH = Math.round(share / 5);   // 20%
-    var mapH = Math.round(share * 4 / 5); // 80%
+    // 迹遇卡已移除：地图铺满可用高度（横幅与地图留 30px 间距）
+    var mapH = Math.round(available - 30);
     if (mapH > 820) mapH = 820;   // 上限：避免地图过高
     if (mapH < 460) mapH = 460;   // 下限：保证可操作
 
-    page.style.setProperty('--fp-card-h', cardH + 'px');
     container.style.setProperty('--fp-h', mapH + 'px');
     if (map) setTimeout(function () { map.resize && map.resize(); }, 60);
   }

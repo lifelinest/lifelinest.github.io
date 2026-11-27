@@ -228,7 +228,8 @@
   max-width: 100%;
   height: var(--fp-h, 720px);
   min-height: 460px;
-  margin: 0 0 40px;
+  /* 与上方横幅卡片拉开间距（参考主题 .author-content 标准 1rem） */
+  margin: 30px 0 40px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -999,7 +1000,7 @@
 
   #footprint-map-container {
     min-height: 380px;
-    margin-top: 0;
+    margin-top: 30px;
   }
 
   /* 列表面板 → 底部抽屉 */

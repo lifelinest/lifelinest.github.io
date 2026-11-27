@@ -382,7 +382,7 @@ html[data-theme='dark'] #card-subscribe .wechat-easter-btn { color: var(--anzhiy
   clip-path: circle(150% at 50% 94%);
   perspective: 900px;
 }
-html[data-theme='dark'] #card-subscribe .easter-stage { background: transparent; }
+html[data-theme='dark'] #card-subscribe .easter-stage { background: #050c14; }
 #card-subscribe .easter-stage.ripple-open {
   animation: wechatRippleOpen 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -391,42 +391,54 @@ html[data-theme='dark'] #card-subscribe .easter-stage { background: transparent;
   to { clip-path: circle(150% at 50% 94%); }
 }
 
-/* 3D 钟摆旋转：2D 抠图不能真转 360°（会看到纸片背面），用 ±18° 来回摆动做立体旋转感 */
-#card-subscribe .easter-tree {
+/* ---------- 粒子树画布（Three.js 渲染，深色星空为画布自身背景） ---------- */
+#card-subscribe .easter-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  touch-action: none;
+}
+#card-subscribe .easter-loading {
   position: absolute;
-  left: 50%;
-  top: 48%;
-  height: 91%;
-  width: auto;
-  max-width: 94%;
-  object-fit: contain;
-  user-select: none;
-  -webkit-user-drag: none;
+  left: 0; right: 0; top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 11px;
+  color: #9fb6cf;
   pointer-events: none;
-  transform-origin: 50% 70%;
-  transform-style: preserve-3d;
-  animation: wechatTreeSwing 7s ease-in-out infinite;
 }
-@keyframes wechatTreeSwing {
-  0%, 100% { transform: translate(-50%, -50%) rotateY(-18deg) rotateZ(-1.2deg); }
-  50% { transform: translate(-50%, -50%) rotateY(18deg) rotateZ(1.2deg); }
+/* 控制条：半透明浮层，不抢画面 */
+#card-subscribe .easter-controls {
+  position: absolute;
+  left: 0; right: 0; bottom: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 2;
 }
-/* 鼠标移入暂停，便于看清；配合 JS 重置自动返回倒计时 */
-#card-subscribe .easter-stage.is-paused .easter-tree { animation-play-state: paused; }
-
+#card-subscribe .easter-ctrl {
+  padding: 3px 9px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(8,18,30,0.55);
+  color: #dbe7f5;
+  font-size: 10px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+#card-subscribe .easter-ctrl:hover { background: var(--anzhiyu-theme, var(--heo-theme, #425AEF)); border-color: transparent; color: #fff; }
 #card-subscribe .easter-caption {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 8px;
+  left: 0; right: 0; bottom: 6px;
   text-align: center;
   pointer-events: none;
-  font-size: 9px;
-  letter-spacing: 1.6px;
-  color: #a29370;
-  opacity: 0.85;
+  font-size: 8px;
+  letter-spacing: 0.6px;
+  color: #7c8ea3;
+  opacity: 0.8;
 }
-
 /* 彩蛋视图本身即返回热区：点卡片任意位置回二维码 */
 #card-subscribe .wechat-easter.is-open { cursor: pointer; }
 #card-subscribe .easter-back:hover { background: var(--anzhiyu-theme, var(--heo-theme, #425AEF)); color: #fff; }
